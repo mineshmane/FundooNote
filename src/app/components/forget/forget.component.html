@@ -1,3 +1,35 @@
-<p>
-  forget works!
-</p>
+<div fxFlex="30" fxFlexOffset="35" fxFlexOffset.xs="0" fxFlex.xs="100">
+  <mat-card fxFlex.xs="100">
+
+    <mat-card-title>
+      <p>
+        <span class="f">F</span>
+        <span class="u">u</span>
+        <span class="n">n</span>
+        <span class="d">d</span>
+        <span class="o">o</span>
+        <span class="O">o</span>
+      </p>
+    </mat-card-title>
+
+    <form [formGroup]="forgetForm" autocomplete="off" novalidate (ngSubmit)="forgetPassword(forgetForm.value)">
+      <mat-card-content>
+        <mat-card-subtitle>forget password</mat-card-subtitle>
+        <div fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayout.xs="column">
+          <div>
+            <mat-form-field appearance="outline" fxFlex.xs="100">
+              <mat-label>Email</mat-label>
+              <input matInput type="text" placeholder="Email" formControlName="email" id="email">
+              <mat-error *ngIf="hasError('email', 'required')">email is required</mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+          <div> <button mat-raised-button color="primary" [disabled]="!forgetForm.valid">submmit</button></div>
+
+
+        </div>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>
