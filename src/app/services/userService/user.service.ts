@@ -26,9 +26,9 @@ export class UserService {
     return this.httpService.post('/user/reset', data);
   }
   resetPassword(data) {
-    console.log("user service called");
+    console.log("user service called",data);
 
-    return this.httpService.encodedPost('/user/reset-password', data);
+    return this.httpService.encodedPost('user/reset-password', data);
   }
 
 

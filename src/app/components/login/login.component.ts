@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
 
-
+  hide = true;
 
   constructor(private userService: UserService, private router: Router,
     private snackBar: MatSnackBar) { }
@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     console.log(" login event called ", loginFormvalue);
     this.userService.login(loginFormvalue).subscribe(response => {
       console.log('response ', response);
+      localStorage.setItem('token', response['id']);
       this.snackBar.open('login succesfully', '', { duration: 2000 });
       this.router.navigate(['/login']);
 

@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./reset.component.scss']
 })
 export class ResetComponent implements OnInit {
-
+  hide=true;
   public resetForm: FormGroup;
 
 
@@ -32,7 +32,7 @@ export class ResetComponent implements OnInit {
   resetPassword(resetFormValue) {
     
     const newPassword={
-      password:resetFormValue.password
+      newPassword:resetFormValue.password
     }
     console.log(" login event called ", resetFormValue);
 
@@ -42,16 +42,16 @@ export class ResetComponent implements OnInit {
     }
     else {
 
-      // this.userService.resetPassword(newPassword).subscribe(response => {
-      //   console.log('response ', response);
-      //   this.snackBar.open('password is changed  successfully ', '', { duration: 4000 });
-      //   this.router.navigate(['/login']);
+      this.userService.resetPassword(newPassword).subscribe(response => {
+        console.log('response ', response);
+        this.snackBar.open('password is changed  successfully ', '', { duration: 4000 });
+        this.router.navigate(['/login']);
 
 
-      // }, error => {
-      //   console.log('error ', error);
+      }, error => {
+        console.log('error ', error);
   
-      // });
+      });
     }
   }
 }

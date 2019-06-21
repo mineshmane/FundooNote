@@ -1,40 +1,50 @@
-<div fxFlex="30" fxFlexOffset="35" fxFlexOffset.xs="0" fxFlex.xs="100">
-    <mat-card fxFlex.xs="100">
-  
-      <mat-card-title>
-        <p>
-          <span class="f">F</span>
-          <span class="u">u</span>
-          <span class="n">n</span>
-          <span class="d">d</span>
-          <span class="o">o</span>
-          <span class="O">o</span>
-        </p>
-      </mat-card-title>
-  
-      <form [formGroup]="resetForm" autocomplete="off" novalidate (ngSubmit)="resetPassword(resetForm.value)">
-        <mat-card-content>
-          <mat-card-subtitle>forget password</mat-card-subtitle>
-          <div fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayout.xs="column">
-            <div>
-              <mat-form-field appearance="outline" fxFlex.xs="100">
-                <mat-label>New Password</mat-label>
-                <input matInput type="text" placeholder="Enter New Password" formControlName="password" id="password">
-                <mat-error *ngIf="hasError('password', 'required')">password is required</mat-error>
-              </mat-form-field>
-            </div>
-            <div>
-                <mat-form-field appearance="outline" fxFlex.xs="100">
-                  <mat-label>newPassword</mat-label>
-                  <input matInput type="text" placeholder="confirm-Password" formControlName="cpassword" id="cpassword">
-                  <mat-error *ngIf="hasError('cpassword', 'required')">confirm-Password is required</mat-error>
-                </mat-form-field>
-              </div>
+<div fxLayoutAlign="center center" fxFlexOffset="35" fxFlexOffset.xs="0" fxFlex.xs="100">
+  <mat-card fxFlex.xs="100">
+
+    <mat-card-title fxLayoutAlign="center center">
+      <p>
+        <span class="f">F</span>
+        <span class="u">u</span>
+        <span class="n">n</span>
+        <span class="d">d</span>
+        <span class="o">o</span>
+        <span class="O">o</span>
+      </p>
+    </mat-card-title>
+
+    <form [formGroup]="resetForm" autocomplete="off" novalidate (ngSubmit)="resetPassword(resetForm.value)">
+      <mat-card-content>
+        <mat-card-subtitle fxLayoutAlign="center center">Reset Your Password</mat-card-subtitle>
+        <div fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayout.xs="column">
+          <div>
+            <mat-form-field appearance="outline" fxFlex.xs="100">
+              <mat-label>New Password</mat-label>
+              <input matInput type="text" placeholder="Enter New Password" formControlName="password" id="password"
+                [type]="hide ? 'password' : 'text'">
+              <mat-error *ngIf="hasError('password', 'required')">password is required</mat-error>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
           </div>
           <div>
-            <div> <button mat-raised-button color="primary" [disabled]="!resetForm.valid">RESET</button></div>
-          </div>  
-        </mat-card-content>
-      </form>
-    </mat-card>
-  </div>
+            <mat-form-field appearance="outline" fxFlex.xs="100">
+              <mat-label>newPassword</mat-label>
+              <input matInput type="text" placeholder="confirm-Password" formControlName="cpassword" id="cpassword"
+                [type]="hide ? 'password' : 'text'">
+              <mat-error *ngIf="hasError('cpassword', 'required')">confirm-Password is required</mat-error>
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayoutAlign="end center">
+          <div> <button mat-raised-button color="primary" [disabled]="!resetForm.valid">RESET</button></div>
+        </div>
+      </mat-card-content>
+    </form>
+  </mat-card>
+</div>

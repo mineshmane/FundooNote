@@ -14,7 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class RegistrationComponent implements OnInit {
   public registerForm: FormGroup;
-
+  hide=true;
   constructor(
     private userService: UserService,
     private router: Router,
