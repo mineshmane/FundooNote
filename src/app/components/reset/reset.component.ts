@@ -3,6 +3,11 @@ import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserService } from '../../services/userService/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
+
+
+
 
 
 @Component({
@@ -11,12 +16,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./reset.component.scss']
 })
 export class ResetComponent implements OnInit {
-  hide=true;
-  public resetForm: FormGroup;
+  hide = true;
+  resetForm: FormGroup;
 
 
-  constructor(private userService: UserService, private router: Router,
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute,
     private snackBar: MatSnackBar) { }
+
+
+
 
   ngOnInit() {
     this.resetForm = new FormGroup({
@@ -30,9 +38,10 @@ export class ResetComponent implements OnInit {
   }
 
   resetPassword(resetFormValue) {
-    
-    const newPassword={
-      newPassword:resetFormValue.password
+    const token = this.route.snapshot.paramMap.get('token');
+    localStorage.setItem('token', token)
+    const newPassword = {
+      'newPassword': resetFormValue.password
     }
     console.log(" login event called ", resetFormValue);
 
@@ -50,7 +59,7 @@ export class ResetComponent implements OnInit {
 
       }, error => {
         console.log('error ', error);
-  
+
       });
     }
   }

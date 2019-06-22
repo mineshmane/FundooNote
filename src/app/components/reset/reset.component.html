@@ -21,6 +21,8 @@
               <mat-label>New Password</mat-label>
               <input matInput type="text" placeholder="Enter New Password" formControlName="password" id="password"
                 [type]="hide ? 'password' : 'text'">
+              
+               
               <mat-error *ngIf="hasError('password', 'required')">password is required</mat-error>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
@@ -28,11 +30,13 @@
               </button>
             </mat-form-field>
           </div>
+
           <div>
             <mat-form-field appearance="outline" fxFlex.xs="100">
               <mat-label>newPassword</mat-label>
               <input matInput type="text" placeholder="confirm-Password" formControlName="cpassword" id="cpassword"
                 [type]="hide ? 'password' : 'text'">
+                
               <mat-error *ngIf="hasError('cpassword', 'required')">confirm-Password is required</mat-error>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
@@ -41,10 +45,29 @@
             </mat-form-field>
           </div>
         </div>
+
         <div fxLayoutAlign="end center">
-          <div> <button mat-raised-button color="primary" [disabled]="!resetForm.valid">RESET</button></div>
+          <div>
+            <button mat-raised-button color="primary" [disabled]="!resetForm.valid">RESET</button>
+          </div>
         </div>
       </mat-card-content>
     </form>
   </mat-card>
 </div>
+<!-- 
+<form [formGroup]="myForm">
+    <mat-form-field>
+      <input matInput placeholder="New password" formControlName="password" required>
+      <mat-error *ngIf="myForm.hasError('required', 'password')">
+        Please enter your newpassword
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field>
+      <input matInput placeholder="Confirm password" formControlName="confirmPassword" [errorStateMatcher]="matcher">
+        <mat-error *ngIf="myForm.hasError('notSame')">
+        Passwords do not match
+      </mat-error>  
+    </mat-form-field>
+  </form> -->

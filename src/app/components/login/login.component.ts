@@ -34,9 +34,12 @@ export class LoginComponent implements OnInit {
       console.log('response ', response);
       localStorage.setItem('token', response['id']);
       this.snackBar.open('login succesfully', '', { duration: 2000 });
-      this.router.navigate(['/login']);
+      this.router.navigate(['/dashboard']);
 
 
+    },error => {
+      console.log('error ', error);
+      this.snackBar.open("login failed  wrong password or username")
     });
   }
 }

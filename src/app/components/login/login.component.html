@@ -1,6 +1,5 @@
 <div fxLayoutAlign="center center" fxFlex="100" fxFlex.xs="100">
   <mat-card fxFlex.xs="100">
-
     <mat-card-title>
       <p>
         <span class="f">F</span>
@@ -37,16 +36,18 @@
               <mat-error *ngIf="hasError('password', 'required')">password is required</mat-error>
             </mat-form-field>
           </div>
-
         </div>
-        <div fxLayoutAlign="end center">
-          <div> <button mat-raised-button color="primary" [disabled]="!loginForm.valid">login</button></div>
-        </div>
-        <p>Not registered? <a routerLink="../register">CreateAccount</a></p>
 
-        <div>
+        <div fxLayoutAlign="space-between center">
+          <div>
+           <p> <a routerLink="../register">CreateAccount</a></p>
+            <a routerLink="../forget">Forget Password?</a>
+            <!-- <p> <a routerLink="../dashboard">dashboard</a></p> -->
+          </div>
 
-          <p>Forget Password? <a routerLink="../forget">ResetPassword</a></p>
+          <div>
+            <button mat-raised-button color="primary" [disabled]="!loginForm.valid">login</button>
+          </div>
         </div>
       </mat-card-content>
     </form>

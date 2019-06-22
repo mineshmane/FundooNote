@@ -33,7 +33,7 @@ export class ForgetComponent implements OnInit {
     this.userService.forgetPassword(forgetFormvalue).subscribe(response => {
       console.log('response ', response);
       this.snackBar.open('please cheack your mail for reset password ', '', { duration: 4000 });
-      this.router.navigate(['/reset']);
+     // this.router.navigate(['/login']);
 
 
     });

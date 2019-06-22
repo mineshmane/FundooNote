@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpHeaders } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,6 +13,8 @@ import {MatCardModule} from '@angular/material/card';
 import { materialModule } from './app.material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     RegistrationComponent,
     LoginComponent,
     ForgetComponent,
-    ResetComponent
+    ResetComponent,
+    DashboardComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
-import {MatButtonModule} from '@angular/material/button';
-
+import {MatButtonModule, MatNativeDateModule, 
+        MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule} from '@angular/material';
 
  import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -13,8 +12,8 @@ import {MatButtonModule} from '@angular/material/button';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FlexLayoutModule
-    
+    FlexLayoutModule,
+    MatSidenavModule,MatToolbarModule, MatNativeDateModule,MatListModule
   
     
   ],
@@ -23,8 +22,8 @@ exports:[
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FlexLayoutModule
-    
+    FlexLayoutModule,
+    MatSidenavModule,MatToolbarModule, MatNativeDateModule,MatListModule
     
 
 ]

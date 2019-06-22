@@ -1,6 +1,5 @@
 <div fxLayoutAlign="center center" fxFlex="100" fxFlexOffset.xs="0" fxFlex.xs="100">
   <mat-card fxFlex.xs="100">
-
     <mat-card-title fxLayoutAlign="center center">
       <p>
         <span class="f">F</span>
@@ -15,7 +14,7 @@
     <form [formGroup]="forgetForm" autocomplete="off" novalidate (ngSubmit)="forgetPassword(forgetForm.value)">
       <mat-card-content>
         <mat-card-subtitle fxLayoutAlign="center center">Account Recovery</mat-card-subtitle>
- 
+
         <div fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayout.xs="column">
           <div>
             <mat-form-field appearance="outline" fxFlex="100" fxFlex.xs="100">
@@ -25,14 +24,12 @@
               <mat-error *ngIf="hasError('email', 'required')">email is required</mat-error>
             </mat-form-field>
           </div>
-          
         </div>
+
         <div>
-       
           <div fxLayoutAlign="space-between center">
-              <a routerLink="../login">login instead</a>
-          
-              <button mat-raised-button color="primary" [disabled]="!forgetForm.valid">submmit</button>
+            <a routerLink="../login">login instead</a>
+            <button mat-raised-button color="primary" [disabled]="!forgetForm.valid">next</button>
           </div>
         </div>
       </mat-card-content>
