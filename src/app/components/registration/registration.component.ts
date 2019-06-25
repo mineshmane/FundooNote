@@ -1,3 +1,15 @@
+
+/******************************************************************************
+ *  Execution       :cmd> node server.js                      
+ *  @description    :it used for registraion writing logic code and method of taht component
+ *  @file           :userRouter.js
+ *  @author         :Minesh Mane <mineshmane94@gmail.com>
+ *  @version        :1.0
+ 
+ ******************************************************************************/
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -8,7 +20,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
-
+/********************************************************
+      * @description this class is used for myerror state matchcher
+      * @returns true or false 
+      */
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -24,6 +39,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.scss']
 })
+
+/********************************************************
+      * @description it classs of componenet registration component 
+      * @returns true or false 
+      */
 export class RegistrationComponent implements OnInit {
   public registerForm: FormGroup;
   hide = true;
@@ -42,6 +62,11 @@ export class RegistrationComponent implements OnInit {
     }, { validator: this.checkPasswords });
 
   }
+
+  /********************************************************
+      * @description this method is for cheak password and cinfim password are matched or not 
+      * @returns true or false 
+      */
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
     let pass = group.controls.password.value;
     let confirmPass = group.controls.cpassword.value;
@@ -49,6 +74,10 @@ export class RegistrationComponent implements OnInit {
     return pass === confirmPass ? null : { notSame: true }
   }
 
+  /********************************************************
+      * @description this tsetcase is for String should not be empty
+      * @returns true or false 
+      */
   ngOnInit() {
     //  this.registerForm = new FormGroup({
     //    firstName:new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
@@ -63,6 +92,10 @@ export class RegistrationComponent implements OnInit {
   // }
 
 
+  /********************************************************
+      * @description this method is called for when user press button register in in html 
+      * @returns  res[onse gfrom server 
+      */
   registerUser = (registerFormValue) => {
     console.log(registerFormValue);
     if (registerFormValue.password !== registerFormValue.cpassword) {
@@ -77,6 +110,10 @@ export class RegistrationComponent implements OnInit {
     }
 
   }
+  /********************************************************
+      * @description this method is for creating new user from user model 
+      * @returns new user object
+      */
 
   private createUser = (registerFormValue) => {
     let newUser: User = {
@@ -87,6 +124,10 @@ export class RegistrationComponent implements OnInit {
       service: 'advance'
     }
     console.log("new user created ", newUser);
+     /********************************************************
+      * @description user service called here wiht  argument new user data for registration
+      * @returns response/error
+      */
 
     this.userService.register(newUser).subscribe(response => {
       console.log('response ', response);

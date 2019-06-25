@@ -1,11 +1,21 @@
+
+/******************************************************************************
+ *  Execution       :cmd> node server.js                      
+ *  @description    :ts file used for reset the code 
+ *  @file           :reset.compoenet.ts
+ *  @author         :Minesh Mane <mineshmane94@gmail.com>
+ *  @version        :1.0
+ 
+ ******************************************************************************/
+
+
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserService } from '../../services/userService/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-
-
 
 
 
@@ -37,6 +47,11 @@ export class ResetComponent implements OnInit {
     return this.resetForm.controls[controlName].hasError(errorName);
   }
 
+
+  /********************************************************
+      * @description this mehod is for resetPassword controller
+      * @returns resylt true or false
+      */
   resetPassword(resetFormValue) {
     const token = this.route.snapshot.paramMap.get('token');
     localStorage.setItem('token', token)
@@ -51,6 +66,7 @@ export class ResetComponent implements OnInit {
     }
     else {
 
+      
       this.userService.resetPassword(newPassword).subscribe(response => {
         console.log('response ', response);
         this.snackBar.open('password is changed  successfully ', '', { duration: 4000 });

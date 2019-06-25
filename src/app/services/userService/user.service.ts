@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 
 import { HttpService } from '../httpService/http.service';
 
-import { environment } from '../../../environments/environment'
 @Injectable({
   providedIn: 'root'
 })
@@ -26,10 +25,11 @@ export class UserService {
     return this.httpService.post('/user/reset', data);
   }
   resetPassword(data) {
-    console.log("user service called",data);
+    console.log("user service called", data);
 
     return this.httpService.encodedPost('user/reset-password', data);
   }
-
-
+  addnote(data) {
+    return this.httpService.postAth('notes/addNotes', data);
+  }
 }

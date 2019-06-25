@@ -15,6 +15,11 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
+import { NotesComponent } from './components/notes/notes.component';
+import { TakeNoteComponent } from './components/take-note/take-note.component';
+import { IconComponent } from './components/icon/icon.component';
+
+
 
 @NgModule({
   declarations: [
@@ -24,6 +29,10 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     ForgetComponent,
     ResetComponent,
     DashboardComponent,
+    NotesComponent,
+    TakeNoteComponent,
+    IconComponent,
+ 
 
   ],
   imports: [

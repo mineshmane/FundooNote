@@ -1,3 +1,14 @@
+
+/******************************************************************************
+ *  Execution       :cmd> node server.js                      
+ *  @description    :it is for the login function which is used for 
+ *  @file           :login.ts
+ *  @author         :Minesh Mane <mineshmane94@gmail.com>
+ *  @version        :1.0
+ 
+ ******************************************************************************/
+
+
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
 import { UserService } from '../../services/userService/user.service';
@@ -27,6 +38,11 @@ export class LoginComponent implements OnInit {
   public hasError = (controlName: string, errorName: string) => {
     return this.loginForm.controls[controlName].hasError(errorName);
   }
+
+  /********************************************************
+      * @description this mehod is for login pupose  
+      * @returns token
+      */
 
   loginUser(loginFormvalue) {
     console.log(" login event called ", loginFormvalue);

@@ -38,5 +38,16 @@ export class HttpService {
     }
     return this.http.post(this.baseUrl + url, this.encode(data), options)
   }
+  postAth(url, data) {
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+
+      })
+    }
+    return this.http.post(this.baseUrl + url,data, options)
+
+  }
 
 }

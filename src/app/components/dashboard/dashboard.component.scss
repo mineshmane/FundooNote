@@ -19,12 +19,10 @@ h1.app-name {
 }
 
 .example-sidenav-container {
-
   flex: 1;
 }
 
 .example-is-mobile .example-sidenav-container {
- 
   flex: 1 0 auto;
 }
 .f1 {
@@ -54,12 +52,36 @@ h1.app-name {
 .example-spacer {
   flex: 1 1 auto;
 }
-.textmenu{
-  width :200%;
-
+.textmenu {
+  width: 200%;
 }
 .example-form-field {
   width: 200px;
   border: none;
-  box-decoration-break: no-button
+  box-decoration-break: no-button;
 }
+
+
+::ng-deep .mat-form-field-wrapper {
+  padding-bottom: 0;
+}
+
+
+.f{
+  color: blue;
+  }
+  .u{
+  color: red
+  }
+  .n{
+    color: #1ddced
+  }
+  .d{
+    color: blue
+  }
+  .o{
+    color: green
+  }
+  .O{
+    color: red
+  }

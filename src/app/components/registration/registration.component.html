@@ -28,7 +28,8 @@
                   <mat-label>First Name</mat-label>
                   <input matInput type="text" placeholder="firstName" formControlName="firstName" id="fisrtName">
                   <mat-error *ngIf="registerForm.hasError('firstName', 'required')">Name is required</mat-error>
-                  <mat-error *ngIf="registerForm.hasError('firstName', 'minlength')">name should be more than 3 characters
+                  <mat-error *ngIf="registerForm.hasError('firstName', 'minlength')">name should be more than 3
+                    characters
                   </mat-error>
                 </mat-form-field>
               </div>
@@ -38,7 +39,8 @@
                   <mat-label>Last Name</mat-label>
                   <input matInput type="text" placeholder="LastName" formControlName="lastName" id="lastName">
                   <mat-error *ngIf="registerForm.hasError('lastName', 'required')">Name is required</mat-error>
-                  <mat-error *ngIf="registerForm.hasError('lastName', 'minlength')">name should be more than 3 char</mat-error>
+                  <mat-error *ngIf="registerForm.hasError('lastName', 'minlength')">name should be more than 3 char
+                  </mat-error>
                 </mat-form-field>
               </div>
             </div>
@@ -62,10 +64,12 @@
                     <input matInput type="text" placeholder="Password" formControlName="password" id="password"
                       [type]="hide ? 'password' : 'text'">
                     <mat-error *ngIf="registerForm.hasError('required', 'password')">
-                      atleast 1 small-case letter, 1 Capital letter, 1 digit, 1 special character and the length should be between 6-10 characters.
+                      atleast 1 small-case letter, 1 Capital letter, 1 digit, 1 special character and the length should
+                      be between 6-10 characters.
                     </mat-error>
                     <mat-error *ngIf="registerForm.hasError('required', 'password')">password is required</mat-error>
-                    <mat-error *ngIf="registerForm.hasError('password', 'minlength')">password length should be 6 </mat-error>
+                    <mat-error *ngIf="registerForm.hasError('password', 'minlength')">password length should be 6
+                    </mat-error>
                   </mat-form-field>
                 </div>
 
@@ -76,7 +80,8 @@
                       [errorStateMatcher]="matcher" id="cpassword" [type]="hide ? 'password' : 'text'">
 
                     <mat-error *ngIf="registerForm.hasError('required', 'password')">pasword is required</mat-error>
-                    <mat-error *ngIf="registerForm.hasError('cpassword', 'minlength')">password length should be 6 </mat-error>
+                    <mat-error *ngIf="registerForm.hasError('cpassword', 'minlength')">password length should be 6
+                    </mat-error>
                     <mat-error *ngIf="registerForm.hasError('notSame')">
                       Passwords did not match
                     </mat-error>
