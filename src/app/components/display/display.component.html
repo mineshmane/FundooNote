@@ -1,0 +1,19 @@
+<div style="margin-top: 25px" fxFlex="66" fxFlex.xs="100" fxLayout.xs="column"  fxFlexOffset="15" fxFlexOffset.xs="15"
+   fxFlexAlign="center center"    fxFlexAlign.xs="center center"> 
+  <mat-card *ngFor="let card of childMessage" class="main-card" >
+    <div>
+      <div>
+        <p>{{card.title}}</p>
+      </div>
+      <div>
+        <p>{{card.description}}</p>
+      </div>
+    </div>
+    <div>
+      <app-icon></app-icon>
+
+    </div>
+
+
+  </mat-card>
+</div>

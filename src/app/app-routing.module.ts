@@ -8,6 +8,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 import { IconComponent } from './components/icon/icon.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,9 @@ const routes: Routes = [
       },
       {
         path: 'notes', component: NotesComponent
+      },
+      {
+        path: 'reminder', component: ReminderComponent
       },
       
     ]

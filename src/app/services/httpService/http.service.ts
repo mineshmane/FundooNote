@@ -46,8 +46,33 @@ export class HttpService {
 
       })
     }
-    return this.http.post(this.baseUrl + url,data, options)
+    return this.http.post(this.baseUrl + url, data, options)
 
   }
+  getNotes(url) {
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+
+      })
+    }
+    return this.http.get(this.baseUrl + url, options)
+
+  }
+
+  getReminderNotesList(url) {
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+
+      })
+    }
+    return this.http.get(this.baseUrl + url, options)
+
+  }
+
+
 
 }

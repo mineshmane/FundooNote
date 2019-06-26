@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/userService/user.service';
+import { notes } from 'src/app/model/notes';
 
 @Component({
   selector: 'app-notes',
@@ -6,13 +8,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notes.component.scss']
 })
 export class NotesComponent implements OnInit {
-hide:true;
-  constructor() { }
 
-  ngOnInit() {
+  constructor(private userService: UserService) { 
+
   }
-  // public testCall(){
-  //   alert("I am here..");    
-  // }
+notes=[]
+  ngOnInit() {
+
+    this.userService.getNotes().subscribe(response => {
+      console.log('response ', response['data'].data);
+      this.notes = response['data'].data
+      this.notes.reverse();
+    }, error => {
+      console.log('error ', error);
+
+    })
+
+
+  }
+
+  parentMessage = "message from parent"
+
+
 }
 

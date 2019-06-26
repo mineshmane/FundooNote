@@ -18,6 +18,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { TakeNoteComponent } from './components/take-note/take-note.component';
 import { IconComponent } from './components/icon/icon.component';
+import { DisplayComponent } from './components/display/display.component';
+import { ReminderComponent } from './components/reminder/reminder.component';
 
 
 
@@ -32,6 +34,8 @@ import { IconComponent } from './components/icon/icon.component';
     NotesComponent,
     TakeNoteComponent,
     IconComponent,
+    DisplayComponent,
+    ReminderComponent,
  
 
   ],

@@ -48,10 +48,9 @@ export class RegistrationComponent implements OnInit {
   public registerForm: FormGroup;
   hide = true;
   matcher = new MyErrorStateMatcher();
-  constructor(private formBuilder: FormBuilder,
-    private userService: UserService,
-    private router: Router,
-    private snackBar: MatSnackBar) {
+
+  constructor(private formBuilder: FormBuilder,private userService: UserService, private router: Router,
+    private snackBar: MatSnackBar)  {
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12), Validators.pattern('[a-zA-Z ]*')]],
       lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12), Validators.pattern('[a-zA-Z ]*')]],

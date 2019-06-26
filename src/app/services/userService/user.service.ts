@@ -32,4 +32,14 @@ export class UserService {
   addnote(data) {
     return this.httpService.postAth('notes/addNotes', data);
   }
+  getNotes(){
+    return this.httpService.getNotes('notes/getNotesList');
+  }
+
+  getReminderNotesList(){
+    return this.httpService.getReminderNotesList('notes/getReminderNotesList');
+  }
+
+
+
 }

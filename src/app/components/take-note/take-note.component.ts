@@ -14,8 +14,8 @@ export class TakeNoteComponent implements OnInit {
   click() {
     this.isOpen = true;
   }
-  title='';
-  description='';
+  title = '';
+  description = '';
   titleModel: String;
   contentModel: String;
   constructor(private userService: UserService, private router: Router, private snackBar: MatSnackBar) {
@@ -31,22 +31,23 @@ export class TakeNoteComponent implements OnInit {
     this.isOpen = !this.isOpen;
     let newNote: notes = {
       title: this.title,
-      description: this.description,    
+      description: this.description,
     }
     this.craeteNote(newNote);
   }
 
   craeteNote(note) {
-    
+
     this.userService.addnote(note).subscribe(response => {
       console.log('response ', response);
       this.snackBar.open('note added succesfully', '', { duration: 2000 });
-      //this.router.navigate(['/login']);
-  
+      this.title=''
+      this.description=''
+
     }, error => {
       console.log('error ', error);
-  
+
     })
   }
- 
+
 }
