@@ -1,19 +1,24 @@
-<div style="margin-top: 25px" fxFlex="66" fxFlex.xs="100" fxLayout.xs="column"  fxFlexOffset="15" fxFlexOffset.xs="15"
-   fxFlexAlign="center center"    fxFlexAlign.xs="center center"> 
-  <mat-card *ngFor="let card of childMessage" class="main-card" >
+<div style="margin-top: 25px" layout-wrap fxLayoutGap="10px" fxLayout="row wrap" fxFlex="66" fxFlex.xs="100"
+  fxLayout.xs="column" fxFlexOffset="15" fxFlexAlign="center center" fxFlexAlign.xs="center center">
+  <mat-card *ngFor="let card of childMessage" class="main-card" fxLayout.xs="column">
     <div>
-      <div>
-        <p>{{card.title}}</p>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div>
+          <p>{{card.title}}</p>
+        </div>
+        <div class="div">
+          <button mat-icon-button matSuffix (click)="pinNote()" matTooltip="pin">
+            <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
+          </button>
+        </div>
       </div>
       <div>
         <p>{{card.description}}</p>
       </div>
     </div>
-    <div>
-      <app-icon></app-icon>
-
+    <div class="div">
+      <app-icon [card]="card"></app-icon>
     </div>
-
 
   </mat-card>
 </div>

@@ -9,6 +9,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { IconComponent } from './components/icon/icon.component';
 import { NotesComponent } from './components/notes/notes.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { TrashComponent } from './components/trash/trash.component';
 
 
 const routes: Routes = [
@@ -29,6 +31,12 @@ const routes: Routes = [
       },
       {
         path: 'reminder', component: ReminderComponent
+      },
+      {
+        path: 'archive', component: ArchiveComponent
+      },
+      {
+        path: 'trash', component: TrashComponent
       },
       
     ]

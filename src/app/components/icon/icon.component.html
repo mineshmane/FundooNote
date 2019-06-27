@@ -1,35 +1,94 @@
-<div fxLayout="row" fxLayoutGap="25" fxLayoutAlign="space-between center" fxFlex="100" fxFlex.md="90"fxFlex.xm="90"fxFlex.xs="100">
+<div fxLayout="row" fxLayoutGap="25" fxLayoutAlign="space-between center" fxFlex="100" fxFlex.md="90" fxFlex.xm="90"
+  fxFlex.xs="auto">
 
   <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="hide = !hide" fxLayout="16px">
-      <mat-icon>notifications_none</mat-icon>
+
+    <button mat-icon-button [matMenuTriggerFor]="menumenu" matTooltip="Reminde me" aria-label="Example icon-button with a menu" (click)="$event.stopPropagation()">
+      <mat-icon>add_alert</mat-icon>
     </button>
+    <mat-menu #menumenu="matMenu">
+      <button mat-menu-item>
+     
+        <!-- <mat-form-field>
+          <input matInput [matDatepicker]="dp" placeholder="Verbose datepicker" [formControl]="date">
+          <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+          <mat-datepicker #dp></mat-datepicker>
+        </mat-form-field> -->
+      </button>
+      <mat-divider></mat-divider>
+      
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>add drawaing</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>makecopy</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>show checkBoxes</span>
+      </button>
+    </mat-menu>
+
   </div>
+
   <div fxLayout="16px" fxLayout.xs="10px">
-    <button mat-icon-button matSuffix (click)="hide = !hide" fxLayout="16px">
+    <button mat-icon-button [matMenuTriggerFor]="menuu" matTooltip="Change Color">
       <mat-icon>color_lens</mat-icon>
     </button>
+    <mat-menu #menuu="matMenu">
+      <button mat-mini-fab color="color" class="colors" (click)="$event.stopPropagation()">Primary</button>
+      <button mat-mini-fab color="primary" (click)="$event.stopPropagation()">Primary</button>
+      <button mat-mini-fab color="primary"(click)="$event.stopPropagation()">Primary</button>
+      <button mat-mini-fab color="primary"(click)="$event.stopPropagation()">Primary</button>
+      <button mat-mini-fab color="primary"(click)="$event.stopPropagation()">Primary</button>
+    </mat-menu>
+
   </div>
   <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="hide = !hide" fxLayout="16px">
+    <button mat-icon-button matSuffix (click)="hide = !hide" matTooltip="add image" fxLayout="16px" (click)="$event.stopPropagation()">
       <mat-icon>crop_original</mat-icon>
     </button>
   </div>
   <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="hide = !hide" fxLayout="16px">
+    <button mat-icon-button matSuffix (click)="hide = !hide" matTooltip="Collaborator" fxLayout="16px" (click)="$event.stopPropagation()">
       <mat-icon>person_add</mat-icon>
     </button>
   </div>
 
   <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="hide = !hide">
+    <button mat-icon-button matSuffix (click)="archiveNote()" (click)="$event.stopPropagation()"
+    matTooltip="Archive">
       <mat-icon>archive</mat-icon>
     </button>
   </div>
 
+
   <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="hide = !hide" fxFlex.xs="50">
+
+    <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"(click)="$event.stopPropagation()">
       <mat-icon>more_vert</mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="deleteNote()">
+         <span>Delete note</span>
+      </button>
+      <button mat-menu-item  >
+          <span>Add label</span>
+      </button>
+      <button mat-menu-item>
+        <span>Add drawaing</span>
+      </button>
+      <button mat-menu-item >
+        <span>Make a copy</span>
+      </button>
+      <button mat-menu-item >
+        <span>Show checkBoxes</span>
+      </button>
+    </mat-menu>
   </div>
+
 </div>

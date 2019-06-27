@@ -8,13 +8,13 @@
 
       <div fxLayout="row">
         <div>
-          <button mat-icon-button matSuffix (click)="flag= true">
+          <button mat-icon-button matSuffix (click)="flag= true" matTooltip="new List">
             <mat-icon>check_box</mat-icon>
           </button>
         </div>
 
         <div>
-          <button mat-icon-button matSuffix (click)="flag= true">
+          <button mat-icon-button matSuffix (click)="flag= true" matTooltip="new Note with image">
             <mat-icon>crop_original</mat-icon>
           </button>
         </div>
@@ -29,7 +29,7 @@
               cdkAutosizeMinColumns="auto" cdkAutosizeMaxRows="auto" placeholder="Title" [(ngModel)]="title"></textarea>
           </div>
           <div>
-            <button mat-icon-button matSuffix (click)="hide = !hide">
+            <button mat-icon-button matSuffix (click)="hide = !hide" matTooltip="pin">
               <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
             </button>
           </div>

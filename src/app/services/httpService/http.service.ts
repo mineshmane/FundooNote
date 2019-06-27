@@ -39,6 +39,7 @@ export class HttpService {
     return this.http.post(this.baseUrl + url, this.encode(data), options)
   }
   postAth(url, data) {
+    console.log("http service called", data);
     let options = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token'),
@@ -61,17 +62,8 @@ export class HttpService {
 
   }
 
-  getReminderNotesList(url) {
-    let options = {
-      headers: new HttpHeaders({
-        'Authorization': localStorage.getItem('token'),
-        'Content-Type': 'application/json'
-
-      })
-    }
-    return this.http.get(this.baseUrl + url, options)
-
-  }
+  
+  
 
 
 

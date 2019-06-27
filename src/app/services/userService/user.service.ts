@@ -37,9 +37,29 @@ export class UserService {
   }
 
   getReminderNotesList(){
-    return this.httpService.getReminderNotesList('notes/getReminderNotesList');
+    return this.httpService.getNotes('notes/getReminderNotesList');
+  }
+
+  getArchiveNotesList(){
+    return this.httpService.getNotes('notes/getArchiveNotesList');
+  }
+  getTrashNotesList(){
+    return this.httpService.getNotes('notes/getTrashNotesList');
+  
+  }
+
+  archiveNote(data){
+    console.log("user service called", data);
+   return this.httpService.postAth('notes/archiveNotes',data);
+  }
+  deleteNote(data){
+    console.log("user service called", data);
+   return this.httpService.postAth('notes/trashNotes',data);
   }
 
 
-
+  pinNote(data){
+    console.log("user service called", data);
+   return this.httpService.postAth('notes/pinUnpinNotes',data);
+  }
 }

@@ -14,12 +14,14 @@ import { materialModule } from './app.material.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import { NotesComponent } from './components/notes/notes.component';
 import { TakeNoteComponent } from './components/take-note/take-note.component';
 import { IconComponent } from './components/icon/icon.component';
 import { DisplayComponent } from './components/display/display.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
+import { ArchiveComponent } from './components/archive/archive.component';
+import { TrashComponent } from './components/trash/trash.component';
 
 
 
@@ -36,6 +38,8 @@ import { ReminderComponent } from './components/reminder/reminder.component';
     IconComponent,
     DisplayComponent,
     ReminderComponent,
+    ArchiveComponent,
+    TrashComponent,
  
 
   ],
@@ -46,7 +50,7 @@ import { ReminderComponent } from './components/reminder/reminder.component';
     MatCardModule,
     materialModule,
     FormsModule, ReactiveFormsModule,HttpClientModule,
-    MatSnackBarModule
+    MatSnackBarModule,MatNativeDateModule, MatRippleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
