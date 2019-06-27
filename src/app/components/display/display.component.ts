@@ -10,24 +10,25 @@ export class DisplayComponent implements OnInit {
   pin = true
   constructor(private userService: UserService, private bar: MatSnackBar) { }
   @Input() childMessage;
-  @Input() card;
+  //@Input() card;
 
   ngOnInit() {
    
   }
   
-  pinNote() {
+  pinNote(card) {
 
+console.log(" card ", card);
 
 
     let data = {
       // cardidList:this.cardId,
-      noteIdList: [this.card.id],
-      isDeleted: this.pin,
+      noteIdList: [card.id],
+      isPined: this.pin,
     }
     this.userService.pinNote(data).subscribe(response => {
       console.log(response, " succsesfully pined ");
-      this.bar.open(" note pined succesFully ");
+      this.bar.open(" note pined succesFully " ,'', { duration: 2000 }) ;
     })
   }
 }
