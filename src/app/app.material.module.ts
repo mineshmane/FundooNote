@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
+import {MatDialogModule} from '@angular/material/dialog';
+
 import {
   MatButtonModule, MatNativeDateModule,
   MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule
@@ -17,6 +19,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatInputModule,
     MatButtonModule,
     FlexLayoutModule,
+    MatDialogModule,
     MatSidenavModule, MatToolbarModule, MatNativeDateModule, MatListModule, MatMenuModule, MatDatepickerModule,MatTooltipModule,
 
 

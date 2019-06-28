@@ -1,6 +1,9 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, inject } from '@angular/core';
 import { UserService } from '../../services/userService/user.service';
 import { MatSnackBar } from '@angular/material'
+import { UpdateComponent } from '../update/update.component';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
 @Component({
   selector: 'app-display',
   templateUrl: './display.component.html',
@@ -8,19 +11,22 @@ import { MatSnackBar } from '@angular/material'
 })
 export class DisplayComponent implements OnInit {
   pin = true
-  constructor(private userService: UserService, private bar: MatSnackBar) { }
+
+  title = '';
+  description = '';
+  constructor(
+    private userService: UserService,
+    private bar: MatSnackBar,
+    public dialog: MatDialog) { }
   @Input() childMessage;
   //@Input() card;
 
   ngOnInit() {
-   
+
   }
-  
+
   pinNote(card) {
-
-console.log(" card ", card);
-
-
+    console.log(" card ", card);
     let data = {
       // cardidList:this.cardId,
       noteIdList: [card.id],
@@ -28,7 +34,21 @@ console.log(" card ", card);
     }
     this.userService.pinNote(data).subscribe(response => {
       console.log(response, " succsesfully pined ");
-      this.bar.open(" note pined succesFully " ,'', { duration: 2000 }) ;
+      this.bar.open(" note pined succesFully ", '', { duration: 2000 });
     })
+  }
+
+
+
+  openDialog(card): void {
+    const dialogRef = this.dialog.open(UpdateComponent, {
+      //width: '250px',
+      data: { title: card.title, description: card.description }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      //this.animal = result;
+    });
   }
 }

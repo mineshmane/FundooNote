@@ -45,6 +45,20 @@ export class IconComponent implements OnInit {
     })
   }
 
+  setColor(color, card) {
+    console.log(" color data", card);
+    card.color = color;
+    let data = {
+      color: color,
+      noteIdList: [this.card.id],
+    }
 
+    this.userService.setColor(data).subscribe(response => {
+      console.log('response ', response);
+      this.snackBar.open('color changed succesfully', '', { duration: 2000 });
+    }, error => {
+      console.log('error ', error);
+    })
+  }
 
 }

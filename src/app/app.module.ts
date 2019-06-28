@@ -22,6 +22,7 @@ import { DisplayComponent } from './components/display/display.component';
 import { ReminderComponent } from './components/reminder/reminder.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
+import { UpdateComponent } from './components/update/update.component';
 
 
 
@@ -40,6 +41,7 @@ import { TrashComponent } from './components/trash/trash.component';
     ReminderComponent,
     ArchiveComponent,
     TrashComponent,
+    UpdateComponent,
  
 
   ],
@@ -52,6 +54,7 @@ import { TrashComponent } from './components/trash/trash.component';
     FormsModule, ReactiveFormsModule,HttpClientModule,
     MatSnackBarModule,MatNativeDateModule, MatRippleModule
   ],
+  entryComponents:[UpdateComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

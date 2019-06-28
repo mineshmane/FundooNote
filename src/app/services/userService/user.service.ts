@@ -62,4 +62,8 @@ export class UserService {
     console.log("user service called", data);
    return this.httpService.postAth('notes/pinUnpinNotes',data);
   }
+  setColor(data){
+    console.log("user service called", data);
+   return this.httpService.postAth('notes/changesColorNotes',data);
+  }
 }

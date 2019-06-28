@@ -1,0 +1,81 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button  cdkFocusInitial>Ok</button>
+</div> -->
+
+
+
+<!-- <div fxLayoutAlign="center center"fxLayoutAlign.xs="center center" fxFlexOffset.xs="5" fxFlex.xs="95"> -->
+    <mat-card>
+      <div *ngIf="isOpen " fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" (click)="isOpen = !isOpen">
+  
+        <div>
+          Take a Note
+        </div>
+  
+        <div fxLayout="row">
+          <div>
+            <button mat-icon-button matSuffix (click)="flag= true" matTooltip="new List">
+              <mat-icon>check_box</mat-icon>
+            </button>
+          </div>
+  
+          <div>
+            <button mat-icon-button matSuffix (click)="flag= true" matTooltip="new Note with image">
+              <mat-icon>crop_original</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+  
+      <div *ngIf="!isOpen " fxFlex="100" fxLayout="column">
+        <div>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxFlex="100">
+              <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
+                cdkAutosizeMinColumns="auto" cdkAutosizeMaxRows="auto" placeholder="Title" [(ngModel)]="title"></textarea>
+            </div>
+            <div>
+              <button mat-icon-button matSuffix (click)="hide = !hide" matTooltip="pin">
+                <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
+              </button>
+            </div>
+          </div>
+  
+          <div>
+            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
+              cdkAutosizeMinColumns="auto" cdkAutosizeMaxRows="auto" placeholder="Take a Note" [(ngModel)]="description"></textarea>
+          </div>
+        </div>
+        <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
+          <div fxFlex="70">
+            <app-icon></app-icon>
+          </div>
+          <div>
+            <button mat-icon-button matSuffix (click)="updateNote()">close</button>
+          </div>
+        </div>
+      </div>
+    </mat-card>
+  <!-- </div> -->
+<!-- 
+<ol>
+  <li>
+    <mat-form-field>
+      <input matInput [(ngModel)]="name" placeholder="What's your name?">
+    </mat-form-field>
+  </li>
+  <li>
+    <button mat-raised-button (click)="openDialog()">Pick one</button>
+  </li>
+  <li *ngIf="animal">
+    You chose: <i>{{animal}}</i>
+  </li>
+</ol> -->

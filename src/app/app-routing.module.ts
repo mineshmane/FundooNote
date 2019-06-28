@@ -38,6 +38,10 @@ const routes: Routes = [
       {
         path: 'trash', component: TrashComponent
       },
+      {
+        path: 'update', component: TrashComponent
+      },
+      
       
     ]
 
