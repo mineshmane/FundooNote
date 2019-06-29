@@ -43,12 +43,15 @@ export class DisplayComponent implements OnInit {
   openDialog(card): void {
     const dialogRef = this.dialog.open(UpdateComponent, {
       //width: '250px',
-      data: { title: card.title, description: card.description }
+      data: card
     });
+    console.log(" in card ",card);
+    
 
     dialogRef.afterClosed().subscribe(result => {
+      
       console.log('The dialog was closed');
-      //this.animal = result;
+      this.title = result;
     });
   }
 }

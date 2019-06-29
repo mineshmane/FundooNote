@@ -32,6 +32,7 @@ export class TakeNoteComponent implements OnInit {
     let newNote: notes = {
       title: this.title,
       description: this.description,
+      
     }
     this.craeteNote(newNote);
   }
