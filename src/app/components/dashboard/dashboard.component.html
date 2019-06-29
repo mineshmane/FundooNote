@@ -54,22 +54,53 @@
       <mat-nav-list>
         <div>
           <a mat-list-item routerLink="notes">
-              <mat-icon>note</mat-icon>Notes</a>
+            <mat-icon>note</mat-icon>Notes
+          </a>
         </div>
         <div>
-          <a mat-list-item routerLink="reminder">   <mat-icon>notifications</mat-icon>reminder</a>
+          <a mat-list-item routerLink="reminder">
+            <mat-icon>notifications</mat-icon>reminder
+          </a>
         </div>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="reminder">
-          <mat-icon>label</mat-icon>Edit <label for=""></label>
-        </a>
+        <div *ngFor="let lab of allLabel" fxLayout="row" fxLayoutAlign="space-around center">
+          <div>
+              <mat-icon>label_outline</mat-icon>
+              
+          </div>
+          <div><p class="label">{{lab.label}}</p></div>
+            
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-around center" (click)="openDialog()"  >
+            <div>
+                <mat-icon>label_outline</mat-icon>
+                
+            </div>
+          <div>
+              <a  >  edit label
+           
+                </a>
+          </div>
 
+        
+        </div>
         <mat-divider></mat-divider>
-        <a mat-list-item routerLink="archive">
-          <mat-icon>archive</mat-icon>Archive
-        </a>
-        <a mat-list-item routerLink="trash">
-          <mat-icon>delete</mat-icon>Trash</a>
+        <div>
+          <a mat-list-item routerLink="archive">
+            <mat-icon>archive</mat-icon>Archive
+          </a>
+        </div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <a mat-list-item routerLink="trash">
+
+            <div>
+              <mat-icon>delete</mat-icon>
+            </div>
+            <div>Trash</div>
+
+          </a>
+
+        </div>
       </mat-nav-list>
     </mat-sidenav>
 

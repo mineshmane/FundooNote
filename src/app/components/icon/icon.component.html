@@ -41,9 +41,10 @@
       <mat-icon>color_lens</mat-icon>
     </button>
     <mat-menu #menuu="matMenu">
+
       <div>
-        <button mat-mini-fab (click)="$event.stopPropagation()"class="grn" (click)="setColor('#00FF00',card)"
-        matTooltip="green"></button>
+        <button mat-mini-fab (click)="$event.stopPropagation()" class="grn" (click)="setColor('#00FF00',card)"
+          matTooltip="green"></button>
         <button mat-mini-fab color="#FFFF00" matTooltip="yellow" class="ff" (click)="$event.stopPropagation()"
           (click)="setColor('#FFFF00',card)"></button>
         <button mat-mini-fab color="#7FFFD4" matTooltip="blue" class="new" (click)="$event.stopPropagation()"
@@ -66,11 +67,12 @@
           (click)="setColor('#6A5ACD',card)"></button>
         <button mat-mini-fab color="#FFDEAD" class="whte" matTooltip="cream" (click)="$event.stopPropagation()"
           (click)="setColor('#FFDEAD',card)"></button>
-        <button mat-mini-fab color="#EE82EE" class="let"matTooltip="pink" (click)="$event.stopPropagation()"
+        <button mat-mini-fab color="#EE82EE" class="let" matTooltip="pink" (click)="$event.stopPropagation()"
           (click)="setColor('#EE82EE',card)"></button>
         <button mat-mini-fab color="#CD5C5C" class="yelo" matTooltip="yellow" (click)="$event.stopPropagation()"
           (click)="setColor('#CD5C5C',card)"></button>
       </div>
+
     </mat-menu>
 
   </div>

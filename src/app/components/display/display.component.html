@@ -1,11 +1,13 @@
-<div fxFlex="100%" fxFlexAlign="center center">
+<div fxFlex="100" fxFlexOffset="12" fxFlexOffset.xs="0" fxFlexOffset.sm="3"style="margin-top: 25px"   layout-wrap fxLayout="row wrap"   
+fxLayoutAlign="center center"   fxFlexAlign="auto"
+>
 
-  <!-- <div style="margin-top: 25px" layout-wrap fxLayoutGap="10px" fxLayout="row wrap" fxFlex="80%" fxFlex.xs="100"
+  <!-- <div style="margin-top: 25px" layout-wrap fxLayoutGap="10px" fxLayout="row wrap" fxFlex="80" fxFlex.xs="100"
      fxFlexAlign.sm="center center"
-    fxLayout.sm="row wrap" fxFlexAlign="center center" fxFlexAlign.xs="center center"> -->
-  <div style="margin-top: 25px" layout-wrap fxLayoutGap="10px" fxLayout="row wrap" fxFlex="100" fxFlex.xs="100"
-    fxFlexOffset="15" fxFlexOffset.xs="5" fxFlexOffset.sm="8" fxFlexOffset.md="8" fxFlexAlign.sm="center center"
     fxLayout.sm="row wrap" fxFlexAlign="center center" fxFlexAlign.xs="center center">
+   <div style="margin-top: 25px" layout-wrap fxLayoutGap="10px" fxLayout="row wrap" fxFlex="100" fxFlex.xs="100"
+    fxFlexOffset="15" fxFlexOffset.xs="5" fxFlexOffset.sm="8" fxFlexOffset.md="8" fxFlexAlign.sm="center center"
+    fxLayout.sm="row wrap" fxFlexAlign="center center" fxFlexAlign.xs="center center"> 
     <mat-card *ngFor="let card of childMessage" class="main-card" [style.background-color]=card.color
       fxLayout.xs="column" fxFlex.xs="95">
       <div>
@@ -28,5 +30,34 @@
       </div>
 
     </mat-card>
+  </div> -->
+
+  <div layout-wrap fxLayoutGap="10px"   fxFlexAlign="auto" fxLayout="row wrap" fxFlex="85"  fxFlex.xs="100"
+  fxLayoutAlign.xs="center center"  fxLayoutAlign="start center" fxLayoutAlign.md="start center"
+>
+    <mat-card *ngFor="let card of childMessage" class="main-card"  [style.background-color]=card.color
+      fxLayout.xs="column" fxFlex.xs="95">
+      <div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div (click)="openDialog(card)">
+            <p>{{card.title}}</p>
+          </div>
+          <div class="div">
+            <button mat-icon-button matSuffix (click)="pinNote(card)" matTooltip="pin">
+              <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
+            </button>
+          </div>
+        </div>
+        <div (click)="openDialog(card)">
+          <p>{{card.description}}</p>
+        </div>
+      </div>
+      <div class="div">
+        <app-icon [card]="card"></app-icon>
+      </div>
+
+    </mat-card>
+
+  
   </div>
 </div>

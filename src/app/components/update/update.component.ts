@@ -1,6 +1,6 @@
 import { Component, OnInit ,Inject } from '@angular/core';
 import { notes } from 'src/app/model/notes';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { UserService } from '../../services/userService/user.service';
 import { MatSnackBar } from '@angular/material'
 @Component({

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/userService/user.service';
-import { notes } from 'src/app/model/notes';
+
 
 @Component({
   selector: 'app-notes',
@@ -16,7 +16,9 @@ notes=[]
   ngOnInit() {
 
     this.userService.getNotes().subscribe(response => {
-      console.log('response ', response['data'].data);
+      console.log('response  ', response['data'].data);
+      console.log(" responsee 3",response);
+      
       this.notes = response['data'].data
       this.notes.reverse();
     }, error => {
