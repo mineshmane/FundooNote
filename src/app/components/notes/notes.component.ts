@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/userService/user.service';
+import { NotesService } from '../../services/notes-service/notes.service'
 
 
 @Component({
@@ -9,27 +9,37 @@ import { UserService } from '../../services/userService/user.service';
 })
 export class NotesComponent implements OnInit {
 
-  constructor(private userService: UserService) { 
+  constructor(private notesService: NotesService) { 
 
-  }
+  } //message:string;
 notes=[]
   ngOnInit() {
 
-    this.userService.getNotes().subscribe(response => {
-      console.log('response  ', response['data'].data);
-      console.log(" responsee 3",response);
-      
-      this.notes = response['data'].data
-      this.notes.reverse();
-    }, error => {
-      console.log('error ', error);
-
-    })
+   this.newNote()
 
 
   }
 
-  parentMessage = "message from parent"
+  //parentMessage = "message from parent"
+  newNote() {
+    try {
+      this.notesService.getNotes().subscribe(response => {
+        console.log('response  ', response['data'].data);
+        console.log(" responsee 3",response);
+        
+        this.notes = response['data'].data
+        this.notes.reverse();
+      }, error => {
+        console.log('error ', error);
+  
+      })
+    } catch (error) {
+      console.log(error);
+      
+    }
+
+
+  }
 
 
 }

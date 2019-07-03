@@ -1,8 +1,8 @@
-import { Component, OnInit, Input, inject } from '@angular/core';
-import { UserService } from '../../services/userService/user.service';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { NotesService } from '../../services/notes-service/notes.service'
 import { MatSnackBar } from '@angular/material'
 import { UpdateComponent } from '../update/update.component';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-display',
@@ -15,43 +15,58 @@ export class DisplayComponent implements OnInit {
   title = '';
   description = '';
   constructor(
-    private userService: UserService,
+    private notesService: NotesService,
     private bar: MatSnackBar,
     public dialog: MatDialog) { }
   @Input() childMessage;
-  //@Input() card;
 
   ngOnInit() {
 
   }
 
   pinNote(card) {
-    console.log(" card ", card);
-    let data = {
-      // cardidList:this.cardId,
-      noteIdList: [card.id],
-      isPined: this.pin,
+    try {
+      console.log(" card ", card);
+      let data = {
+        // cardidList:this.cardId,
+        noteIdList: [card.id],
+        isPined: this.pin,
+      }
+      this.notesService.pinNote(data).subscribe(response => {
+        console.log(response, " succsesfully pined ");
+        this.bar.open(" note pined succesFully ", '', { duration: 2000 });
+      }, error => {
+        console.log('error ', error);
+      })
+    } catch (error) {
+      console.log(error);
+
     }
-    this.userService.pinNote(data).subscribe(response => {
-      console.log(response, " succsesfully pined ");
-      this.bar.open(" note pined succesFully ", '', { duration: 2000 });
-    })
+
   }
 
 
 
   openDialog(card): void {
-    const dialogRef = this.dialog.open(UpdateComponent, {
-      //width: '250px',
-      data: card
-    });
-    console.log(" in card ",card);
-    
+    try {
+      const dialogRef = this.dialog.open(UpdateComponent, {
+        //width: '250px',
+        data: card
+      });
+      console.log(" in card ", card);
 
-    dialogRef.afterClosed().subscribe(result => {
-      
-      console.log('The dialog was closed');
-      this.title = result;
-    });
+
+      dialogRef.afterClosed().subscribe(result => {
+
+        console.log('The dialog was closed');
+        this.title = result;
+      }, error => {
+        console.log('error ', error);
+      });
+    } catch (error) {
+      console.log(error);
+
+    }
+
   }
 }

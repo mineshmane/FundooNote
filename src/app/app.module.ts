@@ -24,6 +24,7 @@ import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { UpdateComponent } from './components/update/update.component';
 import { EditLabelsComponent } from './components/edit-labels/edit-labels.component';
+import { SearchComponent } from './components/search/search.component';
 
 
 
@@ -44,6 +45,7 @@ import { EditLabelsComponent } from './components/edit-labels/edit-labels.compon
     TrashComponent,
     UpdateComponent,
     EditLabelsComponent,
+    SearchComponent,
  
 
   ],

@@ -45,18 +45,24 @@ export class LoginComponent implements OnInit {
       */
 
   loginUser(loginFormvalue) {
-    console.log(" login event called ", loginFormvalue);
-    this.userService.login(loginFormvalue).subscribe(response => {
-      console.log('response ', response);
-      localStorage.setItem('token', response['id']);
-      localStorage.setItem('userId',response['userId'])
-      this.snackBar.open('login succesfully', '', { duration: 2000 });
-      this.router.navigate(['/dashboard']);
-
-
-    },error => {
-      console.log('error ', error);
-      this.snackBar.open("login failed  wrong password or username")
-    });
+    try {
+      console.log(" login event called ", loginFormvalue);
+      this.userService.login(loginFormvalue).subscribe(response => {
+        console.log('response ', response);
+        localStorage.setItem('token', response['id']);
+        localStorage.setItem('userId',response['userId'])
+        this.snackBar.open('login succesfully', '', { duration: 2000 });
+        this.router.navigate(['/dashboard']);
+  
+  
+      },error => {
+        console.log('error ', error);
+        this.snackBar.open("login failed  wrong password or username")
+      });
+    } catch (error) {
+      console.log(error);
+      
+    }
+ 
   }
 }

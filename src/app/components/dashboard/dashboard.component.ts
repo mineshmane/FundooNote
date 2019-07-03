@@ -8,13 +8,18 @@
  ******************************************************************************/
 
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
+
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import {EditLabelsComponent} from '../edit-labels/edit-labels.component'
+import { EditLabelsComponent } from '../edit-labels/edit-labels.component'
 import { NotesService } from '../../services/notes-service/notes.service';
+import { DataService } from '../../services/dataService/data.service'
 
+export interface DialogData {
+  allLabel: []
+}
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -25,52 +30,79 @@ export class DashboardComponent implements OnInit {
 
   "label": "string"
   "isDeleted": true
-
+  @Input() childMessage;
   fillerNav = Array.from({ length: 1 }, (_, i) => `Nav Item ${i + 1}`);
 
   fillerContent = Array.from({ length: 50 }, () =>
     ``);
 
   private _mobileQueryListener: () => void;
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher ,public dialog: MatDialog, private noteService: NotesService) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService: DataService, public dialog: MatDialog, private noteService: NotesService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
-  allLabel=[]
+  allLabel = []
+  message: string;
   ngOnInit() {
     this.mobileQuery.removeListener(this._mobileQueryListener);
-
-    this.noteService.getLableList().subscribe(response =>{
-      console.log('response labels ', response['data'].data);
-      console.log(" response label 2",response['data'].details);
-      
-      this.allLabel=response['data'].details
-     // this.allLabel.reverse();
-     console.log(" alllabels",this.allLabel);
-     
-      
-    },error =>{
-      console.log(" error is ",error);
-      
-    })
+    this.getLabelList();
+    // this.data.currentMessage.subscribe(message => this.message = message)
   }
-  
 
+  newMessage() {
+
+  }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(EditLabelsComponent, {
-     // width: '250px',
-     // height:'500px',
-      data: {label: this.label, isDeleted:false}
-    });
-    // console.log(" in card ",card);
-    
+    try {
+      const dialogRef = this.dialog.open(EditLabelsComponent, {
+        // width: '250px',
+        // height:'500px',
+        data: { allLabel: this.allLabel }
+      });
+      // console.log(" in card ",card);
 
-    dialogRef.afterClosed().subscribe(result => {
-      
-      console.log('The dialog was closed');
-      //this.title = result;
-    });
+
+      dialogRef.afterClosed().subscribe(result => {
+
+        console.log('The dialog was closed');
+        //this.title = result;
+      });
+    } catch (error) {
+      console.log(error);
+
+    }
+
   }
+  searchNote(msg){
+    console.log("message in ts  dash ",msg);
+    
+    this.dataService.changeMessage(msg)
+
+  }
+  getLabelList() {
+    try {
+      this.noteService.getLableList().subscribe(response => {
+        console.log('response labels ', response);
+        console.log(" response label 2", response['data'].details);
+
+        this.allLabel = response['data'].details
+        // this.allLabel.reverse();
+        //console.log(" alllabels",this.allLabel);
+        //  this.data.changeMessage(response['data'].details)
+        //this.data.changeMessage(this.allLabel)
+
+      }, error => {
+        console.log(" error is ", error);
+
+      })
+
+    } catch (error) {
+      console.log(error);
+
+    }
+
+  }
+ 
 }

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/userService/user.service';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { NotesService } from '../../services/notes-service/notes.service'
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { notes } from '../../model/notes'
@@ -18,37 +18,51 @@ export class TakeNoteComponent implements OnInit {
   description = '';
   titleModel: String;
   contentModel: String;
-  constructor(private userService: UserService, private router: Router, private snackBar: MatSnackBar) {
+  constructor(private notesService: NotesService, private router: Router, private snackBar: MatSnackBar) {
     this.titleModel = '';
     this.contentModel = '';
 
   }
-
+  @Output() update = new EventEmitter<any>();
 
   ngOnInit() {
   }
+
   addNote() {
-    this.isOpen = !this.isOpen;
-    let newNote: notes = {
-      title: this.title,
-      description: this.description,
-      
+    try {
+      this.isOpen = !this.isOpen;
+      let newNote: notes = {
+        title: this.title,
+        description: this.description,
+
+
+      }
+      this.craeteNote(newNote);
+    } catch (error) {
+      console.log(error);
+
     }
-    this.craeteNote(newNote);
+
   }
 
   craeteNote(note) {
+    try {
+      this.notesService.addnote(note).subscribe(response => {
+        console.log('response ', response);
+        this.update.emit({})
+        this.snackBar.open('note added succesfully', '', { duration: 2000 });
+        this.title = ''
+        this.description = ''
 
-    this.userService.addnote(note).subscribe(response => {
-      console.log('response ', response);
-      this.snackBar.open('note added succesfully', '', { duration: 2000 });
-      this.title=''
-      this.description=''
+      }, error => {
+        console.log('error ', error);
 
-    }, error => {
-      console.log('error ', error);
+      })
+    } catch (error) {
+      console.log(error);
 
-    })
+    }
+
   }
 
 }

@@ -11,7 +11,7 @@
 </div>   -->
 
  <!-- <div fxFlex="100"> -->
-<mat-card>
+
 <p mat-dialog-title>Edit labels </p>
 <div mat-dialog-content>
     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
@@ -23,12 +23,34 @@
       
     </mat-form-field>
 </div>
+<mat-divider></mat-divider>
+<div *ngFor="let lab of allLabel" fxLayout="row"  >
+  <div >
+     <!-- <mat-icon>label_outline</mat-icon> -->
 
-<div mat-dialog-actions>
-    <button mat-button (click)="addLabel(value)">done</button>
-  <button mat-button cdkFocusInitial>Ok</button>
+      <button mat-button (click)="deleteLabel(lab)">
+          <mat-icon>delete</mat-icon>
+        </button>
+  </div>
+  <div>
+    <p class="label" [(ngModel)]="lab.label" (click)="editLabel(lab)"> {{lab.label}}</p>
+   <!-- <p class="label" (click)="editLabel(lab)"  >[(lab.label)]</p> -->
+  </div>
 
 </div>
-<mat-divider></mat-divider>
-</mat-card>
+<div mat-dialog-actions>
+    <button mat-button (click)="addLabel(value)">done</button>
+  <!-- <button mat-button cdkFocusInitial>Ok</button> -->
+
+</div>
+<div (mouseenter)="changeText=true" (mouseLeave)="changeText=false">
+    <span *ngIf="!changeText">Hide</span>
+    <span *ngIf="changeText">Show</span>
+  </div>
+
+<!-- <div>  {{message}}</div> -->
 <!-- </div>  -->
+<div (mouseover)="changeText=true" (mouseout)="changeText=false">
+  <span [hidden]="changeText">   <mat-icon>label_outline</mat-icon></span>
+  <span [hidden]="!changeText">  <mat-icon>delete</mat-icon></span>
+</div>

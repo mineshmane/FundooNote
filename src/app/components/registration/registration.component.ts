@@ -49,13 +49,13 @@ export class RegistrationComponent implements OnInit {
   hide = true;
   matcher = new MyErrorStateMatcher();
 
-  constructor(private formBuilder: FormBuilder,private userService: UserService, private router: Router,
-    private snackBar: MatSnackBar)  {
+  constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router,
+    private snackBar: MatSnackBar) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12), Validators.pattern('[a-zA-Z ]*')]],
       lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12), Validators.pattern('[a-zA-Z ]*')]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
+      password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
       cpassword: ['', [Validators.minLength(6)]]
 
     }, { validator: this.checkPasswords });
@@ -96,17 +96,23 @@ export class RegistrationComponent implements OnInit {
       * @returns  res[onse gfrom server 
       */
   registerUser = (registerFormValue) => {
-    console.log(registerFormValue);
-    if (registerFormValue.password !== registerFormValue.cpassword) {
-      this.snackBar.open('password didnot macth', '', { duration: 2000 });
+    try {
+      console.log(registerFormValue);
+      if (registerFormValue.password !== registerFormValue.cpassword) {
+        this.snackBar.open('password didnot macth', '', { duration: 2000 });
 
-    } else {
-      if (this.registerForm.invalid) {
-        return
       } else {
-        this.createUser(registerFormValue)
+        if (this.registerForm.invalid) {
+          return
+        } else {
+          this.createUser(registerFormValue)
+        }
       }
+    } catch (error) {
+      console.log(error);
+
     }
+
 
   }
   /********************************************************
@@ -115,29 +121,33 @@ export class RegistrationComponent implements OnInit {
       */
 
   private createUser = (registerFormValue) => {
-    let newUser: User = {
-      firstName: registerFormValue.firstName,
-      lastName: registerFormValue.lastName,
-      email: registerFormValue.email,
-      password: registerFormValue.password,
-      service: 'advance'
+    try {
+      let newUser: User = {
+        firstName: registerFormValue.firstName,
+        lastName: registerFormValue.lastName,
+        email: registerFormValue.email,
+        password: registerFormValue.password,
+        service: 'advance'
+      }
+      console.log("new user created ", newUser);
+      /********************************************************
+       * @description user service called here wiht  argument new user data for registration
+       * @returns response/error
+       */
+
+      this.userService.register(newUser).subscribe(response => {
+        console.log('response ', response);
+        this.snackBar.open('register succesfully', '', { duration: 2000 });
+        this.router.navigate(['/login']);
+
+      }, error => {
+        console.log('error ', error);
+
+      })
+    } catch (error) {
+      console.log(error);
+
     }
-    console.log("new user created ", newUser);
-     /********************************************************
-      * @description user service called here wiht  argument new user data for registration
-      * @returns response/error
-      */
-
-    this.userService.register(newUser).subscribe(response => {
-      console.log('response ', response);
-      this.snackBar.open('register succesfully', '', { duration: 2000 });
-      this.router.navigate(['/login']);
-
-    }, error => {
-      console.log('error ', error);
-
-    })
-
   }
 
 

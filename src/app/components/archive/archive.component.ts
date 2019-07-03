@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/userService/user.service';
+import { NotesService } from '../../services/notes-service/notes.service'
 @Component({
   selector: 'app-archive',
   templateUrl: './archive.component.html',
@@ -7,12 +7,12 @@ import { UserService } from 'src/app/services/userService/user.service';
 })
 export class ArchiveComponent implements OnInit {
   notes=[];
-  constructor(private userService:UserService) { }
+  constructor(private noteService:NotesService) { }
 
   ngOnInit() {
 
 
-    this.userService.getArchiveNotesList().subscribe(response => {
+    this.noteService.getArchiveNotesList().subscribe(response => {
       console.log('response ', response['data'].data);
       this.notes = response['data'].data
       this.notes.reverse();

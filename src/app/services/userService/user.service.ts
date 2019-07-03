@@ -29,47 +29,5 @@ export class UserService {
 
     return this.httpService.encodedPost('user/reset-password', data);
   }
-  addnote(data) {
-    return this.httpService.postAth('notes/addNotes', data);
-  }
-  getNotes(){
-    return this.httpService.getNotes('notes/getNotesList');
-  }
-
-  getReminderNotesList(){
-    return this.httpService.getNotes('notes/getReminderNotesList');
-  }
-
-  getArchiveNotesList(){
-    return this.httpService.getNotes('notes/getArchiveNotesList');
-  }
-  getTrashNotesList(){
-    return this.httpService.getNotes('notes/getTrashNotesList');
-  
-  }
-
-  archiveNote(data){
-    console.log("user service called", data);
-   return this.httpService.postAth('notes/archiveNotes',data);
-  }
-  deleteNote(data){
-    console.log("user service called", data);
-   return this.httpService.postAth('notes/trashNotes',data);
-  }
-
-
-  pinNote(data){
-    console.log("user service called", data);
-   return this.httpService.postAth('notes/pinUnpinNotes',data);
-  }
-  setColor(data){
-    console.log("user service called", data);
-   return this.httpService.postAth('notes/changesColorNotes',data);
-  }
-
-  updateNote(data){
-    console.log("user service called", data);
-   return this.httpService.postAth('notes/updateNotes',data);
-  }
-  
+ 
 }

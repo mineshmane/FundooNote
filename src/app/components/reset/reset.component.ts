@@ -53,30 +53,36 @@ export class ResetComponent implements OnInit {
       * @returns resylt true or false
       */
   resetPassword(resetFormValue) {
-    const token = this.route.snapshot.paramMap.get('token');
-    localStorage.setItem('token', token)
-    const newPassword = {
-      'newPassword': resetFormValue.password
+    try {
+      const token = this.route.snapshot.paramMap.get('token');
+      localStorage.setItem('token', token)
+      const newPassword = {
+        'newPassword': resetFormValue.password
+      }
+      console.log(" login event called ", resetFormValue);
+
+      if (resetFormValue.password !== resetFormValue.cpassword) {
+        this.snackBar.open('password didnot macth', '', { duration: 2000 });
+
+      }
+      else {
+
+
+        this.userService.resetPassword(newPassword).subscribe(response => {
+          console.log('response ', response);
+          this.snackBar.open('password is changed  successfully ', '', { duration: 4000 });
+          this.router.navigate(['/login']);
+
+
+        }, error => {
+          console.log('error ', error);
+
+        });
+      }
+    } catch (error) {
+      console.log(error);
+
     }
-    console.log(" login event called ", resetFormValue);
 
-    if (resetFormValue.password !== resetFormValue.cpassword) {
-      this.snackBar.open('password didnot macth', '', { duration: 2000 });
-
-    }
-    else {
-
-      
-      this.userService.resetPassword(newPassword).subscribe(response => {
-        console.log('response ', response);
-        this.snackBar.open('password is changed  successfully ', '', { duration: 4000 });
-        this.router.navigate(['/login']);
-
-
-      }, error => {
-        console.log('error ', error);
-
-      });
-    }
   }
 }

@@ -63,7 +63,18 @@ export class HttpService {
   }
 
   
-  
+  postlabel(url) {
+    console.log("http service called");
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': localStorage.getItem('token'),
+        'Content-Type': 'application/json'
+
+      })
+    }
+    return this.http.delete(this.baseUrl + url, options)
+
+  }
 
 
 
