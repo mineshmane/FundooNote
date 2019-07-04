@@ -28,10 +28,14 @@ export class EditLabelsComponent implements OnInit {
   }
   addLabel(lab) {
     try {
+      if(lab==undefined){
+        console.log(" empty");
+        
+        return;
+      }else{
       console.log(" card ", lab);
       let data = {
-        // cardidList:this.cardId,
-        // noteId: card.id,
+       
         label: lab,
         isDeleted: false,
         userId: localStorage.getItem('userId')
@@ -43,6 +47,7 @@ export class EditLabelsComponent implements OnInit {
       }, error => {
         console.log('error ', error);
       })
+    }
       this.dialogRef.close();
     } catch (error) {
       console.log(error);
@@ -73,7 +78,8 @@ export class EditLabelsComponent implements OnInit {
   editLabel(lab) {
     let data = {
       id: lab.id,
-      label: lab.label
+      label: lab.label,
+      userId:localStorage.getItem('userId')
     }
     this.noteService.updateLabel(data).subscribe(response => {
       console.log("rsponse", response);

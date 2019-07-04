@@ -16,12 +16,9 @@ export class TakeNoteComponent implements OnInit {
   }
   title = '';
   description = '';
-  titleModel: String;
-  contentModel: String;
+  
   constructor(private notesService: NotesService, private router: Router, private snackBar: MatSnackBar) {
-    this.titleModel = '';
-    this.contentModel = '';
-
+    
   }
   @Output() update = new EventEmitter<any>();
 
@@ -37,7 +34,12 @@ export class TakeNoteComponent implements OnInit {
 
 
       }
-      this.craeteNote(newNote);
+      if (newNote.description == '' &&newNote.title=='') {
+        return;
+      } else {
+        this.craeteNote(newNote);
+      }
+
     } catch (error) {
       console.log(error);
 
@@ -47,17 +49,23 @@ export class TakeNoteComponent implements OnInit {
 
   craeteNote(note) {
     try {
-      this.notesService.addnote(note).subscribe(response => {
-        console.log('response ', response);
-        this.update.emit({})
-        this.snackBar.open('note added succesfully', '', { duration: 2000 });
-        this.title = ''
-        this.description = ''
+      console.log(note,"undefin");
+      
+      if (note == undefined) {
+        return;
+      } else {
+        this.notesService.addnote(note).subscribe(response => {
+          console.log('response ', response);
+          this.update.emit({})
+          this.snackBar.open('note added succesfully', '', { duration: 2000 });
+          this.title = ''
+          this.description = ''
 
-      }, error => {
-        console.log('error ', error);
+        }, error => {
+          console.log('error ', error);
 
-      })
+        })
+      }
     } catch (error) {
       console.log(error);
 

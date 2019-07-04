@@ -26,7 +26,7 @@
           <button mat-icon-button matSuffix  fxFlex.xs="50" matTooltip="Search">
             <mat-icon fxFlex.xs="50" (click)="searchNote(title)">search</mat-icon>
           </button>
-          <input matInput type="text" [(ngModel)]="title" placeholder="search">
+          <input matInput type="text" [(ngModel)]="title" placeholder="search" (keyup)="search($event)">
         </mat-form-field>
       </div>
 

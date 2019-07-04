@@ -19,6 +19,7 @@ export class DisplayComponent implements OnInit {
     private bar: MatSnackBar,
     public dialog: MatDialog) { }
   @Input() childMessage;
+  @Input() isTrash;
 
   ngOnInit() {
 

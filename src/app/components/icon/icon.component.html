@@ -103,22 +103,30 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="deleteNote()">
+      <button *ngIf="isTrash" mat-menu-item (click)="delete()">
+        <span>Deleteforever</span>
+      </button>
+      <button *ngIf="!isTrash" mat-menu-item (click)="deleteNote()" >
         <span>Delete note</span>
       </button>
-      <button mat-menu-item>
+      <button *ngIf="!isTrash" mat-menu-item (click)="openDialog()">
         <span>Add label</span>
       </button>
-      <button mat-menu-item>
+      <button *ngIf="!isTrash" mat-menu-item>
         <span>Add drawaing</span>
       </button>
-      <button mat-menu-item>
+      <button *ngIf="!isTrash" mat-menu-item>
         <span>Make a copy</span>
       </button>
-      <button mat-menu-item>
+      <button *ngIf="!isTrash" mat-menu-item>
         <span>Show checkBoxes</span>
       </button>
     </mat-menu>
   </div>
 
 </div>
+
+<!-- <div *ngIf="card.isDeleted">
+  <p>{{card}}</p>
+
+</div> -->

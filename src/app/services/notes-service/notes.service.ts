@@ -70,6 +70,6 @@ export class NotesService {
     return this.httpService.postlabel('noteLabels/'+data.label.id+'/deleteNoteLabel');
   }
   updateLabel(data) {
-    return this.httpService.postlabel('noteLabels/'+data.label.id+'/updateNoteLabel');
+    return this.httpService.postAth('noteLabels/'+data.label.id+'/updateNoteLabel',data);
   }
 }

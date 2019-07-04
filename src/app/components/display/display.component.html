@@ -52,8 +52,11 @@ fxLayoutAlign="center center"   fxFlexAlign="auto"
           <p>{{card.description}}</p>
         </div>
       </div>
+      <div>
+        {{card.label}}
+      </div>
       <div class="div">
-        <app-icon [card]="card"></app-icon>
+        <app-icon [isTrash]="isTrash" [card]="card"></app-icon>
       </div>
 
     </mat-card>

@@ -8,7 +8,7 @@
  ******************************************************************************/
 
 
-import { Component, OnInit,Input } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef } from '@angular/core';
@@ -16,6 +16,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { EditLabelsComponent } from '../edit-labels/edit-labels.component'
 import { NotesService } from '../../services/notes-service/notes.service';
 import { DataService } from '../../services/dataService/data.service'
+// import { Routes, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 export interface DialogData {
   allLabel: []
@@ -30,6 +32,9 @@ export class DashboardComponent implements OnInit {
 
   "label": "string"
   "isDeleted": true
+  values = '';
+  ab = '';
+
   @Input() childMessage;
   fillerNav = Array.from({ length: 1 }, (_, i) => `Nav Item ${i + 1}`);
 
@@ -37,7 +42,7 @@ export class DashboardComponent implements OnInit {
     ``);
 
   private _mobileQueryListener: () => void;
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private dataService: DataService, public dialog: MatDialog, private noteService: NotesService) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private route: Router, private dataService: DataService, public dialog: MatDialog, private noteService: NotesService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -50,9 +55,9 @@ export class DashboardComponent implements OnInit {
     // this.data.currentMessage.subscribe(message => this.message = message)
   }
 
-  newMessage() {
+  // newMessage() {
 
-  }
+  // }
 
   openDialog(): void {
     try {
@@ -62,10 +67,7 @@ export class DashboardComponent implements OnInit {
         data: { allLabel: this.allLabel }
       });
       // console.log(" in card ",card);
-
-
       dialogRef.afterClosed().subscribe(result => {
-
         console.log('The dialog was closed');
         //this.title = result;
       });
@@ -75,10 +77,14 @@ export class DashboardComponent implements OnInit {
     }
 
   }
-  searchNote(msg){
-    console.log("message in ts  dash ",msg);
-    
-    this.dataService.changeMessage(msg)
+
+  search(event: any) {
+    console.log("message in ts  dash ");
+    this.route.navigate(['dashboard/search']);
+
+    this.values = event.target.value;
+    this.dataService.changeMessage(this.values)
+    this.ab = this.values;
 
   }
   getLabelList() {
@@ -104,5 +110,5 @@ export class DashboardComponent implements OnInit {
     }
 
   }
- 
+
 }

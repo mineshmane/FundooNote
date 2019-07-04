@@ -7,14 +7,23 @@ import { MatSnackBar } from '@angular/material'
   styleUrls: ['./icon.component.scss']
 })
 export class IconComponent implements OnInit {
-  archive = true
+  
   constructor(private notesService: NotesService, private snackBar: MatSnackBar) { }
-
-  ngOnInit() {
-  }
   @Input() card;
+  @Input() isTrash;
+  archive = true
+  isDeleted=true
+  //isDeleted=this.card.isDeleted;
+  
+ 
+  
   @Output() update = new EventEmitter<any>();
 
+  ngOnInit() {
+ 
+      console.log("card in icon",this.card);
+  }
+ 
   archiveNote() {
     try {
       let data = {
