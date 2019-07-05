@@ -37,6 +37,10 @@ export class NotesService {
    return this.httpService.postAth('notes/trashNotes',data);
   }
 
+  deleteForeverNote(data){
+    console.log("user service called", data);
+   return this.httpService.postAth('notes/deleteForeverNotes',data);
+  }
 
   pinNote(data){
     console.log("user service called", data);
@@ -71,5 +75,16 @@ export class NotesService {
   }
   updateLabel(data) {
     return this.httpService.postAth('noteLabels/'+data.label.id+'/updateNoteLabel',data);
+  }
+
+  addLabelToNote(data) {
+    console.log("noteservice",data);
+    
+    return this.httpService.postAth('notes/'+data.noteId+'/addLabelToNotes/'+data.lableId+'/add', {});
+  }
+  removeNoteLabel(data) {
+    console.log("noteservice",data);
+    
+    return this.httpService.postAth('notes/'+data.noteId+'/addLabelToNotes/'+data.lableId+'/remove', {});
   }
 }

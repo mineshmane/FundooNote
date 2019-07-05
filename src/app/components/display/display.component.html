@@ -1,5 +1,5 @@
 <div fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3"style="margin-top: 25px"   layout-wrap fxLayout="row wrap"   
-fxLayoutAlign="center center"   fxFlexAlign="auto"
+fxLayoutAlign="center center"   fxFlexAlign="auto" fxFlexAlign="auto" 
 >
 
   <!-- <div style="margin-top: 25px" layout-wrap fxLayoutGap="10px" fxLayout="row wrap" fxFlex="80" fxFlex.xs="100"
@@ -32,8 +32,8 @@ fxLayoutAlign="center center"   fxFlexAlign="auto"
     </mat-card>
   </div> -->
 
-  <div layout-wrap fxLayoutGap="10px"   fxFlexAlign="auto" fxLayout="row wrap" fxFlex="85"  fxFlex.xs="100"
-  fxLayoutAlign.xs="center center"  fxLayoutAlign="start center" fxLayoutAlign.md="start center"
+  <div  layout-wrap fxLayoutGap="10px" fxFlexAlign="start" fxLayout="row wrap"   fxFlex="85"  fxFlex.xs="100"
+  fxLayoutAlign.xs="center center"  fxLayoutAlign="start start" fxLayoutAlign.md="start center"
 >
     <mat-card *ngFor="let card of childMessage" class="main-card"  [style.background-color]=card.color
       fxLayout.xs="column" fxFlex.xs="95">
@@ -48,15 +48,39 @@ fxLayoutAlign="center center"   fxFlexAlign="auto"
             </button>
           </div>
         </div>
-        <div (click)="openDialog(card)">
-          <p>{{card.description}}</p>
+        <div (click)="openDialog(card)" >
+
+          <p fxLayout="row wrap">{{card.description}}</p>
         </div>
       </div>
-      <div>
-        {{card.label}}
+
+
+       <!-- <div>
+      <div*ngFor="let label of card.noteLabels" >
+      
+     <div class="label"><label> {{label.label}}</label></div> 
+       
+       <div></div> 
       </div>
+    </div>  -->
+    <div *ngFor="let label of card.noteLabels">
+    <mat-chip>
+        {{label.label}}
+        <mat-icon matChipRemove *ngIf="removable" (click)="remove(label,card)">cancel</mat-icon>
+    </mat-chip>
+  </div>
+    <!-- <mat-chip
+    *ngFor="let label of card.noteLabels"
+    [selectable]="selectable" 
+    [removable]="removable"
+    (removed)="remove(label)">
+    {{label.label}}
+    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+  </mat-chip> -->
+
+
       <div class="div">
-        <app-icon [isTrash]="isTrash" [card]="card"></app-icon>
+        <app-icon [isTrash]="isTrash" (update)="getTrashNotes()" [card]="card"></app-icon>
       </div>
 
     </mat-card>

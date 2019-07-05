@@ -12,6 +12,7 @@ import { ReminderComponent } from './components/reminder/reminder.component';
 import { ArchiveComponent } from './components/archive/archive.component';
 import { TrashComponent } from './components/trash/trash.component';
 import { SearchComponent } from './components/search/search.component';
+import { LabelComponent } from './components/label/label.component';
 
 
 const routes: Routes = [
@@ -44,6 +45,9 @@ const routes: Routes = [
       },
       {
         path: 'search', component: SearchComponent
+      },
+      {
+        path: 'noteBylabel/:label', component: LabelComponent
       },
       
       

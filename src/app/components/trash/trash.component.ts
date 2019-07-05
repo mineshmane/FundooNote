@@ -11,7 +11,13 @@ export class TrashComponent implements OnInit {
   ngOnInit() {
   this.getTrashNotes();
   }
-  getTrashNotes(){
+  getTrashNote()
+{
+  this.getTrashNotes();
+
+}  getTrashNotes(){
+    console.log(" after emmit fired");
+    
     try {
       this.notesService.getTrashNotesList().subscribe(response =>{
         this.notes=response['data'].data

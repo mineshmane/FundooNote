@@ -36,6 +36,7 @@ export class DashboardComponent implements OnInit {
   ab = '';
 
   @Input() childMessage;
+  @Input() 
   fillerNav = Array.from({ length: 1 }, (_, i) => `Nav Item ${i + 1}`);
 
   fillerContent = Array.from({ length: 50 }, () =>
@@ -53,6 +54,7 @@ export class DashboardComponent implements OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.getLabelList();
     // this.data.currentMessage.subscribe(message => this.message = message)
+   
   }
 
   // newMessage() {
@@ -94,6 +96,7 @@ export class DashboardComponent implements OnInit {
         console.log(" response label 2", response['data'].details);
 
         this.allLabel = response['data'].details
+        this.dataService.changeMessage(response['data'].details)
         // this.allLabel.reverse();
         //console.log(" alllabels",this.allLabel);
         //  this.data.changeMessage(response['data'].details)
@@ -110,5 +113,9 @@ export class DashboardComponent implements OnInit {
     }
 
   }
+
+
+
+  
 
 }

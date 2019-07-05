@@ -11,7 +11,10 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DisplayComponent implements OnInit {
   pin = true
-
+  visible = true;
+  selectable = true;
+  removable = true;
+  addOnBlur = true;
   title = '';
   description = '';
   constructor(
@@ -20,7 +23,8 @@ export class DisplayComponent implements OnInit {
     public dialog: MatDialog) { }
   @Input() childMessage;
   @Input() isTrash;
-
+  @Input() card
+  @Output() update = new EventEmitter<any>();
   ngOnInit() {
 
   }
@@ -35,6 +39,7 @@ export class DisplayComponent implements OnInit {
       }
       this.notesService.pinNote(data).subscribe(response => {
         console.log(response, " succsesfully pined ");
+        this.update.emit();
         this.bar.open(" note pined succesFully ", '', { duration: 2000 });
       }, error => {
         console.log('error ', error);
@@ -46,6 +51,26 @@ export class DisplayComponent implements OnInit {
 
   }
 
+  remove(label, card): void {
+    console.log(label.id, " labelin ");
+    console.log("card in disp[lay", card.id);
+
+    let data = {
+      noteId: [card.id],
+
+      lableId: label.id
+    }
+    console.log("data ", data);
+
+    this.notesService.removeNoteLabel(data).subscribe(response => {
+      console.log("response", response);
+      this.update.emit();
+      this.bar.open(" label removed succesFully ", '', { duration: 2000 });
+    }, error => {
+      console.log(error);
+
+    })
+  }
 
 
   openDialog(card): void {
@@ -69,5 +94,8 @@ export class DisplayComponent implements OnInit {
 
     }
 
+  }
+  getTrashNotes() {
+    this.update.emit();
   }
 }

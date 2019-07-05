@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material';
 import {MatDialogModule} from '@angular/material/dialog';
-
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatChipsModule} from '@angular/material/chips';
 import {
   MatButtonModule, MatNativeDateModule,
-  MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule
+  MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule,
 } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -20,7 +21,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatButtonModule,
     FlexLayoutModule,
     MatDialogModule,
-    MatSidenavModule, MatToolbarModule, MatNativeDateModule, MatListModule, MatMenuModule, MatDatepickerModule,MatTooltipModule,
+    MatSidenavModule, MatToolbarModule, MatNativeDateModule, 
+    MatListModule, MatMenuModule, MatDatepickerModule,MatTooltipModule,MatCheckboxModule,MatChipsModule
 
 
   ],
@@ -30,7 +32,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatInputModule,
     MatButtonModule,
     FlexLayoutModule,
-    MatSidenavModule, MatToolbarModule, MatNativeDateModule, MatListModule, MatMenuModule, MatDatepickerModule,MatTooltipModule,
+    MatSidenavModule, MatToolbarModule, MatNativeDateModule, MatListModule, 
+    MatMenuModule, MatDatepickerModule,MatTooltipModule,MatCheckboxModule,MatChipsModule
 
 
   ]

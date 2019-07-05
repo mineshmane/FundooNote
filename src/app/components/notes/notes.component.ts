@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NotesService } from '../../services/notes-service/notes.service'
+import { DataService } from '../../services/dataService/data.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { NotesService } from '../../services/notes-service/notes.service'
 })
 export class NotesComponent implements OnInit {
 
-  constructor(private notesService: NotesService) { 
+  constructor(private notesService: NotesService,private dataService :DataService) { 
 
   } //message:string;
 notes=[]
@@ -28,6 +29,7 @@ notes=[]
         console.log(" responsee 3",response);
         
         this.notes = response['data'].data
+     
         this.notes.reverse();
       }, error => {
         console.log('error ', error);

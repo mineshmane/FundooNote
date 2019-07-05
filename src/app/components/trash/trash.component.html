@@ -1,7 +1,7 @@
 <!-- <div>
-    <app-take-note></app-take-note>
-  </div> -->
-  
+  <app-icon (update)="getTrashNotes()"></app-icon>
+</div> -->
+   
   <div>
-    <app-display [isTrash]=true [childMessage]="notes"></app-display>
+    <app-display  (update)="getTrashNotes()"   [isTrash]=true  [childMessage]="notes"></app-display>
   </div>

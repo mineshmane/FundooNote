@@ -1,27 +1,38 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NotesService } from '../../services/notes-service/notes.service'
 import { MatSnackBar } from '@angular/material'
+import { DataService } from '../../services/dataService/data.service';
+
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.component.html',
   styleUrls: ['./icon.component.scss']
 })
 export class IconComponent implements OnInit {
-  
-  constructor(private notesService: NotesService, private snackBar: MatSnackBar) { }
+  allLabel=[]
+  constructor(private notesService: NotesService, private snackBar: MatSnackBar,private dataService:DataService) { }
   @Input() card;
   @Input() isTrash;
   archive = true
   isDeleted=true
   //isDeleted=this.card.isDeleted;
   
- 
+
   
   @Output() update = new EventEmitter<any>();
 
   ngOnInit() {
  
-      console.log("card in icon",this.card);
+     // console.log("card in icon",this.card);
+   this.dataService.currentMessage.subscribe(message => {
+      console.log("data in icon", message);
+    
+      this.allLabel=message;
+      console.log(" all labelin icon",this.allLabel);
+      
+     // console.log("searched cards", this.card);
+
+    })
   }
  
   archiveNote() {
@@ -46,7 +57,7 @@ export class IconComponent implements OnInit {
 
   }
 
-  deleteNote() {
+  trashNote() {
     try {
       let data = {
         // cardidList:this.cardId,
@@ -56,7 +67,30 @@ export class IconComponent implements OnInit {
       console.log(data);
       this.notesService.deleteNote(data).subscribe(response => {
         console.log('response ', response);
+        this.update.emit({})
         this.snackBar.open('note deleted succesfully', '', { duration: 2000 });
+      }, error => {
+        console.log('error ', error);
+      })
+    } catch (error) {
+      console.log(error);
+
+    }
+
+  }
+
+  deleteForeverNote() {
+    try {
+      let data = {
+        // cardidList:this.cardId,
+        noteIdList: [this.card.id],
+        isDeleted: false,
+      }
+      console.log(data);
+      this.notesService.deleteForeverNote(data).subscribe(response => {
+        console.log('response ', response);
+        this.update.emit({});
+        this.snackBar.open('note deleted forever succesfully', '', { duration: 2000 });
       }, error => {
         console.log('error ', error);
       })
@@ -88,7 +122,29 @@ export class IconComponent implements OnInit {
       console.log(error);
 
     }
+  }
 
+
+  addNoteLabel(label){
+    console.log(" note label called",label.id);
+    console.log(" card",this.card.id);
+    
+    let data={
+      noteId: [this.card.id],
+
+      lableId:label.id
+    }
+    console.log("data in data ",data);
+    
+    this.notesService.addLabelToNote(data).subscribe(response=>{
+      console.log(" response",response);
+      this.update.emit({});
+      this.snackBar.open('label added succesfully', '', { duration: 2000 });
+    },error=>{
+      console.log(error);
+      
+    })
+    
   }
 
 }

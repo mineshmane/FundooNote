@@ -103,15 +103,15 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button *ngIf="isTrash" mat-menu-item (click)="delete()">
+      <button *ngIf="isTrash" mat-menu-item (click)="deleteForeverNote()">
         <span>Deleteforever</span>
       </button>
-      <button *ngIf="!isTrash" mat-menu-item (click)="deleteNote()" >
+      <button *ngIf="!isTrash" mat-menu-item (click)="trashNote()">
         <span>Delete note</span>
       </button>
-      <button *ngIf="!isTrash" mat-menu-item (click)="openDialog()">
-        <span>Add label</span>
-      </button>
+
+      <button *ngIf="!isTrash" mat-menu-item [matMenuTriggerFor]="fish">add label</button>
+
       <button *ngIf="!isTrash" mat-menu-item>
         <span>Add drawaing</span>
       </button>
@@ -121,6 +121,27 @@
       <button *ngIf="!isTrash" mat-menu-item>
         <span>Show checkBoxes</span>
       </button>
+    </mat-menu>
+    <mat-menu #fish="matMenu">
+
+      <div mat-dialog-content>
+        <button mat-button (click)="$event.stopPropagation()" *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
+          (click)="value=''">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-form-field class="example-form-field" (click)="$event.stopPropagation()">
+
+          <input matInput type="text" placeholder="Create label" [(ngModel)]="labelText">
+
+        </mat-form-field>
+      </div>
+      <div *ngFor="let i of allLabel |searchFilter: labelText ">
+        <mat-checkbox (click)="$event.stopPropagation()" (click)="addNoteLabel(i)">{{i.label}}</mat-checkbox>
+        <!-- <button mat-menu-item (click)="$event.stopPropagation()">
+          <p>{{i.label}}</p>
+        </button> -->
+
+      </div>
     </mat-menu>
   </div>
 

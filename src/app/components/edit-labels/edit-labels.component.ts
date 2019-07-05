@@ -25,6 +25,7 @@ export class EditLabelsComponent implements OnInit {
     // this.dataService.currentMessage.subscribe(message =>{
     //   this.allLabel=message
     // })
+   
   }
   addLabel(lab) {
     try {

@@ -25,6 +25,8 @@ import { TrashComponent } from './components/trash/trash.component';
 import { UpdateComponent } from './components/update/update.component';
 import { EditLabelsComponent } from './components/edit-labels/edit-labels.component';
 import { SearchComponent } from './components/search/search.component';
+import { SearchFilterPipe } from './pipe/search-filter.pipe';
+import { LabelComponent } from './components/label/label.component';
 
 
 
@@ -46,6 +48,8 @@ import { SearchComponent } from './components/search/search.component';
     UpdateComponent,
     EditLabelsComponent,
     SearchComponent,
+    SearchFilterPipe,
+    LabelComponent,
  
 
   ],
