@@ -2,8 +2,8 @@
 
 
 
-<div fxLayoutAlign="center center" fxFlex="100" fxFlexOffset.xs="0" fxFlex.xs="100">
-  <mat-card fxFlex.xs="100">
+<div class="main" fxLayoutAlign="center center" style="margin-top: 140px" fxFlex="100" fxFlex.xs="100">
+  <mat-card fxFlex.xs="100"fxFlex="30">
     <mat-card-title fxLayoutAlign="center center">
       <p>
         <span class="f">F</span>
@@ -24,9 +24,10 @@
             <mat-form-field appearance="outline" fxFlex="100" fxFlex.xs="100">
               <mat-label>Enter Email</mat-label>
               <input matInput type="text" placeholder="Email" formControlName="email" id="email">
-              <mat-icon matSuffix>email</mat-icon>
+             
               <mat-error *ngIf="hasError('email', 'required')">email is required</mat-error>
             </mat-form-field>
+            <!-- <mat-icon matSuffix>email</mat-icon> -->
           </div>
         </div>
 

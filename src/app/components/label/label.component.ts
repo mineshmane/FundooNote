@@ -11,15 +11,18 @@ export class LabelComponent implements OnInit {
   constructor(private route: ActivatedRoute, private notesService: NotesService) { }
 
   ngOnInit() {
+    this.getnoteByLabel()
   }
+  
 
 
-
-  getLnoteByLabel() {
-    const token = this.route.snapshot.paramMap.get('label');
-    localStorage.setItem('label', token)
+  getnoteByLabel() {
+    const label = this.route.snapshot.paramMap.get('label');
+    console.log("label = ",label);
+    
+    //localStorage.setItem('label',label)
     try {
-      this.notesService.getNotes().subscribe(response => {
+      this.notesService.getNotesByLabel(label).subscribe(response => {
         console.log('response  ', response['data'].data);
         console.log(" responsee 3", response);
 

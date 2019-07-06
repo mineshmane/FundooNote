@@ -1,10 +1,11 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output , EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { notes } from 'src/app/model/notes';
 import { NotesService } from '../../services/notes-service/notes.service';
 import { DataService } from '../../services/dataService/data.service';
 import { MatSnackBar } from '@angular/material'
 import { DialogData } from '../dashboard/dashboard.component';
+
 
 @Component({
   selector: 'app-edit-labels',
@@ -21,6 +22,7 @@ export class EditLabelsComponent implements OnInit {
     this.changeText = false;
   }
   allLabel = []
+  @Output() labeladd=new EventEmitter<any>();
   ngOnInit() {
     // this.dataService.currentMessage.subscribe(message =>{
     //   this.allLabel=message
@@ -45,6 +47,7 @@ export class EditLabelsComponent implements OnInit {
       this.noteService.addLabel(data).subscribe(response => {
         console.log(response, " succsesfully updated note ");
         this.bar.open(" note update succesFully ", '', { duration: 2000 });
+        this.labeladd.emit({});
       }, error => {
         console.log('error ', error);
       })

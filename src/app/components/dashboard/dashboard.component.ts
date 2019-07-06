@@ -113,8 +113,12 @@ export class DashboardComponent implements OnInit {
     }
 
   }
+  openLabel(label){
+    console.log(" label",label);
+    
+    this.route.navigate(['dashboard/noteBylabel/'+label.label]);
 
-
+  }
 
   
 

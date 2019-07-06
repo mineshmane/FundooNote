@@ -55,32 +55,25 @@ fxLayoutAlign="center center"   fxFlexAlign="auto" fxFlexAlign="auto"
       </div>
 
 
-       <!-- <div>
-      <div*ngFor="let label of card.noteLabels" >
-      
-     <div class="label"><label> {{label.label}}</label></div> 
-       
-       <div></div> 
-      </div>
-    </div>  -->
+     
     <div *ngFor="let label of card.noteLabels">
+        <mat-chip-list aria-label="Fish selection">
     <mat-chip>
         {{label.label}}
         <mat-icon matChipRemove *ngIf="removable" (click)="remove(label,card)">cancel</mat-icon>
     </mat-chip>
+  </mat-chip-list>
   </div>
-    <!-- <mat-chip
-    *ngFor="let label of card.noteLabels"
-    [selectable]="selectable" 
-    [removable]="removable"
-    (removed)="remove(label)">
-    {{label.label}}
-    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
-  </mat-chip> -->
+
+  
+     
+
+
+
 
 
       <div class="div">
-        <app-icon [isTrash]="isTrash" (update)="getTrashNotes()" [card]="card"></app-icon>
+        <app-icon [isTrash]="isTrash" (update)="getTrashNotes()" (labelToNote)="labelAddedToNote()" add [card]="card"></app-icon>
       </div>
 
     </mat-card>

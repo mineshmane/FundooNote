@@ -87,4 +87,10 @@ export class NotesService {
     
     return this.httpService.postAth('notes/'+data.noteId+'/addLabelToNotes/'+data.lableId+'/remove', {});
   }
+
+  getNotesByLabel(label) {
+    console.log("noteservice");
+    
+    return this.httpService.postAth('notes/getNotesListByLabel/'+label, {} );
+  }
 }

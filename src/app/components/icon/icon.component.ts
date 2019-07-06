@@ -20,7 +20,7 @@ export class IconComponent implements OnInit {
 
   
   @Output() update = new EventEmitter<any>();
-
+@Output() labelToNote=new EventEmitter<any>();
   ngOnInit() {
  
      // console.log("card in icon",this.card);
@@ -67,7 +67,7 @@ export class IconComponent implements OnInit {
       console.log(data);
       this.notesService.deleteNote(data).subscribe(response => {
         console.log('response ', response);
-        this.update.emit({})
+       // this.update.emit({})
         this.snackBar.open('note deleted succesfully', '', { duration: 2000 });
       }, error => {
         console.log('error ', error);
@@ -138,7 +138,7 @@ export class IconComponent implements OnInit {
     
     this.notesService.addLabelToNote(data).subscribe(response=>{
       console.log(" response",response);
-      this.update.emit({});
+      this.labelToNote.emit({});
       this.snackBar.open('label added succesfully', '', { duration: 2000 });
     },error=>{
       console.log(error);

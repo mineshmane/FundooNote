@@ -66,15 +66,17 @@
         <div *ngFor="let lab of allLabel" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center">
          
           <div >
-            <a mat-list-item routerLink="noteBylabel" >
+            <a mat-list-item (click)="openLabel(lab)" >
               <mat-icon>label_outline</mat-icon><p class="label" >{{lab.label}}</p>
             </a>
           </div>
 
         </div>
-        <div fxLayout="row" fxLayoutAlign="space-around center" >
-          <div>
-            <a  (click)="openDialog(lab)"> <mat-icon>label_outline</mat-icon> edit label
+        <div fxLayout="row" fxLayoutAlign="space-around center"(labeladd)="getLabelList()" >
+          <div class="label">
+            <a   (click)="openDialog(lab)">
+               <mat-icon>label_outline</mat-icon>
+               <p>edit label </p>
             </a>
           </div>
 

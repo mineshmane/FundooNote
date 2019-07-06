@@ -25,6 +25,8 @@ export class DisplayComponent implements OnInit {
   @Input() isTrash;
   @Input() card
   @Output() update = new EventEmitter<any>();
+  @Output() removeLabel = new EventEmitter<any>();
+  @Output() labelToNote=new EventEmitter<any>();
   ngOnInit() {
 
   }
@@ -64,7 +66,7 @@ export class DisplayComponent implements OnInit {
 
     this.notesService.removeNoteLabel(data).subscribe(response => {
       console.log("response", response);
-      this.update.emit();
+      this.removeLabel.emit();
       this.bar.open(" label removed succesFully ", '', { duration: 2000 });
     }, error => {
       console.log(error);
@@ -97,5 +99,8 @@ export class DisplayComponent implements OnInit {
   }
   getTrashNotes() {
     this.update.emit();
+  }
+  labelAddedToNote(){
+this.labelToNote.emit();
   }
 }
