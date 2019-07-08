@@ -135,6 +135,8 @@
 
         </mat-form-field>
       </div>
+      <div *ngIf="labelText ">
+
       <div *ngFor="let i of allLabel |searchFilter: labelText ">
         <mat-checkbox (click)="$event.stopPropagation()" (click)="addNoteLabel(i)">{{i.label}}</mat-checkbox>
         <!-- <button mat-menu-item (click)="$event.stopPropagation()">
@@ -142,6 +144,8 @@
         </button> -->
 
       </div>
+    </div>
+
     </mat-menu>
   </div>
 

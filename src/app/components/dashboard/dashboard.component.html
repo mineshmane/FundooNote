@@ -22,8 +22,9 @@
 
       <div fxFlex.sm="50" fxFlex.md="50" fxFlex.xs="50">
         <span class="example-spacer"></span>
-        <mat-form-field [style.fontSize.px]="12" appearance="outline"  routerLink="search" fxFlex.sm="50" fxFlex.md="50" fxFlex.xs="50">
-          <button mat-icon-button matSuffix  fxFlex.xs="50" matTooltip="Search">
+        <mat-form-field [style.fontSize.px]="12" appearance="outline" routerLink="search" fxFlex.sm="50" fxFlex.md="50"
+          fxFlex.xs="50">
+          <button mat-icon-button matSuffix fxFlex.xs="50" matTooltip="Search">
             <mat-icon fxFlex.xs="50" (click)="searchNote(title)">search</mat-icon>
           </button>
           <input matInput type="text" [(ngModel)]="title" placeholder="search" (keyup)="search($event)">
@@ -39,9 +40,29 @@
           </button>
         </div>
         <div>
-          <button mat-icon-button (click)="hide = !hide" fxFlex.xs="50">
+          <button mat-icon-button (click)="openProfile()" [matMenuTriggerFor]="menu"  aria-label="Example icon-button with a menu" fxFlex.xs="50">
             <mat-icon>account_circle</mat-icon>
           </button>
+         
+            <mat-menu #menu="matMenu">
+              <!-- <div>
+                <img class="avatar-flair " mat-card-avatar src="../../../assets/image/card.jpg">
+              </div> -->
+
+              <div class="image-container">
+                  <img [src]="url ? url : '../../../assets/image/card.jpg'" class=""> <br/>
+                  <input type='file'  class="select-profile-picture">
+                  <span class="message">Tap here to select your picture</span>
+                 </div>
+              <button mat-menu-item disabled>
+                  <mat-icon>voicemail</mat-icon>
+                  <span>Check voice mail</span>
+                </button>
+                <button mat-menu-item>
+                  <mat-icon>notifications_off</mat-icon>
+                  <span>Disable alerts</span>
+                </button>
+              </mat-menu>
         </div>
       </div>
     </div>
@@ -51,7 +72,7 @@
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
-      <mat-nav-list style="width:150px">
+      <mat-nav-list style="width:217px" >
         <div>
           <a mat-list-item routerLink="notes">
             <mat-icon>lightbulb_outline</mat-icon>Notes
@@ -63,23 +84,25 @@
           </a>
         </div>
         <mat-divider></mat-divider>
-        <div *ngFor="let lab of allLabel" fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center">
-         
-          <div >
-            <a mat-list-item (click)="openLabel(lab)" >
-              <mat-icon>label_outline</mat-icon><p class="label" >{{lab.label}}</p>
+        <div >
+        <div *ngFor="let lab of allLabel" >
+
+          <div>
+            <a mat-list-item (click)="openLabel(lab)">
+              <mat-icon>label_outline</mat-icon>
+              <p class="label">{{lab.label}}</p>
             </a>
           </div>
-
         </div>
-        <div fxLayout="row" fxLayoutAlign="space-around center"(labeladd)="getLabelList()" >
-          <div class="label">
-            <a   (click)="openDialog(lab)">
-               <mat-icon>label_outline</mat-icon>
-               <p>edit label </p>
+
+        <div  class="label"  (labeladd)="getLabelList()">
+          <div  >
+            <a mat-list-item (click)="openDialog(lab)">
+              <mat-icon>create</mat-icon>
+              <p >edit label </p>
             </a>
           </div>
-
+        </div>
 
         </div>
         <mat-divider></mat-divider>

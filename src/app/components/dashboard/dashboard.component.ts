@@ -114,7 +114,7 @@ export class DashboardComponent implements OnInit {
 
   }
   openLabel(label){
-    console.log(" label",label);
+    console.log(" label ts",label);
     
     this.route.navigate(['dashboard/noteBylabel/'+label.label]);
 

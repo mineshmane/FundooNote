@@ -39,7 +39,7 @@ export class HttpService {
     return this.http.post(this.baseUrl + url, this.encode(data), options)
   }
   postAth(url, data) {
-    console.log("http service called", data);
+    console.log("http service called",url, data);
     let options = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token'),

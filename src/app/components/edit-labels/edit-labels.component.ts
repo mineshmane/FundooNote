@@ -23,6 +23,7 @@ export class EditLabelsComponent implements OnInit {
   }
   allLabel = []
   @Output() labeladd=new EventEmitter<any>();
+
   ngOnInit() {
     // this.dataService.currentMessage.subscribe(message =>{
     //   this.allLabel=message

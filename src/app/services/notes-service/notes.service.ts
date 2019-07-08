@@ -89,8 +89,8 @@ export class NotesService {
   }
 
   getNotesByLabel(label) {
-    console.log("noteservice");
+    console.log("noteservice",label);
     
-    return this.httpService.postAth('notes/getNotesListByLabel/'+label, {} );
+    return this.httpService.postAth('notes/getNotesListByLabel/'+label,{});
   }
 }

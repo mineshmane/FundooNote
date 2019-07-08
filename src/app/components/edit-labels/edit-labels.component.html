@@ -1,49 +1,53 @@
 <p mat-dialog-title>Edit labels </p>
-<div mat-dialog-content>
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-        <mat-icon>close</mat-icon>
-      </button>
-   <mat-form-field class="example-form-field">
-    
-      <input matInput type="text" placeholder="Create label" [(ngModel)]="value" >
-      
-    </mat-form-field>
-</div>
-<mat-divider></mat-divider>
-<div *ngFor="let lab of allLabel" fxLayout="row"  >
-  <div >
-     <!-- <mat-icon>label_outline</mat-icon> -->
+<div mat-dialog-content class="parent">
 
-      <button mat-button (click)="deleteLabel(lab)">
-          <mat-icon>delete</mat-icon>
-        </button>
+  <mat-form-field>
+    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <input matInput type="text" placeholder="Create label" [(ngModel)]="value">
+
+  </mat-form-field>
+</div>
+
+<div *ngFor="let lab of allLabel" fxLayout="row" (mouseover)="changeText=true" (mouseout)="changeText=false">
+  <div>
+
+
+    <button mat-button (click)="deleteLabel(lab)">
+      <span [hidden]="changeText">
+        <mat-icon>label_outline</mat-icon>
+      </span>
+      <span [hidden]="!changeText">
+        <mat-icon>delete</mat-icon>
+      </span>
+    </button>
   </div>
   <div>
-    <input class="label" [(ngModel)]="lab.label" > 
-   <!-- <p class="label" (click)="editLabel(lab)"  >[(lab.label)]</p> -->
+    <input matInput class="label" [(ngModel)]="lab.label">
+ 
   </div>
-  <div >
+  <div>
     <!-- <mat-icon>label_outline</mat-icon> -->
 
-     <button mat-button (click)="editLabel(lab)">
-         <mat-icon>delete</mat-icon>
-       </button>
- </div>
+    <button mat-button (click)="editLabel(lab)">
+      <mat-icon>create</mat-icon>
+    </button>
+  </div>
 
 </div>
+<mat-divider></mat-divider>
 <div mat-dialog-actions>
-    <button mat-button (click)="addLabel(value)">done</button>
-  <!-- <button mat-button cdkFocusInitial>Ok</button> -->
-
+  <button mat-button cdkFocusInitial (click)="addLabel(value)">done</button>
 </div>
-<div (mouseenter)="changeText=true" (mouseLeave)="changeText=false">
+<!-- <div (mouseenter)="changeText=true" (mouseLeave)="changeText=false">
     <span *ngIf="!changeText">Hide</span>
     <span *ngIf="changeText">Show</span>
-  </div>
+  </div> -->
 
 <!-- <div>  {{message}}</div> -->
 <!-- </div>  -->
-<div (mouseover)="changeText=true" (mouseout)="changeText=false">
+<!-- <div (mouseover)="changeText=true" (mouseout)="changeText=false">
   <span [hidden]="changeText">   <mat-icon>label_outline</mat-icon></span>
   <span [hidden]="!changeText">  <mat-icon>delete</mat-icon></span>
-</div>
+</div> -->
