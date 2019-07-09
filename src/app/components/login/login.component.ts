@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     try {
       console.log(" login event called ", loginFormvalue);
       this.userService.login(loginFormvalue).subscribe(response => {
-        console.log('response ', response);
+       // console.log('response ', response);
         localStorage.setItem('token', response['id']);
         localStorage.setItem('userId',response['userId'])
         this.snackBar.open('login succesfully', '', { duration: 2000 });

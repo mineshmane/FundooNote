@@ -1,0 +1,25 @@
+<div>
+  <mat-card style="width: 500px;height:400px">
+
+    <p class="tc">
+      set-profile-photo
+    </p>
+    <input type='file' id="fileInput" (change)="fileChangeEvent($event)"  class="select-profile-picture">
+
+    <div >
+        <button mat-button (click)="upload()">upload</button>
+    </div>
+    <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [maintainAspectRatio]="true"
+    [aspectRatio]="4 / 3"
+    [resizeToWidth]="128"
+    format="png"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+></image-cropper>
+<img [src]="croppedImage" />
+  </mat-card>
+</div>

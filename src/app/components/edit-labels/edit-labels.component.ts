@@ -23,6 +23,7 @@ export class EditLabelsComponent implements OnInit {
   }
   allLabel = []
   @Output() labeladd=new EventEmitter<any>();
+  @Output() labelDelete=new EventEmitter<any>();
 
   ngOnInit() {
     // this.dataService.currentMessage.subscribe(message =>{
@@ -71,6 +72,7 @@ export class EditLabelsComponent implements OnInit {
       }
       this.noteService.deletelabel(data).subscribe(response => {
         console.log(" label deleted successfully ", response);
+        this.labelDelete.emit({});
         this.bar.open("label deleted sucessfully");
       }, error => {
         console.log('error ', error);

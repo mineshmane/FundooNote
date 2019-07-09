@@ -27,6 +27,8 @@ import { EditLabelsComponent } from './components/edit-labels/edit-labels.compon
 import { SearchComponent } from './components/search/search.component';
 import { SearchFilterPipe } from './pipe/search-filter.pipe';
 import { LabelComponent } from './components/label/label.component';
+import { SetProfilePhotoComponent } from './components/set-profile-photo/set-profile-photo.component';
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 
 
@@ -50,7 +52,8 @@ import { LabelComponent } from './components/label/label.component';
     SearchComponent,
     SearchFilterPipe,
     LabelComponent,
- 
+    SetProfilePhotoComponent,
+
 
   ],
   imports: [
@@ -60,9 +63,10 @@ import { LabelComponent } from './components/label/label.component';
     MatCardModule,
     materialModule,
     FormsModule, ReactiveFormsModule,HttpClientModule,
-    MatSnackBarModule,MatNativeDateModule, MatRippleModule
+    MatSnackBarModule,MatNativeDateModule, MatRippleModule,
+    ImageCropperModule
   ],
-  entryComponents:[UpdateComponent,EditLabelsComponent],
+  entryComponents:[UpdateComponent,EditLabelsComponent,SetProfilePhotoComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

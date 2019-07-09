@@ -21,14 +21,16 @@ export class IconComponent implements OnInit {
   
   @Output() update = new EventEmitter<any>();
 @Output() labelToNote=new EventEmitter<any>();
+
+
   ngOnInit() {
  
      // console.log("card in icon",this.card);
    this.dataService.currentMessage.subscribe(message => {
-      console.log("data in icon", message);
+     // console.log("data in icon", message);
     
       this.allLabel=message;
-      console.log(" all labelin icon",this.allLabel);
+     // console.log(" all labelin icon",this.allLabel);
       
      // console.log("searched cards", this.card);
 

@@ -16,8 +16,10 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { EditLabelsComponent } from '../edit-labels/edit-labels.component'
 import { NotesService } from '../../services/notes-service/notes.service';
 import { DataService } from '../../services/dataService/data.service'
+import {UserService} from '../../services/userService/user.service'
 // import { Routes, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { SetProfilePhotoComponent } from '../set-profile-photo/set-profile-photo.component';
 
 export interface DialogData {
   allLabel: []
@@ -29,7 +31,7 @@ export interface DialogData {
 })
 export class DashboardComponent implements OnInit {
   mobileQuery: MediaQueryList;
-
+  url = '';
   "label": "string"
   "isDeleted": true
   values = '';
@@ -43,7 +45,8 @@ export class DashboardComponent implements OnInit {
     ``);
 
   private _mobileQueryListener: () => void;
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private route: Router, private dataService: DataService, public dialog: MatDialog, private noteService: NotesService) {
+  constructor( private userService:UserService,
+    changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private route: Router, private dataService: DataService, public dialog: MatDialog, private noteService: NotesService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -61,9 +64,28 @@ export class DashboardComponent implements OnInit {
 
   // }
 
-  openDialog(): void {
+  openDialogLabel(): void {
     try {
       const dialogRef = this.dialog.open(EditLabelsComponent, {
+        // width: '250px',
+        // height:'500px',
+        data: { allLabel: this.allLabel }
+      });
+      // console.log(" in card ",card);
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        //this.title = result;
+      });
+    } catch (error) {
+      console.log(error);
+
+    }
+
+  }
+
+  openSetProfileDialog(): void {
+    try {
+      const dialogRef = this.dialog.open(SetProfilePhotoComponent, {
         // width: '250px',
         // height:'500px',
         data: { allLabel: this.allLabel }
@@ -94,10 +116,10 @@ export class DashboardComponent implements OnInit {
       this.noteService.getLableList().subscribe(response => {
         console.log('response labels ', response);
         console.log(" response label 2", response['data'].details);
-
+        
         this.allLabel = response['data'].details
         this.dataService.changeMessage(response['data'].details)
-        // this.allLabel.reverse();
+         this.allLabel.reverse();
         //console.log(" alllabels",this.allLabel);
         //  this.data.changeMessage(response['data'].details)
         //this.data.changeMessage(this.allLabel)
@@ -113,6 +135,8 @@ export class DashboardComponent implements OnInit {
     }
 
   }
+
+
   openLabel(label){
     console.log(" label ts",label);
     
@@ -120,6 +144,13 @@ export class DashboardComponent implements OnInit {
 
   }
 
+  logout() {
+    console.log(" logout called");
+    this.userService.logoutUser();
+    localStorage.clear();
+    this.route.navigate(['login']);
+    //localStorage.removeItem('');
+  }
   
 
 }

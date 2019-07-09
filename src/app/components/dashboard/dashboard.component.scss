@@ -108,9 +108,9 @@ a{
 
   .message {
     position: absolute;
-    width: 90%;
-    top: 50%;
-    left: 50%;
+    width: 50%;
+    top: 10%;
+    left: 20%;
     transform: translate(-50%, 100%);
     transition: all 1s;
     opacity: 0;
@@ -125,8 +125,31 @@ a{
     left: 0;
     z-index: 999;
     opacity: 0;
-    width: 100%;
-    height: 100%;
+    width: 40%;
+    height: 40%;
     cursor: pointer;
   }
   
+  .gb_eb {
+    font-weight: bold;
+    margin: -4px 0 1px 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  .gb_gb {
+    color: #666;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  .gb_2a, .gb_3a {
+    display: inline-block;
+    vertical-align: top;
+  }
+
+
+
+
+
+
+

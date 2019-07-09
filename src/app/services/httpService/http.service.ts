@@ -38,6 +38,25 @@ export class HttpService {
     }
     return this.http.post(this.baseUrl + url, this.encode(data), options)
   }
+setphoto(url, data){
+console.log(" httpt ",url,"data ",data);
+
+  let opt={
+
+
+    headers :new HttpHeaders({
+     'Content-Type': 'multipart/form-data',
+     'Authorization': localStorage.getItem('token'),
+     'Accept':'application/json'
+   })
+      
+ }
+ return this.http.post(this.baseUrl + url,this.encode(data), opt)
+
+}
+
+
+
   postAth(url, data) {
     console.log("http service called",url, data);
     let options = {
