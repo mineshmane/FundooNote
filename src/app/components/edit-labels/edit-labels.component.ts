@@ -48,7 +48,7 @@ export class EditLabelsComponent implements OnInit {
       }
       this.noteService.addLabel(data).subscribe(response => {
         console.log(response, " succsesfully updated note ");
-        this.bar.open(" note update succesFully ", '', { duration: 2000 });
+        this.bar.open(" label added succesFully ", '', { duration: 2000 });
         this.labeladd.emit({});
       }, error => {
         console.log('error ', error);

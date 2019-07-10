@@ -50,8 +50,8 @@
 
               <div>
                 <mat-card fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
-                  <div class="image-container" (click)="openSetProfileDialog()">
-                    <img class="avatar-flair " mat-card-avatar [src]="url ? url :''">
+                  <div class="image-container"   >
+                    <img class="avatar-flair " mat-card-avatar [src]="imageurl" (profilePic)="changeProfilePic()" (click)="openSetProfileDialog()">
                    
                    
                     <span class="message">change</span>
@@ -68,8 +68,8 @@
 
                   <div class="gb_3a" >
              
-                    <div class="gb_eb">username</div>
-                    <div class="gb_gb">emailid</div>
+                    <div class="gb_eb">{{userName}}</div>
+                    <div class="gb_gb">{{email}}</div>
 
                   </div>
                 </mat-card>

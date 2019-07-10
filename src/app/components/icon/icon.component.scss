@@ -2,7 +2,7 @@
   background-color: brown;
 }
 .grn {
-  background:	#00FF00;
+  background: #00ff00;
   width: 35px;
   height: 35px;
   padding: 1 1;
@@ -57,7 +57,7 @@
   padding: 1 1;
 }
 .yelo {
-  background-color:#CD5C5C;
+  background-color: #cd5c5c;
   width: 35px;
   height: 35px;
   padding: 1 1;
@@ -73,4 +73,11 @@
   width: 35px;
   height: 35px;
   padding: 1 1;
+}
+
+.colorPicker {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  margin: 2px;
 }

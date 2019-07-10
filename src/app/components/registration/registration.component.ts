@@ -127,7 +127,10 @@ export class RegistrationComponent implements OnInit {
         lastName: registerFormValue.lastName,
         email: registerFormValue.email,
         password: registerFormValue.password,
-        service: 'advance'
+        service: 'advance',
+        imageurl:'',
+        phoneNumber: "",
+       cartId: ""
       }
       console.log("new user created ", newUser);
       /********************************************************

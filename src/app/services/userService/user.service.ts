@@ -66,10 +66,14 @@ export class UserService {
       * @returns token
       */
      uploadProfileImage(data) {
-      console.log("user service called");
+      console.log("user service called",data);
   
-      return this.httpService.setphoto('user/uploadProfileImage', data);
+      return this.httpService.encodedPost('user/uploadProfileImage', data);
     }
   
+    profilePic(url,body){
+      return this.httpService.postWithoutHeader(url,body);
+  
+    }
 
 }

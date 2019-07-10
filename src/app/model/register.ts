@@ -3,6 +3,8 @@ export class User {
     lastName: string
     email: string
     password: string
-    service:string
-
+    service: string
+    imageurl:string
+    phoneNumber:string
+    cartId:string
 }

@@ -96,5 +96,15 @@ console.log(" httpt ",url,"data ",data);
   }
 
 
+  postWithoutHeader(url,data){
+    var httpOption={
+      headers:new HttpHeaders({
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+  
+    console.log("data");
+    return this.http.post(this.baseUrl+url,data,httpOption);
+  }
 
 }

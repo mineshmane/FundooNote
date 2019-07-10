@@ -51,6 +51,11 @@ export class LoginComponent implements OnInit {
        // console.log('response ', response);
         localStorage.setItem('token', response['id']);
         localStorage.setItem('userId',response['userId'])
+        localStorage.setItem('firstName',response['firstName'])
+        localStorage.setItem('lastName',response['lastName'])
+        localStorage.setItem('imageUrl',response['imageUrl'])
+       // localStorage.setItem('image', response['status']['imageUrl']);
+        localStorage.setItem('email',response['email'])
         this.snackBar.open('login succesfully', '', { duration: 2000 });
         this.router.navigate(['/dashboard']);
   

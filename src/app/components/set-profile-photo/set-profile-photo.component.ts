@@ -1,27 +1,30 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotesService } from '../../services/notes-service/notes.service';
+import { DataService } from '../../services/dataService/data.service'
 import { UserService } from '../../services/userService/user.service'
 import { MatSnackBar } from '@angular/material'
 import { DialogData } from '../dashboard/dashboard.component';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+
+
 @Component({
   selector: 'app-set-profile-photo',
   templateUrl: './set-profile-photo.component.html',
   styleUrls: ['./set-profile-photo.component.scss']
 })
 export class SetProfilePhotoComponent implements OnInit {
-  url: any;
+  @Output() profilePic = new EventEmitter<any>();
   value;
-  file;
-
-
+  fileToUpload: File
   imageChangedEvent: any = '';
   croppedImage: any = '';
-  files: [];
+  profilepic: File = null
+
+  fileBeforeCropped: any;
   constructor(public dialogRef: MatDialogRef<SetProfilePhotoComponent>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData, private noteService: NotesService,
-    private usrerService: UserService, private bar: MatSnackBar, ) { }
+    private userService: UserService, private bar: MatSnackBar, private DataService: DataService) { }
 
   ngOnInit() {
 
@@ -30,80 +33,51 @@ export class SetProfilePhotoComponent implements OnInit {
 
 
 
-
-
-
-
-  fileChangeEvent(event: any): void {
+  getprofilephoto(event) {
+    console.log("data in event", event)
     this.imageChangedEvent = event;
+    this.profilepic = <File>event.target.files[0];
+    console.log("profile pic", this.profilepic)
   }
+
   imageCropped(event: ImageCroppedEvent) {
-    console.log(" event", event);
+    console.log("exact file..", event.file);
 
-    this.croppedImage = event.base64;
-
-    this.value = event.file;
-    console.log(" file upload ", this.value);
+    this.croppedImage = event;
+    this.profilepic = <File>event.file;
+    console.log("profile pic", this.profilepic)
 
   }
-  dataURItoBlob(dataURI): Blob {
-    const byteString = atob(dataURI.split(',')[1]);
-    const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
-    const ab = new ArrayBuffer(byteString.length);
-    let ia = new Uint8Array(ab);
-    for (let i = 0; i < byteString.length; i++) {
-      ia[i] = byteString.charCodeAt(i);
-    }
-    return new Blob([ab], { type: mimeString });
-  }
-  imageLoaded() {
-    // show cropper
-  }
-  cropperReady() {
-    // cropper ready
-  }
-  loadImageFailed() {
-    // show message
-  }
 
-  upload() {
- 
-    
-    let formData = new FormData();
-    // if ($('#fileinput')[0] != undefined) {
-    //   if ($('#fileinput')[0].this.files.length > 0) {
-    //     this.file = $('#fileinput')[0].this.files[0];
-    //     formData.append('uploadingFile', this.file);
-    //     //fp.fileName = file.name;
-    //     console.log(formData);
-    //   }
-    formData.append('file', this.value,);
-    console.log("form data on ",formData);
+  setprofilephoto() {
+    const imagefile = new FormData();
+    imagefile.append('file', this.profilepic)
 
-    this.usrerService.uploadProfileImage(formData).subscribe(response => {
-      console.log(" response=", response);
-      this.bar.open("profile image uploaded succesfully")
+    console.log("profile pic", this.profilepic)
 
-
-    }, error => {
-      console.log(error);
-
+    this.userService.profilePic('user/uploadProfileImage', imagefile).subscribe(data => {
+      localStorage.setItem('imageUrl', data['status']['imageUrl']);
+      console.log("profile pic information...!", data)
+      this.profilePic.emit();
+      this.DataService.changeMessage({
+        data: {},
+        type: 'profile'
+      })
+      this.bar.open("profile pic uploaded  Successfully..", "close", {
+        duration: 3000,
+      });
+      this.close()
     })
   }
 
 
-  // public delete() {
-  //   this.url = null;
-  // }
+  close() {
+    this.dialogRef.close();
 
+  }
+  cancel() {
+    this.dialogRef.close();
 
+  }
 
-
-  // onUpload() {
-  //   const formData = new FormData();
-  //   for (const file of this.files) {
-  //       formData.append(name, file, );
-  //   }
-  //   //this.http.post('url', formData).subscribe(x => ....);
-  // }
 }
