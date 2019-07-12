@@ -27,6 +27,8 @@ export class DisplayComponent implements OnInit {
   @Output() update = new EventEmitter<any>();
   @Output() removeLabel = new EventEmitter<any>();
   @Output() labelToNote=new EventEmitter<any>();
+  @Output() reminderToNote=new EventEmitter<any>()
+  @Output() removeReminder = new EventEmitter<any>();
   ngOnInit() {
 
   }
@@ -74,6 +76,28 @@ export class DisplayComponent implements OnInit {
     })
   }
 
+  removeNoteReminder(reminder,card){
+    console.log(card, " labelin ");
+    console.log("card in disp[lay", card);
+
+    let data = {
+      noteIdList: [card.id],
+      userId: localStorage.getItem('userId')
+
+      
+    }
+    console.log("data ", data);
+
+    this.notesService.removeNoteReminder(data).subscribe(response => {
+      console.log("response", response);
+      this.removeReminder.emit();
+      this.bar.open(" label removed succesFully ", '', { duration: 2000 });
+    }, error => {
+      console.log(error);
+
+    })
+  }
+
 
   openDialog(card): void {
     try {
@@ -102,5 +126,8 @@ export class DisplayComponent implements OnInit {
   }
   labelAddedToNote(){
 this.labelToNote.emit();
+  }
+  reminderAddedToNote(){
+    this.reminderToNote.emit();
   }
 }

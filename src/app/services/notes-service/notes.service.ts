@@ -143,7 +143,9 @@ export class NotesService {
       * @returns token
       */
   updateLabel(data) {
-    return this.httpService.postAth('noteLabels/'+data.label.id+'/updateNoteLabel',data);
+    console.log(" data in service in edit label",data);
+    
+    return this.httpService.postAth('noteLabels/'+data.id+'/updateNoteLabel',data);
   }
 
     /********************************************************
@@ -165,6 +167,19 @@ export class NotesService {
     return this.httpService.postAth('notes/'+data.noteId+'/addLabelToNotes/'+data.lableId+'/remove', {});
   }
 
+
+
+  /********************************************************
+      * @description this service is for  update and edit  label
+      * @returns token
+      */
+     setReminder(data) {
+      console.log(" data in service in edit label",data);
+      
+      return this.httpService.postAth('notes/addUpdateReminderNotes',data);
+    }
+  
+
     /********************************************************
       * @description this service is for get notes list of by labelname list 
       * @returns token
@@ -174,4 +189,10 @@ export class NotesService {
     
     return this.httpService.postAth('notes/getNotesListByLabel/'+label,{});
   }
+
+
+  removeNoteReminder(data){
+    return this.httpService.postAth('notes/removeReminderNotes',data);
+  }
+
 }

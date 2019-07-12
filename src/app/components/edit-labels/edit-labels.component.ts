@@ -35,7 +35,7 @@ export class EditLabelsComponent implements OnInit {
     try {
       if(lab==undefined){
         console.log(" empty");
-        
+        this.dialogRef.close();
         return;
       }else{
       console.log(" card ", lab);
@@ -83,6 +83,8 @@ export class EditLabelsComponent implements OnInit {
 
   }
   editLabel(lab) {
+    console.log(" label in edit label",lab);
+    
     let data = {
       id: lab.id,
       label: lab.label,

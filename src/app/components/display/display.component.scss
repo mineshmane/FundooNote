@@ -4,12 +4,19 @@
     min-height: 20px;
     max-height: 350px;
     position: relative;
+    text-overflow: ellipsis;
 }
 
 ::ng-deep .mat-card{
   margin-top: 10px;
 }
 .div {
+    // background-color: yellow;
+    // padding: 20px;
+    // display: none;
+    visibility: hidden
+  }
+  .hid {
     // background-color: yellow;
     // padding: 20px;
     // display: none;

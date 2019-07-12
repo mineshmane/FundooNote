@@ -42,36 +42,26 @@
         <div>
           <button mat-icon-button (click)="hide" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
             fxFlex.xs="50">
-            <mat-icon>account_circle</mat-icon>
+            <img class="avatar " mat-card-avatar [src]="imageurl">
+            <!-- <mat-icon>account_circle</mat-icon> -->
           </button>
 
           <div>
             <mat-menu #menu="matMenu">
 
-              <div>
-                <mat-card fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
-                  <div class="image-container"   >
-                    <img class="avatar-flair " mat-card-avatar [src]="imageurl" (profilePic)="changeProfilePic()" (click)="openSetProfileDialog()">
-                   
-                   
+              <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
+                <mat-card fxLayout="row"  fxLayoutAlign="space-between center">
+                  <div class="image-container" style="margin-top: -50;margin-left: -10px" >
+                    <img class="avatar-flair " mat-card-avatar [src]="imageurl" (profilePic)="changeProfilePic()"
+                      (click)="openSetProfileDialog()">
                     <span class="message">change</span>
-
-<!-- 
-                    <label class="hoverable" for="fileInput">
-                        <img  mat-card-avatar  [src]="url ? url : '../../../assets/image/card.jpg'"> 
-                        <div class="hover-text">change</div>
-                        <div class="background"></div>
-                      </label>
-                      <br/>
-                      <input id="fileInput" type='file' (change)="onSelectFile($event)"> -->
                   </div>
 
-                  <div class="gb_3a" >
-             
+                  <div style="margin-top: -50px"  class="gb_3a">
                     <div class="gb_eb">{{userName}}</div>
                     <div class="gb_gb">{{email}}</div>
-
                   </div>
+
                 </mat-card>
               </div>
 
@@ -81,7 +71,7 @@
                   <input type='file'  class="select-profile-picture">
                   <span class="message">Tap here to select your picture</span>
                  </div> -->
-              <div fxLayout="row" fxLayoutAlign="space-around  center">
+              <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-around  center">
                 <button mat-raised-button>add Acount</button>
                 <button mat-raised-button (click)="logout()">logout</button>
               </div>
@@ -108,7 +98,7 @@
           </a>
         </div>
         <mat-divider></mat-divider>
-        <div  (labelDelete)="getLabelList()">
+        <div (labelDelete)="getLabelList()">
           <div *ngFor="let lab of allLabel">
 
             <div>
@@ -121,7 +111,7 @@
 
           <div class="label">
             <div>
-              <a mat-list-item (click)="openDialogLabel(lab)">
+              <a mat-list-item (click)="openDialogLabel()">
                 <mat-icon>create</mat-icon>
                 <p>edit label </p>
               </a>

@@ -20,9 +20,12 @@ export class SearchComponent implements OnInit {
     this.getNote();
     this.dataService.currentMessage.subscribe(message => {
       console.log("data in on change", message);
-      this.value = message
-      this.card = this.findCard(this.allnotes, this.value)
-      console.log("searched cards", this.card);
+      if(message.type=='search'){
+        this.value = message.data
+        this.card = this.findCard(this.allnotes, this.value)
+        console.log("searched cards", this.card);
+      }
+  
 
     })
   }

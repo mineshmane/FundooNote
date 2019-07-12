@@ -58,7 +58,7 @@ export class SetProfilePhotoComponent implements OnInit {
     this.userService.profilePic('user/uploadProfileImage', imagefile).subscribe(data => {
       localStorage.setItem('imageUrl', data['status']['imageUrl']);
       console.log("profile pic information...!", data)
-      this.profilePic.emit();
+      this.profilePic.emit();      this.close()
       this.DataService.changeMessage({
         data: {},
         type: 'profile'
@@ -66,7 +66,7 @@ export class SetProfilePhotoComponent implements OnInit {
       this.bar.open("profile pic uploaded  Successfully..", "close", {
         duration: 3000,
       });
-      this.close()
+
     })
   }
 

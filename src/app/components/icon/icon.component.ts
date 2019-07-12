@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NotesService } from '../../services/notes-service/notes.service'
 import { MatSnackBar } from '@angular/material'
 import { DataService } from '../../services/dataService/data.service';
+import { FormControl } from '@angular/forms';
+import { getLocaleTimeFormat } from '@angular/common';
 
 @Component({
   selector: 'app-icon',
@@ -15,6 +17,7 @@ export class IconComponent implements OnInit {
   @Input() isTrash;
   archive = true
   isDeleted = true
+  //date=new Date();
   //isDeleted=this.card.isDeleted;
 
   public colorArray: any = [
@@ -35,22 +38,26 @@ export class IconComponent implements OnInit {
 
   @Output() update = new EventEmitter<any>();
   @Output() labelToNote = new EventEmitter<any>();
-
+  @Output() reminderToNote = new EventEmitter<any>();
 
   ngOnInit() {
+    this.shareLabelArrayData()
 
-    // console.log("card in icon",this.card);
-    this.dataService.currentMessage.subscribe(message => {
-      // console.log("data in icon", message);
+  }
+  shareLabelArrayData() {
+    this.dataService.currentData.subscribe(message => {
+      console.log("data in icon", message);
+      if (message.type == 'label')
+        this.allLabel = message.data;
+      else if (message.type == 'search') {
 
-      this.allLabel = message;
+      }
       // console.log(" all labelin icon",this.allLabel);
 
       // console.log("searched cards", this.card);
 
     })
   }
-
   archiveNote() {
     try {
       let data = {
@@ -141,7 +148,7 @@ export class IconComponent implements OnInit {
   }
 
 
-  addNoteLabel(label) {
+  addLabelToLabel(label) {
     console.log(" note label called", label.id);
     console.log(" card", this.card.id);
 
@@ -163,4 +170,43 @@ export class IconComponent implements OnInit {
 
   }
 
+
+
+  setReminder() {
+    //  selectedMoment = new Date();
+    // this.selectedMoment2 = new FormControl(new Date());
+    // selectedMoments = [new Date(2018, 1, 12, 10, 30), new Date(2018, 3, 21, 20, 30)];
+    // console.log(selectedMoment,"first date");
+    // console.log(" new date",selectedMoments);
+    // console.log(" new date 2",this.selectedMoment2);
+
+
+  }
+  date;
+  todayDate;
+  today() {
+    this.date = new Date();
+    this.date.setHours(20, 0, 0)
+    console.log("dateprinting ", this.date)
+    this.todayDate = {
+      reminder: [this.date],
+
+      isPined: false,
+      isArchived: false,
+      isDeleted: false,
+      noteIdList: [this.card.id],
+      userId: localStorage.getItem('userId')
+
+    };
+    console.log(" todya date", this.todayDate);
+    this.notesService.setReminder(this.todayDate).subscribe(response => {
+      console.log(" response from setReminder", response);
+      this.reminderToNote.emit({});
+
+    }, error => {
+      console.log(error);
+
+    })
+    // return console.log("today date and time printing ", new Date(2018, 1, 12, 20, 0));
+  }
 }

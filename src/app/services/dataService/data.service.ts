@@ -8,7 +8,7 @@ export class DataService {
 
 
 
-  private messageSource = new BehaviorSubject([]);
+  private messageSource = new BehaviorSubject({type:'',data:[]});
   currentMessage = this.messageSource.asObservable();
 
   constructor() { console.log(" data service called"); }
@@ -17,5 +17,14 @@ export class DataService {
     console.log(" data service called", message);
     this.messageSource.next(message)
   }
+  
+
+  private arrayData = new BehaviorSubject({type:'',data:[]});
+  currentData = this.arrayData.asObservable();
+  changeData(message: any) {
+    console.log(" data service called", message);
+    this.arrayData.next(message)
+  }
+
 
 }

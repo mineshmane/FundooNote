@@ -81,3 +81,26 @@
   border-radius: 50%;
   margin: 2px;
 }
+
+.date {
+  border-radius: 0 25px 25px 0;
+  font-size: 14px;
+  flex: 5 5 auto;
+  cursor: pointer;
+}
+.reminderMenu {
+  width: 200px;
+}
+#reminderLabel {
+  margin-right: 10px;
+  line-height: 25px;
+  cursor: pointer;
+}
+.lb{
+  cursor: pointer;
+}
+
+h6 {
+  margin-top: 7px;
+  margin-left: 5px;
+}

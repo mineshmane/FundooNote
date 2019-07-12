@@ -129,7 +129,10 @@ this.changeProfilePic();
     this.route.navigate(['dashboard/search']);
 
     this.values = event.target.value;
-    this.dataService.changeMessage(this.values)
+    this.dataService.changeMessage({
+      type:'search',
+      data:this.values
+    })
     this.ab = this.values;
 
   }
@@ -140,7 +143,11 @@ this.changeProfilePic();
         console.log(" response label 2", response['data'].details);
 
         this.allLabel = response['data'].details
-        this.dataService.changeMessage(response['data'].details)
+
+        this.dataService.changeData({
+          type:'label',
+          data:response['data'].details
+        })
         this.allLabel.reverse();
         //console.log(" alllabels",this.allLabel);
         //  this.data.changeMessage(response['data'].details)
@@ -155,6 +162,7 @@ this.changeProfilePic();
       console.log(error);
 
     }
+
 
   }
 

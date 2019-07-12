@@ -21,7 +21,7 @@ notes=[]
 
   }
 
-  //parentMessage = "message from parent"
+
   newNote() {
     try {
       this.notesService.getNotes().subscribe(response => {

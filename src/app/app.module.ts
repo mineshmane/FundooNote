@@ -30,6 +30,7 @@ import { LabelComponent } from './components/label/label.component';
 import { SetProfilePhotoComponent } from './components/set-profile-photo/set-profile-photo.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
 
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 
 @NgModule({
@@ -64,7 +65,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     materialModule,
     FormsModule, ReactiveFormsModule,HttpClientModule,
     MatSnackBarModule,MatNativeDateModule, MatRippleModule,
-    ImageCropperModule
+    ImageCropperModule,OwlDateTimeModule, OwlNativeDateTimeModule 
   ],
   entryComponents:[UpdateComponent,EditLabelsComponent,SetProfilePhotoComponent],
   providers: [],
