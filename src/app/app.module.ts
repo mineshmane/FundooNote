@@ -31,6 +31,7 @@ import { SetProfilePhotoComponent } from './components/set-profile-photo/set-pro
 import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { DateTimePipe } from './pipes/date-time.pipe';
 
 
 @NgModule({
@@ -54,6 +55,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
     SearchFilterPipe,
     LabelComponent,
     SetProfilePhotoComponent,
+    DateTimePipe,
 
 
   ],

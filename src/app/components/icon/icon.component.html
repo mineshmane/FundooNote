@@ -2,7 +2,6 @@
   fxFlex.xs="auto">
 
   <div fxLayout="16px">
-
     <button mat-icon-button [matMenuTriggerFor]="menumenu" matTooltip="Reminde me"
       aria-label="Example icon-button with a menu" (click)="$event.stopPropagation()">
       <mat-icon>add_alert</mat-icon>
@@ -13,11 +12,11 @@
           <h4>Reminder:</h4>
         </div>
         <div>
-          <div class="date" fxLayout="row" fxLayoutAlign="space-around center">
-            <button>
-             <label id="reminderLabel" (click)="today()">Later today</label> 
-            <label class="lb">8:pm </label>
-          </button>
+          <div class="date" (click)="today()" fxLayout="row" fxLayoutAlign="space-around center">
+            <!-- <button> -->
+              <label id="reminderLabel" >Later today</label>
+              <label class="lb">8:pm </label>
+            <!-- </button> -->
           </div>
         </div>
 
@@ -37,7 +36,8 @@
           </div>
         </div>
         <button mat-menu-item [matMenuTriggerFor]="datepicker">
-          <span>pickDate</span>
+          <mat-icon>access_time</mat-icon>
+          <span>pick Date & Time</span>
         </button>
       </div>
     </mat-menu>
@@ -51,13 +51,20 @@
 
       <button mat-menu-item>
         <label>
-          <input matInput [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3" placeholder="date">
+          <input matInput [owlDateTimeTrigger]="dt3" [(ngModel)]="dateTime" [owlDateTime]="dt3" placeholder=" selextdate">
           <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
         </label>
       </button>
 
+      <!-- 
+      <mat-form-field>
+        <input matInput [matDatepicker]="dp"  [(ngModel)]="dateTime">
+        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+        <mat-datepicker #dp></mat-datepicker>
+      </mat-form-field> -->
+
       <button mat-menu-item><label>
-          <input matInput [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" placeholder="time">
+          <input matInput [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" [(ngModel)]="dateTime" placeholder="time">
           <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
         </label>
       </button>
@@ -77,11 +84,11 @@
 
       <mat-divider></mat-divider>
       <div mat-dialog-actions fxLayoutAlign='end end'>
-        <button mat-button cdkFocusInitial (click)="setReminder()">done</button>
+        <button mat-button cdkFocusInitial (click)="setReminder(dateTime)">done</button>
       </div>
     </mat-menu>
-
   </div>
+
 
   <div fxLayout="16px" fxLayout.xs="10px">
     <button mat-icon-button [matMenuTriggerFor]="menuu" matTooltip="Change Color">
@@ -90,7 +97,7 @@
     <mat-menu #menuu="matMenu">
       <div *ngFor="let colors of colorArray" fxLayout="row">
         <div *ngFor='let bgColor of colors'>
-          <div (click)='setColor(bgColor.color,card)' [ngStyle]="{'background-color': bgColor.color}"
+          <div (click)='setColor(bgColor.color,card)' (click)="$event.stopPropagation()" [ngStyle]="{'background-color': bgColor.color}"
             class="colorPicker"></div>
         </div>
       </div>
@@ -124,10 +131,10 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button *ngIf="isTrash" mat-menu-item (click)="deleteForeverNote()">
+      <button *ngIf="isTrash"  mat-menu-item (click)="deleteForeverNote()">
         <span>Deleteforever</span>
       </button>
-      <button *ngIf="!isTrash" mat-menu-item (click)="trashNote()">
+      <button *ngIf="!isTrash"  mat-menu-item (click)="trashNote()">
         <span>Delete note</span>
       </button>
 
@@ -156,14 +163,11 @@
 
         </mat-form-field>
       </div>
-      <div  >
+      <div>
         <!-- <p>*ngIf="labelText"</p> -->
         <div *ngFor="let label of allLabel |searchFilter: labelText ">
-          <mat-checkbox (click)="$event.stopPropagation()" (click)="addLabelToLabel(label)">{{label.label}}</mat-checkbox>
-          <!-- <button mat-menu-item (click)="$event.stopPropagation()">
-          <p>{{i.label}}</p>
-        </button> -->
-
+          <mat-checkbox (click)="$event.stopPropagation()" (click)="addLabelToLabel(label)">{{label.label}}
+          </mat-checkbox>
         </div>
       </div>
 

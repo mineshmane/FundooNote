@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'searchFilter'
+  name: 'searchFilter',
+ 
 })
 export class SearchFilterPipe implements PipeTransform {
 
@@ -19,13 +20,9 @@ console.log(" value called ",value);
       return  item.label.toLocaleLowerCase().startsWith(args)
           //return  item.label.startsWith(args)==true
     })
-
-
-   
-
-
-
-
+ 
   }
+
+ 
 
 }

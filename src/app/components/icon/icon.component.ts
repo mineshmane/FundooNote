@@ -15,6 +15,7 @@ export class IconComponent implements OnInit {
   constructor(private notesService: NotesService, private snackBar: MatSnackBar, private dataService: DataService) { }
   @Input() card;
   @Input() isTrash;
+  @Input() isTakeNote;
   archive = true
   isDeleted = true
   //date=new Date();
@@ -170,15 +171,36 @@ export class IconComponent implements OnInit {
 
   }
 
+  newDate;
 
+  setReminder(dateTime) {
+  
+    console.log(" new date", dateTime);
+    var datum = Date.parse(dateTime);
+    console.log("new date after parseing",datum/1000);
+    
 
-  setReminder() {
-    //  selectedMoment = new Date();
-    // this.selectedMoment2 = new FormControl(new Date());
-    // selectedMoments = [new Date(2018, 1, 12, 10, 30), new Date(2018, 3, 21, 20, 30)];
-    // console.log(selectedMoment,"first date");
-    // console.log(" new date",selectedMoments);
-    // console.log(" new date 2",this.selectedMoment2);
+    this.todayDate = {
+      reminder: [dateTime],
+
+      isPined: false,
+      isArchived: false,
+      isDeleted: false,
+      noteIdList: [this.card.id],
+      userId: localStorage.getItem('userId')
+
+    };
+
+    console.log(" todya date", this.todayDate);
+    this.notesService.setReminder(this.todayDate).subscribe(response => {
+      console.log(" response from setReminder", response);
+      this.reminderToNote.emit({});
+
+    }, error => {
+      console.log(error);
+
+    })
+  
 
 
   }

@@ -56,19 +56,21 @@
 
       <div *ngFor="let label of card.noteLabels">
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip [style.background-color]=card.color >
-            {{label.label}}
-            <mat-icon matChipRemove *ngIf="removable"  class="div" (click)="remove(label,card)">cancel</mat-icon>
+          <mat-chip [style.background-color]=card.color>
+            <div class="XPtOyb-fmcmS"> {{label.label}}</div>
+            <mat-icon matChipRemove *ngIf="removable" class="div" (click)="remove(label,card)">cancel</mat-icon>
           </mat-chip>
         </mat-chip-list>
       </div>
 
       <div *ngFor="let rem of card.reminder">
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip [style.background-color]=card.color >
+          <mat-chip [style.background-color]=card.color>
             <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time</mat-icon>
-            <span>today{{rem | date :'shortTime'}}</span> 
-            <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteReminder(rem,card)">cancel</mat-icon>
+            <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
+
+            <mat-icon class="i" matChipRemove *ngIf="removable" class="div" (click)="removeNoteReminder(rem,card)">
+              cancel</mat-icon>
           </mat-chip>
         </mat-chip-list>
       </div>
