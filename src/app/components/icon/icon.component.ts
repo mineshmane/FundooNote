@@ -81,6 +81,26 @@ export class IconComponent implements OnInit {
 
   }
 
+  unTrashNote() {
+    try {
+      let data = {
+        // cardidList:this.cardId,
+        noteIdList: [this.card.id],
+        isDeleted: false,
+      }
+      console.log(data);
+      this.notesService.deleteNote(data).subscribe(response => {
+        console.log('response ', response);
+        // this.update.emit({})
+        this.snackBar.open('note deleted succesfully', '', { duration: 2000 });
+      }, error => {
+        console.log('error ', error);
+      })
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
   trashNote() {
     try {
       let data = {
@@ -174,11 +194,11 @@ export class IconComponent implements OnInit {
   newDate;
 
   setReminder(dateTime) {
-  
+
     console.log(" new date", dateTime);
     var datum = Date.parse(dateTime);
-    console.log("new date after parseing",datum/1000);
-    
+    console.log("new date after parseing", datum / 1000);
+
 
     this.todayDate = {
       reminder: [dateTime],
@@ -200,7 +220,7 @@ export class IconComponent implements OnInit {
       console.log(error);
 
     })
-  
+
 
 
   }

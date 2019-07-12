@@ -2,9 +2,9 @@
   fxFlex.xs="auto">
 
   <div fxLayout="16px">
-    <button mat-icon-button [matMenuTriggerFor]="menumenu" matTooltip="Reminde me"
+    <button mat-icon-button [matMenuTriggerFor]="menumenu" *ngIf="!isTrash" matTooltip="Reminde me"
       aria-label="Example icon-button with a menu" (click)="$event.stopPropagation()">
-      <mat-icon>add_alert</mat-icon>
+      <mat-icon *ngIf="!isTrash">add_alert</mat-icon>
     </button>
     <mat-menu #menumenu="matMenu">
       <div fxLayout="column" class="reminderMenu">
@@ -14,8 +14,8 @@
         <div>
           <div class="date" (click)="today()" fxLayout="row" fxLayoutAlign="space-around center">
             <!-- <button> -->
-              <label id="reminderLabel" >Later today</label>
-              <label class="lb">8:pm </label>
+            <label id="reminderLabel">Later today</label>
+            <label class="lb">8:pm </label>
             <!-- </button> -->
           </div>
         </div>
@@ -51,7 +51,8 @@
 
       <button mat-menu-item>
         <label>
-          <input matInput [owlDateTimeTrigger]="dt3" [(ngModel)]="dateTime" [owlDateTime]="dt3" placeholder=" selextdate">
+          <input matInput [owlDateTimeTrigger]="dt3" [(ngModel)]="dateTime" [owlDateTime]="dt3"
+            placeholder=" selextdate">
           <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
         </label>
       </button>
@@ -72,11 +73,11 @@
       <button mat-menu-item>
         <mat-form-field>
           <select matNativeControl required>
-            <option value="volvo">daily</option>
-            <option value="saab">repeat</option>
-            <option value="mercedes">do notreapeat</option>
-            <option value="audi">weekly</option>
-            <option value="audi">monthly</option>
+            <option value="volvo" (click)="$event.stopPropagation()">daily</option>
+            <option value="saab" (click)="$event.stopPropagation()">repeat</option>
+            <option value="mercedes" (click)="$event.stopPropagation()">do notreapeat</option>
+            <option value="audi" (click)="$event.stopPropagation()">weekly</option>
+            <option value="audi" (click)="$event.stopPropagation()">monthly</option>
           </select>
         </mat-form-field>
       </button>
@@ -91,34 +92,35 @@
 
 
   <div fxLayout="16px" fxLayout.xs="10px">
-    <button mat-icon-button [matMenuTriggerFor]="menuu" matTooltip="Change Color">
+    <button mat-icon-button [matMenuTriggerFor]="menuu" *ngIf="!isTrash" matTooltip="Change Color">
       <mat-icon>color_lens</mat-icon>
     </button>
     <mat-menu #menuu="matMenu">
       <div *ngFor="let colors of colorArray" fxLayout="row">
         <div *ngFor='let bgColor of colors'>
-          <div (click)='setColor(bgColor.color,card)' (click)="$event.stopPropagation()" [ngStyle]="{'background-color': bgColor.color}"
-            class="colorPicker"></div>
+          <div (click)='setColor(bgColor.color,card)' (click)="$event.stopPropagation()"
+            [ngStyle]="{'background-color': bgColor.color}" class="colorPicker"></div>
         </div>
       </div>
     </mat-menu>
 
   </div>
   <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="hide = !hide" matTooltip="add image" fxLayout="16px"
+    <button mat-icon-button matSuffix (click)="hide = !hide" *ngIf="!isTrash" matTooltip="add image" fxLayout="16px"
       (click)="$event.stopPropagation()">
       <mat-icon>crop_original</mat-icon>
     </button>
   </div>
   <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="hide = !hide" matTooltip="Collaborator" fxLayout="16px"
+    <button mat-icon-button matSuffix (click)="hide = !hide" *ngIf="!isTrash" matTooltip="Collaborator" fxLayout="16px"
       (click)="$event.stopPropagation()">
       <mat-icon>person_add</mat-icon>
     </button>
   </div>
 
   <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="archiveNote()" (click)="$event.stopPropagation()" matTooltip="Archive">
+    <button mat-icon-button matSuffix (click)="archiveNote()" *ngIf="!isTrash" (click)="$event.stopPropagation()"
+      matTooltip="Archive">
       <mat-icon>archive</mat-icon>
     </button>
   </div>
@@ -131,10 +133,13 @@
       <mat-icon>more_vert</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button *ngIf="isTrash"  mat-menu-item (click)="deleteForeverNote()">
+      <button *ngIf="isTrash" mat-menu-item (click)="deleteForeverNote()">
         <span>Deleteforever</span>
       </button>
-      <button *ngIf="!isTrash"  mat-menu-item (click)="trashNote()">
+      <button *ngIf="isTrash" mat-menu-item (click)="unTrashNote()">
+        <span>Restore</span>
+      </button>
+      <button *ngIf="!isTrash" mat-menu-item (click)="trashNote()">
         <span>Delete note</span>
       </button>
 

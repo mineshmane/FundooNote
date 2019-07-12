@@ -41,7 +41,7 @@
             <p>{{card.title}}</p>
           </div>
           <div class="div">
-            <button mat-icon-button matSuffix (click)="pinNote(card)" matTooltip="pin">
+            <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin">
               <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
             </button>
           </div>
@@ -65,7 +65,7 @@
 
       <div *ngFor="let rem of card.reminder">
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip [style.background-color]=card.color>
+          <mat-chip [style.background-color]=card.color *ngIf="!isTrash">
             <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time</mat-icon>
             <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
 
