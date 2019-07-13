@@ -51,14 +51,17 @@ export class SetProfilePhotoComponent implements OnInit {
 
   setprofilephoto() {
     const imagefile = new FormData();
+   
     imagefile.append('file', this.profilepic)
-
+    if (this.profilepic == null) {
+      return this.close();
+    }
     console.log("profile pic", this.profilepic)
 
     this.userService.profilePic('user/uploadProfileImage', imagefile).subscribe(data => {
       localStorage.setItem('imageUrl', data['status']['imageUrl']);
       console.log("profile pic information...!", data)
-      this.profilePic.emit();      this.close()
+      this.profilePic.emit(); this.close()
       this.DataService.changeMessage({
         data: {},
         type: 'profile'

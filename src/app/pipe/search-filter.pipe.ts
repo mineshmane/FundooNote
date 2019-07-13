@@ -7,8 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class SearchFilterPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-console.log(" pipe called",args);
-console.log(" value called ",value);
+// console.log(" pipe called",args);
+// console.log(" value called ",value);
 
 
     if(!args){

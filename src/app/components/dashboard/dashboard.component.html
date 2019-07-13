@@ -6,7 +6,7 @@
     </button>
     <!-- <mat-icon> <img src="../../../assets/image/keep.svg"></mat-icon> -->
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
-      <div fxFlex.md="30" fxFlex.xm="28" fxFlex="30">
+      <div fxFlex.md="30" fxFlex.xm="28" fxFlex.xs="30" fxFlex="30">
         <h1 class="app-name">
           <p>
             <span class="f">F</span>
@@ -25,7 +25,7 @@
         <mat-form-field [style.fontSize.px]="12" appearance="outline" routerLink="search" fxFlex.sm="50" fxFlex.md="50"
           fxFlex.xs="50">
           <button mat-icon-button matSuffix fxFlex.xs="50" matTooltip="Search">
-            <mat-icon fxFlex.xs="50" (click)="searchNote(title)">search</mat-icon>
+            <mat-icon fxFlex.xs="50" >search</mat-icon>
           </button>
           <input matInput type="text" [(ngModel)]="title" placeholder="search" (keyup)="search($event)">
         </mat-form-field>
@@ -50,14 +50,14 @@
             <mat-menu #menu="matMenu">
 
               <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
-                <mat-card fxLayout="row"  fxLayoutAlign="space-between center">
-                  <div class="image-container" style="margin-top: -50;margin-left: -10px" >
+                <mat-card fxLayout="row" fxLayoutAlign="space-between center">
+                  <div class="image-container" style="margin-top: -50;margin-left: -10px">
                     <img class="avatar-flair " mat-card-avatar [src]="imageurl" (profilePic)="changeProfilePic()"
                       (click)="openSetProfileDialog()">
                     <span class="message">change</span>
                   </div>
 
-                  <div style="margin-top: -50px"  class="gb_3a">
+                  <div style="margin-top: -50px" class="gb_3a">
                     <div class="gb_eb">{{userName}}</div>
                     <div class="gb_gb">{{email}}</div>
                   </div>
@@ -89,12 +89,14 @@
       <mat-nav-list style="width:217px">
         <div>
           <a mat-list-item routerLink="notes">
-            <mat-icon>lightbulb_outline</mat-icon>Notes
+            <mat-icon>lightbulb_outline</mat-icon>
+            <div class="noteReminder">Notes</div>
           </a>
         </div>
         <div>
           <a mat-list-item routerLink="reminder">
-            <mat-icon>notifications_outline</mat-icon>reminder
+            <mat-icon>notifications_outline</mat-icon>
+            <div class="noteReminder">Reminders</div>
           </a>
         </div>
         <mat-divider></mat-divider>
@@ -104,7 +106,7 @@
             <div>
               <a mat-list-item (click)="openLabel(lab)">
                 <mat-icon>label_outline</mat-icon>
-                <p class="label">{{lab.label}}</p>
+                <p class="label" class="noteReminder">{{lab.label}}</p>
               </a>
             </div>
           </div>
@@ -113,7 +115,7 @@
             <div>
               <a mat-list-item (click)="openDialogLabel()">
                 <mat-icon>create</mat-icon>
-                <p>edit label </p>
+                <div class="noteReminder">Edit Label</div>
               </a>
             </div>
           </div>
@@ -122,7 +124,8 @@
         <mat-divider></mat-divider>
         <div>
           <a mat-list-item routerLink="archive">
-            <mat-icon>archive_outline</mat-icon>Archive
+            <mat-icon>archive_outline</mat-icon>
+            <div class="noteReminder">Archive</div>
           </a>
         </div>
         <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -131,7 +134,7 @@
             <div>
               <mat-icon>delete</mat-icon>
             </div>
-            <div>Trash</div>
+            <div class="noteReminder">Trash</div>
 
           </a>
 

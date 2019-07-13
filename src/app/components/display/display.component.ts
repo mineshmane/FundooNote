@@ -55,7 +55,7 @@ export class DisplayComponent implements OnInit {
 
   }
 
-  remove(label, card): void {
+  removeNoteLabel(label, card): void {
     console.log(label.id, " labelin ");
     console.log("card in disp[lay", card.id);
 

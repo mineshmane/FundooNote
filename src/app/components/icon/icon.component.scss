@@ -84,6 +84,7 @@
 
 .date {
   border-radius: 0 25px 25px 0;
+  border: transparent;
   font-size: 14px;
   flex: 5 5 auto;
   cursor: pointer;
@@ -103,4 +104,27 @@
 h6 {
   margin-top: 7px;
   margin-left: 5px;
+}
+
+.noteReminder
+{
+font-size: 13px;
+line-height: 40px;
+font-family: 'Roboto',arial,sans-serif;
+color: #202124;
+margin-left: 10px;
+margin-right: 10px;
+border: transparent;
+background: transparent;
+cursor: pointer;
+
+}
+
+.noteReminder1
+{
+font-size: 14px;
+line-height: 40px;
+font-family: 'Roboto',arial,sans-serif;
+color: black;
+margin-left: 10px;
 }
