@@ -27,4 +27,13 @@ export class DataService {
   }
 
 
+  private listData = new BehaviorSubject([]);
+  viewListData = this.listData.asObservable();
+  
+  listViewData(message) {
+    console.log(" data service called", message);
+    this.listData.next(message )
+  }
+
+
 }

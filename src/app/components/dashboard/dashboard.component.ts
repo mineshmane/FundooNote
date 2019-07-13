@@ -20,6 +20,7 @@ import { UserService } from '../../services/userService/user.service'
 // import { Routes, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { SetProfilePhotoComponent } from '../set-profile-photo/set-profile-photo.component';
+import { isListLikeIterable } from '@angular/core/src/change_detection/change_detection_util';
 
 export interface DialogData {
   allLabel: []
@@ -55,6 +56,7 @@ export class DashboardComponent implements OnInit {
   message: string;
   imageurl: string
   localstorage_image: any
+  isList;
   fName;
   lName;
   email;
@@ -79,9 +81,14 @@ this.changeProfilePic();
 
   }
 
-  // newMessage() {
+   listView() {
+     this.isList=true;
+     this.dataService.listViewData({
+    
+      data:this.isList
+    })
 
-  // }
+   }
 
   openDialogLabel(): void {
     try {

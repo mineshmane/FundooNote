@@ -254,6 +254,34 @@ export class IconComponent implements OnInit {
     })
     // return console.log("today date and time printing ", new Date(2018, 1, 12, 20, 0));
   }
+  tommorrow() {
+    var today = new Date();
+    var tomorrow = new Date();
+    var tomm=tomorrow.setDate(today.getDate() + 1);
+    tomorrow.setHours(8,0,0)
+
+
+    this.todayDate = {
+      reminder: [tomorrow],
+
+      isPined: false,
+      isArchived: false,
+      isDeleted: false,
+      noteIdList: [this.card.id],
+      userId: localStorage.getItem('userId')
+
+    };
+    console.log(" todya date", this.todayDate);
+    this.notesService.setReminder(this.todayDate).subscribe(response => {
+      console.log(" response from setReminder", response);
+      this.reminderToNote.emit({});
+
+    }, error => {
+      console.log(error);
+
+    })
+
+  }
 
   closestMonday = () => {
     var curr_date = new Date(); // current date

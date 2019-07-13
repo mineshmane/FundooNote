@@ -3,6 +3,7 @@ import { NotesService } from '../../services/notes-service/notes.service'
 import { MatSnackBar } from '@angular/material'
 import { UpdateComponent } from '../update/update.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DataService } from '../../services/dataService/data.service'
 
 @Component({
   selector: 'app-display',
@@ -10,6 +11,8 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./display.component.scss']
 })
 export class DisplayComponent implements OnInit {
+  isList;
+
   pin = true
   visible = true;
   selectable = true;
@@ -18,7 +21,7 @@ export class DisplayComponent implements OnInit {
   title = '';
   description = '';
   constructor(
-    private notesService: NotesService,
+    private notesService: NotesService, private dataService: DataService,
     private bar: MatSnackBar,
     public dialog: MatDialog) { }
   @Input() childMessage;
@@ -26,11 +29,16 @@ export class DisplayComponent implements OnInit {
   @Input() card
   @Output() update = new EventEmitter<any>();
   @Output() removeLabel = new EventEmitter<any>();
-  @Output() labelToNote=new EventEmitter<any>();
-  @Output() reminderToNote=new EventEmitter<any>()
+  @Output() labelToNote = new EventEmitter<any>();
+  @Output() reminderToNote = new EventEmitter<any>()
   @Output() removeReminder = new EventEmitter<any>();
   ngOnInit() {
 
+    this.dataService.viewListData.subscribe(data => {
+      this.isList = data['data'];
+      console.log("data in display", this.isList);
+
+    })
   }
 
   pinNote(card) {
@@ -76,7 +84,7 @@ export class DisplayComponent implements OnInit {
     })
   }
 
-  removeNoteReminder(reminder,card){
+  removeNoteReminder(reminder, card) {
     console.log(card, " labelin ");
     console.log("card in disp[lay", card);
 
@@ -84,7 +92,7 @@ export class DisplayComponent implements OnInit {
       noteIdList: [card.id],
       userId: localStorage.getItem('userId')
 
-      
+
     }
     console.log("data ", data);
 
@@ -124,10 +132,10 @@ export class DisplayComponent implements OnInit {
   getTrashNotes() {
     this.update.emit();
   }
-  labelAddedToNote(){
-this.labelToNote.emit();
+  labelAddedToNote() {
+    this.labelToNote.emit();
   }
-  reminderAddedToNote(){
+  reminderAddedToNote() {
     this.reminderToNote.emit();
   }
 }
