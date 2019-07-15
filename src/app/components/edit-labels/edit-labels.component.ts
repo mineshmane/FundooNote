@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, Output , EventEmitter } from '@angular/core';
+import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { notes } from 'src/app/model/notes';
 import { NotesService } from '../../services/notes-service/notes.service';
@@ -22,38 +22,38 @@ export class EditLabelsComponent implements OnInit {
     this.changeText = false;
   }
   allLabel = []
-  @Output() labeladd=new EventEmitter<any>();
-  @Output() labelDelete=new EventEmitter<any>();
+  @Output() labeladd = new EventEmitter<any>();
+  @Output() labelDelete = new EventEmitter<any>();
 
   ngOnInit() {
     // this.dataService.currentMessage.subscribe(message =>{
     //   this.allLabel=message
     // })
-   
+
   }
   addLabel(lab) {
     try {
-      if(lab==undefined){
+      if (lab == undefined) {
         console.log(" empty");
         this.dialogRef.close();
         return;
-      }else{
-      console.log(" card ", lab);
-      let data = {
-       
-        label: lab,
-        isDeleted: false,
-        userId: localStorage.getItem('userId')
+      } else {
+        console.log(" card ", lab);
+        let data = {
 
+          label: lab,
+          isDeleted: false,
+          userId: localStorage.getItem('userId')
+
+        }
+        this.noteService.addLabel(data).subscribe(response => {
+          console.log(response, " succsesfully updated note ");
+          this.bar.open(" label added succesFully ", '', { duration: 2000 });
+          this.labeladd.emit({});
+        }, error => {
+          console.log('error ', error);
+        })
       }
-      this.noteService.addLabel(data).subscribe(response => {
-        console.log(response, " succsesfully updated note ");
-        this.bar.open(" label added succesFully ", '', { duration: 2000 });
-        this.labeladd.emit({});
-      }, error => {
-        console.log('error ', error);
-      })
-    }
       this.dialogRef.close();
     } catch (error) {
       console.log(error);
@@ -73,6 +73,10 @@ export class EditLabelsComponent implements OnInit {
       this.noteService.deletelabel(data).subscribe(response => {
         console.log(" label deleted successfully ", response);
         this.labelDelete.emit({});
+        this.dataService.labelDatasend({
+          data: {},
+          type: 'profile'
+        })
         this.bar.open("label deleted sucessfully");
       }, error => {
         console.log('error ', error);
@@ -83,12 +87,12 @@ export class EditLabelsComponent implements OnInit {
 
   }
   editLabel(lab) {
-    console.log(" label in edit label",lab);
-    
+    console.log(" label in edit label", lab);
+
     let data = {
       id: lab.id,
       label: lab.label,
-      userId:localStorage.getItem('userId')
+      userId: localStorage.getItem('userId')
     }
     this.noteService.updateLabel(data).subscribe(response => {
       console.log("rsponse", response);

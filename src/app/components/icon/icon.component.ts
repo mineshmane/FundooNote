@@ -2,6 +2,8 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NotesService } from '../../services/notes-service/notes.service'
 import { MatSnackBar } from '@angular/material'
 import { DataService } from '../../services/dataService/data.service';
+import { MatDialog } from '@angular/material/dialog'
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 
 @Component({
@@ -13,7 +15,8 @@ export class IconComponent implements OnInit {
   allLabel = []
   date;
   todayDate;
-  constructor(private notesService: NotesService, private snackBar: MatSnackBar, private dataService: DataService) { }
+  constructor(private notesService: NotesService,
+    private dialog: MatDialog, private snackBar: MatSnackBar, private dataService: DataService) { }
   @Input() card;
   @Input() isTrash;
   @Input() isTakeNote;
@@ -75,6 +78,28 @@ export class IconComponent implements OnInit {
       }, error => {
         console.log('error ', error);
       })
+    } catch (error) {
+      console.log(error);
+
+    }
+
+  }
+
+
+  openCollaboratorDialog(card): void {
+    try {
+      const dialogRef = this.dialog.open(CollaboratorComponent, {
+        width: '600px',
+        height: '275px',
+
+
+        data: { card }
+      });
+      // console.log(" in card ",card);
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        //this.title = result;
+      });
     } catch (error) {
       console.log(error);
 
@@ -257,8 +282,8 @@ export class IconComponent implements OnInit {
   tommorrow() {
     var today = new Date();
     var tomorrow = new Date();
-    var tomm=tomorrow.setDate(today.getDate() + 1);
-    tomorrow.setHours(8,0,0)
+    var tomm = tomorrow.setDate(today.getDate() + 1);
+    tomorrow.setHours(8, 0, 0)
 
 
     this.todayDate = {

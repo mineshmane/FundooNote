@@ -32,6 +32,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DateTimePipe } from './pipes/date-time.pipe';
+import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 
 
 @NgModule({
@@ -56,6 +57,7 @@ import { DateTimePipe } from './pipes/date-time.pipe';
     LabelComponent,
     SetProfilePhotoComponent,
     DateTimePipe,
+    CollaboratorComponent,
 
 
   ],
@@ -69,7 +71,7 @@ import { DateTimePipe } from './pipes/date-time.pipe';
     MatSnackBarModule,MatNativeDateModule, MatRippleModule,
     ImageCropperModule,OwlDateTimeModule, OwlNativeDateTimeModule 
   ],
-  entryComponents:[UpdateComponent,EditLabelsComponent,SetProfilePhotoComponent],
+  entryComponents:[UpdateComponent,EditLabelsComponent,SetProfilePhotoComponent,CollaboratorComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

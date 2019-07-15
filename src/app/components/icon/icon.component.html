@@ -59,13 +59,13 @@
       <button mat-menu-item>
         <label>
           <input matInput [owlDateTimeTrigger]="dt3" [(ngModel)]="dateTime" [owlDateTime]="dt3"
-            placeholder=" selextdate">
+            placeholder=" select date">
           <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
         </label>
       </button>
 
       <button mat-menu-item><label>
-          <input matInput [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" [(ngModel)]="dateTime" placeholder="time">
+          <input matInput [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" [(ngModel)]="dateTime" placeholder="select time">
           <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
         </label>
       </button>
@@ -112,7 +112,7 @@
     </button>
   </div>
   <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="hide = !hide" *ngIf="!isTrash" matTooltip="Collaborator" fxLayout="16px"
+    <button mat-icon-button matSuffix (click)="hide = !hide"  (click)="openCollaboratorDialog(card)" *ngIf="!isTrash" matTooltip="Collaborator" fxLayout="16px"
       (click)="$event.stopPropagation()">
       <mat-icon>person_add</mat-icon>
     </button>

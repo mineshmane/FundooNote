@@ -75,5 +75,8 @@ export class UserService {
       return this.httpService.postWithoutHeader(url,body);
   
     }
+    searchUserList(data){
+     return this.httpService.postAth('user/searchUserList',data)
+    }
 
 }

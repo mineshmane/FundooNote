@@ -8,7 +8,7 @@ export class DataService {
 
 
 
-  private messageSource = new BehaviorSubject({type:'',data:[]});
+  private messageSource = new BehaviorSubject({ type: '', data: [] });
   currentMessage = this.messageSource.asObservable();
 
   constructor() { console.log(" data service called"); }
@@ -17,9 +17,9 @@ export class DataService {
     console.log(" data service called", message);
     this.messageSource.next(message)
   }
-  
 
-  private arrayData = new BehaviorSubject({type:'',data:[]});
+
+  private arrayData = new BehaviorSubject({ type: '', data: [] });
   currentData = this.arrayData.asObservable();
   changeData(message: any) {
     console.log(" data service called", message);
@@ -29,10 +29,24 @@ export class DataService {
 
   private listData = new BehaviorSubject([]);
   viewListData = this.listData.asObservable();
-  
   listViewData(message) {
     console.log(" data service called", message);
-    this.listData.next(message )
+    this.listData.next(message)
+  }
+
+  private profileData = new BehaviorSubject([]);
+  profilePicData = this.profileData.asObservable();
+  setProfileData(message) {
+    console.log(" data service called", message);
+    this.profileData.next(message)
+  }
+
+
+  private labelData = new BehaviorSubject([]);
+  labelEmmitedData = this.labelData.asObservable();
+  labelDatasend(message) {
+    console.log(" data service called", message);
+    this.labelData.next(message)
   }
 
 

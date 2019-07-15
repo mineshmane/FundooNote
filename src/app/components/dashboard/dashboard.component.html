@@ -25,7 +25,7 @@
         <mat-form-field [style.fontSize.px]="12" appearance="outline" routerLink="search" fxFlex.sm="50" fxFlex.md="50"
           fxFlex.xs="50">
           <button mat-icon-button matSuffix fxFlex.xs="50" matTooltip="Search">
-            <mat-icon fxFlex.xs="50" >search</mat-icon>
+            <mat-icon fxFlex.xs="50">search</mat-icon>
           </button>
           <input matInput type="text" [(ngModel)]="title" placeholder="search" (keyup)="search($event)">
         </mat-form-field>
@@ -35,9 +35,15 @@
 
         <span class="example-spacer"></span>
         <div>
+
           <button mat-icon-button (click)="hide = !hide" fxFlex.xs="50">
-  
-            <mat-icon (click)="listView()">view_list</mat-icon>
+            <div>
+              <mat-icon *ngIf="isList" (click)="gridView()">grid_on</mat-icon>
+            </div>
+            <div *ngIf="!isList">
+              <mat-icon (click)="listView()">view_list</mat-icon>
+            </div>
+
           </button>
         </div>
         <div>

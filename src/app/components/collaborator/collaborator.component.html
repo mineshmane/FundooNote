@@ -1,0 +1,30 @@
+<div class="dia">
+
+
+  <div>Collaborators</div>
+
+  <mat-divider></mat-divider>
+  <div *ngFor=" let addUser of userAddedArray">
+
+    <p> {{addUser.email}}</p>
+
+
+  </div>
+
+  <input matInput type="text" placeholder="Enter Username" [(ngModel)]="searchName" (keyup)="searchList($event)">
+
+  <div *ngFor="let user of userArray " fxlayout="row">
+    <div>
+      <p>{{user.email}}</p>
+    </div>
+    <div (click)="selectUser(user)">
+      <mat-icon>done</mat-icon>
+    </div>
+
+
+
+  </div>
+  <div>
+    <button (click)="addCollaborator(addUser)">save</button>
+  </div>
+</div>

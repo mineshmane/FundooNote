@@ -18,6 +18,7 @@ export class DisplayComponent implements OnInit {
   selectable = true;
   removable = true;
   addOnBlur = true;
+  islist;
   title = '';
   description = '';
   constructor(
@@ -33,12 +34,22 @@ export class DisplayComponent implements OnInit {
   @Output() reminderToNote = new EventEmitter<any>()
   @Output() removeReminder = new EventEmitter<any>();
   ngOnInit() {
-
+    //this.listView()
+    console.log(" list view ", this.isList);
     this.dataService.viewListData.subscribe(data => {
-      this.isList = data['data'];
-      console.log("data in display", this.isList);
+      console.log(" data",data);
+      
+      this.islist = data;
+      console.log(" islist data in diplay", this.islist);
 
     })
+  }
+
+
+  listView() {
+
+    this.isList = localStorage.getItem('isListView')
+    this.islist = 'http://34.213.106.173/' + this.isList;
   }
 
   pinNote(card) {

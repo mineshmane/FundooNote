@@ -7,6 +7,19 @@ export class NotesService {
 
   constructor(private httpService: HttpService) { }
 
+
+   /********************************************************
+      * @description this service is for adding note   
+      * @returns token
+      */
+
+     addCollaborator(data) {
+       console.log(" note id",data.data.card.id);
+       
+      return this.httpService.postAth('notes/'+data.data.card.id+'/AddcollaboratorsNotes', data);
+    }
+  
+
  /********************************************************
       * @description this service is for adding note   
       * @returns token

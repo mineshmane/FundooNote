@@ -12,7 +12,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { EditLabelsComponent } from '../edit-labels/edit-labels.component'
 import { NotesService } from '../../services/notes-service/notes.service';
 import { DataService } from '../../services/dataService/data.service'
@@ -20,7 +20,7 @@ import { UserService } from '../../services/userService/user.service'
 // import { Routes, RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
 import { SetProfilePhotoComponent } from '../set-profile-photo/set-profile-photo.component';
-import { isListLikeIterable } from '@angular/core/src/change_detection/change_detection_util';
+
 
 export interface DialogData {
   allLabel: []
@@ -47,7 +47,8 @@ export class DashboardComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
   constructor(private userService: UserService,
-    changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private route: Router, private dataService: DataService, public dialog: MatDialog, private noteService: NotesService) {
+    changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private route: Router, private dataService: DataService,
+    public dialog: MatDialog, private noteService: NotesService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -64,31 +65,42 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.getLabelList();
-    // this.data.currentMessage.subscribe(message => this.message = message)
-this.changeProfilePic();
+
+    
+    // this.changeProfilePic();
     this.fName = localStorage.getItem('firstName')
     this.lName = localStorage.getItem('lastName')
     this.email = localStorage.getItem('email')
     this.userName = this.fName + this.lName
     localStorage.setItem('username', this.userName)
-    //this.imageurl = localStorage.getItem('imageUrl')
-    // this.dataService.currentMessage.subscribe(data => {
-    //   console.log("checking data", data)
 
-    //   // this.changeProfilePic()
+    this.dataService.profilePicData.subscribe(data => {
+      console.log(" data from set profile in dash", data);
+      this.changeProfilePic()
 
+    })
+    // this.dataService.labelEmmitedData.subscribe(message => {
+    //   console.log(" message from label list",message);
+      
+    //   this.getLabelList();
     // })
 
   }
 
-   listView() {
-     this.isList=true;
-     this.dataService.listViewData({
-    
-      data:this.isList
-    })
 
-   }
+  // listView() {
+  //   this.isList = true;
+  //  // localStorage.setItem('isListView', this.isList)
+  //   this.dataService.listViewData(this.isList)
+
+
+  // }
+  // gridView() {
+  //   this.isList = false;
+  //  // localStorage.setItem('isListView', this.isList)
+
+
+  // }
 
   openDialogLabel(): void {
     try {
@@ -108,16 +120,16 @@ this.changeProfilePic();
     }
 
   }
-  changeProfilePic(){
-    this.localstorage_image=localStorage.getItem('imageUrl');
-    this.imageurl ='http://34.213.106.173/' + this.localstorage_image ;
-    }
+  changeProfilePic() {
+    this.localstorage_image = localStorage.getItem('imageUrl');
+    this.imageurl = 'http://34.213.106.173/' + this.localstorage_image;
+  }
   openSetProfileDialog(): void {
     try {
       const dialogRef = this.dialog.open(SetProfilePhotoComponent, {
         // width: '250px',
         // height:'500px',
-        data: {  }
+        data: {}
       });
       // console.log(" in card ",card);
       dialogRef.afterClosed().subscribe(result => {
@@ -137,8 +149,8 @@ this.changeProfilePic();
 
     this.values = event.target.value;
     this.dataService.changeMessage({
-      type:'search',
-      data:this.values
+      type: 'search',
+      data: this.values
     })
     this.ab = this.values;
 
@@ -152,8 +164,8 @@ this.changeProfilePic();
         this.allLabel = response['data'].details
 
         this.dataService.changeData({
-          type:'label',
-          data:response['data'].details
+          type: 'label',
+          data: response['data'].details
         })
         this.allLabel.reverse();
         //console.log(" alllabels",this.allLabel);
