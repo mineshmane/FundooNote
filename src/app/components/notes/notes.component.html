@@ -1,11 +1,10 @@
 <div>
-    <app-take-note (update)="newNote()"></app-take-note>
+    <app-take-note (update)="getAllNote()"></app-take-note>
 </div>
 <div>
-    <app-display (removeLabel)="newNote()" (removeReminder)="newNote()" (reminderToNote)="newNote()" (labelToNote)="newNote()"[isTrash]=false [childMessage]="notes"></app-display>
-</div> 
-<div>
-    <!-- <app-dashboard [childMessage]="notes"></app-dashboard> -->
+    <app-display (removeLabel)="getAllNote()" (removeReminder)="getAllNote()" (reminderToNote)="getAllNote()"
+        (labelToNote)="getAllNote()" [isTrash]=false 
+        [childMessage]="notes">
+    </app-display>
 </div>
-<!-- <div>Message: {{message}}</div> -->
-<!-- <app-take-note ></app-take-note> -->
+<!-- [childMessage]="unpinedArray" [pinedMessage]="pinedArray" -->

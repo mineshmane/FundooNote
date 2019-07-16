@@ -4,8 +4,10 @@
     min-height: 20px;
     max-height: 350px;
     position: relative;
-    text-overflow: ellipsis;
-    border-radius: 10px; 
+        border-radius: 10px; 
+    
+
+    overflow: hidden;
 }
 
 ::ng-deep .mat-card{
@@ -59,3 +61,21 @@ background: transparent;
 cursor: pointer;
 
 }
+.collo
+{
+  margin-right: 6px;
+  margin-top: 5px;
+}
+::ng-deep .mat-mini-fab
+{
+  height: 30px;
+
+  width: 30px;
+}
+#label
+{
+  font-size: 12px;
+  margin-bottom: 10px;
+  
+}
+

@@ -34,18 +34,29 @@
       <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="30">
 
         <span class="example-spacer"></span>
-        <div>
+        <div fxFlex="20" fxFlex.md="60" fxFlex.xs="80" fxFlex.sm="90">
+          <div fxFlex="25" ngStyle.xs="margin-left: 53px;">
+            <button style="margin-top:10px; outline: none" mat-icon-button (click)="refresh()">
+              <i class="material-icons">refresh</i>
+            </button>
+          </div>
+        </div>
 
-          <button mat-icon-button (click)="hide = !hide" fxFlex.xs="50">
-            <div>
-              <mat-icon *ngIf="isList" (click)="gridView()">grid_on</mat-icon>
-            </div>
-            <div *ngIf="!isList">
-              <mat-icon (click)="listView()">view_list</mat-icon>
-            </div>
-
+        <div fxFlex="25" fxShow fxHide.xs fxShow fxHide.xs>
+          <button mat-icon-button style="margin-top:10px; outline: none;" class="materialicons" *ngIf=list
+            (click)=View() matTooltip="grid view" fxShow="true">
+            <i class="material-icons">
+              view_stream</i>
+          </button>
+          <button fxShow fxHide.xs fxShow fxHide.xs mat-icon-button style="margin-top:10px; outline: none;"
+            class="materialicons" *ngIf=grid (click)=View() matTooltip="list view" fxShow="true">
+            <i class="material-icons">view_module</i>
+            <!-- <mat-icon (click)="listView()">view_list</mat-icon> -->
           </button>
         </div>
+
+
+
         <div>
           <button mat-icon-button (click)="hide" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
             fxFlex.xs="50">

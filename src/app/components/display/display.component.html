@@ -78,6 +78,20 @@
           </mat-chip-list>
         </div>
 
+
+        <div *ngFor="let colab of card.collaborators">
+
+          <!-- <mat-chip-list aria-label="Fish selection "> -->
+       
+           
+          
+                <button class="collo" mat-mini-fab matTooltip="{{colab.email}}"><label id="label">{{colab.email[0].toUpperCase()}}</label></button>
+               
+           
+
+          <!-- </mat-chip-list> -->
+        </div>
+
       </div>
 
 
@@ -150,6 +164,20 @@
               </mat-chip>
             </div>
           </mat-chip-list>
+        </div>
+
+
+        <div *ngFor="let colab of card.collaborators">
+          {{colab.email}}
+          <!-- <mat-chip-list aria-label="Fish selection ">
+            <div>
+              <mat-chip [style.background-color]=card.color>
+                <span class="XPtOyb-fmcmS"> {{colab.email}}</span>
+                <mat-icon matChipRemove *ngIf="removable" class="div">cancel
+                </mat-icon>
+              </mat-chip>
+            </div>
+          </mat-chip-list> -->
         </div>
 
 

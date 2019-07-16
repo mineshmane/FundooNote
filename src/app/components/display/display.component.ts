@@ -26,6 +26,7 @@ export class DisplayComponent implements OnInit {
     private bar: MatSnackBar,
     public dialog: MatDialog) { }
   @Input() childMessage;
+  @Input() pinedMessage;
   @Input() isTrash;
   @Input() card
   @Output() update = new EventEmitter<any>();

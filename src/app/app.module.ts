@@ -9,12 +9,12 @@ import { LoginComponent } from './components/login/login.component';
 import { ForgetComponent } from './components/forget/forget.component';
 import { ResetComponent } from './components/reset/reset.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { materialModule } from './app.material.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
+import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
 import { NotesComponent } from './components/notes/notes.component';
 import { TakeNoteComponent } from './components/take-note/take-note.component';
 import { IconComponent } from './components/icon/icon.component';
@@ -38,25 +38,15 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponent,
-    LoginComponent,
-    ForgetComponent,
-    ResetComponent,
-    DashboardComponent,
-    NotesComponent,
-    TakeNoteComponent,
-    IconComponent,
-    DisplayComponent,
-    ReminderComponent,
-    ArchiveComponent,
-    TrashComponent,
-    UpdateComponent,
-    EditLabelsComponent,
-    SearchComponent,
-    SearchFilterPipe,
-    LabelComponent,
-    SetProfilePhotoComponent,
-    DateTimePipe,
+    RegistrationComponent, LoginComponent, ForgetComponent,
+    ResetComponent, DashboardComponent,
+    NotesComponent, TakeNoteComponent,
+    IconComponent, DisplayComponent,
+    ReminderComponent, ArchiveComponent,
+    TrashComponent, UpdateComponent,
+    EditLabelsComponent, SearchComponent,
+    SearchFilterPipe, LabelComponent,
+    SetProfilePhotoComponent, DateTimePipe,
     CollaboratorComponent,
 
 
@@ -67,11 +57,11 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
     BrowserAnimationsModule,
     MatCardModule,
     materialModule,
-    FormsModule, ReactiveFormsModule,HttpClientModule,
-    MatSnackBarModule,MatNativeDateModule, MatRippleModule,
-    ImageCropperModule,OwlDateTimeModule, OwlNativeDateTimeModule 
+    FormsModule, ReactiveFormsModule, HttpClientModule,
+    MatSnackBarModule, MatNativeDateModule, MatRippleModule,
+    ImageCropperModule, OwlDateTimeModule, OwlNativeDateTimeModule
   ],
-  entryComponents:[UpdateComponent,EditLabelsComponent,SetProfilePhotoComponent,CollaboratorComponent],
+  entryComponents: [UpdateComponent, EditLabelsComponent, SetProfilePhotoComponent, CollaboratorComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

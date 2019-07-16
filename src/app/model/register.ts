@@ -8,3 +8,9 @@ export class User {
     phoneNumber:string
     cartId:string
 }
+export class Collaborator {
+    "firstName": string;
+    "lastName": string;
+    "email": string;
+    "id": string;
+}

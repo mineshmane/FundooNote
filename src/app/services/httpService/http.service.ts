@@ -107,4 +107,17 @@ console.log(" httpt ",url,"data ",data);
     return this.http.post(this.baseUrl+url,data,httpOption);
   }
 
+
+
+
+  deleteData(path){
+    let httpOptions = {
+      headers: new HttpHeaders({
+        // 'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.delete(environment.baseUrl+path,httpOptions);
+  }
+
 }

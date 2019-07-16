@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NotesService } from '../../services/notes-service/notes.service'
 import { DataService } from '../../services/dataService/data.service';
+import { Collaborator } from 'src/app/model/register';
 
 
 @Component({
@@ -10,34 +11,50 @@ import { DataService } from '../../services/dataService/data.service';
 })
 export class NotesComponent implements OnInit {
 
-  constructor(private notesService: NotesService,private dataService :DataService) { 
+  constructor(private notesService: NotesService, private dataService: DataService) {
 
   } //message:string;
-notes=[]
+  notes = []
+  pinedArray = [];
+  unpinedArray = [];
   ngOnInit() {
 
-   this.newNote()
+    this.getAllNote()
 
 
   }
 
 
-  newNote() {
+  getAllNote() {
     try {
       this.notesService.getNotes().subscribe(response => {
         console.log('response  ', response['data'].data);
-        console.log(" responsee 3",response);
-        
+        console.log(" responsee 3", response);
+
         this.notes = response['data'].data
-     
+
+        
+
         this.notes.reverse();
+        // for (let i = this.notes.length; i > 0; i--) {
+        //   if ((this.notes[i - 1]["isDeleted"] == false) && (this.notes[i - 1]["isArchived"] == false)) {
+        //     if (this.notes[i - 1]["isPined"] == true) {
+        //       this.pinedArray.push(this.notes[i - 1]);
+        //       console.log("pinned array@@@@@@@", this.pinedArray);
+        //     }
+        //     else {
+        //       this.unpinedArray.push(this.notes[i - 1]);
+        //       console.log("unpinned array@@@@@@@", this.unpinedArray);
+        //     }
+        //   }
+        // }
       }, error => {
         console.log('error ', error);
-  
+
       })
     } catch (error) {
       console.log(error);
-      
+
     }
 
 

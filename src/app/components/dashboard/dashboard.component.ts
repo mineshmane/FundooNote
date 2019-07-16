@@ -62,11 +62,14 @@ export class DashboardComponent implements OnInit {
   lName;
   email;
   userName;
+  list: boolean = true;
+  grid: boolean = false;
+  view: any;
   ngOnInit() {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.getLabelList();
 
-    
+
     // this.changeProfilePic();
     this.fName = localStorage.getItem('firstName')
     this.lName = localStorage.getItem('lastName')
@@ -81,26 +84,32 @@ export class DashboardComponent implements OnInit {
     })
     // this.dataService.labelEmmitedData.subscribe(message => {
     //   console.log(" message from label list",message);
-      
+
     //   this.getLabelList();
     // })
 
   }
 
+  refresh() {
+    // this.route.navigate('dashboard/notes');
+    console.log(" refreshed page");
+    
+    this.route.navigate(['dashboard/notes']);
+  }
 
-  // listView() {
-  //   this.isList = true;
-  //  // localStorage.setItem('isListView', this.isList)
-  //   this.dataService.listViewData(this.isList)
-
-
-  // }
-  // gridView() {
-  //   this.isList = false;
-  //  // localStorage.setItem('isListView', this.isList)
-
-
-  // }
+  /**
+ * @description :  Grid and List View
+ */
+  View() {
+    if (this.list) {
+      this.grid = true;
+      this.list = false;
+    } else {
+      this.list = true;
+      this.grid = false;
+    }
+    this.dataService.gridView();
+  }
 
   openDialogLabel(): void {
     try {
@@ -185,6 +194,8 @@ export class DashboardComponent implements OnInit {
 
   }
 
+
+  //  .pipe(takeUntil(this.destroy$))
 
   openLabel(label) {
     console.log(" label ts", label);

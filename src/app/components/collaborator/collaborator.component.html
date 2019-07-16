@@ -1,30 +1,94 @@
-<div class="dia">
+<!-- <div class="dia">
 
 
   <div>Collaborators</div>
 
-  <mat-divider></mat-divider>
-  <div *ngFor=" let addUser of userAddedArray">
-
-    <p> {{addUser.email}}</p>
+  <mat-divider></mat-divider> -->
+<!-- <div *ngFor=" let item of userAddedArray"> -->
 
 
-  </div>
+<!-- <div mat-card-avatar>
+      <div class=nameIcon>{{item.firstName[0].toUpperCase()}}{{ item.lastName[0].toUpperCase() }}</div>
+    </div>
+    <mat-card-title>{{item.firstName}} {{item.lastName}}</mat-card-title>
+    <mat-card-subtitle>{{item.email}}</mat-card-subtitle>
+  </div> -->
 
-  <input matInput type="text" placeholder="Enter Username" [(ngModel)]="searchName" (keyup)="searchList($event)">
 
+<!-- 
+  <input placeholder="person or email to share with" [(ngModel)]="searchValue" (keyup)="searchList($event)" matInput>
   <div *ngFor="let user of userArray " fxlayout="row">
     <div>
-      <p>{{user.email}}</p>
+      <button mat-button class=button (click)="addCol(id)">
+        {{user.firstName}} {{user.lastName}} [{{user.email}}]
+      </button>
     </div>
-    <div (click)="selectUser(user)">
+    <div (click)=" addCollaborator(user)">
       <mat-icon>done</mat-icon>
     </div>
 
-
-
   </div>
   <div>
-    <button (click)="addCollaborator(addUser)">save</button>
+
   </div>
+</div> -->
+
+
+
+
+
+<div class="Collaborators">Collaborators</div>
+<mat-divider></mat-divider>
+<div fxLayoutGap='35px'>
+  <div class="margin">
+    <mat-card-header>
+      <div mat-card-avatar 
+         [ngStyle]="{'background-image':'url(' +img+ ')','background-size':'cover','width':'60px','height':'60px'}"
+        class="addimage1" ngStyle.xl="width:60px;height:60px"></div>
+        <!-- <img class="addimage1 " mat-card-avatar [src]="imageurl"> -->
+      <mat-card-title>{{firstName}} {{lastName}} (Owner)</mat-card-title>
+      <mat-card-subtitle>{{email}}</mat-card-subtitle>
+    </mat-card-header>
+    <div *ngFor="let item of collaborators" fxAlign="row" fxFlexLayout="space-between center">
+      <mat-card-header>
+        <div mat-card-avatar>
+          <div class=nameIcon>{{item.firstName[0].toUpperCase()}}{{ item.lastName[0].toUpperCase() }}</div>
+        </div>
+        <mat-card-title>{{item.firstName}} {{item.lastName}}</mat-card-title>
+        <mat-card-subtitle>{{item.email}}</mat-card-subtitle>
+        <!-- <div fxLayoutAlign="end end" class="clear"> -->
+        <button type="button" class="clear" mat-button (click)=removeCol(item)>
+          <i class="material-icons">
+            clear
+          </i>
+        </button>
+        <!-- </div> -->
+      </mat-card-header>
+    </div>
+
+    <mat-card-header>
+      <div mat-card-avatar>
+      </div>
+      <input placeholder="person or email to share with" [(ngModel)]="searchValue" (keyup)="searchList($event)" matInput
+        [matMenuTriggerFor]="menu">
+      <mat-menu #menu="matMenu">
+        <mat-option *ngFor="let user of userArray" [value]='data.email'>
+          <button mat-button class=button (click)="addCollaborator(user)">
+            {{user.firstName}} {{user.lastName}} [{{user.email}}]
+          </button>
+        </mat-option>
+      </mat-menu>
+      <div class="done">
+        <button class="iconcorner" type="button" mat-button (click)="addCollaborator(user)">
+          <i class="material-icons">
+            done
+          </i>
+        </button>
+      </div>
+    </mat-card-header>
+  </div>
+</div>
+<div fxLayout="row" fxLayoutAlign="end end" fxLayoutGap='25px' class="btns">
+  <button mat-button (click)=cancel()>Cancel</button>
+  <button mat-button (click)="save()">Save</button>
 </div>
