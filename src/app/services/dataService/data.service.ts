@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject  } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,26 +9,26 @@ export class DataService {
 
 
 
-   /* Required for Grid*/
-   result: boolean = true;
-   subject = new Subject
- 
-   /* gridView method*/
-   gridView() {
-     if (this.result) {
-       this.subject.next({ data: "column" });
-       this.result = false;
-     }
-     else {
-       this.subject.next({ data: "row" });
-       this.result = true;
-     }
-   }
- 
-   getView() {
-     this.gridView();
-     return this.subject.asObservable();
-   }
+  /* Required for Grid*/
+  result: boolean = true;
+  subject = new Subject
+
+  /* gridView method*/
+  gridView() {
+    if (this.result) {
+      this.subject.next({ data: "column" });
+      this.result = false;
+    }
+    else {
+      this.subject.next({ data: "row" });
+      this.result = true;
+    }
+  }
+
+  getView() {
+    this.gridView();
+    return this.subject.asObservable();
+  }
 
   private messageSource = new BehaviorSubject({ type: '', data: [] });
   currentMessage = this.messageSource.asObservable();
@@ -71,5 +71,12 @@ export class DataService {
     this.labelData.next(message)
   }
 
+
+  private collaboratorData = new BehaviorSubject([]);
+  collaboratorEmmitedData = this.collaboratorData.asObservable();
+  collaboratorDatasend(message) {
+    console.log(" data service called", message);
+    this.collaboratorData.next(message)
+  }
 
 }

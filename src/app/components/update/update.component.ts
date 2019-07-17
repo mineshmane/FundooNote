@@ -10,10 +10,21 @@ import { MatSnackBar } from '@angular/material'
   styleUrls: ['./update.component.scss']
 })
 export class UpdateComponent implements OnInit {
-
+  labels = [];
+  collaborators = [];
+  reminders = [];
   constructor(public dialogRef: MatDialogRef<UpdateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: notes, private noteService: NotesService, private bar: MatSnackBar) {
+    @Inject(MAT_DIALOG_DATA) public data: any, private noteService: NotesService, private bar: MatSnackBar) {
     console.log(" data in update", data);
+    this.collaborators = data.card.collaborators
+    console.log(" this is collab in update", this.collaborators);
+
+    this.labels = data.card.noteLabels
+    console.log(" labels in update", this.labels);
+    this.reminders=data.card.reminder
+    console.log(" reminder in update",this.reminders);
+    
+
 
   }
 

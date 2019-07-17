@@ -44,7 +44,14 @@ visibility: visible
     text-overflow: ellipsis;
     font-size: 12px;
    
-}.i{
+}
+.nameIcon{
+  font-size: 20px;
+  padding-left: 10px;
+  color: white;
+  padding-top: 11px;
+}
+.i{
   margin-left: 0px;
 }
 
@@ -64,7 +71,7 @@ cursor: pointer;
 .collo
 {
   margin-right: 6px;
-  margin-top: 5px;
+  margin-top: 0px;
 }
 ::ng-deep .mat-mini-fab
 {

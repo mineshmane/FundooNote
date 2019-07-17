@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material'
 import { UpdateComponent } from '../update/update.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from '../../services/dataService/data.service'
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 @Component({
   selector: 'app-display',
@@ -38,8 +39,8 @@ export class DisplayComponent implements OnInit {
     //this.listView()
     console.log(" list view ", this.isList);
     this.dataService.viewListData.subscribe(data => {
-      console.log(" data",data);
-      
+      console.log(" data", data);
+
       this.islist = data;
       console.log(" islist data in diplay", this.islist);
 
@@ -53,6 +54,10 @@ export class DisplayComponent implements OnInit {
     this.islist = 'http://34.213.106.173/' + this.isList;
   }
 
+  /********************************************************
+      * @description this method is for note pin  
+      * @returns true/false
+      */
   pinNote(card) {
     try {
       console.log(" card ", card);
@@ -68,6 +73,28 @@ export class DisplayComponent implements OnInit {
       }, error => {
         console.log('error ', error);
       })
+    } catch (error) {
+      console.log(error);
+
+    }
+
+  }
+
+
+  openCollaboratorDialog(card): void {
+    try {
+      const dialogRef = this.dialog.open(CollaboratorComponent, {
+        // width: '600px',
+        // height: '275px',
+        //data: { allCollborators: this.card }
+
+        data: { card }
+      });
+      // console.log(" in card ",card);
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        //this.title = result;
+      });
     } catch (error) {
       console.log(error);
 
@@ -122,15 +149,17 @@ export class DisplayComponent implements OnInit {
   openDialog(card): void {
     try {
       const dialogRef = this.dialog.open(UpdateComponent, {
-        //width: '250px',
-        data: card
+        // width: '700px',
+        // height: '200px',
+        panelClass: 'updateDialog',
+        data: {card}
       });
       console.log(" in card ", card);
 
 
       dialogRef.afterClosed().subscribe(result => {
 
-        console.log('The dialog was closed');
+        console.log('The dialog was closed',result);
         this.title = result;
       }, error => {
         console.log('error ', error);

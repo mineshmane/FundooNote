@@ -1,56 +1,79 @@
+<!-- <mat-card  fxFlex="100" [style.background-color]=data.card.color> -->
 
 
-<div fxLayoutAlign="center center"fxLayoutAlign.xs="center center" fxFlexOffset.xs="5" fxFlex.xs="95">
 
-      <div *ngIf="isOpen " fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" (click)="isOpen = !isOpen">
-  
-        <div>
-          Take a Note
-        </div>
-  
-        <div fxLayout="row">
-          <div>
-            <button mat-icon-button matSuffix (click)="flag= true" matTooltip="new List">
-              <mat-icon>check_box</mat-icon>
-            </button>
-          </div>
-  
-          <div>
-            <button mat-icon-button matSuffix (click)="flag= true" matTooltip="new Note with image">
-              <mat-icon>crop_original</mat-icon>
-            </button>
-          </div>
-        </div>
+<div fxFlex="100%"  class="upd" [style.background-color]=data.card.color fxLayout="column"
+  fxLayoutAlign="space-between start">
+  <div  class="upd"> 
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxFlex="70">
+        <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
+          cdkAutosizeMinColumns="auto" cdkAutosizeMaxRows="auto" placeholder="Title"
+          [(ngModel)]="data.card.title"></textarea>
       </div>
-  
-      <div *ngIf="!isOpen " fxFlex="100" fxLayout="column">
-        <div>
-          <div fxLayout="row" fxLayoutAlign="space-between center">
-            <div fxFlex="100">
-              <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
-                cdkAutosizeMinColumns="auto" cdkAutosizeMaxRows="auto" placeholder="Title" [(ngModel)]="data.title"></textarea>
-            </div>
-            <div>
-              <button mat-icon-button matSuffix (click)="hide = !hide" matTooltip="pin">
-                <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
-              </button>
-            </div>
-          </div>
-  
-          <div>
-            <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
-              cdkAutosizeMinColumns="auto" cdkAutosizeMaxRows="auto" placeholder="Take a Note" [(ngModel)]="data.description"></textarea>
-          </div>
-        </div>
-        <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
-          <div fxFlex="70">
-            <app-icon></app-icon>
-          </div>
-          <div>
-            <button mat-icon-button matSuffix  (click)="updateNote(data)">close</button>
-            <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>close</button> -->
-          </div>
-        </div>
+      <div fxFlex="30">
+        <button mat-icon-button matSuffix (click)="hide = !hide" matTooltip="pin">
+          <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
+        </button>
       </div>
+    </div>
+  </div>
+
+  <div fxFlex="100" style="width: 500px">
+    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
+      cdkAutosizeMinColumns="auto" cdkAutosizeMaxRows="auto" placeholder="Take a Note"
+      [(ngModel)]="data.card.description"></textarea>
+  </div>
+
+  <div fxLayout="row" fxLayout="row wrap">
+
+    <div *ngFor="let rem of reminders">
+      <mat-chip-list aria-label="Fish selection">
+        <mat-chip [style.background-color]=data.card.color>
+          <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time</mat-icon>
+          <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
+
+          <mat-icon class="i" matChipRemove *ngIf="removable" class="div" (click)="removeNoteReminder(rem,card)">
+            cancel</mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+
+    <div *ngFor="let label of labels">
+      <mat-chip-list aria-label="Fish selection ">
+        <mat-chip [style.background-color]=data.card.color>
+          <div class="XPtOyb-fmcmS"> {{label.label}}</div>
+          <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
+          </mat-icon>
+        </mat-chip>
+      </mat-chip-list>
+    </div>
+
+
+    <div *ngFor="let colab of collaborators">
+      <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+        (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
+    </div>
 
   </div>
+
+
+  <div>
+    <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
+      <div fxFlex="100">
+        <app-icon></app-icon>
+      </div>
+      <div>
+        <button mat-icon-button matSuffix (click)="updateNote(data)">close</button>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+
+
+<!-- </mat-card> -->

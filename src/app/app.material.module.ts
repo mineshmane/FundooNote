@@ -4,8 +4,7 @@ import { MatInputModule } from '@angular/material';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
-import {
-  MatButtonModule, MatNativeDateModule,
+import {  MatButtonModule, MatNativeDateModule,
   MatIconModule, MatSidenavModule, MatListModule, MatToolbarModule,
 } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';

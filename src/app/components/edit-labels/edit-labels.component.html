@@ -1,5 +1,5 @@
 <p mat-dialog-title>Edit labels </p>
-<div mat-dialog-content class="parent">
+<div mat-dialog-content fxLayout="row" class="parent">
 
   <mat-form-field>
     <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
@@ -8,7 +8,15 @@
     <input matInput type="text" placeholder="Create label" [(ngModel)]="value">
 
   </mat-form-field>
+  <div class="done">
+    <button class="iconcorner" type="button" (click)="$event.stopPropagation()" mat-button (click)="addLabel(value)">
+      <i class="material-icons">
+        done
+      </i>
+    </button>
+  </div>
 </div>
+
 
 <div *ngFor="let lab of allLabel" fxLayout="row" (mouseover)="changeText=true" (mouseout)="changeText=false">
   <div>
@@ -25,7 +33,7 @@
   </div>
   <div>
     <input matInput class="label" [(ngModel)]="lab.label">
- 
+
   </div>
   <div>
     <!-- <mat-icon>label_outline</mat-icon> -->
@@ -38,7 +46,7 @@
 </div>
 <mat-divider></mat-divider>
 <div mat-dialog-actions>
-  <button mat-button cdkFocusInitial (click)="addLabel(value)">done</button>
+  <button mat-button cdkFocusInitial (click)="done()">done</button>
 </div>
 <!-- <div (mouseenter)="changeText=true" (mouseLeave)="changeText=false">
     <span *ngIf="!changeText">Hide</span>

@@ -18,10 +18,10 @@ export class NotesComponent implements OnInit {
   pinedArray = [];
   unpinedArray = [];
   ngOnInit() {
-
     this.getAllNote()
-
-
+    this.dataService.collaboratorEmmitedData.subscribe(response => {
+      this.getAllNote();
+    })
   }
 
 
@@ -33,7 +33,7 @@ export class NotesComponent implements OnInit {
 
         this.notes = response['data'].data
 
-        
+
 
         this.notes.reverse();
         // for (let i = this.notes.length; i > 0; i--) {

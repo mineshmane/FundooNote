@@ -85,7 +85,7 @@
        
            
           
-                <button class="collo" mat-mini-fab matTooltip="{{colab.email}}"><label id="label">{{colab.email[0].toUpperCase()}}</label></button>
+                <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label" (click)="openCollaboratorDialog(card)"  >{{colab.email[0].toUpperCase()}}</button>
                
            
 

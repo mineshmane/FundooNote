@@ -89,8 +89,8 @@ export class IconComponent implements OnInit {
   openCollaboratorDialog(card): void {
     try {
       const dialogRef = this.dialog.open(CollaboratorComponent, {
-        width: '600px',
-        height: '275px',
+        // width: '600px',
+        // height: '275px',
 
 
         data: { card }

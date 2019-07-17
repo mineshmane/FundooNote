@@ -68,7 +68,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.getLabelList();
-
+    this.dataService.labelEmmitedData.subscribe(response => {
+      this.getLabelList();
+    })
 
     // this.changeProfilePic();
     this.fName = localStorage.getItem('firstName')
@@ -93,7 +95,7 @@ export class DashboardComponent implements OnInit {
   refresh() {
     // this.route.navigate('dashboard/notes');
     console.log(" refreshed page");
-    
+
     this.route.navigate(['dashboard/notes']);
   }
 

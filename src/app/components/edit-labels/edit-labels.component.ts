@@ -14,14 +14,17 @@ import { DialogData } from '../dashboard/dashboard.component';
 })
 export class EditLabelsComponent implements OnInit {
   message: any;
+  allLabel = []
   constructor(public dialogRef: MatDialogRef<EditLabelsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private noteService: NotesService,
+    @Inject(MAT_DIALOG_DATA) public data: any, private noteService: NotesService,
     private dataService: DataService, private bar: MatSnackBar) {
     console.log(" data in update", data);
     this.allLabel = data.allLabel
+    console.log(" labels", this.allLabel);
+
     this.changeText = false;
   }
-  allLabel = []
+
   @Output() labeladd = new EventEmitter<any>();
   @Output() labelDelete = new EventEmitter<any>();
 
@@ -33,6 +36,7 @@ export class EditLabelsComponent implements OnInit {
   }
   addLabel(lab) {
     try {
+      this.allLabel.push(lab)
       if (lab == undefined) {
         console.log(" empty");
         this.dialogRef.close();
@@ -50,22 +54,28 @@ export class EditLabelsComponent implements OnInit {
           console.log(response, " succsesfully updated note ");
           this.bar.open(" label added succesFully ", '', { duration: 2000 });
           this.labeladd.emit({});
+          this.dataService.labelDatasend({
+
+          })
+
         }, error => {
           console.log('error ', error);
         })
       }
-      this.dialogRef.close();
+
     } catch (error) {
       console.log(error);
 
     }
   }
-
+  done() {
+    this.dialogRef.close();
+  }
   deleteLabel(deleteLabel) {
     try {
       console.log(deleteLabel, "data in edit delete label");
       console.log("label id", deleteLabel.id);
-
+      this.allLabel.splice(deleteLabel)
       let data = {
 
         label: deleteLabel
