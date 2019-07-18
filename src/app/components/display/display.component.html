@@ -1,5 +1,6 @@
-<div *ngIf="islist " fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3" style="margin-top: 25px"
-  layout-wrap fxLayout="row wrap" fxLayoutAlign="center center" fxFlexAlign="auto" fxFlexAlign="auto">
+<div *ngIf="!islist.data " fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3" style="margin-top: 25px"
+  layout-wrap fxLayout="row wrap" fxLayoutAlign="center center" fxFlexAlign="auto" fxFlexAlign="auto"
+ >
 
   <!-- <div style="margin-top: 25px" layout-wrap fxLayoutGap="10px" fxLayout="row wrap" fxFlex="80" fxFlex.xs="100"
      fxFlexAlign.sm="center center"
@@ -113,7 +114,7 @@
 
 
 
-<div *ngIf="!islist" fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3" style="margin-top: 25px"
+<div *ngIf="islist.data" fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3" style="margin-top: 25px"
   layout-wrap fxLayout="row wrap" fxLayoutAlign="center center" fxFlexAlign="auto" fxFlexAlign="auto">
 
 
@@ -168,17 +169,18 @@
 
 
         <div *ngFor="let colab of card.collaborators">
-          {{colab.email}}
-          <!-- <mat-chip-list aria-label="Fish selection ">
-            <div>
-              <mat-chip [style.background-color]=card.color>
-                <span class="XPtOyb-fmcmS"> {{colab.email}}</span>
-                <mat-icon matChipRemove *ngIf="removable" class="div">cancel
-                </mat-icon>
-              </mat-chip>
-            </div>
-          </mat-chip-list> -->
-        </div>
+
+            <!-- <mat-chip-list aria-label="Fish selection "> -->
+         
+             
+            
+                  <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label" (click)="openCollaboratorDialog(card)"  >{{colab.email[0].toUpperCase()}}</button>
+                 
+             
+  
+            <!-- </mat-chip-list> -->
+          </div>
+  
 
 
       </div>

@@ -57,17 +57,25 @@ export class DashboardComponent implements OnInit {
   message: string;
   imageurl: string
   localstorage_image: any
-  isList;
+
+  isList: any;
   fName;
   lName;
   email;
   userName;
-  list: boolean = true;
-  grid: boolean = false;
+  // list: boolean = true;
+  // grid: boolean = false;
+  list: any
+  grid: any
+
   view: any;
   ngOnInit() {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.getLabelList();
+
+    this.list = localStorage.getItem('isListView')
+    this.grid = localStorage.getItem('gridView')
+
     this.dataService.labelEmmitedData.subscribe(response => {
       this.getLabelList();
     })
@@ -84,6 +92,7 @@ export class DashboardComponent implements OnInit {
       this.changeProfilePic()
 
     })
+
     // this.dataService.labelEmmitedData.subscribe(message => {
     //   console.log(" message from label list",message);
 
@@ -93,8 +102,6 @@ export class DashboardComponent implements OnInit {
   }
 
   refresh() {
-    // this.route.navigate('dashboard/notes');
-    console.log(" refreshed page");
 
     this.route.navigate(['dashboard/notes']);
   }
@@ -103,16 +110,24 @@ export class DashboardComponent implements OnInit {
  * @description :  Grid and List View
  */
   View() {
-    if (this.list) {
-      this.grid = true;
+    if (this.list == true) {
+     // this.grid = true;
       this.list = false;
-    } else {
+    } else  {
       this.list = true;
-      this.grid = false;
+     // this.grid = false;
     }
-    this.dataService.gridView();
+    this.isList = this.list;
+    localStorage.setItem('isListView', this.isList);
+    // localStorage.setItem('gridView', this.grid)
+    this.dataService.listViewData({
+      data: this.isList
+    });
   }
 
+  /**
+  * @description :  open dialogBox for Add and Edit Label 
+  */
   openDialogLabel(): void {
     try {
       const dialogRef = this.dialog.open(EditLabelsComponent, {
@@ -131,10 +146,18 @@ export class DashboardComponent implements OnInit {
     }
 
   }
+
+
+  /**
+ * @description : it call when profile pic change  
+ */
   changeProfilePic() {
     this.localstorage_image = localStorage.getItem('imageUrl');
     this.imageurl = 'http://34.213.106.173/' + this.localstorage_image;
   }
+  /**
+ * @description :  open dialogBox for Setprofile photo component
+ */
   openSetProfileDialog(): void {
     try {
       const dialogRef = this.dialog.open(SetProfilePhotoComponent, {
@@ -154,6 +177,11 @@ export class DashboardComponent implements OnInit {
 
   }
 
+
+
+  /**
+ * @description :  search note method for returning searching notes using keyUp event
+ */
   search(event: any) {
     console.log("message in ts  dash ");
     this.route.navigate(['dashboard/search']);
@@ -166,6 +194,11 @@ export class DashboardComponent implements OnInit {
     this.ab = this.values;
 
   }
+
+
+  /**
+ * @description : this method is for getting AllLabel list from database
+ */
   getLabelList() {
     try {
       this.noteService.getLableList().subscribe(response => {
@@ -198,6 +231,12 @@ export class DashboardComponent implements OnInit {
 
 
   //  .pipe(takeUntil(this.destroy$))
+
+
+
+  /**
+ * @description : this method used for searching note by Label name when user click on label returns note list
+ */
 
   openLabel(label) {
     console.log(" label ts", label);

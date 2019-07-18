@@ -1,3 +1,15 @@
+
+/******************************************************************************
+ *  Execution       :cmd> node ng s                  
+ *  @description    :dashboard whre some basic fumnctionality are implemented
+ *  @file           :dashboard.ts
+ *  @author         :Minesh Mane <mineshmane94@gmail.com>
+ *  @version        :1.0
+ 
+ ******************************************************************************/
+
+
+
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NotesService } from '../../services/notes-service/notes.service'
 import { MatSnackBar } from '@angular/material'
@@ -42,6 +54,9 @@ export class IconComponent implements OnInit {
 
 
   @Output() update = new EventEmitter<any>();
+  @Output() onChangeColor = new EventEmitter();
+  @Output() onChangeReminder = new EventEmitter();
+  @Output() onChangeLabel = new EventEmitter();
   @Output() labelToNote = new EventEmitter<any>();
   @Output() reminderToNote = new EventEmitter<any>();
 
@@ -172,9 +187,23 @@ export class IconComponent implements OnInit {
   }
 
 
+
+
+
   setColor(color, card) {
+    console.log("card inset color ", card);
+    console.log(" color is ", color);
     try {
-      console.log(" color data", card);
+      if (card == undefined) {
+
+        this.onChangeColor.emit(color)
+        console.log(" undefined cardf ", color);
+        // this.dataService.colorDatasend({
+        //   data
+        // })
+
+      }
+
       card.color = color;
       let data = {
         color: color,
@@ -195,7 +224,10 @@ export class IconComponent implements OnInit {
   }
 
 
-  addLabelToNote(label) {
+  addLabelToNote(label, carditem) {
+    if (carditem == undefined) {
+      this.onChangeLabel.emit(label)
+    }
     console.log(" note label called", label.id);
     console.log(" card", this.card.id);
 
@@ -219,9 +251,15 @@ export class IconComponent implements OnInit {
 
 
 
-  setReminder(dateTime) {
+  setReminder(dateTime, carditem) {
 
+
+
+    if (carditem == undefined) {
+      this.onChangeReminder.emit(dateTime)
+    }
     if (dateTime == undefined) {
+
       return;
     }
     console.log(" new date", dateTime);

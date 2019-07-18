@@ -1,3 +1,13 @@
+/******************************************************************************
+ *  Execution       :cmd> node ng s                  
+ *  @description    :dashboard whre some basic fumnctionality are implemented
+ *  @file           :dashboard.ts
+ *  @author         :Minesh Mane <mineshmane94@gmail.com>
+ *  @version        :1.0
+ 
+ ******************************************************************************/
+
+
 import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { notes } from 'src/app/model/notes';

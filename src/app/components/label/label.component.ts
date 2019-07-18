@@ -1,3 +1,12 @@
+/******************************************************************************
+ *  Execution       :cmd> node ng s                  
+ *  @description    :dashboard whre some basic fumnctionality are implemented
+ *  @file           :dashboard.ts
+ *  @author         :Minesh Mane <mineshmane94@gmail.com>
+ *  @version        :1.0
+ 
+ ******************************************************************************/
+
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NotesService } from '../../services/notes-service/notes.service'

@@ -1,5 +1,6 @@
-<div fxLayoutAlign="center center"fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center"fxFlexOffset.xs="5" fxFlex.xs="95">
-  <mat-card>
+<div fxLayoutAlign="center center" fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center" fxFlexOffset.xs="5"
+  fxFlex.xs="95">
+  <mat-card [style.background-color]=setColor>
     <div *ngIf="isOpen " fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" (click)="isOpen = !isOpen">
 
       <div>
@@ -37,12 +38,41 @@
 
         <div>
           <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
-            cdkAutosizeMinColumns="auto" cdkAutosizeMaxRows="auto" placeholder="Take a Note" [(ngModel)]="description"></textarea>
+            cdkAutosizeMinColumns="auto" cdkAutosizeMaxRows="auto" placeholder="Take a Note"
+            [(ngModel)]="description"></textarea>
         </div>
       </div>
+
+      <div>
+        <mat-chip-list aria-label="Fish selection">
+          <mat-chip [style.background-color]=setcolor>
+            <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time</mat-icon>
+            <div class="XPtOyb-fmcmS">{{setReminder | dateTime:'dateTime'}}</div>
+
+            <mat-icon class="i" matChipRemove *ngIf="removable" class="div" (click)="removeNoteReminder(rem,card)">
+              cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-list>
+      </div>
+      <div >
+
+        <mat-chip-list aria-label="Fish selection ">
+          <div>
+            <mat-chip [style.background-color]=setcolor>
+              <span class="XPtOyb-fmcmS"> {{labels.label}}</span>
+              <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
+              </mat-icon>
+            </mat-chip>
+          </div>
+        </mat-chip-list>
+      </div>
+
+
+
       <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
         <div fxFlex="60">
-          <app-icon [isTakeNote]=true ></app-icon>
+          <app-icon [isTakeNote]=true (onChangeColor)="receivecolor($event)" (onChangeLabel)="receiveLabel($event)"
+            (onChangeReminder)="receiveReminder($event)"></app-icon>
         </div>
         <div>
           <button mat-icon-button matSuffix (click)="addNote()">close</button>
@@ -51,6 +81,14 @@
     </div>
   </mat-card>
 </div>
+
+
+
+
+
+
+
+
 
 
 

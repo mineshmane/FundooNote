@@ -22,7 +22,7 @@
         </div>
 
         <div>
-          <div class="date" fxLayout="row" (click)="tommorrow()" class="noteReminder" fxLayoutAlign="space-around center">
+          <div class="date" fxLayout="row" (click)="tommorrow(card)" class="noteReminder" fxLayoutAlign="space-around center">
             <div>Tommorrow</div>
             <div>8:am</div>
             <!-- <label id="reminderLabel" class="noteReminder" >Tommorow</label>
@@ -31,7 +31,7 @@
         </div>
 
         <div>
-          <div class="date" fxLayout="row" class="noteReminder" (click)=" nextWeekMonday()" fxLayoutAlign="space-around center">
+          <div class="date" fxLayout="row" class="noteReminder" (click)=" nextWeekMonday(card)" fxLayoutAlign="space-around center">
             <div>Next Week</div>
             <div>Mon 8:am</div>
             <!-- <label  >Next week</label>
@@ -52,7 +52,12 @@
     <mat-menu #datepicker="matMenu">
 
       <div fxLayout='row'>
-        <mat-icon>keyboard_backspace</mat-icon>
+          <button mat-icon-button>
+              <i class="material-icons">
+                keyboard_backspace
+              </i>
+            </button>
+        <!-- <mat-icon>keyboard_backspace</mat-icon> -->
         <h6>Pick date & time</h6>
       </div>
 
@@ -85,7 +90,7 @@
 
       <mat-divider></mat-divider>
       <div mat-dialog-actions fxLayoutAlign='end end'>
-        <button mat-button cdkFocusInitial (click)="setReminder(dateTime)">done</button>
+        <button mat-button cdkFocusInitial (click)="setReminder(dateTime,card)">done</button>
       </div>
     </mat-menu>
   </div>
@@ -171,7 +176,7 @@
       <div>
 
         <div *ngFor="let label of allLabel |searchFilter: labelText ">
-          <mat-checkbox (click)="$event.stopPropagation()" class="noteReminder" (click)="addLabelToNote(label)">{{label.label}}
+          <mat-checkbox (click)="$event.stopPropagation()" class="noteReminder" (click)="addLabelToNote(label,card)">{{label.label}}
           </mat-checkbox>
         </div>
       </div>

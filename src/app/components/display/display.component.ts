@@ -13,7 +13,9 @@ import { CollaboratorComponent } from '../collaborator/collaborator.component';
 })
 export class DisplayComponent implements OnInit {
   isList;
-
+  direction: String = "row";
+  wrap: string = "wrap";
+  view1: any;
   pin = true
   visible = true;
   selectable = true;
@@ -35,14 +37,21 @@ export class DisplayComponent implements OnInit {
   @Output() labelToNote = new EventEmitter<any>();
   @Output() reminderToNote = new EventEmitter<any>()
   @Output() removeReminder = new EventEmitter<any>();
+
   ngOnInit() {
-    //this.listView()
+    this.listView()
     console.log(" list view ", this.isList);
+    this.isList = localStorage.getItem('isListView')
     this.dataService.viewListData.subscribe(data => {
       console.log(" data", data);
 
       this.islist = data;
-      console.log(" islist data in diplay", this.islist);
+      console.log(" islist data in diplay", this.islist.data);
+      /* Grid View*/
+      this.dataService.getView().subscribe((response) => {
+        this.view1 = response;
+        this.direction = this.view1.data
+      });
 
     })
   }
@@ -152,14 +161,14 @@ export class DisplayComponent implements OnInit {
         // width: '700px',
         // height: '200px',
         panelClass: 'updateDialog',
-        data: {card}
+        data: { card }
       });
       console.log(" in card ", card);
 
 
       dialogRef.afterClosed().subscribe(result => {
 
-        console.log('The dialog was closed',result);
+        console.log('The dialog was closed', result);
         this.title = result;
       }, error => {
         console.log('error ', error);

@@ -9,6 +9,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
   baseUrl = environment.baseUrl;
+  
   post(url, user) {
 
     let options = {

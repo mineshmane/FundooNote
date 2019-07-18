@@ -1,3 +1,14 @@
+/******************************************************************************
+ *  Execution       :cmd> node ng s                  
+ *  @description    :dashboard whre some basic fumnctionality are implemented
+ *  @file           :dashboard.ts
+ *  @author         :Minesh Mane <mineshmane94@gmail.com>
+ *  @version        :1.0
+ 
+ ******************************************************************************/
+
+
+
 import { Component, OnInit, OnChanges, Output } from '@angular/core';
 import { DataService } from '../../services/dataService/data.service';
 import { NotesService } from '../../services/notes-service/notes.service'

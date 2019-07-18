@@ -108,15 +108,15 @@ a{
 
   .message {
     position: absolute;
-    width: 50%;
-    top: 10%;
-    left: 20%;
-    transform: translate(-50%, 100%);
+    width: 40%;
+    top: 85%;
+    left: 30%;
+    transform: translate(-10%, 100%);
     transition: all 1s;
     opacity: 0;
   }
   .image-container:hover .message {
-    transform: translate(-50%, -50%);
+    transform: translate(-1%, -1%);
     opacity: 1;
   }
   .select-profile-picture {

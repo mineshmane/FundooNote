@@ -79,4 +79,14 @@ export class DataService {
     this.collaboratorData.next(message)
   }
 
+  private colorData = new BehaviorSubject([]);
+  colorEmmitedData = this.colorData.asObservable();
+  colorDatasend(message) {
+    console.log(" data service called", message);
+    this.colorData.next(message)
+  }
+
+
+
+
 }
