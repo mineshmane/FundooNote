@@ -89,9 +89,11 @@ export class DashboardComponent implements OnInit {
 
     this.dataService.profilePicData.subscribe(data => {
       console.log(" data from set profile in dash", data);
-      this.changeProfilePic()
+        this.changeProfilePic()
 
     })
+
+    
 
     // this.dataService.labelEmmitedData.subscribe(message => {
     //   console.log(" message from label list",message);

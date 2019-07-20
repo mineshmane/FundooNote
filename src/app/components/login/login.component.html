@@ -1,8 +1,6 @@
-
-
-
-<div class="main" fxLayoutAlign="center center" fxFlex="100" fxFlex.xs="100">
-  <mat-card fxFlex.xs="100"fxFlex="30">
+<div class="main" fxLayoutAlign="center center"  fxFlex="100" fxFlexOffset.xs="0"
+  fxFlex.xs="100">
+  <mat-card fxFlex.xs="100" fxFlex.md="70" fxFlex.lg="30">
     <mat-card-title>
       <p>
         <span class="f">F</span>
@@ -28,7 +26,7 @@
           </div>
 
           <div>
-            <mat-form-field  [style.fontSize.px]="12" appearance="outline" fxFlex="100" fxFlex.xs="100">
+            <mat-form-field [style.fontSize.px]="12" appearance="outline" fxFlex="100" fxFlex.xs="100">
               <mat-label>Password</mat-label>
               <input matInput type="text" placeholder="Password" formControlName="password" id="password"
                 [type]="hide ? 'password' : 'text'">
@@ -43,9 +41,9 @@
 
         <div fxLayoutAlign="space-between center">
           <div>
-           <p> <a routerLink="../register">CreateAccount</a></p>
+            <p> <a routerLink="../register">CreateAccount</a></p>
             <a routerLink="../forget">Forget Password?</a>
-      
+
           </div>
 
           <div>

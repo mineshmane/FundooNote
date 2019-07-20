@@ -24,9 +24,14 @@ export class CollaboratorComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any, private userService: UserService, private dataService: DataService,
     private snackbar: MatSnackBar,
     private noteService: NotesService) {
+    console.log(" dilog d data ", data);
 
-    this.collaborators = data.card.collaborators
-    console.log(data.card.collaborators);
+    if (data) {
+      console.log(" data undefined  called in  constructor");
+
+      this.collaborators = data.card.collaborators
+    }
+    console.log(data);
     console.log(" collaboraArray", this.collaborators);
 
 
@@ -63,8 +68,8 @@ export class CollaboratorComponent implements OnInit {
   //   this.collab.email == null;
   // }
   search(event: any) {
-    console.log("message in ts  dash ");
-    // this.route.navigate(['dashboard/search']);
+    console.log("message in seARCH LIST ");
+
 
     this.values = event.target.value;
     this.searchList(this.values);
@@ -76,10 +81,10 @@ export class CollaboratorComponent implements OnInit {
       "searchWord": this.values
     }
     this.userService.searchUserList(data).subscribe(response => {
-      console.log(" response :", response);
+      console.log(" response search list  :", response);
       this.userArray = response['data'].details
 
-      console.log(" print array", this.userArray);
+      console.log(" print array search list ", this.userArray);
 
     })
   }
@@ -92,31 +97,49 @@ export class CollaboratorComponent implements OnInit {
   }
 
   addCollaborator(collaborator) {
+
+    console.log(" data in ", this.data);
+
+
     if (collaborator == ' ' || collaborator == undefined) {
       return;
     } else {
+      console.log(" else part called");
 
 
       this.collaborators.push(collaborator)
-      let collaboratorObject = {
+      var collaboratorObject = {
         firstName: collaborator.firstName,
         lastName: collaborator.lastName,
         email: collaborator.email,
         userId: collaborator.userId
       }
 
-      this.noteService.addCollaborator(collaboratorObject, this.data).pipe(takeUntil(this.destroy$)).subscribe(response => {
-        console.log(" response", response);
-        this.snackbar.open('Added collaborator sucessfully......!', 'Done...!', { duration: 3000 });
+
+      if (this.data == null) {
+        console.log(" undefinded collaborator called ", this.data);
+
         this.dataService.collaboratorDatasend({
 
+          data:  [collaboratorObject] 
         })
-        // this.clearbutton();
-      }, error => {
-        console.log(error);
-        this.snackbar.open('Add collaboratoe unsucessful......!', 'Done...!', { duration: 3000 });
+        console.log(" object of collabo", collaboratorObject);
 
-      })
+      } else{
+        this.noteService.addCollaborator(collaboratorObject, this.data).pipe(takeUntil(this.destroy$)).subscribe(response => {
+          console.log(" response", response);
+          this.snackbar.open('Added collaborator sucessfully......!', 'Done...!', { duration: 3000 });
+          this.dataService.collaboratorDatasend({
+
+          })
+          // this.clearbutton();
+        }, error => {
+          console.log(error);
+          this.snackbar.open('Add collaboratoe unsucessful......!', 'Done...!', { duration: 3000 });
+
+        })
+      }
+      
     }
   }
 
@@ -126,7 +149,14 @@ export class CollaboratorComponent implements OnInit {
     console.log("Note iddddd", this.data);
     console.log("id remove data============>", item.id);
     console.log("this.data.UserId================>", item.userId);
-    this.collaborators.splice(item)
+   // this.collaborators.splice(item)
+
+    for (let i = 0; i <  this.collaborators.length; i++) {
+      if ( this.collaborators[i] == item) {
+        this.collaborators.splice(i, 1);
+      }
+    }
+
     this.noteService.removeColaborator(this.data, item.userId).pipe(takeUntil(this.destroy$)).subscribe((response) => {
 
       this.dataService.collaboratorDatasend({

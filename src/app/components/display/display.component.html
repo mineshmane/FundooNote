@@ -1,40 +1,340 @@
-<div *ngIf="!islist.data " fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3" style="margin-top: 25px"
-  layout-wrap fxLayout="row wrap" fxLayoutAlign="center center" fxFlexAlign="auto" fxFlexAlign="auto"
- >
+<!-- <div *ngIf="pinedMessage.length > 0">PINNED</div>
+  <div  [ngClass]=" direction =='row' ? 'gridView':'listiew'">
 
-  <!-- <div style="margin-top: 25px" layout-wrap fxLayoutGap="10px" fxLayout="row wrap" fxFlex="80" fxFlex.xs="100"
-     fxFlexAlign.sm="center center"
-    fxLayout.sm="row wrap" fxFlexAlign="center center" fxFlexAlign.xs="center center">
-   <div style="margin-top: 25px" layout-wrap fxLayoutGap="10px" fxLayout="row wrap" fxFlex="100" fxFlex.xs="100"
-    fxFlexOffset="15" fxFlexOffset.xs="5" fxFlexOffset.sm="8" fxFlexOffset.md="8" fxFlexAlign.sm="center center"
-    fxLayout.sm="row wrap" fxFlexAlign="center center" fxFlexAlign.xs="center center"> 
-    <mat-card *ngFor="let card of childMessage" class="main-card" [style.background-color]=card.color
-      fxLayout.xs="column" fxFlex.xs="95">
-      <div>
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-          <div (click)="openDialog(card)">
-            <p>{{card.title}}</p>
-          </div>
-          <div class="div">
-            <button mat-icon-button matSuffix (click)="pinNote(card)" matTooltip="pin">
-              <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
-            </button>
-          </div>
-        </div>
-        <div (click)="openDialog(card)">
-          <p>{{card.description}}</p>
-        </div>
-      </div>
-      <div class="div">
-        <app-icon [card]="card"></app-icon>
-      </div>
+      <div style="width: fit-content" *ngFor="let card of pinedMessage" >
+        <mat-card class="matCard"  [style.background-color]=card.color>
 
-    </mat-card>
+            <div>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+                    <p>{{card.title}}</p>
+                  </div>
+                  <div class="div">
+                    <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin">
+                      <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
+                    </button>
+                  </div>
+                </div>
+                <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+      
+                  <p fxLayout="row wrap">{{card.description}}</p>
+                </div>
+              </div>
+      
+      
+              <div fxLayout="row" fxLayout="row wrap">
+      
+                <div *ngFor="let rem of card.reminder">
+                  <mat-chip-list *ngIf="!isTrash" aria-label="Fish selection">
+                    <mat-chip [style.background-color]=card.color *ngIf="!isTrash">
+                      <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time</mat-icon>
+                      <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
+      
+                      <mat-icon class="i" matChipRemove *ngIf="removable" class="div" (click)="removeNoteReminder(rem,card)">
+                        cancel</mat-icon>
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+      
+      
+                <div *ngFor="let label of card.noteLabels">
+                  <mat-chip-list aria-label="Fish selection ">
+                    <mat-chip [style.background-color]=card.color>
+                      <div class="XPtOyb-fmcmS"> {{label.label}}</div>
+                      <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
+                      </mat-icon>
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+      
+      
+                <div *ngFor="let colab of card.collaborators">                       
+                  <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+                    (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>                           
+                </div>      
+              </div>            
+              <div class="div">
+                <app-icon [isTrash]="isTrash" (update)="getTrashNotes()" (reminderToNote)="reminderAddedToNote()"
+                  (labelToNote)="labelAddedToNote()" add [card]="card"></app-icon>
+              </div>
+      
+        </mat-card>
+      </div>
+  </div>
+
+
+
+  <div *ngIf="pinedMessage.length > 0">PINNED</div>
+  <div  [ngClass]=" direction =='row' ? 'gridView':'listiew'">
+
+      <div style="width: fit-content" *ngFor="let card of unPinedMessage" >
+        <mat-card class="matCard"  [style.background-color]=card.color>
+
+            <div>
+                <div fxLayout="row" fxLayoutAlign="space-between center">
+                  <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+                    <p>{{card.title}}</p>
+                  </div>
+                  <div class="div">
+                    <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin">
+                      <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
+                    </button>
+                  </div>
+                </div>
+                <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+      
+                  <p fxLayout="row wrap">{{card.description}}</p>
+                </div>
+              </div>
+      
+      
+              <div fxLayout="row" fxLayout="row wrap">
+      
+                <div *ngFor="let rem of card.reminder">
+                  <mat-chip-list *ngIf="!isTrash" aria-label="Fish selection">
+                    <mat-chip [style.background-color]=card.color *ngIf="!isTrash">
+                      <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time</mat-icon>
+                      <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
+      
+                      <mat-icon class="i" matChipRemove *ngIf="removable" class="div" (click)="removeNoteReminder(rem,card)">
+                        cancel</mat-icon>
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+      
+      
+                <div *ngFor="let label of card.noteLabels">
+                  <mat-chip-list aria-label="Fish selection ">
+                    <mat-chip [style.background-color]=card.color>
+                      <div class="XPtOyb-fmcmS"> {{label.label}}</div>
+                      <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
+                      </mat-icon>
+                    </mat-chip>
+                  </mat-chip-list>
+                </div>
+      
+      
+                <div *ngFor="let colab of card.collaborators">                       
+                  <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+                    (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>                           
+                </div>      
+              </div>            
+              <div class="div">
+                <app-icon [isTrash]="isTrash" (update)="getTrashNotes()" (reminderToNote)="reminderAddedToNote()"
+                  (labelToNote)="labelAddedToNote()" add [card]="card"></app-icon>
+              </div>
+      
+        </mat-card>
+      </div>
   </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div *ngIf="!islist.data " fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3"
+  style="margin-top: 25px" layout-wrap fxLayout="row wrap" fxLayoutAlign="center center" fxFlexAlign="auto"
+  fxFlexAlign="auto">
+  <div *ngIf="pinedMessage.length > 0">PINNED
+    <div layout-wrap fxLayoutGap="10px" fxFlexAlign="start"  fxLayout="row wrap" fxFlex="85" fxFlex.xs="100"
+      fxLayoutAlign.xs="center center" fxLayoutAlign="start start" fxLayoutAlign.md="start center">
+      <mat-card *ngFor="let card of pinedMessage" class="main-card" [style.background-color]=card.color
+        fxLayout.xs="column" fxFlex.xs="95">
+        <div>
+          <div fxLayout="row" fxLayoutAlign="space-between center">
+            <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+              <p>{{card.title}}</p>
+            </div>
+            <div class="div">
+              <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin">
+                <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
+              </button>
+            </div>
+          </div>
+          <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+
+            <p fxLayout="row wrap">{{card.description}}</p>
+          </div>
+        </div>
+
+
+        <div fxLayout="row" fxLayout="row wrap">
+
+          <div *ngFor="let rem of card.reminder">
+            <mat-chip-list *ngIf="!isTrash" aria-label="Fish selection">
+              <mat-chip [style.background-color]=card.color *ngIf="!isTrash">
+                <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time</mat-icon>
+                <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
+
+                <mat-icon class="i" matChipRemove *ngIf="removable" class="div" (click)="removeNoteReminder(rem,card)">
+                  cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+
+
+          <div *ngFor="let label of card.noteLabels">
+            <mat-chip-list aria-label="Fish selection ">
+              <mat-chip [style.background-color]=card.color>
+                <div class="XPtOyb-fmcmS"> {{label.label}}</div>
+                <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
+                </mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+
+
+          <div *ngFor="let colab of card.collaborators">
+
+
+
+
+
+            <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+              (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
+
+
+
+
+          </div>
+
+        </div>
+
+
+        <div class="div">
+          <app-icon [isTrash]="isTrash" (update)="getTrashNotes()" (reminderToNote)="reminderAddedToNote()"
+            (labelToNote)="labelAddedToNote()" add [card]="card"></app-icon>
+        </div>
+
+      </mat-card>
+
+
+    </div>
+
+  </div>
+
+
+
+
+
+    <div *ngIf="!islist.data " fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3"
+      style="margin-top: 25px" layout-wrap fxLayout="row wrap" fxLayoutAlign="center center" fxFlexAlign="auto"
+      fxFlexAlign="auto">
+
+
+      <div *ngIf="unPinedMessage.length > 0" style="margin-top: 30px;">others
+
+      <div layout-wrap fxLayoutGap="10px" fxFlexAlign="start" fxLayout="row wrap" fxFlex="85" fxFlex.xs="100"
+        fxLayoutAlign.xs="center center" fxLayoutAlign="start start" fxLayoutAlign.md="start center">
+        <mat-card *ngFor="let card of unPinedMessage" class="main-card" [style.background-color]=card.color
+          fxLayout.xs="column" fxFlex.xs="95">
+          <div>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+                <p>{{card.title}}</p>
+              </div>
+              <div class="div">
+                <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin">
+
+                  <img *ngIf=!isPin (click)=pin() src="../../../assets/image/unpin.svg">
+                  <img *ngIf=isPin (click)=pin() src="../../../assets/image/pin.svg">
+                </button>
+              </div>
+            </div>
+            <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+
+              <p fxLayout="row wrap">{{card.description}}</p>
+            </div>
+          </div>
+
+
+          <div fxLayout="row" fxLayout="row wrap">
+
+            <div *ngFor="let rem of card.reminder">
+              <mat-chip-list *ngIf="!isTrash" aria-label="Fish selection">
+                <mat-chip [style.background-color]=card.color *ngIf="!isTrash">
+                  <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time
+                  </mat-icon>
+                  <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
+
+                  <mat-icon class="i" matChipRemove *ngIf="removable" class="div"
+                    (click)="removeNoteReminder(rem,card)">
+                    cancel</mat-icon>
+                </mat-chip>
+              </mat-chip-list>
+            </div>
+
+
+            <div *ngFor="let label of card.noteLabels">
+              <mat-chip-list aria-label="Fish selection ">
+                <mat-chip [style.background-color]=card.color>
+                  <div class="XPtOyb-fmcmS"> {{label.label}}</div>
+                  <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
+                  </mat-icon>
+                </mat-chip>
+              </mat-chip-list>
+            </div>
+
+
+            <div *ngFor="let colab of card.collaborators">
+
+              <!-- <mat-chip-list aria-label="Fish selection ">  -->
+
+              <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+                (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
+
+
+
+              <!-- </mat-chip-list>  -->
+            </div>
+
+          </div>
+
+
+          <div class="div">
+            <app-icon [isTrash]="isTrash" (noteTrash)="getTrashNotes()" (onArchiveChange)="onArchive()"
+              (reminderToNote)="reminderAddedToNote()" (labelToNote)="labelAddedToNote()" add [card]="card"></app-icon>
+          </div>
+
+        </mat-card>
+
+
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- @description: end of unpiined card and start for trsh and archive -->
+
+
+<!-- 
+ <div *ngIf="trashMessage.length > 0">trash or archive</div>
+
+<div *ngIf="!islist.data " fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3"
+  style="margin-top: 25px" layout-wrap fxLayout="row wrap" fxLayoutAlign="center center" fxFlexAlign="auto"
+  fxFlexAlign="auto">
+
+
 
   <div layout-wrap fxLayoutGap="10px" fxFlexAlign="start" fxLayout="row wrap" fxFlex="85" fxFlex.xs="100"
     fxLayoutAlign.xs="center center" fxLayoutAlign="start start" fxLayoutAlign.md="start center">
-    <mat-card *ngFor="let card of childMessage" class="main-card" [style.background-color]=card.color
+    <mat-card *ngFor="let card of trashMessage" class="main-card" [style.background-color]=card.color
       fxLayout.xs="column" fxFlex.xs="95">
       <div>
         <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -43,7 +343,9 @@
           </div>
           <div class="div">
             <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin">
-              <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
+
+              <img *ngIf=!isPin (click)=pin() src="../../../assets/image/unpin.svg">
+              <img *ngIf=isPin (click)=pin() src="../../../assets/image/pin.svg">
             </button>
           </div>
         </div>
@@ -82,23 +384,17 @@
 
         <div *ngFor="let colab of card.collaborators">
 
-          <!-- <mat-chip-list aria-label="Fish selection "> -->
-       
-           
-          
-                <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label" (click)="openCollaboratorDialog(card)"  >{{colab.email[0].toUpperCase()}}</button>
-               
-           
+          <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+            (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
 
-          <!-- </mat-chip-list> -->
         </div>
 
       </div>
 
 
       <div class="div">
-        <app-icon [isTrash]="isTrash" (update)="getTrashNotes()" (reminderToNote)="reminderAddedToNote()"
-          (labelToNote)="labelAddedToNote()" add [card]="card"></app-icon>
+        <app-icon [isTrash]="isTrash" (noteTrash)="getTrashNotes()" (onArchiveChange)="onArchive()"
+          (reminderToNote)="reminderAddedToNote()" (labelToNote)="labelAddedToNote()" add [card]="card"></app-icon>
       </div>
 
     </mat-card>
@@ -106,14 +402,15 @@
 
   </div>
 </div>
+ 
 
 
 
 
+ -->
 
 
-
-
+<!-- 
 <div *ngIf="islist.data" fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3" style="margin-top: 25px"
   layout-wrap fxLayout="row wrap" fxLayoutAlign="center center" fxFlexAlign="auto" fxFlexAlign="auto">
 
@@ -170,17 +467,18 @@
 
         <div *ngFor="let colab of card.collaborators">
 
-            <!-- <mat-chip-list aria-label="Fish selection "> -->
-         
-             
-            
-                  <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label" (click)="openCollaboratorDialog(card)"  >{{colab.email[0].toUpperCase()}}</button>
-                 
-             
-  
-            <!-- </mat-chip-list> -->
-          </div>
-  
+    
+
+
+
+          <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+            (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
+
+
+
+          
+        </div>
+
 
 
       </div>
@@ -200,4 +498,152 @@
 
 
   </div>
-</div>
+</div> -->
+
+
+
+<!-- <div>
+ 
+  <div style="height : 5vh;"></div>
+  <div class="cardMain" fxLayout="{{direction}} wrap" fxLayoutAlign="center center">
+    
+      <div *ngFor="let card of childMessage"
+          [ngClass]=" direction =='row' ? 'cardSub':'cardSub2'">
+          
+          <mat-card  [style.background-color]=card.color style="border-radius:20px;">
+            
+              <div>
+                  <div class="title">
+                      <div fxFlex="90"(click)="openDialog(card)">
+                          <div innerHTML="{{card.title}}"></div>
+                      </div>
+                      <div fxFlex="10">
+                        <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin">
+                          <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
+                        </button>
+                      </div>
+                  </div>
+                  <div style="height:1vh;"></div>
+                  <div class="description"(click)="openDialog(card)">
+                      <div fxFlex="90" innerHTML="{{card.description }}"></div>
+                  </div>
+                  <div style="height : 2vh;"></div>
+                  
+
+                  <mat-chip-list *ngIf="!isTrash" aria-label="Fish selection">
+                  <span *ngFor="let rem of card.reminder">
+                 
+                      <mat-chip [style.background-color]=card.color *ngIf="!isTrash">
+                        <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time</mat-icon>
+                        <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
+          
+                        <mat-icon class="i" matChipRemove *ngIf="removable" class="div" class="cancelIcon" (click)="removeNoteReminder(rem,card)">
+                          cancel</mat-icon>
+                      </mat-chip>
+                   
+                  </span>
+                </mat-chip-list>
+
+
+
+                  <div style="height : 2vh;"></div>
+                 
+
+                  <mat-chip-list aria-label="Fish selection ">
+                  <span *ngFor="let label of card.noteLabels">
+                   
+                      
+                        <mat-chip [style.background-color]=card.color>
+                          <span class="XPtOyb-fmcmS"> {{label.label}}</span>
+                          <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
+                          </mat-icon>
+                        </mat-chip>
+                
+                 
+                  </span>
+                </mat-chip-list>
+
+
+                  <div style="height : 2vh;"></div>
+              </div>
+              <div class="icon" style="height:5vh;">
+                  <div fxLayout="row" class="iconButton" fxLayoutAlign="space-around center">
+                    <app-icon [isTrash]="isTrash" (update)="getTrashNotes()" (reminderToNote)="reminderAddedToNote()"
+                    (labelToNote)="labelAddedToNote()" add [card]="card"></app-icon>
+                  </div>
+              </div>
+              
+          </mat-card>
+          <div style="height:3vh;"></div>
+          </div>
+      </div>
+  </div> -->
+
+
+
+
+<!-- 
+  <div [ngClass]="class">
+    <mat-card *ngFor="let card of childMessage" class="main-card" [style.background-color]=card.color
+      fxLayout.xs="column" fxFlex="90" fxLayout="column" fxFlex.xs="95">
+      <div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+            <p>{{card.title}}</p>
+          </div>
+          <div class="div">
+            <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin">
+              <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon>
+            </button>
+          </div>
+        </div>
+        <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+
+          <p fxLayout="row wrap">{{card.description}}</p>
+        </div>
+      </div>
+
+      <div fxLayout="row" fxFlex="100" fxLayout="row wrap">
+
+        <div *ngFor="let rem of card.reminder">
+          <mat-chip-list *ngIf="!isTrash" aria-label="Fish selection">
+            <mat-chip [style.background-color]=card.color *ngIf="!isTrash">
+              <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time</mat-icon>
+              <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
+
+              <mat-icon class="i" matChipRemove *ngIf="removable" class="div" (click)="removeNoteReminder(rem,card)">
+                cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+
+        <div *ngFor="let label of card.noteLabels">
+          <mat-chip-list aria-label="Fish selection ">
+            <div>
+              <mat-chip [style.background-color]=card.color>
+                <span class="XPtOyb-fmcmS"> {{label.label}}</span>
+                <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
+                </mat-icon>
+              </mat-chip>
+            </div>
+          </mat-chip-list>
+        </div>
+
+        <div *ngFor="let colab of card.collaborators">
+                <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+            (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
+        </div>
+
+
+
+      </div>
+
+      <div class="div">
+        <app-icon [isTrash]="isTrash" (update)="getTrashNotes()" (reminderToNote)="reminderAddedToNote()"
+          (labelToNote)="labelAddedToNote()" add [card]="card"></app-icon>
+      </div>
+
+    </mat-card>
+
+
+  </div> -->

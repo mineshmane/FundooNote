@@ -16,7 +16,7 @@ export class DisplayComponent implements OnInit {
   direction: String = "row";
   wrap: string = "wrap";
   view1: any;
-  pin = true
+  // pin = true
   visible = true;
   selectable = true;
   removable = true;
@@ -24,22 +24,34 @@ export class DisplayComponent implements OnInit {
   islist;
   title = '';
   description = '';
+  isPin: boolean = false;
   constructor(
     private notesService: NotesService, private dataService: DataService,
     private bar: MatSnackBar,
     public dialog: MatDialog) { }
   @Input() childMessage;
   @Input() pinedMessage;
+  @Input() unPinedMessage;
+  @Input() trashMessage;
   @Input() isTrash;
   @Input() card
   @Output() update = new EventEmitter<any>();
+  @Output() notePined = new EventEmitter();
+  @Output() onArchiveChange = new EventEmitter();
   @Output() removeLabel = new EventEmitter<any>();
   @Output() labelToNote = new EventEmitter<any>();
   @Output() reminderToNote = new EventEmitter<any>()
   @Output() removeReminder = new EventEmitter<any>();
-
+  class = {
+    listView: false,
+    gridView: true
+  }
   ngOnInit() {
     this.listView()
+    if (this.card) {
+      this.isPin = this.card.isPined;
+    }
+
     console.log(" list view ", this.isList);
     this.isList = localStorage.getItem('isListView')
     this.dataService.viewListData.subscribe(data => {
@@ -67,17 +79,23 @@ export class DisplayComponent implements OnInit {
       * @description this method is for note pin  
       * @returns true/false
       */
+
+  pin() {
+    this.isPin = !this.isPin;
+    // this.onChange.emit(this.isPin);
+    // this.notePined.emit(this.isPin);
+  }
   pinNote(card) {
     try {
       console.log(" card ", card);
       let data = {
         // cardidList:this.cardId,
         noteIdList: [card.id],
-        isPined: this.pin,
+        isPined: this.isPin,
       }
       this.notesService.pinNote(data).subscribe(response => {
         console.log(response, " succsesfully pined ");
-        this.update.emit();
+        this.notePined.emit();
         this.bar.open(" note pined succesFully ", '', { duration: 2000 });
       }, error => {
         console.log('error ', error);
@@ -187,5 +205,8 @@ export class DisplayComponent implements OnInit {
   }
   reminderAddedToNote() {
     this.reminderToNote.emit();
+  }
+  onArchive() {
+    this.onArchiveChange.emit();
   }
 }

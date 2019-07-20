@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { notes } from '../../model/notes';
 import { DataService } from '../../services/dataService/data.service'
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-take-note',
   templateUrl: './take-note.component.html',
@@ -17,28 +19,30 @@ export class TakeNoteComponent implements OnInit {
   }
   title = '';
   description = '';
-  labels = ''
+  labels = []
   setColor: any;
   setReminder: any;
   imageUrl = "";
   isArchived = '';
   isDeleted = '';
   isPined = '';
-
+  collaboratorsArray = [];
+  noteLabels = []
 
   constructor(private notesService: NotesService,
-    private dataService: DataService, private router: Router, private snackBar: MatSnackBar) {
+    private dataService: DataService, private router: Router, private snackBar: MatSnackBar,
+    private dialog: MatDialog) {
 
   }
   @Output() update = new EventEmitter<any>();
 
   ngOnInit() {
-    this.dataService.colorEmmitedData.subscribe(response => {
+    this.dataService.collaboratorEmmitedData.subscribe(response => {
 
-      console.log(" respomnse value", response);
-      //  this.color = response['data']['color']
+      console.log(" take note  respomnse value", response);
+      this.collaboratorsArray = response['data']
+      console.log(" collaborator in the  take note ", this.collaboratorsArray);
 
-      //   console.log(" in take note coplor is ", this.color);
 
     })
   }
@@ -55,6 +59,29 @@ export class TakeNoteComponent implements OnInit {
   receiveLabel($event) {
     this.labels = $event;
     console.log(" labels in label ", this.labels);
+    this.noteLabels.push(this.labels)
+
+  }
+
+
+  openCollaboratorDialog(card): void {
+    try {
+      const dialogRef = this.dialog.open(CollaboratorComponent, {
+        // width: '600px',
+        // height: '275px',
+        //data: { allCollborators: this.card }
+
+
+      });
+      // console.log(" in card ",card);
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        //this.title = result;
+      });
+    } catch (error) {
+      console.log(error);
+
+    }
 
   }
 
@@ -67,9 +94,8 @@ export class TakeNoteComponent implements OnInit {
         color: this.setColor,
         imageUrl: this.imageUrl,
         reminder: this.setReminder,
-        noteLabels:this.labels,
-       // "labelIdList":this.labels
-
+       // labelIdList: JSON.stringify(this.noteLabels),
+       // collaberators:JSON.stringify(this.collaboratorsArray),
 
       }
 
@@ -102,6 +128,8 @@ export class TakeNoteComponent implements OnInit {
 
         return;
       } else {
+        console.log(" creating note data", note);
+
         this.notesService.addnote(note).subscribe(response => {
           console.log('response ', response);
           this.update.emit({})

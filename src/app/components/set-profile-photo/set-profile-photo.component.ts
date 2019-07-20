@@ -61,11 +61,12 @@ export class SetProfilePhotoComponent implements OnInit {
     this.userService.profilePic('user/uploadProfileImage', imagefile).subscribe(response => {
       localStorage.setItem('imageUrl', response['status']['imageUrl']);
     //  console.log("profile pic information...!", response)
-      this.profilePic.emit(); this.close()
+    //  this.profilePic.emit();
       this.DataService.setProfileData({
         data: {},
         type: 'profile'
       })
+      this.close()
       this.bar.open("profile pic uploaded  Successfully..", "close", {
         duration: 3000,
       });

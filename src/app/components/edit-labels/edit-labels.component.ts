@@ -85,7 +85,15 @@ export class EditLabelsComponent implements OnInit {
     try {
       console.log(deleteLabel, "data in edit delete label");
       console.log("label id", deleteLabel.id);
-      this.allLabel.splice(deleteLabel)
+     // this.allLabel.splice(deleteLabel)
+
+      for (let i = 0; i < this.allLabel.length; i++) {
+        if (this.allLabel[i] == deleteLabel) {
+          this.allLabel.splice(i, 1);
+        }
+      }
+
+
       let data = {
 
         label: deleteLabel

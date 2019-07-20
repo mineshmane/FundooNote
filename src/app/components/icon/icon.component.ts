@@ -32,7 +32,7 @@ export class IconComponent implements OnInit {
   @Input() card;
   @Input() isTrash;
   @Input() isTakeNote;
-  archive = true
+  isArchive = true
   isDeleted = true
   //date=new Date();
   //isDeleted=this.card.isDeleted;
@@ -56,12 +56,17 @@ export class IconComponent implements OnInit {
   @Output() update = new EventEmitter<any>();
   @Output() onChangeColor = new EventEmitter();
   @Output() onChangeReminder = new EventEmitter();
+  @Output() onArchiveChange = new EventEmitter();
   @Output() onChangeLabel = new EventEmitter();
   @Output() labelToNote = new EventEmitter<any>();
   @Output() reminderToNote = new EventEmitter<any>();
+  @Output() noteTrash = new EventEmitter();
 
   ngOnInit() {
     this.shareLabelArrayData()
+    if (this.card){
+      this.isArchive = this.card.isArchived;
+    }
 
   }
   shareLabelArrayData() {
@@ -77,18 +82,23 @@ export class IconComponent implements OnInit {
       // console.log("searched cards", this.card);
 
     })
+  } 
+  Archive() {
+    this.isArchive = !this.isArchive;
+    // this.onChange.emit(this.isPin);
+   // this.notePined.emit(this.isPin);
   }
   archiveNote() {
     try {
       let data = {
         // cardidList:this.cardId,
         noteIdList: [this.card.id],
-        isArchived: this.archive,
+        isArchived: this.isArchive,
       }
       console.log(data);
       this.notesService.archiveNote(data).subscribe(response => {
         console.log('response ', response);
-
+        this.onArchiveChange.emit();
         this.snackBar.open('note archive succesfully', '', { duration: 2000 });
       }, error => {
         console.log('error ', error);
@@ -102,19 +112,41 @@ export class IconComponent implements OnInit {
 
 
   openCollaboratorDialog(card): void {
+    console.log(" log dia", card);
+
+
     try {
-      const dialogRef = this.dialog.open(CollaboratorComponent, {
-        // width: '600px',
-        // height: '275px',
 
 
-        data: { card }
-      });
-      // console.log(" in card ",card);
-      dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        //this.title = result;
-      });
+      if (typeof card === 'undefined') {
+        console.log(" dilog undefinedwala");
+
+        const dialogRef = this.dialog.open(CollaboratorComponent, {
+
+          width: '600px',
+          height: '275px',
+
+
+        });
+        // console.log(" in card ",card);
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+          //this.title = result;
+        });
+      } else {
+        const dialogRef = this.dialog.open(CollaboratorComponent, {
+          // width: '600px',
+          // height: '275px',
+
+
+          data: { card }
+        });
+        // console.log(" in card ",card);
+        dialogRef.afterClosed().subscribe(result => {
+          console.log('The dialog was closed');
+          //this.title = result;
+        });
+      }
     } catch (error) {
       console.log(error);
 
@@ -147,12 +179,12 @@ export class IconComponent implements OnInit {
       let data = {
         // cardidList:this.cardId,
         noteIdList: [this.card.id],
-        isDeleted: this.archive,
+        isDeleted: this.isDeleted,
       }
       console.log(data);
       this.notesService.deleteNote(data).subscribe(response => {
         console.log('response ', response);
-        // this.update.emit({})
+        this.noteTrash.emit({})
         this.snackBar.open('note deleted succesfully', '', { duration: 2000 });
       }, error => {
         console.log('error ', error);
@@ -203,20 +235,21 @@ export class IconComponent implements OnInit {
         // })
 
       }
+      else {
+        card.color = color;
+        let data = {
+          color: color,
+          noteIdList: [this.card.id],
+        }
 
-      card.color = color;
-      let data = {
-        color: color,
-        noteIdList: [this.card.id],
+        this.notesService.setColor(data).subscribe(response => {
+          console.log('response ', response);
+          this.update.emit({})
+          this.snackBar.open('color changed succesfully', '', { duration: 2000 });
+        }, error => {
+          console.log('error ', error);
+        })
       }
-
-      this.notesService.setColor(data).subscribe(response => {
-        console.log('response ', response);
-        this.update.emit({})
-        this.snackBar.open('color changed succesfully', '', { duration: 2000 });
-      }, error => {
-        console.log('error ', error);
-      })
     } catch (error) {
       console.log(error);
 
@@ -227,25 +260,28 @@ export class IconComponent implements OnInit {
   addLabelToNote(label, carditem) {
     if (carditem == undefined) {
       this.onChangeLabel.emit(label)
+    } else {
+
+
+      console.log(" note label called", label.id);
+      console.log(" card", this.card.id);
+
+      let data = {
+        noteId: [this.card.id],
+
+        lableId: label.id
+      }
+      console.log("data in data ", data);
+
+      this.notesService.addLabelToNote(data).subscribe(response => {
+        console.log(" response", response);
+        this.labelToNote.emit({});
+        this.snackBar.open('label added succesfully', '', { duration: 2000 });
+      }, error => {
+        console.log(error);
+
+      })
     }
-    console.log(" note label called", label.id);
-    console.log(" card", this.card.id);
-
-    let data = {
-      noteId: [this.card.id],
-
-      lableId: label.id
-    }
-    console.log("data in data ", data);
-
-    this.notesService.addLabelToNote(data).subscribe(response => {
-      console.log(" response", response);
-      this.labelToNote.emit({});
-      this.snackBar.open('label added succesfully', '', { duration: 2000 });
-    }, error => {
-      console.log(error);
-
-    })
 
   }
 
@@ -253,96 +289,108 @@ export class IconComponent implements OnInit {
 
   setReminder(dateTime, carditem) {
 
-
-
-    if (carditem == undefined) {
-      this.onChangeReminder.emit(dateTime)
-    }
     if (dateTime == undefined) {
 
       return;
+    } else {
+
+      if (carditem == undefined) {
+        this.onChangeReminder.emit(dateTime)
+      } else {
+
+        console.log(" new date", dateTime);
+        var datum = Date.parse(dateTime);
+        console.log("new date after parseing", datum / 1000);
+
+
+        this.todayDate = {
+          reminder: [dateTime],
+
+          isPined: false,
+          isArchived: false,
+          isDeleted: false,
+          noteIdList: [this.card.id],
+          userId: localStorage.getItem('userId')
+
+        };
+
+        console.log(" todya date", this.todayDate);
+        this.notesService.setReminder(this.todayDate).subscribe(response => {
+          console.log(" response from setReminder", response);
+          this.reminderToNote.emit({});
+
+        }, error => {
+          console.log(error);
+
+        })
+
+      }
     }
-    console.log(" new date", dateTime);
-    var datum = Date.parse(dateTime);
-    console.log("new date after parseing", datum / 1000);
-
-
-    this.todayDate = {
-      reminder: [dateTime],
-
-      isPined: false,
-      isArchived: false,
-      isDeleted: false,
-      noteIdList: [this.card.id],
-      userId: localStorage.getItem('userId')
-
-    };
-
-    console.log(" todya date", this.todayDate);
-    this.notesService.setReminder(this.todayDate).subscribe(response => {
-      console.log(" response from setReminder", response);
-      this.reminderToNote.emit({});
-
-    }, error => {
-      console.log(error);
-
-    })
-
-
 
   }
 
-  today() {
+  today(cardItem) {
     this.date = new Date();
     this.date.setHours(20, 0, 0)
     console.log("dateprinting ", this.date)
-    this.todayDate = {
-      reminder: [this.date],
+    if (cardItem == undefined) {
+      this.onChangeReminder.emit(this.date)
+    } else {
 
-      isPined: false,
-      isArchived: false,
-      isDeleted: false,
-      noteIdList: [this.card.id],
-      userId: localStorage.getItem('userId')
 
-    };
-    console.log(" todya date", this.todayDate);
-    this.notesService.setReminder(this.todayDate).subscribe(response => {
-      console.log(" response from setReminder", response);
-      this.reminderToNote.emit({});
+      this.todayDate = {
+        reminder: [this.date],
 
-    }, error => {
-      console.log(error);
+        isPined: false,
+        isArchived: false,
+        isDeleted: false,
+        noteIdList: [this.card.id],
+        userId: localStorage.getItem('userId')
 
-    })
-    // return console.log("today date and time printing ", new Date(2018, 1, 12, 20, 0));
+      };
+      console.log(" todya date", this.todayDate);
+      this.notesService.setReminder(this.todayDate).subscribe(response => {
+        console.log(" response from setReminder", response);
+        this.reminderToNote.emit({});
+
+      }, error => {
+        console.log(error);
+
+      })
+      // return console.log("today date and time printing ", new Date(2018, 1, 12, 20, 0));
+    }
   }
-  tommorrow() {
+  tommorrow(cardItem) {
     var today = new Date();
     var tomorrow = new Date();
     var tomm = tomorrow.setDate(today.getDate() + 1);
     tomorrow.setHours(8, 0, 0)
+    if (cardItem == undefined) {
+      this.onChangeReminder.emit(tomorrow)
+    } else {
 
 
-    this.todayDate = {
-      reminder: [tomorrow],
 
-      isPined: false,
-      isArchived: false,
-      isDeleted: false,
-      noteIdList: [this.card.id],
-      userId: localStorage.getItem('userId')
+      this.todayDate = {
+        reminder: [tomorrow],
 
-    };
-    console.log(" todya date", this.todayDate);
-    this.notesService.setReminder(this.todayDate).subscribe(response => {
-      console.log(" response from setReminder", response);
-      this.reminderToNote.emit({});
+        isPined: false,
+        isArchived: false,
+        isDeleted: false,
+        noteIdList: [this.card.id],
+        userId: localStorage.getItem('userId')
 
-    }, error => {
-      console.log(error);
+      };
+      console.log(" todya date", this.todayDate);
+      this.notesService.setReminder(this.todayDate).subscribe(response => {
+        console.log(" response from setReminder", response);
+        this.reminderToNote.emit({});
 
-    })
+      }, error => {
+        console.log(error);
+
+      })
+    }
 
   }
 
@@ -358,33 +406,38 @@ export class IconComponent implements OnInit {
     return next_monday;
   }
 
-  nextWeekMonday() {
+  nextWeekMonday(cardItem) {
 
     var monday = this.closestMonday()
 
 
     console.log(" newxt Monday ", monday);
+    if (cardItem == undefined) {
+      this.onChangeReminder.emit(monday)
+    }
+    else {
 
 
-    this.todayDate = {
-      reminder: [monday],
+      this.todayDate = {
+        reminder: [monday],
 
-      isPined: false,
-      isArchived: false,
-      isDeleted: false,
-      noteIdList: [this.card.id],
-      userId: localStorage.getItem('userId')
+        isPined: false,
+        isArchived: false,
+        isDeleted: false,
+        noteIdList: [this.card.id],
+        userId: localStorage.getItem('userId')
 
-    };
-    console.log(" todya date", this.todayDate);
-    this.notesService.setReminder(this.todayDate).subscribe(response => {
-      console.log(" response from setReminder", response);
-      this.reminderToNote.emit({});
+      };
+      console.log(" todya date", this.todayDate);
+      this.notesService.setReminder(this.todayDate).subscribe(response => {
+        console.log(" response from setReminder", response);
+        this.reminderToNote.emit({});
 
-    }, error => {
-      console.log(error);
+      }, error => {
+        console.log(error);
 
-    })
-    // return console.log("today date and time printing ", new Date(2018, 1, 12, 20, 0));
+      })
+      // return console.log("today date and time printing ", new Date(2018, 1, 12, 20, 0));
+    }
   }
 }

@@ -12,7 +12,7 @@
           <label class="noteReminder1">Reminder : </label>
         </div>
         <div>
-          <div class="date" (click)="today()" class="noteReminder" fxLayout="row" fxLayoutAlign="space-around center">
+          <div class="date" (click)="today(card)" class="noteReminder" fxLayout="row" fxLayoutAlign="space-around center">
 
             <!-- <label class="noteReminder" id="reminderLabel">Later today</label>
             <label class="lb" >8:pm </label> -->
@@ -124,10 +124,17 @@
   </div>
 
   <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="archiveNote()" *ngIf="!isTrash" (click)="$event.stopPropagation()"
+    <button mat-icon-button matSuffix (click)="archiveNote()" (click)="Archive()" *ngIf="!isTrash" (click)="$event.stopPropagation()"
       matTooltip="Archive">
       <mat-icon>archive</mat-icon>
     </button>
+    <!-- <abbr title="Archive">
+      <button style="outline: none;" mat-icon-button (click)="archiveNote()">
+        <i class="material-icons">
+          archive
+        </i>
+      </button>
+    </abbr> -->
   </div>
 
 

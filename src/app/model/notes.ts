@@ -4,7 +4,8 @@ export class notes {
   color:string;
   imageUrl: string;
   reminder :string
-  noteLabels:string
+  //labelIdList:any
+ // collaberators:any
   // isArchived: string;
   // isDeleted: string;
   // isPined: string;

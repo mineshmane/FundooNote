@@ -54,7 +54,7 @@ export class SearchComponent implements OnInit {
   }
   findCard = function (note, searchValue) {
     var cardNote = note.filter(item => {
-           return item.title.toLowerCase().startsWith(searchValue.toLowerCase()) || item.description.toLowerCase().startsWith(searchValue.toLowerCase())
+           return item.title.toLowerCase().includes(searchValue.toLowerCase()) || item.description.toLowerCase().includes(searchValue.toLowerCase())
     });
     return cardNote
   }

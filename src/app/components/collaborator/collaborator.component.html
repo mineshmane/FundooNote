@@ -73,7 +73,7 @@
       <input placeholder="person or email to share with" [(ngModel)]="searchValue" (keyup)="searchList($event)" matInput
         [matMenuTriggerFor]="menu">
       <mat-menu #menu="matMenu">
-        <mat-option *ngFor="let user of userArray" [value]='data.email'>
+        <mat-option *ngFor="let user of userArray" >
           <button mat-button class=button (click)="addCollaborator(user)">
             {{user.firstName}} {{user.lastName}} [{{user.email}}]
           </button>

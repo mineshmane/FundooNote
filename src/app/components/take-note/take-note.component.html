@@ -54,7 +54,7 @@
           </mat-chip>
         </mat-chip-list>
       </div>
-      <div >
+      <div>
 
         <mat-chip-list aria-label="Fish selection ">
           <div>
@@ -65,7 +65,14 @@
             </mat-chip>
           </div>
         </mat-chip-list>
+        <div *ngFor="let colab of collaboratorsArray">
+       
+              <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+                (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
+          
+        </div>
       </div>
+
 
 
 

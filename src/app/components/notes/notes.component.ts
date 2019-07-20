@@ -34,20 +34,23 @@ export class NotesComponent implements OnInit {
         this.notes = response['data'].data
 
 
-
+        this.pinedArray = [];
+        this.unpinedArray = []
         this.notes.reverse();
-        // for (let i = this.notes.length; i > 0; i--) {
-        //   if ((this.notes[i - 1]["isDeleted"] == false) && (this.notes[i - 1]["isArchived"] == false)) {
-        //     if (this.notes[i - 1]["isPined"] == true) {
-        //       this.pinedArray.push(this.notes[i - 1]);
-        //       console.log("pinned array@@@@@@@", this.pinedArray);
-        //     }
-        //     else {
-        //       this.unpinedArray.push(this.notes[i - 1]);
-        //       console.log("unpinned array@@@@@@@", this.unpinedArray);
-        //     }
-        //   }
-        // }
+        for (let i = this.notes.length; i > 0; i--) {
+          if ((this.notes[i - 1]["isDeleted"] == false) && (this.notes[i - 1]["isArchived"] == false)) {
+            if (this.notes[i - 1]["isPined"] == true) {
+              this.pinedArray.push(this.notes[i - 1]);
+              this.pinedArray.reverse();
+              console.log("pinned array@@@@@@@", this.pinedArray);
+            }
+            else {
+              this.unpinedArray.push(this.notes[i - 1]);
+              this.unpinedArray.reverse();
+              console.log("unpinned array@@@@@@@", this.unpinedArray);
+            }
+          }
+        }
       }, error => {
         console.log('error ', error);
 
