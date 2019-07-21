@@ -10,7 +10,7 @@ export class notes {
   // isDeleted: string;
   // isPined: string;
 
-
+  questionAndAnswerNotes: any
   
 
 

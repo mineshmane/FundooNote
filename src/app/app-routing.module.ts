@@ -14,6 +14,8 @@ import { TrashComponent } from './components/trash/trash.component';
 import { SearchComponent } from './components/search/search.component';
 import { LabelComponent } from './components/label/label.component';
 import { LoginComponent } from './components/login/login.component';
+import { AskQuestionComponent } from './components/ask-question/ask-question.component';
+import { TakeNoteComponent } from './components/take-note/take-note.component';
 
 
 const routes: Routes = [
@@ -33,6 +35,9 @@ const routes: Routes = [
         path: 'notes', component: NotesComponent
       },
       {
+        path: 'Takenotes', component: TakeNoteComponent
+      },
+      {
         path: 'reminder', component: ReminderComponent
       },
       {
@@ -50,8 +55,15 @@ const routes: Routes = [
       {
         path: 'noteBylabel/:label', component: LabelComponent
       },
-      
-      
+      {
+        path: 'askquestion/:id', component: AskQuestionComponent
+      },
+      {
+        path: 'icon', component: IconComponent
+      },
+
+
+
     ]
 
   },

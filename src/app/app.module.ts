@@ -29,10 +29,11 @@ import { SearchFilterPipe } from './pipe/search-filter.pipe';
 import { LabelComponent } from './components/label/label.component';
 import { SetProfilePhotoComponent } from './components/set-profile-photo/set-profile-photo.component';
 import { ImageCropperModule } from 'ngx-image-cropper';
-
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DateTimePipe } from './pipes/date-time.pipe';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
+import { AskQuestionComponent } from './components/ask-question/ask-question.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
     SearchFilterPipe, LabelComponent,
     SetProfilePhotoComponent, DateTimePipe,
     CollaboratorComponent,
+    AskQuestionComponent,
 
 
   ],
@@ -59,7 +61,9 @@ import { CollaboratorComponent } from './components/collaborator/collaborator.co
     materialModule,
     FormsModule, ReactiveFormsModule, HttpClientModule,
     MatSnackBarModule, MatNativeDateModule, MatRippleModule,
-    ImageCropperModule, OwlDateTimeModule, OwlNativeDateTimeModule
+    ImageCropperModule, OwlDateTimeModule, OwlNativeDateTimeModule,FroalaEditorModule.forRoot(),
+    FroalaViewModule.forRoot()
+
   ],
   entryComponents: [UpdateComponent, EditLabelsComponent, SetProfilePhotoComponent, CollaboratorComponent],
   providers: [],

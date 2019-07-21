@@ -16,7 +16,7 @@ import { MatSnackBar } from '@angular/material'
 import { DataService } from '../../services/dataService/data.service';
 import { MatDialog } from '@angular/material/dialog'
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-icon',
@@ -28,7 +28,8 @@ export class IconComponent implements OnInit {
   date;
   todayDate;
   constructor(private notesService: NotesService,
-    private dialog: MatDialog, private snackBar: MatSnackBar, private dataService: DataService) { }
+    private dialog: MatDialog, private snackBar: MatSnackBar, private dataService: DataService,
+    private route: Router) { }
   @Input() card;
   @Input() isTrash;
   @Input() isTakeNote;
@@ -64,11 +65,25 @@ export class IconComponent implements OnInit {
 
   ngOnInit() {
     this.shareLabelArrayData()
-    if (this.card){
+    if (this.card) {
       this.isArchive = this.card.isArchived;
     }
 
   }
+
+
+  // askquestion(noteData) {
+  //   this.route.navigateByUrl('askquestion' + '/' + this.card.id);
+  //   //this.route.navigate(['icon/search']);
+  // }
+
+  askquestion(card) {
+    console.log(" label ts", card);
+
+    this.route.navigate(['dashboard/askquestion/' + card.id]);
+
+  }
+
   shareLabelArrayData() {
     this.dataService.currentData.subscribe(message => {
       //  console.log("data in icon", message);
@@ -82,11 +97,11 @@ export class IconComponent implements OnInit {
       // console.log("searched cards", this.card);
 
     })
-  } 
+  }
   Archive() {
     this.isArchive = !this.isArchive;
     // this.onChange.emit(this.isPin);
-   // this.notePined.emit(this.isPin);
+    // this.notePined.emit(this.isPin);
   }
   archiveNote() {
     try {

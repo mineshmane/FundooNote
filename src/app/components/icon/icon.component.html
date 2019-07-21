@@ -160,8 +160,8 @@
       <button *ngIf="!isTrash" mat-menu-item>
         <span>Add drawaing</span>
       </button>
-      <button *ngIf="!isTrash" mat-menu-item>
-        <span>Make a copy</span>
+      <button *ngIf="!isTrash" mat-menu-item (click)="askquestion(card)">
+        <span>ask Question</span>
       </button>
       <button *ngIf="!isTrash" mat-menu-item>
         <span>Show checkBoxes</span>

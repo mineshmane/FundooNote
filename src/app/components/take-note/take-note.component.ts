@@ -88,7 +88,7 @@ export class TakeNoteComponent implements OnInit {
   addNote() {
     try {
       this.isOpen = !this.isOpen;
-      let newNote: notes = {
+      let newNote = {
         title: this.title,
         description: this.description,
         color: this.setColor,

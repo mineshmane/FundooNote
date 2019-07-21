@@ -86,7 +86,14 @@ export class DataService {
     this.colorData.next(message)
   }
 
-
+ /*
+  * @Description  : Add and send reply questions and answers
+  */
+ private messageQuestion = new BehaviorSubject('default');
+ currentMessageQuestion = this.messageQuestion.asObservable();
+ getNotesDetail(message: string){
+   this.messageQuestion.next(message)
+ }
 
 
 }

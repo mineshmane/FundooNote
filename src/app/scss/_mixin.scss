@@ -1,0 +1,12 @@
+@mixin color-test($property) {
+    color:$property;
+}
+@mixin back-ground-color($color-value) {
+  background-color: $color-value;
+}
+@mixin margin-top($value) {
+  margin-top: $value;  
+}
+@mixin color($color-value){
+  color: $color-value;
+}

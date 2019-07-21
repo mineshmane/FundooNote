@@ -1,0 +1,101 @@
+@import '../../scss/colors';
+@import '../../scss/mixin';
+
+
+.card{
+    @include margin-top(10px);
+    border-radius:7;
+//    border: none;
+}
+.cardMain{
+    display: flex;
+    width: 77vw;
+}
+.title{
+    border-style: hidden;
+    font-size: 25px; 
+    outline: none;  
+    word-break: break-all;
+    font-weight: bold;
+    margin-left: 30px;
+}
+.title1{
+    border-style: hidden;
+    font-size: 20px; 
+    outline: none;  
+    word-break: break-all;
+    font-weight: bold;
+    margin-left: 20px;
+}
+.title2{
+    border-style: hidden;
+    font-size: 20px; 
+    outline: none;  
+    word-break: break-all;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-top: -18px;
+}
+.description{
+    border-style: hidden; 
+    outline: none;
+    font-size: 20px;
+    margin-bottom: 20px;
+    word-break: break-all;
+    margin-left: 30px;
+}
+.btn1{
+    width: 170px;
+    margin-left: 1051px;
+}
+.textarea{
+    width: 1260px;
+    height: 150px;
+}
+.mat-form-field{
+    width: 1100px; 
+    margin-left: 50px;
+    margin-right: 50px;
+}
+.mat-button{
+    width: 170px;
+    height: 45px;
+    float: left;
+    font-size: 20px;
+    margin-right: 60px;
+  }
+  .addPerson{
+    border: 1px solid black;
+    border-radius:  50%;
+    opacity: 0.4;
+    margin-left: 30px;
+    width: 45px;
+}
+.icon{
+    padding: 6px;
+    margin-left: 5px;
+}
+.nameIcon{
+    font-size: 20px;
+    padding-left: 10px;
+    color: white;
+    padding-top: 11px;
+}
+.mat-card-avatar{
+    background-color:#1a73e8;
+    background-size:cover;
+    height:50px;
+    width:50px;
+    border-radius:50%;
+}
+// hr{
+//     color: black;
+//     border: 0.5px solid;
+// }
+small{
+    font-size: 25px;
+}
+mat-divider{
+    color: black;
+    border: 0.5px solid;
+}

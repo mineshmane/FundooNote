@@ -310,6 +310,22 @@
               (reminderToNote)="reminderAddedToNote()" (labelToNote)="labelAddedToNote()" add [card]="card"></app-icon>
           </div>
 
+
+
+          <div *ngIf="card.questionAndAnswerNotes.length > 0">
+            <div style="height:2vh;"></div>
+            <mat-divider [inset]="true"></mat-divider>
+            <div style="height:2vh;"></div>
+            <h3>Question Asked</h3>
+        </div>
+        <div *ngFor="let item of card.questionAndAnswerNotes" class="question">
+            <div *ngIf="!item.parentId" fxFlex="93">
+                <div innerHTML="{{item.message}}"></div>
+            </div>
+        </div>
+
+
+
         </mat-card>
 
 
