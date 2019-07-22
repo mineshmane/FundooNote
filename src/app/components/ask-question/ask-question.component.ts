@@ -66,7 +66,7 @@ export class AskQuestionComponent implements OnInit {
           data => {
             this.snackbar.open('Message added successfully.', '', { duration: 3000 });
             console.log('Add Message data..........', data);
-            this.getNotesDetail();
+           // this.getNotesDetail();
             this.dataService.getNotesDetail('');
           },
           error => {
@@ -93,7 +93,7 @@ export class AskQuestionComponent implements OnInit {
         this.notes = data["data"].data;
         console.log("note array ",this.notes);
         
-        // console.log("this.notes[questionAndAnswerNotes]", this.notes[0].questionAndAnswerNotes);
+         console.log("this.notes[questionAndAnswerNotes]", this.notes[0].questionAndAnswerNotes);
         // this.noteDataList = this.notes[0].questionAndAnswerNotes[0];
         // console.log("this.notes[questionAndAnswerNotes]0000000000000000", this.noteDataList.id);
         // this.parentId = this.noteDataList.id;

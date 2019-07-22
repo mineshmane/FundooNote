@@ -1,10 +1,152 @@
+<!-- <div [froalaEditor]>Hello, Froala!</div> -->
+<div fxLayoutAlign="center" fxFlex.xs="100" fxFlex.sm="80">
+  <div fxLayout="column" *ngFor=" let card of notes">
+
+    <div fxLayout="column">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+
+        <div>
+          <h2>{{card.title}}</h2>
+        </div>
+
+        <button mat-button (click)=close()>Close</button>
+      </div>
+      <div>
+        <h3>{{card.description}}</h3>
+      </div>
+    </div>
+
+    <mat-divider></mat-divider>
+
+
+
+    <div>
+      <mat-card style="height: 40px" style=" overflow: scroll;">
+        <h4 *ngIf="card.questionAndAnswerNotes.length > 0" style="margin-left:30px;"><strong>Question Asked</strong>
+        </h4>
+
+        <div fxLayout="column" class="description">
+          <div *ngFor="let item of card.questionAndAnswerNotes">
+            <div *ngIf="!item.parentId">
+
+              <div class="description" innerHTML="{{item.message}}"></div>
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div>
+      <div *ngIf="card.questionAndAnswerNotes[0]" fxLayout="row">
+
+        <div>
+          <div fxLayout="row" *ngFor="let item of card.questionAndAnswerNotes">
+
+            <div mat-card-avatar>
+              <div fxFlex="7" class=nameIcon>
+                {{card.user.firstName[0].toUpperCase()}}{{card.user.lastName[0].toUpperCase()}}
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+              <div>
+
+                <div fxLayout="row">
+                  <span>{{card.user.firstName}} {{card.user.lastName}}</span>
+                  <div> <span>{{item.createdDate|dateTime:'dateTime'}}</span>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="msg" innerHTML="{{item.message}}">
+                  </div>
+                </div>
+
+              </div>
+
+              <div fxLayout="row">
+                <div>
+                  <mat-icon *ngIf="showfroalaeditor2" (click)=postReplyEditor()>reply</mat-icon>
+                </div>
+
+                <div (click)="setLikes()">
+                  <mat-icon>thumb_up_ult</mat-icon>
+                </div>
+
+                <div>
+                  <a *ngFor="let item of starList; let i=index " (click)="setStar(i)">
+                    <i class="fa" [ngClass]="{'fa-star-o':item,'fa-star':!item}"></i>
+                  </a>
+                </div>
+
+                <div>
+                  <span>{{ratings}}</span>
+                </div>
+                <img width="38" height="40" (click)="setLikes()" src='https://ui-ex.com/images/heart-svg-4.png' />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div>
+      <div *ngIf="card.questionAndAnswerNotes.length > 0">
+        <div>
+          <div *ngIf="!showfroalaeditor2">
+            <textarea [froalaEditor] [(froalaModel)]="replyMsg.message" [formControl]="message"></textarea>
+          </div>
+
+          <div>
+
+            <button mat-button *ngIf="!showfroalaeditor2" (click)=postReply()>reply</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
 
 
 
 
 
 
-<div fxLayoutAlign="center">
+    <div>
+      <div *ngIf="!card.questionAndAnswerNotes[0]">
+
+        <div *ngIf="showfroalaeditor" (click)="openEditor()">
+          <h4>Ask a Question</h4>
+        </div>
+
+        <div>
+          <textarea [froalaEditor] [(froalaModel)]="addMsg.message" [formControl]="message"></textarea>
+        </div>
+        <div fxLayoutAlign="end">
+          <button mat-button (click)="addMessage()">Ask</button>
+        </div>
+
+      </div>
+
+      <mat-divider></mat-divider>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+<!-- <div fxLayoutAlign="center">
   <div fxLayout="column" fxFlex="80">
     <div *ngFor="let data of notes" fxFlex.xl="1600px" fxFlex.lg="1200px" fxFlex.md="800px" fxFlex.sm="600px"
       fxFlex.xs="95%">
@@ -36,7 +178,7 @@
         </div>
       </div>
 
-      <div style="margin-left:30px;" *ngIf="data.questionAndAnswerNotes[0]">
+      <div style="margin-left:30px;"*ngFor="let item of data.questionAndAnswerNotes" >
         <div>
           <mat-card-header>
             <div fxLayout="row">
@@ -54,7 +196,7 @@
         <div>
           <div fxLayout="row">
             <div fxFlex="5"></div>
-            <div fxFlex="95" class="title2" *ngFor="let item of data.questionAndAnswerNotes">
+            <div fxFlex="95" class="title2" >
               <div *ngIf="!item.parentId" fxFlex="100">
                 <small fxLayout="row">
                   <div fxFlex="45" class="msg" innerHTML="{{item.message}}">
@@ -155,4 +297,4 @@
       </div>
     </div>
   </div>
-</div> 
+</div>       -->

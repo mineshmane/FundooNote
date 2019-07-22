@@ -34,7 +34,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { DateTimePipe } from './pipes/date-time.pipe';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
-
+import "froala-editor/js/froala_editor.pkgd.min.js";
 
 @NgModule({
   declarations: [

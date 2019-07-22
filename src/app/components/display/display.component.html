@@ -200,28 +200,17 @@
 
           <div *ngFor="let colab of card.collaborators">
 
-
-
-
-
-            <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+            <button class="collo" [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}" id="label"
               (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
-
-
-
-
           </div>
 
         </div>
-
 
         <div class="div">
           <app-icon [isTrash]="isTrash" (update)="getTrashNotes()" (reminderToNote)="reminderAddedToNote()"
             (labelToNote)="labelAddedToNote()" add [card]="card"></app-icon>
         </div>
-
       </mat-card>
-
 
     </div>
 
@@ -290,16 +279,9 @@
             </div>
 
 
-            <div *ngFor="let colab of card.collaborators">
-
-              <!-- <mat-chip-list aria-label="Fish selection ">  -->
-
-              <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+            <div *ngFor="let colab of card.collaborators">     
+              <button class="collo" [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}" id="label"
                 (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
-
-
-
-              <!-- </mat-chip-list>  -->
             </div>
 
           </div>
@@ -334,6 +316,7 @@
   </div>
 
 </div>
+
 
 
 <!-- @description: end of unpiined card and start for trsh and archive -->
