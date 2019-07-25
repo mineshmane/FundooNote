@@ -7,7 +7,7 @@ export class DataService {
 
 
 
-
+  constructor() { console.log(" data service called"); }
 
   /* Required for Grid*/
   result: boolean = true;
@@ -33,7 +33,7 @@ export class DataService {
   private messageSource = new BehaviorSubject({ type: '', data: [] });
   currentMessage = this.messageSource.asObservable();
 
-  constructor() { console.log(" data service called"); }
+  
 
   changeMessage(message: any) {
     console.log(" data service called", message);

@@ -237,7 +237,7 @@ export class NotesService {
     getNotesDetail(noteId) {
       return this.httpService.getNotes("notes/getNotesDetail/" + noteId)
     }
-    viewReply(body, parentId) {
+    sendReply(body, parentId) {
       return this.httpService.postAth("questionAndAnswerNotes/reply/" + parentId, body)
     }
     addRating(body, parentId) {
