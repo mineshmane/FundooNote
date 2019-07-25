@@ -1,4 +1,4 @@
-<div fxLayoutAlign="center" fxFlex.xs="100" fxFlex.sm="80">
+<div fxLayoutAlign="center" fxFlex.xs="100" fxFlex="100" fxFlex.sm="80">
   <div fxLayout="column" *ngFor=" let card of notes">
 
     <div fxLayout="column">
@@ -94,7 +94,7 @@
 
             <div>
               <div *ngIf="card.questionAndAnswerNotes.length > 0">
-                <div *ngIf="!showfroalaeditor2 && replyid==item.id">
+                <div *ngIf="!showfroalaeditor2 && replyid==item.id && !item.parentId">
                   <div>
                     <textarea [froalaEditor] [(froalaModel)]="replyMsg.message" [formControl]="message"></textarea>
                   </div>
@@ -116,7 +116,7 @@
             <div style="margin-left:20px;" *ngIf="card.questionAndAnswerNotes.length >= 2">
               <div style="margin-left:60px;" *ngFor="let reply of card.questionAndAnswerNotes">
                 <div fxLayout="column"
-                  *ngIf=" reply.isApproved == true && reply.isCanceled == false && reply.parentId==item.id">
+                  *ngIf=" reply.isApproved == true && reply.isCanceled == false && reply.parentId==item.id ">
                   <div fxLayout="row">
                     <div mat-card-avatar>
                       <div fxFlex="7" class=nameIcon>
@@ -168,7 +168,7 @@
 
                   <div>
                     <div *ngIf="card.questionAndAnswerNotes.length > 0">
-                      <div *ngIf="!showfroalaeditor2 && replyid==reply.id">
+                      <div *ngIf="!showfroalaeditor2 && replyid==reply.id && reply.parentId">
                         <div>
                           <textarea [froalaEditor] [(froalaModel)]="replyMsg.message"
                             [formControl]="message"></textarea>
