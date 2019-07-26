@@ -16,6 +16,7 @@ import { LabelComponent } from './components/label/label.component';
 import { LoginComponent } from './components/login/login.component';
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
 import { TakeNoteComponent } from './components/take-note/take-note.component';
+import { UpdateComponent } from './components/update/update.component';
 
 
 const routes: Routes = [
@@ -47,7 +48,7 @@ const routes: Routes = [
         path: 'trash', component: TrashComponent
       },
       {
-        path: 'update', component: TrashComponent
+        path: 'update', component: UpdateComponent
       },
       {
         path: 'search', component: SearchComponent
@@ -58,6 +59,7 @@ const routes: Routes = [
       {
         path: 'askquestion/:id', component: AskQuestionComponent
       },
+      
       {
         path: 'icon', component: IconComponent
       },

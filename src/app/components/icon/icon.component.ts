@@ -32,6 +32,7 @@ export class IconComponent implements OnInit {
     private route: Router) { }
   @Input() card;
   @Input() isTrash;
+  @Input()isarchive;
   @Input() isTakeNote;
   isArchive = true
   isDeleted = true
@@ -168,6 +169,34 @@ export class IconComponent implements OnInit {
     }
 
   }
+
+
+
+
+
+
+  unArchiveNote() {
+    try {
+      let data = {
+        // cardidList:this.cardId,
+        noteIdList: [this.card.id],
+        isArchived: false,
+      }
+      console.log(data);
+      this.notesService.archiveNote(data).subscribe(response => {
+        console.log('response ', response);
+        this.onArchiveChange.emit();
+        this.snackBar.open('note un archive succesfully', '', { duration: 2000 });
+      }, error => {
+        console.log('error ', error);
+      })
+    } catch (error) {
+      console.log(error);
+
+    }
+
+  }
+
 
   unTrashNote() {
     try {

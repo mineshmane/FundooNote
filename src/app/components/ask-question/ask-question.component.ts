@@ -76,10 +76,11 @@ export class AskQuestionComponent implements OnInit {
           });
     } catch (error) {
       this.snackbar.open('error', "", { duration: 3000 });
+
     }
-    setTimeout(() => this.noteService.getNotesDetail(this.noteId), 10);
+    setTimeout(() => this.getNotesDetail(), 10);
     this.addMsg.message = null;
-    this.showfroalaeditor = !this.showfroalaeditor;
+    this.showfroalaeditor = this.showfroalaeditor;
 
   }
   /**
@@ -121,24 +122,38 @@ export class AskQuestionComponent implements OnInit {
     this.showfroalaeditor1 = !this.showfroalaeditor1;
   }
   postReply(superid) {
-    console.log(" reply parent id", superid);
+    try {
 
-    console.log("parentId================>", this.parentId);
-    console.log(" reply called ");
 
-    var body = {
-      "message": this.replyMsg.message,
+      console.log(" reply parent id", superid);
+
+      console.log("parentId================>", this.parentId);
+      console.log(" reply called ");
+
+      var body = {
+        "message": this.replyMsg.message,
+
+      }
+      if (body.message == undefined) {
+        this.showfroalaeditor2 = !this.showfroalaeditor2;
+        return;
+      }else{
+        this.noteService.sendReply(body, superid).subscribe(data => {
+          this.notes = data["data"].data;
+          console.log("data in view Reply notelist ask question=========>", data["data"].data);
+          this.snackbar.open('Notes Detail.', '', { duration: 3000 });
+          console.log('Notes Detail data..........', data);
+          this.getNotesDetail();
+          this.dataService.getNotesDetail('');
+        })
+        this.showfroalaeditor2 = !this.showfroalaeditor2;
+      }
+    
+    } catch (error) {
+      console.log(error);
 
     }
-    this.noteService.sendReply(body, superid).subscribe(data => {
-      this.notes = data["data"].data;
-      console.log("data in view Reply notelist ask question=========>", data["data"].data);
-      this.snackbar.open('Notes Detail.', '', { duration: 3000 });
-      console.log('Notes Detail data..........', data);
-      this.getNotesDetail();
-      this.dataService.getNotesDetail('');
-    })
-    this.showfroalaeditor2 = !this.showfroalaeditor2;
+
   }
   close() {
     this.router.navigate(['Takenotes']);

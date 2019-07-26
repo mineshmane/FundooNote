@@ -128,6 +128,11 @@
       matTooltip="Archive">
       <mat-icon>archive</mat-icon>
     </button>
+
+    <button mat-icon-button matSuffix (click)="unArchiveNote()" (click)="Archive()" *ngIf="!isTrash && isarchive" (click)="$event.stopPropagation()"
+      matTooltip="Archive">
+      <mat-icon>archive</mat-icon>
+    </button>
     <!-- <abbr title="Archive">
       <button style="outline: none;" mat-icon-button (click)="archiveNote()">
         <i class="material-icons">
