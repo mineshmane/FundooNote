@@ -35,6 +35,8 @@ import { DateTimePipe } from './pipes/date-time.pipe';
 import { CollaboratorComponent } from './components/collaborator/collaborator.component';
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
 import "froala-editor/js/froala_editor.pkgd.min.js";
+import { SelectServiceComponent } from './components/select-service/select-service.component';
+import { DialogCartComponent } from './components/dialog-cart/dialog-cart.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import "froala-editor/js/froala_editor.pkgd.min.js";
     SetProfilePhotoComponent, DateTimePipe,
     CollaboratorComponent,
     AskQuestionComponent,
+    SelectServiceComponent,
+    DialogCartComponent,
 
 
   ],
@@ -65,7 +69,8 @@ import "froala-editor/js/froala_editor.pkgd.min.js";
     FroalaViewModule.forRoot()
 
   ],
-  entryComponents: [UpdateComponent, EditLabelsComponent, SetProfilePhotoComponent, CollaboratorComponent],
+  entryComponents: [UpdateComponent, EditLabelsComponent, SetProfilePhotoComponent, CollaboratorComponent,
+    DialogCartComponent],
   providers: [],
   bootstrap: [AppComponent]
 })

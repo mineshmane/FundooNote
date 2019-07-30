@@ -17,11 +17,15 @@ import { LoginComponent } from './components/login/login.component';
 import { AskQuestionComponent } from './components/ask-question/ask-question.component';
 import { TakeNoteComponent } from './components/take-note/take-note.component';
 import { UpdateComponent } from './components/update/update.component';
+import { DisplayComponent } from './components/display/display.component';
+import { SelectServiceComponent } from './components/select-service/select-service.component';
 
 
 const routes: Routes = [
   { path: 'resetpassword/:token', component: ResetComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  // { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: '/selectService', pathMatch: 'full' },
+  { path: 'selectService', component: SelectServiceComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'forget', component: ForgetComponent },
@@ -34,6 +38,9 @@ const routes: Routes = [
       },
       {
         path: 'notes', component: NotesComponent
+      },
+      {
+        path: 'display', component: DisplayComponent
       },
       {
         path: 'Takenotes', component: TakeNoteComponent
@@ -59,7 +66,7 @@ const routes: Routes = [
       {
         path: 'askquestion/:id', component: AskQuestionComponent
       },
-      
+
       {
         path: 'icon', component: IconComponent
       },

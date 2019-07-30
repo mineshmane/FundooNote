@@ -1,4 +1,4 @@
- <!-- <div *ngIf="pinedMessage.length > 0">PINNED</div>
+<!-- <div *ngIf="pinedMessage.length > 0">PINNED</div>
   <div  [ngClass]=" direction =='row' ? 'gridView':'listiew'">
 
       <div style="width: fit-content" *ngFor="let card of pinedMessage" >
@@ -145,7 +145,7 @@
   style="margin-top: 25px" layout-wrap fxLayout="row wrap" fxLayoutAlign="center center" fxFlexAlign="auto"
   fxFlexAlign="auto">
   <div *ngIf="pinedMessage.length > 0">PINNED
-    <div layout-wrap fxLayoutGap="10px" fxFlexAlign="start"  fxLayout="row wrap" fxFlex="85" fxFlex.xs="100"
+    <div layout-wrap fxLayoutGap="10px" fxFlexAlign="start" fxLayout="row wrap" fxFlex="85" fxFlex.xs="100"
       fxLayoutAlign.xs="center center" fxLayoutAlign="start start" fxLayoutAlign.md="start center">
       <mat-card *ngFor="let card of pinedMessage" class="main-card" [style.background-color]=card.color
         fxLayout.xs="column" fxFlex.xs="95">
@@ -195,8 +195,8 @@
 
           <div *ngFor="let colab of card.collaborators">
 
-            <button class="collo" [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}" id="label"
-              (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
+            <button class="collo" [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}"
+              id="label" (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
           </div>
 
         </div>
@@ -215,12 +215,12 @@
 
 
 
-    <div *ngIf="!islist.data " fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3"
-      style="margin-top: 25px" layout-wrap fxLayout="row wrap" fxLayoutAlign="center center" fxFlexAlign="auto"
-      fxFlexAlign="auto">
+  <div *ngIf="!islist.data " fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3"
+    style="margin-top: 25px" layout-wrap fxLayout="row wrap" fxLayoutAlign="center center" fxFlexAlign="auto"
+    fxFlexAlign="auto">
 
 
-      <div *ngIf="unPinedMessage.length > 0" style="margin-top: 30px;">others
+    <div *ngIf="unPinedMessage.length > 0" style="margin-top: 30px;">others
 
       <div layout-wrap fxLayoutGap="10px" fxFlexAlign="start" fxLayout="row wrap" fxFlex="85" fxFlex.xs="100"
         fxLayoutAlign.xs="center center" fxLayoutAlign="start start" fxLayoutAlign.md="start center">
@@ -274,9 +274,9 @@
             </div>
 
 
-            <div *ngFor="let colab of card.collaborators">     
-              <button class="collo" [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}" id="label"
-                (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
+            <div *ngFor="let colab of card.collaborators">
+              <button class="collo" [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}"
+                id="label" (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
             </div>
 
           </div>
@@ -292,14 +292,14 @@
           <div *ngIf="card.questionAndAnswerNotes.length > 0">
             <div style="height:2vh;"></div>
             <mat-divider [inset]="true"></mat-divider>
-            <div style="height:2vh;"></div>
-            <h3>Question Asked</h3>
-        </div>
-        <div *ngFor="let item of card.questionAndAnswerNotes" class="question">
+            <div (click)="askquestion(card)" style="height:2vh;"></div>
+            <h3 >Question Asked</h3>
+          </div>
+          <div *ngFor="let item of card.questionAndAnswerNotes" (click)="askquestion(card)" class="question">
             <div *ngIf="!item.parentId" fxFlex="93">
-                <div innerHTML="{{item.message}}"></div>
+              <div innerHTML="{{item.message}}"></div>
             </div>
-        </div>
+          </div>
 
 
 

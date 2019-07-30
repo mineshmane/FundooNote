@@ -13,7 +13,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
-
+import {MatTabsModule} from '@angular/material/tabs';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatSidenavModule, MatToolbarModule, MatNativeDateModule,
     MatListModule, MatMenuModule, MatDatepickerModule, MatTooltipModule,
-    MatCheckboxModule, MatChipsModule, MatGridListModule, MatSelectModule,
+    MatCheckboxModule, MatChipsModule, MatGridListModule, MatSelectModule,MatTabsModule
 
   ],
   exports: [
@@ -36,7 +36,7 @@ import { MatSelectModule } from '@angular/material/select';
     FlexLayoutModule,
     MatSidenavModule, MatToolbarModule, MatNativeDateModule, MatListModule,
     MatMenuModule, MatDatepickerModule, MatTooltipModule, MatCheckboxModule, MatChipsModule,
-    MatGridListModule, MatSelectModule,
+    MatGridListModule, MatSelectModule,MatTabsModule
 
 
   ]

@@ -1,0 +1,43 @@
+<div fxLayout="column" fxFlex="100">
+  <mat-toolbar class="navbar" fxLayout="row">
+    <div fxLayout="row" fxFlex="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.xs="100" fxFlex.sm="100">
+      <div fxFlex="20" ngstyle.xl="font-size: 25px;" ngstyle.lg="font-size: 25px;" ngstyle.sm="font-size: 15px;"
+        ngstyle.xs="font-size: 15px;" ngstyle.md="font-size: 20px;">FundooNotes</div>
+      <div fxFlex="50" fxFlex.xs="40"></div>
+    </div>
+  </mat-toolbar>
+  <div style="height:5vh;"></div>
+  <div fxLayout="column" class="text" fxFlex="10">
+    <h4 ngStyle.xs="font-size:15px;" ngStyle.sm="font-size:20px;">Which fundooNotes service package do you want?</h4>
+  </div>
+  <div fxLayout="column" fxFlex="80">
+    <div fxLayout="row" fxLayout.sm="column wrap" fxLayout.xs="column wrap" fxLayoutAlign="center center"
+      fxLayoutGap="150px">
+      <div class="main1" *ngFor="let data of service">
+        <div class="card" >
+          <mat-card class="card3">
+            <h5>ADD TO CART</h5>
+          </mat-card>
+        </div>
+        <div class="card1">
+          <mat-card>
+            <div style="height:1vh;"></div>
+            <h4>${{data.price}} Per Month</h4>
+            <div fxLayoutAlign="start" class="openDialog">
+              <button mat-button (click)="openDialogAdvance(data)">{{data.name}}</button>
+            </div>
+            <li>Unlimited Wall Space</li>
+            <li>Nice Interface</li>
+            <li>${{data.price}}/Month</li>
+            <li>{{data.description}}</li>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="height:10vh;"></div>
+  <div fxLayout="column">
+    <div style="height:5vh;"></div>
+    <div class="size" fxLayoutAlign="center"><button mat-button routerLink="/login">Sign in instead</button></div>
+  </div>
+</div>

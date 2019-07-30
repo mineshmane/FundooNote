@@ -250,6 +250,24 @@ export class NotesService {
   
 
 
+    getService(){
+      return this.httpService.getDataService("user/service")
+    }
+    productCarts(body){
+      return this.httpService.postDataService("productcarts/addToCart",body)
+  
+    }
+    getCartDetails(cartId){
+      return this.httpService.getDataService("productcarts/getCartDetails/"+cartId)
+    }
+    placeOrder(body){
+      return this.httpService.postData("productcarts/placeOrder",body)
+    }
+    myCart(){
+      return this.httpService.getData("productcarts/myCart");
+    }
+
+
 
 
 

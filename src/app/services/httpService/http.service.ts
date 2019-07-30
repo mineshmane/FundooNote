@@ -9,7 +9,7 @@ export class HttpService {
 
   constructor(private http: HttpClient) { }
   baseUrl = environment.baseUrl;
-  
+
   post(url, user) {
 
     let options = {
@@ -39,27 +39,27 @@ export class HttpService {
     }
     return this.http.post(this.baseUrl + url, this.encode(data), options)
   }
-setphoto(url, data){
-console.log(" httpt ",url,"data ",data);
+  setphoto(url, data) {
+    console.log(" httpt ", url, "data ", data);
 
-  let opt={
+    let opt = {
 
 
-    headers :new HttpHeaders({
-     'Content-Type': 'multipart/form-data',
-     'Authorization': localStorage.getItem('token'),
-     'Accept':'application/json'
-   })
-      
- }
- return this.http.post(this.baseUrl + url,this.encode(data), opt)
+      headers: new HttpHeaders({
+        'Content-Type': 'multipart/form-data',
+        'Authorization': localStorage.getItem('token'),
+        'Accept': 'application/json'
+      })
 
-}
+    }
+    return this.http.post(this.baseUrl + url, this.encode(data), opt)
+
+  }
 
 
 
   postAth(url, data) {
-    console.log("http service called",url, data);
+    console.log("http service called", url, data);
     let options = {
       headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token'),
@@ -69,6 +69,17 @@ console.log(" httpt ",url,"data ",data);
     }
     return this.http.post(this.baseUrl + url, data, options)
 
+  }
+
+
+  postData(path, body) {
+    let httpAuthOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    };
+    return this.http.post(environment.baseUrl + path, body, httpAuthOptions);
   }
   getNotes(url) {
     let options = {
@@ -82,7 +93,7 @@ console.log(" httpt ",url,"data ",data);
 
   }
 
-  
+
   postlabel(url) {
     console.log("http service called");
     let options = {
@@ -97,28 +108,59 @@ console.log(" httpt ",url,"data ",data);
   }
 
 
-  postWithoutHeader(url,data){
-    var httpOption={
-      headers:new HttpHeaders({
+  postWithoutHeader(url, data) {
+    var httpOption = {
+      headers: new HttpHeaders({
         'Authorization': localStorage.getItem('token')
       })
     }
-  
+
     console.log("data");
-    return this.http.post(this.baseUrl+url,data,httpOption);
+    return this.http.post(this.baseUrl + url, data, httpOption);
   }
 
 
 
 
-  deleteData(path){
+  deleteData(path) {
     let httpOptions = {
       headers: new HttpHeaders({
         // 'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('token')
       })
     }
-    return this.http.delete(environment.baseUrl+path,httpOptions);
+    return this.http.delete(environment.baseUrl + path, httpOptions);
   }
 
+
+
+  postDataService(path, body) {
+    let httpAuthOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        // 'Authorization': localStorage.getItem('token')
+      })
+    }
+    return this.http.post(environment.baseUrl + path, body, httpAuthOptions);
+  }
+
+  getDataService(path) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        // 'Authorization': localStorage.getItem('token')
+      })
+    };
+    return this.http.get(environment.baseUrl + path, httpOptions);
+  }
+
+  getData(path) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'Authorization': localStorage.getItem('token')
+      })
+    };
+    return this.http.get(environment.baseUrl + path, httpOptions);
+  }
 }

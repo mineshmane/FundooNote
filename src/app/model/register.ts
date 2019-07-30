@@ -20,3 +20,18 @@ export class Editor {
 export class Reply {
     "message": string
 }
+
+export class UserModel {
+    "firstName": string
+    "lastName": string
+    "username": string
+    "password": string
+    "cpassword": string
+    "cardId" : string
+}
+export class Service {
+    "name": string
+    "description": string
+    "price": number
+    "id": string
+}

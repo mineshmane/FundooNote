@@ -1,4 +1,4 @@
-<div fxLayoutAlign="center" fxFlex.xs="100" fxFlex="100" fxFlex.xs="100"  fxFlex.md="80" fxFlex.sm="80">
+ <div fxLayoutAlign="center" fxFlex.xs="100" fxFlex="100" fxFlex.xs="100" fxFlex.md="80" fxFlex.sm="80">
   <div fxLayout="column" *ngFor=" let card of notes">
 
     <div fxLayout="column">
@@ -19,20 +19,21 @@
 
 
 
-    <div *ngIf="card.questionAndAnswerNotes.length > 0"  fxFlex.xs="100" fxFlex="100" fxFlex.xs="100"  fxFlex.md="80" fxFlex.sm="80" >
-      <!-- <mat-card style="height: 40px;width: fit-content" style=" overflow: scroll;"> -->
-        <h4 *ngIf="card.questionAndAnswerNotes.length > 0" style="margin-left:30px;"><strong>Question Asked</strong>
-        </h4>
+    <div *ngIf="card.questionAndAnswerNotes.length > 0" fxFlex.xs="100" fxFlex="100" fxFlex.xs="100" fxFlex.md="80"
+      fxFlex.sm="80">
 
-        <div fxLayout="column" class="description">
-          <div *ngFor="let item of card.questionAndAnswerNotes">
-            <div *ngIf="!item.parentId">
+      <h4 *ngIf="card.questionAndAnswerNotes.length > 0" style="margin-left:30px;"><strong>Question Asked</strong>
+      </h4>
 
-              <div class="description" innerHTML="{{item.message}}"></div>
-            </div>
+      <div fxLayout="column" class="description">
+        <div *ngFor="let item of card.questionAndAnswerNotes">
+          <div *ngIf="!item.parentId">
+
+            <div class="description" innerHTML="{{item.message}}"></div>
           </div>
         </div>
-      <!-- </mat-card> -->
+      </div>
+
     </div>
 
     <mat-divider></mat-divider>
@@ -43,7 +44,7 @@
         <div>
           <div fxLayout="column" *ngFor="let item of card.questionAndAnswerNotes">
 
-            <div >
+            <div>
               <div fxLayout="row" *ngIf="!item.parentId">
                 <div mat-card-avatar>
                   <div fxFlex="7" class=nameIcon>
@@ -93,7 +94,7 @@
 
 
             <div>
-              <div *ngIf="card.questionAndAnswerNotes.length > 0" >
+              <div *ngIf="card.questionAndAnswerNotes.length > 0">
                 <div *ngIf="!showfroalaeditor2 && replyid==item.id && !item.parentId">
                   <div>
                     <textarea [froalaEditor] [(froalaModel)]="replyMsg.message" [formControl]="message"></textarea>
@@ -112,8 +113,9 @@
 
 
 
-            <!-- <div style="height:5vh;"> reply is and aprooved message show in this div</div> -->
-            <div style="margin-left:20px;" *ngIf="card.questionAndAnswerNotes.length >= 2"  fxFlex.xs="100" fxFlex="100" fxFlex.xs="100"  fxFlex.md="80" fxFlex.sm="80">
+
+            <div style="margin-left:20px;" *ngIf="card.questionAndAnswerNotes.length >= 2" fxFlex.xs="100" fxFlex="100"
+              fxFlex.xs="100" fxFlex.md="80" fxFlex.sm="80">
               <div style="margin-left:60px;" *ngFor="let reply of card.questionAndAnswerNotes">
                 <div fxLayout="column"
                   *ngIf=" reply.isApproved == true && reply.isCanceled == false && reply.parentId==item.id ">
@@ -167,7 +169,8 @@
 
 
                   <div>
-                    <div *ngIf="card.questionAndAnswerNotes.length > 0"  fxFlex.xs="100" fxFlex="100" fxFlex.xs="100"  fxFlex.md="80" fxFlex.sm="80">
+                    <div *ngIf="card.questionAndAnswerNotes.length > 0" fxFlex.xs="100" fxFlex="100" fxFlex.xs="100"
+                      fxFlex.md="80" fxFlex.sm="80">
                       <div *ngIf="!showfroalaeditor2 && replyid==reply.id && reply.parentId">
                         <div>
                           <textarea [froalaEditor] [(froalaModel)]="replyMsg.message"
@@ -184,7 +187,8 @@
                   </div>
 
 
-                  <div style="margin-left:60px;" *ngFor="let sreply of card.questionAndAnswerNotes"  fxFlex.xs="100" fxFlex="100" fxFlex.xs="100"  fxFlex.md="80" fxFlex.sm="80">
+                  <div style="margin-left:60px;" *ngFor="let sreply of card.questionAndAnswerNotes" fxFlex.xs="100"
+                    fxFlex="100" fxFlex.xs="100" fxFlex.md="80" fxFlex.sm="80">
                     <div fxLayout="row"
                       *ngIf="sreply.parentId && sreply.isApproved == true && sreply.isCanceled == false && sreply.parentId==reply.id">
 
@@ -259,4 +263,17 @@
       <mat-divider></mat-divider>
     </div>
   </div>
-</div>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+

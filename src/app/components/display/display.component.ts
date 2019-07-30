@@ -5,6 +5,7 @@ import { UpdateComponent } from '../update/update.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from '../../services/dataService/data.service'
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
+import {Router} from '@angular/router'
 
 @Component({
   selector: 'app-display',
@@ -26,7 +27,7 @@ export class DisplayComponent implements OnInit {
   description = '';
   isPin: boolean = false;
   constructor(
-    private notesService: NotesService, private dataService: DataService,
+    private notesService: NotesService, private dataService: DataService,private route :Router,
     private bar: MatSnackBar,
     public dialog: MatDialog) { }
   @Input() childMessage;
@@ -107,6 +108,12 @@ export class DisplayComponent implements OnInit {
 
   }
 
+  askquestion(card) {
+    console.log(" label ts", card);
+
+    this.route.navigate(['dashboard/askquestion/' + card.id]);
+
+  }
 
   openCollaboratorDialog(card): void {
     try {
