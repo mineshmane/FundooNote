@@ -3,8 +3,17 @@
 .navbar {
 //   @include back-ground-color(#fb0);
 background-color: #ffa500;
-  // width:100%;
+  width:100%;
   font-size: 15px;
+}
+
+
+@media screen and (max-width: 600px) {
+  div.navbar {
+    background-color: #ffa500;
+  width:100%;
+  font-size: 15px;
+  }
 }
 .cart {
   display: block;
@@ -18,6 +27,24 @@ background-color: #ffa500;
   min-height: inherit;
   max-height: inherit;
 }
+
+@media screen and (max-width: 600px) {
+  div.cart {
+    display: block;
+    padding: 0px;
+    // border-radius: 27px;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 0;
+    // width: 100%;
+    height: 50%;
+    min-height: inherit;
+    max-height: inherit;
+  
+  }
+}
+
+
 .btn{
   width: 15%;
   height: 55px;

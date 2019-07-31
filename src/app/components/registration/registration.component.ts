@@ -1,8 +1,8 @@
 
 /******************************************************************************
- *  Execution       :cmd> node server.js                      
+ *  Execution       :cmd> node register.ts                      
  *  @description    :it used for registraion writing logic code and method of taht component
- *  @file           :userRouter.js
+ *  @file           :registerCompnents.ts
  *  @author         :Minesh Mane <mineshmane94@gmail.com>
  *  @version        :1.0
  
@@ -127,7 +127,8 @@ export class RegistrationComponent implements OnInit {
         lastName: registerFormValue.lastName,
         email: registerFormValue.email,
         password: registerFormValue.password,
-        service: 'advance',
+        // service: 'advance',
+        service:registerFormValue.value,
         imageurl:'',
         phoneNumber: "",
        cartId: ""

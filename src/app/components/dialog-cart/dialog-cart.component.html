@@ -1,21 +1,16 @@
-<div class="cart">
+<div class="cart" >
   <mat-toolbar class="navbar">
     <div FxLayout="row" fxLayoutAlign="space-between center">
-      <!-- <div> -->
-        <div >{{serviceData.name}} Pack Details</div>
-      <!-- </div> -->
-      <!-- <div> -->
-        <div >${{serviceData.price}}/Month</div>
-      <!-- </div> -->
-    </div>
+            <div >{{serviceData.name}} Pack Details</div>
+            <div >${{serviceData.price}}/Month</div>
+        </div>
   </mat-toolbar>
   <mat-tab-group>
-    <mat-tab label="feature1"> Ability to add title, description </mat-tab>i
-    <mat-tab label="feature2">{{serviceData.description }} </mat-tab>
-    <mat-tab label="feature3"> Ability to add images, labels, checklist and colors ,Reminders </mat-tab>
+    <mat-tab label="feature1"> Unlimited Wall Space</mat-tab>i
+    <mat-tab label="feature2"> Nice Interface</mat-tab>
+    <mat-tab label="feature3"> {{serviceData.description }} </mat-tab>
   </mat-tab-group>
-  <div style="height : 2vh;"></div>
-  <!-- <div style="font-size : 20px; margin-left:15px;" fxLayoutAlign="start center">{{serviceData.description }}</div> -->
+  <!-- <div style="height : 2vh;"></div> -->
   <div style="height : 5vh;" ngStyle.xs="height:15vh"></div>
   <div fxLayout="row" fxLayoutAlign="space-between center">
     <div>

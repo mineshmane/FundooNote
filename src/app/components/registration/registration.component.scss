@@ -29,3 +29,8 @@ a {
 .main{
   min-height:-webkit-fill-available !important;
 }
+.card :hover{
+  background-color: #ffa500;
+  transform: scale(1.1); 
+  
+ }

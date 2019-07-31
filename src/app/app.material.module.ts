@@ -14,7 +14,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
-
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 @NgModule({
   imports: [
     MatIconModule,
@@ -25,7 +25,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatDialogModule,
     MatSidenavModule, MatToolbarModule, MatNativeDateModule,
     MatListModule, MatMenuModule, MatDatepickerModule, MatTooltipModule,
-    MatCheckboxModule, MatChipsModule, MatGridListModule, MatSelectModule,MatTabsModule
+    MatCheckboxModule, MatChipsModule, MatGridListModule, MatSelectModule,MatTabsModule,MatButtonToggleModule
 
   ],
   exports: [
@@ -35,7 +35,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatButtonModule,
     FlexLayoutModule,
     MatSidenavModule, MatToolbarModule, MatNativeDateModule, MatListModule,
-    MatMenuModule, MatDatepickerModule, MatTooltipModule, MatCheckboxModule, MatChipsModule,
+    MatMenuModule, MatDatepickerModule, MatTooltipModule, MatCheckboxModule, MatChipsModule,MatButtonToggleModule,
     MatGridListModule, MatSelectModule,MatTabsModule
 
 
