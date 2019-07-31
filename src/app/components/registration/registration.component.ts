@@ -46,6 +46,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
       */
 export class RegistrationComponent implements OnInit {
   public registerForm: FormGroup;
+  productId;
   hide = true;
   matcher = new MyErrorStateMatcher();
 
@@ -78,6 +79,10 @@ export class RegistrationComponent implements OnInit {
       * @returns true or false 
       */
   ngOnInit() {
+
+
+this.productId=localStorage.getItem('cartId')
+     
     //  this.registerForm = new FormGroup({
     //    firstName:new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
     //    lastName:new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),

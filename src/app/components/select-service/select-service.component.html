@@ -8,7 +8,7 @@
   </mat-toolbar>
   <!-- <div style="height:5vh;"></div> -->
   <div fxLayout="column" class="text" fxFlex="10">
-    <h4 ngStyle.xs="font-size:15px;" ngStyle.sm="font-size:20px;">Which fundooNotes service package do you want?</h4>
+    <h4 ngStyle.xs="font-size:15px;" ngStyle.sm="font-size:15px;">Which fundooNotes service package do you want?</h4>
   </div>
   <div fxLayout="column" fxFlex="80" fxFlex.xs="100">
     <div fxLayout="row" fxLayout.sm="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="space-around center"
@@ -21,7 +21,7 @@
         </div>
         <div class="card1" style="margin-right: 10%;">
           <mat-card >
-            <!-- <div style="height:1vh;"></div> -->
+            <div style="height:1vh;"></div>
             <h4>${{data.price}} Per Month</h4>
             <div fxLayoutAlign="start" class="openDialog">
               <button mat-button (click)="openDialogAdvance(data)">{{data.name}}</button>
@@ -36,9 +36,9 @@
       </div>
     </div>
   </div>
-  <div style="height:10vh;"></div>
+  <!-- <div style="height:10vh;"></div> -->
   <div fxLayout="column">
-    <div style="height:5vh;"></div>
-    <div class="size" fxLayoutAlign="center"><button mat-button routerLink="/login">Sign in instead</button></div>
+    <!-- <div style="height:5vh;"></div> -->
+    <div class="size" fxLayoutAlign="center"> <a routerLink="../login">login in instead</a></div>
   </div>
 </div>

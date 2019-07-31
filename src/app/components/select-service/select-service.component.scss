@@ -1,5 +1,8 @@
 // @import '../../core/scss/colors';
 // @import '../../core/scss/mixin';
+a {
+  text-decoration: none;
+}
 .navbar {
 //   @include back-ground-color(#fb0);
 background-color: yellowgreen;
@@ -21,7 +24,7 @@ color: gray;
   margin-left: -41px
   
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .card1 mat-card {
     // font-size: 30px;
    width: 150px;
@@ -42,7 +45,7 @@ color: gray;
   background-color: #a9a9a9;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .card mat-card {
     width: 150px;
     height: 240px;
@@ -69,7 +72,7 @@ color: gray;
   padding: 12px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   h4 {
     font-size: 8px;
     padding: 6px;
@@ -84,7 +87,7 @@ li{
  padding: 10px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
    li {
     font-size: 10px;
     margin-left: 2px;
@@ -124,7 +127,7 @@ li{
   margin-top: 147px;
   background-color: #a9a9a9;
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .card3 mat-card  {
     font-size: 30px;
     width: 150px;
@@ -142,11 +145,17 @@ li{
   font-size: 21px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .card3 h5  {
     margin-top:220px;
   color: white;
   font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .column {
+    flex: 50%;
   }
 }
 

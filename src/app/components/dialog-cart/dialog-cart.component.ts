@@ -44,7 +44,7 @@ export class DialogCartComponent implements OnInit {
   }
   proceedto() {
     this.dialogRef.close();
-    this.router.navigateByUrl('register');
+    this.router.navigateByUrl('register',this.productId);
   }
   Remove() {
     this.dialogRef.close();
