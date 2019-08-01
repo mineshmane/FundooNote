@@ -5,8 +5,9 @@ import { BehaviorSubject, Subject } from 'rxjs';
 })
 export class DataService {
 
+  
 
-
+  sidenavValue=false;
   constructor() { console.log(" data service called"); }
 
   /* Required for Grid*/
@@ -94,6 +95,12 @@ export class DataService {
  getNotesDetail(message: string){
    this.messageQuestion.next(message)
  }
+
+ private sideNav = new BehaviorSubject(this.sidenavValue);
+  sideNaveMessage = this.sideNav.asObservable();
+  sideNaveData(value: any) {
+    this.sideNav.next(value)
+  }
 
 
 }

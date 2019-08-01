@@ -15,17 +15,20 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSelectModule } from '@angular/material/select';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 @NgModule({
   imports: [
     MatIconModule,
-    MatFormFieldModule,
+    MatFormFieldModule,MatProgressSpinnerModule,Ng4LoadingSpinnerModule,
     MatInputModule,
     MatButtonModule,
     FlexLayoutModule,
     MatDialogModule,
     MatSidenavModule, MatToolbarModule, MatNativeDateModule,
     MatListModule, MatMenuModule, MatDatepickerModule, MatTooltipModule,
-    MatCheckboxModule, MatChipsModule, MatGridListModule, MatSelectModule,MatTabsModule,MatButtonToggleModule
+    MatCheckboxModule, MatChipsModule, MatGridListModule,MatProgressBarModule, MatSelectModule,MatTabsModule,MatButtonToggleModule
 
   ],
   exports: [
@@ -33,10 +36,10 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    FlexLayoutModule,
+    FlexLayoutModule,MatProgressSpinnerModule,Ng4LoadingSpinnerModule,
     MatSidenavModule, MatToolbarModule, MatNativeDateModule, MatListModule,
     MatMenuModule, MatDatepickerModule, MatTooltipModule, MatCheckboxModule, MatChipsModule,MatButtonToggleModule,
-    MatGridListModule, MatSelectModule,MatTabsModule
+    MatGridListModule, MatSelectModule,MatTabsModule,MatProgressBarModule
 
 
   ]

@@ -23,6 +23,9 @@ export class SelectServiceComponent implements OnInit {
     this.getService();
   }
   openDialogAdvance(data): void {
+    console.log("data",data);
+    
+    localStorage.setItem('serviceId',data.id)
     const dialogRef = this.dialog.open(DialogCartComponent, {
       // width: '850px',
       // height: '300px',
@@ -36,12 +39,12 @@ export class SelectServiceComponent implements OnInit {
 
       });
   }
-  service: Service[] = [];
+  services: Service[] = [];
   // destroy$: Subject<boolean> = new Subject<boolean>();
   getService() {
     this.noteService.getService().subscribe((response) => {
-        this.service = response["data"].data;
-        console.log("get addcart details note ===============>", this.service);
+        this.services = response["data"].data;
+        console.log("get addcart details note ===============>", this.services);
       }, (error) => {
       });
   }

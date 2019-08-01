@@ -65,8 +65,7 @@
                     <input matInput type="text" placeholder="Password" formControlName="password" id="password"
                       [type]="hide ? 'password' : 'text'">
                     <mat-error *ngIf="registerForm.hasError('required', 'password')">
-                      atleast 1 small-case letter, 1 Capital letter, 1 digit, 1 special character and the length should
-                      be between 6-10 characters.
+                      atleast 1 small,1 Capital, 1 digit, 1 special char and length  6-10 characters.
                     </mat-error>
                     <mat-error *ngIf="registerForm.hasError('required', 'password')">password is required</mat-error>
                     <mat-error *ngIf="registerForm.hasError('password', 'minlength')">password length should be 6
@@ -99,24 +98,56 @@
             </div>
 
             <div fxLayoutAlign="space-between center">
-              <!-- <button mat-raised-button color="basic" routerLink="../login">login</button> -->
-              <a routerLink="../login">login in instead</a>
+              <a (click)="login()">login in instead</a>
               <button mat-raised-button color="primary" [disabled]="!registerForm.valid">REGISTER</button>
             </div>
           </mat-card-content>
         </div>
-      </form>
+
+            </form>
     </div>
 
 
-    <div fxLayout="column">
+    <!-- <div fxLayout="column">
       <div> <span>select service</span></div>
 
       <div fxLayoutGap="10px">
         <mat-button-toggle value="advance">Advance</mat-button-toggle>
         <mat-button-toggle value="basic">Basic</mat-button-toggle>
       </div>
-    </div>
+    </div> -->
+
+
+
+    <div class="service" fxLayout="row"  fxLayout.sm="column" fxLayout.xs="column"
+     fxLayoutAlign.xs="space-around center" fxLayoutAlign.lg="start center" 
+     fxLayoutAlign.sm="space-around center" fxLayoutGap.sm='10%'  fxLayoutGap.xs='10%'
+      fxLayoutGap.lg='7%'  fxLayoutAlign="space-around none" >
+
+      <div  *ngFor="let service of services" >
+         <mat-card    [ngClass]="productId==service.id ? 'selected':'notSelected' " (click)='select(service)'>
+        
+             <mat-card class="insideMat">
+               <div>Price: ${{service.price}} per Month</div>
+               <div>{{service.name | uppercase}}</div>
+               <div>
+                 <ul>
+                   <li>${{service.price}}/Month</li>
+                   <li>{{service.description}}</li>
+ 
+                 </ul>
+               </div>
+             </mat-card>
+            
+             <div class="message" *ngIf="productId==service.id">Selected</div>
+             <div class="message" *ngIf="productId!=service.id">Add to Cart</div>
+           </mat-card>
+      </div>
+ 
+ 
+ 
+    
+     </div>
 
 
 

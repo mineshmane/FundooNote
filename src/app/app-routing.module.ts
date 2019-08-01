@@ -19,6 +19,7 @@ import { TakeNoteComponent } from './components/take-note/take-note.component';
 import { UpdateComponent } from './components/update/update.component';
 import { DisplayComponent } from './components/display/display.component';
 import { SelectServiceComponent } from './components/select-service/select-service.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
@@ -71,7 +72,7 @@ const routes: Routes = [
         path: 'icon', component: IconComponent
       },
 
-
+      {path:'cart',component:ShoppingCartComponent},
 
     ]
 

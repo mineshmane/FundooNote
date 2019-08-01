@@ -17,9 +17,9 @@ import { User } from 'src/app/model/register';
 import { UserService } from '../../services/userService/user.service';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { addToCart } from '../../model/cartModel'
 
-
-
+import { CartServiceService } from '../../services/cartService/cart-service.service';
 /********************************************************
       * @description this class is used for myerror state matchcher
       * @returns true or false 
@@ -49,9 +49,12 @@ export class RegistrationComponent implements OnInit {
   productId;
   hide = true;
   matcher = new MyErrorStateMatcher();
+  service: any;
+  cartModel: addToCart;
+  cartid: string;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router,
-    private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar, private cartService: CartServiceService) {
     this.registerForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12), Validators.pattern('[a-zA-Z ]*')]],
       lastName: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(12), Validators.pattern('[a-zA-Z ]*')]],
@@ -79,10 +82,12 @@ export class RegistrationComponent implements OnInit {
       * @returns true or false 
       */
   ngOnInit() {
+    this.getServices();
 
+    this.productId = localStorage.getItem('serviceId')
+    this.cartid = localStorage.getItem('cartId')
+    console.log(" product id ", this.productId);
 
-this.productId=localStorage.getItem('cartId')
-     
     //  this.registerForm = new FormGroup({
     //    firstName:new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
     //    lastName:new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
@@ -94,6 +99,26 @@ this.productId=localStorage.getItem('cartId')
   // public hasError = (controlName: string, errorName: string) => {
   //   return this.registerForm.controls[controlName].hasError(errorName);
   // }
+  services: any;
+
+  getServices() {
+    try {
+      this.userService.getService().subscribe(data => {
+        console.log('data after get all user service', data);
+        this.services = data['data']['data'];
+
+      }, err => {
+        console.log('err after get user services ', err);
+
+      })
+    } catch (error) {
+      console.log('error after get user services ', error);
+
+    }
+
+  }
+
+
 
 
   /********************************************************
@@ -133,16 +158,13 @@ this.productId=localStorage.getItem('cartId')
         email: registerFormValue.email,
         password: registerFormValue.password,
         // service: 'advance',
-        service:registerFormValue.value,
-        imageurl:'',
+        service: this.service,
+        imageurl: '',
         phoneNumber: "",
-       cartId: ""
+        cartId: ""
       }
       console.log("new user created ", newUser);
-      /********************************************************
-       * @description user service called here wiht  argument new user data for registration
-       * @returns response/error
-       */
+      
 
       this.userService.register(newUser).subscribe(response => {
         console.log('response ', response);
@@ -159,7 +181,44 @@ this.productId=localStorage.getItem('cartId')
     }
   }
 
+/********************************************************
+       * @description user service called here wiht  argument new user data for registration
+       * @returns response/error
+       */
+  select(item) {
+    // this.getErrorMessageserver='';
+    console.log(item);
+    this.productId = item.id;
+    for (let i = 0; i < this.services.length; i++) {
+      if (this.services[i].id == this.productId) {
+        this.service = this.services[i].name
+      }
 
+    }
+    this.addToCart(item.id);
 
+  }
+
+/********************************************************
+       * @description user service called here wiht  argument new user data for registration
+       * @returns response/error
+       */
+  addToCart(id: string) {
+    this.cartModel = new addToCart();
+    this.cartModel.productId = id;
+    this.cartService.addToCartService(this.cartModel).subscribe(data => {
+      console.log('data after add to cart', data);
+      localStorage.setItem('cartId', data['data']['details'].id)
+    }, err => {
+      console.log('error after add to cart ', err);
+
+    })
+  }
+
+  login() {
+    localStorage.removeItem('cartId')
+    localStorage.removeItem('serviceId')
+    this.router.navigate(['login']);
+  }
 
 }

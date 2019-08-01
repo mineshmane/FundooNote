@@ -78,5 +78,8 @@ export class UserService {
     searchUserList(data){
      return this.httpService.postAth('user/searchUserList',data)
     }
+    getService(){
+      return this.httpService.getDataService("user/service")
+    }
 
 }

@@ -41,7 +41,11 @@
             </button>
           </div>
         </div>
-
+        <div>
+          <button mat-icon-button (click)="shoppingCartOpen()">
+            <mat-icon>shopping_cart</mat-icon>
+          </button>
+        </div>
         <div fxFlex="25" fxShow fxHide.xs fxShow fxHide.xs>
           <button mat-icon-button style="margin-top:10px; outline: none;" class="materialicons" *ngIf=!list
             (click)=View() matTooltip="list view" fxShow="true">

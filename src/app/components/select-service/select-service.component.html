@@ -1,19 +1,19 @@
-<div fxLayout="column" fxFlex="100">
+ <div fxLayout="column" fxFlex="100">
   <mat-toolbar class="navbar" fxLayout="row">
     <div fxLayout="row" fxFlex="100" fxFlex.lg="100" fxFlex.md="100" fxFlex.xs="100" fxFlex.sm="100">
       <div fxFlex="20" ngstyle.xl="font-size: 25px;" ngstyle.lg="font-size: 25px;" ngstyle.sm="font-size: 15px;"
         ngstyle.xs="font-size: 15px;" ngstyle.md="font-size: 20px;">FundooNotes</div>
       <div fxFlex="50" fxFlex.xs="40"></div>
     </div>
-  </mat-toolbar>
-  <!-- <div style="height:5vh;"></div> -->
-  <div fxLayout="column" class="text" fxFlex="10">
+  </mat-toolbar> 
+ <div style="height:5vh;"></div> 
+<div fxLayout="column" class="text" fxFlex="10">
     <h4 ngStyle.xs="font-size:15px;" ngStyle.sm="font-size:15px;">Which fundooNotes service package do you want?</h4>
   </div>
   <div fxLayout="column" fxFlex="80" fxFlex.xs="100">
     <div fxLayout="row" fxLayout.sm="row wrap" fxLayout.xs="row wrap" fxLayoutAlign="space-around center"
       fxLayoutGap="5%" fxLayoutGap.xs="0" >
-      <div class="main1" *ngFor="let data of service">
+      <div class="main1" *ngFor="let data of services">
         <div class="card"  >
           <mat-card class="card3"> 
             <h5>ADD TO CART</h5>
@@ -36,9 +36,67 @@
       </div>
     </div>
   </div>
-  <!-- <div style="height:10vh;"></div> -->
+  <div style="height:10vh;"></div>
   <div fxLayout="column">
-    <!-- <div style="height:5vh;"></div> -->
+    <div style="height:5vh;"></div>
     <div class="size" fxLayoutAlign="center"> <a routerLink="../login">login in instead</a></div>
   </div>
-</div>
+</div> 
+
+
+
+<!-- <mat-toolbar>
+  <div fxFlexOffset="7">
+    fundooNotes
+  </div>
+</mat-toolbar>
+
+<div fxLayout="column" fxLayoutAlign="space-around center" class="mainService">
+  <div class="fundooService">
+    Which fundooNotes service package do you want?
+  </div>
+  <div class="serviceAsk"  fxLayoutGap='10%'  fxLayoutGap.xs='5%'>
+    <div class="wholeMatCard1" *ngFor="let service of services"  >
+      
+      <div (click)="openDialogAdvance(service)">
+        <mat-card class="backMatCard1">
+          <div class="add">
+            ADD TO CART
+          </div>
+        </mat-card>
+      </div>
+      <div>
+        <mat-card class="upperMatCard1">
+
+          <div fxLayout="column">
+            <div class="price">
+              price: ${{service.price}} per month
+            </div>
+            <div class="serviceName">
+              {{service.name | uppercase}}
+            </div>
+            <div>
+              <ul>
+                <li class="size">
+                  ${{service.price}}/month
+
+                </li>
+                <li class="size">
+                  {{service.description}}
+
+                </li>
+              </ul>
+
+            </div>
+          </div>
+
+        </mat-card>
+      </div>
+    </div>
+ 
+  </div>
+  <div>
+    <button mat-button class="signIn" (click)="signIn()"> Sign in Instead</button>
+  </div>
+
+</div> -->

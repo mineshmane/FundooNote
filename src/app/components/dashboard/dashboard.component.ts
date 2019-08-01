@@ -108,6 +108,15 @@ export class DashboardComponent implements OnInit {
     this.route.navigate(['dashboard/notes']);
   }
 
+
+
+    /**
+   * @description this method is for open shopping cart component
+   * @returns nothing
+   */
+  shoppingCartOpen(){
+    this.route.navigate(['dashboard/cart'])
+      }
   /**
  * @description :  Grid and List View
  */
@@ -126,6 +135,7 @@ export class DashboardComponent implements OnInit {
       data: this.isList
     });
   }
+
 
   /**
   * @description :  open dialogBox for Add and Edit Label 

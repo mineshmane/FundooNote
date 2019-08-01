@@ -37,6 +37,7 @@ import { AskQuestionComponent } from './components/ask-question/ask-question.com
 import "froala-editor/js/froala_editor.pkgd.min.js";
 import { SelectServiceComponent } from './components/select-service/select-service.component';
 import { DialogCartComponent } from './components/dialog-cart/dialog-cart.component';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { DialogCartComponent } from './components/dialog-cart/dialog-cart.compon
     AskQuestionComponent,
     SelectServiceComponent,
     DialogCartComponent,
+    ShoppingCartComponent,
 
 
   ],

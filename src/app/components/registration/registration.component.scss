@@ -34,3 +34,42 @@ a {
   transform: scale(1.1); 
   
  }
+ .service{
+  margin-left: 36px;
+  margin-top: 36px;
+}
+.message{
+  margin-top: 8px;
+}
+
+
+
+
+.selected{
+  background-color: #e6ac00;
+  width: fit-content;
+  max-width: 144px;
+
+.insideMat{
+   margin-left: -36px;
+   margin-top: -36px;
+   min-height: 212px;
+}
+
+
+
+
+}
+.notSelected{
+  background-color: #b8b5ae;
+  width: fit-content;
+  max-width: 144px;
+
+  .insideMat{
+      margin-left: -36px;
+      margin-top: -36px;
+   min-height: 212px;
+
+  }
+ 
+}
