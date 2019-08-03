@@ -1,170 +1,170 @@
 // @import '../../core/scss/colors';
 // @import '../../core/scss/mixin';
 
-.navbar {
-//   @include back-ground-color(#fb0);
-background-color: yellowgreen;
-  height: 94px;
-  border-radius: 58;
-}
-.text h4{
-  text-align: center;
-//   @include color($test-color-gray);
-color: gray;
-  font-size: 1.75rem;
-}
-.card1 mat-card{
-  width: 300px;
-  height: 400px;
-  border: solid rgba(0,0,0,.125);
-  margin-right: 10%;
-  margin-top: -464px;
-  margin-left: -41px
+// .navbar {
+// //   @include back-ground-color(#fb0);
+// background-color: yellowgreen;
+//   height: 94px;
+//   border-radius: 58;
+// }
+// .text h4{
+//   text-align: center;
+// //   @include color($test-color-gray);
+// color: gray;
+//   font-size: 1.75rem;
+// }
+// .card1 mat-card{
+//   width: 300px;
+//   height: 400px;
+//   border: solid rgba(0,0,0,.125);
+//   margin-right: 10%;
+//   margin-top: -464px;
+//   margin-left: -41px
   
-}
-@media screen and (max-width: 900px) {
-  .card1 mat-card {
-    // font-size: 30px;
-   width: 150px;
-  height: 200px;
-  border: solid rgba(0,0,0,.125);
-  margin-right: 7%;
-  margin-top: -280px;
-  margin-left: -21px
+// }
+// @media screen and (max-width: 900px) {
+//   .card1 mat-card {
+//     // font-size: 30px;
+//    width: 150px;
+//   height: 200px;
+//   border: solid rgba(0,0,0,.125);
+//   margin-right: 7%;
+//   margin-top: -280px;
+//   margin-left: -21px
   
-  }
-}
-.card mat-card{
-  width: 300px;
-  height: 426px;
-  border: solid rgba(0,0,0,.125);
-  border-radius: .25rem;
-  margin-top: 30px;
-  background-color: #a9a9a9;
-}
+//   }
+// }
+// .card mat-card{
+//   width: 300px;
+//   height: 426px;
+//   border: solid rgba(0,0,0,.125);
+//   border-radius: .25rem;
+//   margin-top: 30px;
+//   background-color: #a9a9a9;
+// }
 
-@media screen and (max-width: 900px) {
-  .card mat-card {
-    width: 150px;
-    height: 240px;
-    border: solid rgba(0,0,0,.125);
-    border-radius: .13rem;
-    margin-top: 15px;
-    background-color: #a9a9a9;
-  }
-}
-
-
-.card {
-  border: solid white;  
-}
-.mat-button{
- width: 40%;
- height: 45px;
- background-color: white;
- color: #1a73e8;
- outline: none;    
- font-size: 20px;
-}
-.card1 h4{
-  padding: 12px;
-}
-
-@media screen and (max-width: 900px) {
-  h4 {
-    font-size: 8px;
-    padding: 6px;
-  }
-}
+// @media screen and (max-width: 900px) {
+//   .card mat-card {
+//     width: 150px;
+//     height: 240px;
+//     border: solid rgba(0,0,0,.125);
+//     border-radius: .13rem;
+//     margin-top: 15px;
+//     background-color: #a9a9a9;
+//   }
+// }
 
 
+// .card {
+//   border: solid white;  
+// }
+// .mat-button{
+//  width: 40%;
+//  height: 45px;
+//  background-color: white;
+//  color: #1a73e8;
+//  outline: none;    
+//  font-size: 20px;
+// }
+// .card1 h4{
+//   padding: 12px;
+// }
 
-li{
- font-size: 19px;
- margin-left: 5px;
- padding: 10px;
-}
-
-@media screen and (max-width: 900px) {
-   li {
-    font-size: 10px;
-    margin-left: 2px;
-    padding: 5px;
-  }
-}
+// @media screen and (max-width: 900px) {
+//   h4 {
+//     font-size: 8px;
+//     padding: 6px;
+//   }
+// }
 
 
-.card h5{
- margin-top: 355px;
- color: white;
- font-size: 21px;
-}
-.main1:hover >.card mat-card {
- background-color: #ffa500;
- transform: scale(1.1); 
+
+// li{
+//  font-size: 19px;
+//  margin-left: 5px;
+//  padding: 10px;
+// }
+
+// @media screen and (max-width: 900px) {
+//    li {
+//     font-size: 10px;
+//     margin-left: 2px;
+//     padding: 5px;
+//   }
+// }
+
+
+// .card h5{
+//  margin-top: 355px;
+//  color: white;
+//  font-size: 21px;
+// }
+// .main1:hover >.card mat-card {
+//  background-color: #ffa500;
+//  transform: scale(1.1); 
  
-}
+// }
 
-.main1 .card1:hover{
- opacity: 1;
- transform: scale(1.1); 
-}
+// .main1 .card1:hover{
+//  opacity: 1;
+//  transform: scale(1.1); 
+// }
 
-.card2 mat-card{
-  width: 300px;
-  height: 400px;
-  border: solid rgba(0,0,0,.125);
-  margin-top: -475px;
-  margin-left: -67px;
-}
-.card3 mat-card{
-  width: 300px;
-  height: 426px;
-  border: solid rgba(0,0,0,.125);
-  border-radius: .25rem;
-  margin-top: 147px;
-  background-color: #a9a9a9;
-}
-@media screen and (max-width: 900px) {
-  .card3 mat-card  {
-    font-size: 30px;
-    width: 150px;
-  height: 213px;
-  border: solid rgba(0,0,0,.125);
-  border-radius: .25rem;
-  margin-top: 147px;
-  background-color: #a9a9a9;
-  }
-}
-.card3 h5{
+// .card2 mat-card{
+//   width: 300px;
+//   height: 400px;
+//   border: solid rgba(0,0,0,.125);
+//   margin-top: -475px;
+//   margin-left: -67px;
+// }
+// .card3 mat-card{
+//   width: 300px;
+//   height: 426px;
+//   border: solid rgba(0,0,0,.125);
+//   border-radius: .25rem;
+//   margin-top: 147px;
+//   background-color: #a9a9a9;
+// }
+// @media screen and (max-width: 900px) {
+//   .card3 mat-card  {
+//     font-size: 30px;
+//     width: 150px;
+//   height: 213px;
+//   border: solid rgba(0,0,0,.125);
+//   border-radius: .25rem;
+//   margin-top: 147px;
+//   background-color: #a9a9a9;
+//   }
+// }
+// .card3 h5{
 
-  margin-top:410px;
-  color: white;
-  font-size: 21px;
-}
+//   margin-top:410px;
+//   color: white;
+//   font-size: 21px;
+// }
 
-@media screen and (max-width: 900px) {
-  .card3 h5  {
-    margin-top:220px;
-  color: white;
-  font-size: 10px;
-  }
-}
+// @media screen and (max-width: 900px) {
+//   .card3 h5  {
+//     margin-top:220px;
+//   color: white;
+//   font-size: 10px;
+//   }
+// }
 
-@media screen and (max-width: 900px) {
-  .column {
-    flex: 50%;
-  }
-}
+// @media screen and (max-width: 900px) {
+//   .column {
+//     flex: 50%;
+//   }
+// }
 
 
-.size .mat-button{
-  font-size: 16px;
-  width: 10%;
-  height: 45px;
-  background-color: #1a73e8;
-  color: white;
-}
+// .size .mat-button{
+//   font-size: 16px;
+//   width: 10%;
+//   height: 45px;
+//   background-color: #1a73e8;
+//   color: white;
+// }
 
 
 
@@ -172,7 +172,9 @@ li{
 
 
 mat-toolbar{
-  background-color: #FFB733;
+  // background-color: #FFB733;
+  // background-color: aqua
+  background-color: yellowgreen
 }
 .mainService{
   margin-top: 30px;
@@ -216,7 +218,8 @@ bottom: 6px;
 .backMatCard1:hover{
   width: 200px;
   height: 190px;
-  background-color: #FFB733;
+  // background-color: #FFB733;
+  background-color: aqua
 }
 
 
@@ -229,7 +232,8 @@ bottom: 6px;
   .backMatCard1{
       width: 200px;
       height: 220px;
-      background-color: #FFB733;
+      // background-color: #FFB733;
+      background-color:forestgreen
   }
 }
 

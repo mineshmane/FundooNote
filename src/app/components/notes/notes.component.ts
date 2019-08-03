@@ -42,15 +42,16 @@ export class NotesComponent implements OnInit {
             if (this.notes[i - 1]["isPined"] == true) {
               this.pinedArray.push(this.notes[i - 1]);
               this.pinedArray.reverse();
-              console.log("pinned array@@@@@@@", this.pinedArray);
+             
             }
             else {
               this.unpinedArray.push(this.notes[i - 1]);
               this.unpinedArray.reverse();
-              console.log("unpinned array@@@@@@@", this.unpinedArray);
+              
             }
           }
-        }
+        } console.log("pinned array@@@@@@@", this.pinedArray);
+        console.log("unpinned array@@@@@@@", this.unpinedArray);
       }, error => {
         console.log('error ', error);
 

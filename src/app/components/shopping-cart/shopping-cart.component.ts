@@ -15,11 +15,11 @@ export class ShoppingCartComponent implements OnInit {
   public placeOrderModel: placeOrder;
   constructor(private cartService: CartServiceService, private snackBar: MatSnackBar, private spinnerService: Ng4LoadingSpinnerService, private dataService: DataService) { }
   cartData = [];
-  Delivery = new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(10)]);
+  Delivery = new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(8)]);
   firstComplete = true;
   SecondComplete = false;
   ThirdComplete = false;
-  firstDisplay = false;
+  emptyCart = false;
   side = false;
   cartId = localStorage.getItem('cartId');
   sidnav = {
@@ -61,7 +61,7 @@ export class ShoppingCartComponent implements OnInit {
           this.cartData = data['data'][0];
           this.cartId = data['data'][0].id;
         } else {
-          this.firstDisplay = true;
+          this.emptyCart = true;
         }
         console.log(this.cartData);
 

@@ -18,13 +18,14 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import {MatStepperModule} from '@angular/material/stepper';
 @NgModule({
   imports: [
     MatIconModule,
     MatFormFieldModule,MatProgressSpinnerModule,Ng4LoadingSpinnerModule,
     MatInputModule,
     MatButtonModule,
-    FlexLayoutModule,
+    FlexLayoutModule,MatStepperModule,
     MatDialogModule,
     MatSidenavModule, MatToolbarModule, MatNativeDateModule,
     MatListModule, MatMenuModule, MatDatepickerModule, MatTooltipModule,
@@ -33,7 +34,7 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
   ],
   exports: [
     MatIconModule,
-    MatFormFieldModule,
+    MatFormFieldModule,MatStepperModule,
     MatInputModule,
     MatButtonModule,
     FlexLayoutModule,MatProgressSpinnerModule,Ng4LoadingSpinnerModule,

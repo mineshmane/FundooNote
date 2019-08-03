@@ -38,6 +38,7 @@ import "froala-editor/js/froala_editor.pkgd.min.js";
 import { SelectServiceComponent } from './components/select-service/select-service.component';
 import { DialogCartComponent } from './components/dialog-cart/dialog-cart.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ECartComponent } from './components/e-cart/e-cart.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     SelectServiceComponent,
     DialogCartComponent,
     ShoppingCartComponent,
+    ECartComponent,
 
 
   ],

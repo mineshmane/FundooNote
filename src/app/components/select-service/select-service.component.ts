@@ -46,6 +46,8 @@ export class SelectServiceComponent implements OnInit {
         this.services = response["data"].data;
         console.log("get addcart details note ===============>", this.services);
       }, (error) => {
+        console.log(" error ",error);
+        
       });
   }
   productCarts(){

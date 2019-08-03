@@ -20,6 +20,7 @@ import { UpdateComponent } from './components/update/update.component';
 import { DisplayComponent } from './components/display/display.component';
 import { SelectServiceComponent } from './components/select-service/select-service.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { ECartComponent } from './components/e-cart/e-cart.component';
 
 
 const routes: Routes = [
@@ -71,8 +72,10 @@ const routes: Routes = [
       {
         path: 'icon', component: IconComponent
       },
+      {path:'cart',component:ECartComponent},
+      // {path:'cart',component:ShoppingCartComponent},
 
-      {path:'cart',component:ShoppingCartComponent},
+    
 
     ]
 

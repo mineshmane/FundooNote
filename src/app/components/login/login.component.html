@@ -1,56 +1,123 @@
-<div class="main" fxLayoutAlign="center center"  fxFlex="100" fxFlexOffset.xs="0"
-  fxFlex.xs="100">
-  <mat-card fxFlex.xs="100" fxFlex.md="70" fxFlex.lg="30">
-    <mat-card-title>
-      <p>
-        <span class="f">F</span>
-        <span class="u">u</span>
-        <span class="n">n</span>
-        <span class="d">d</span>
-        <span class="o">o</span>
-        <span class="O">o</span>
-      </p>
-    </mat-card-title>
+<div>
+  <div fxLayout.xs="column" fxLayoutAlign="center center" fxLayoutGap="5%">
+    <div class="main" fxLayoutAlign="center center" fxFlex="100" fxFlexOffset.xs="0" fxFlex.xs="100">
+      <mat-card fxFlex.xs="100" fxFlex.md="70" fxFlex.lg="30">
+        <mat-card-title>
+          <p>
+            <span class="f">F</span>
+            <span class="u">u</span>
+            <span class="n">n</span>
+            <span class="d">d</span>
+            <span class="o">o</span>
+            <span class="O">o</span>
+          </p>
+        </mat-card-title>
 
-    <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="loginUser(loginForm.value)">
-      <mat-card-content>
-        <mat-card-subtitle>Sign in</mat-card-subtitle>
-        <div fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayout.xs="column">
-          <div>
-            <mat-form-field [style.fontSize.px]="12" appearance="outline" fxFlex="100" fxFlex.xs="100">
-              <mat-label>Email</mat-label>
-              <input matInput type="text" placeholder="Email" formControlName="email" id="email">
-              <mat-icon matSuffix>email</mat-icon>
-              <mat-error *ngIf="hasError('email', 'required')">email is required</mat-error>
-            </mat-form-field>
+        <form [formGroup]="loginForm" autocomplete="off" novalidate (ngSubmit)="loginUser(loginForm.value)">
+          <mat-card-content>
+            <mat-card-subtitle>Sign in</mat-card-subtitle>
+            <div fxLayout="column" fxLayoutWrap fxLayoutGap="10px" fxLayout.xs="column">
+              <div>
+                <mat-form-field [style.fontSize.px]="12" appearance="outline" fxFlex="100" fxFlex.xs="100">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="text" placeholder="Email" formControlName="email" id="email">
+                  <mat-icon matSuffix>email</mat-icon>
+                  <mat-error *ngIf="hasError('email', 'required')">email is required</mat-error>
+                </mat-form-field>
+              </div>
+
+              <div>
+                <mat-form-field [style.fontSize.px]="12" appearance="outline" fxFlex="100" fxFlex.xs="100">
+                  <mat-label>Password</mat-label>
+                  <input matInput type="text" placeholder="Password" formControlName="password" id="password"
+                    [type]="hide ? 'password' : 'text'">
+                  <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                  </button>
+                  <mat-error *ngIf="hasError('password', 'required')">password is required</mat-error>
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div fxLayoutAlign="space-between center">
+              <div>
+                <p> <a routerLink="../register">CreateAccount</a></p>
+                <a routerLink="../forget">Forget Password?</a>
+
+              </div>
+
+              <div>
+                <button mat-raised-button color="primary" [disabled]="!loginForm.valid">login</button>
+              </div>
+            </div>
+          </mat-card-content>
+        </form>
+      </mat-card>
+
+    </div>
+
+
+
+    <div fxLayout="column" fxFlex="80" fxFlex.xs="100">
+      <div fxLayout="row" fxLayout.sm="row wrap" fxLayout.xs="row wrap" fxLayoutGap="5%" fxLayoutGap.xs="0">
+        <div class="main1" *ngFor="let data of services">
+          <div class="card">
+            <mat-card class="card3">
+              <h5>ADD TO CART</h5>
+            </mat-card>
+          </div>
+          <div class="card1" style="margin-right: 10%;">
+            <mat-card>
+              <div style="height:1vh;"></div>
+              <h4>${{data.price}} Per Month</h4>
+              <div fxLayoutAlign="start" class="openDialog">
+                <button mat-button (click)="openDialogAdvance(data)">{{data.name}}</button>
+              </div>
+              <li>Unlimited Wall Space</li>
+              <li>Nice Interface</li>
+              <li>${{data.price}}/Month</li>
+              <li>{{data.description}}</li>
+            </mat-card>
           </div>
 
-          <div>
-            <mat-form-field [style.fontSize.px]="12" appearance="outline" fxFlex="100" fxFlex.xs="100">
-              <mat-label>Password</mat-label>
-              <input matInput type="text" placeholder="Password" formControlName="password" id="password"
-                [type]="hide ? 'password' : 'text'">
-              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
-                [attr.aria-pressed]="hide">
-                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-              <mat-error *ngIf="hasError('password', 'required')">password is required</mat-error>
-            </mat-form-field>
-          </div>
         </div>
+      </div>
+    </div>
 
-        <div fxLayoutAlign="space-between center">
-          <div>
-            <p> <a routerLink="../register">CreateAccount</a></p>
-            <a routerLink="../forget">Forget Password?</a>
+  </div>
+  <!-- <div class="service" fxLayout="row"  fxLayout.sm="column" fxLayout.xs="column"
+     fxLayoutAlign.xs="space-around center" fxLayoutAlign.lg="start center" 
+     fxLayoutAlign.sm="space-around center" fxLayoutGap.sm='10%'  fxLayoutGap.xs='10%'
+      fxLayoutGap.lg='7%'  fxLayoutAlign="space-around none" >
 
-          </div>
+      <div  *ngFor="let service of services" >
+         <mat-card    [ngClass]="productId==service.id ? 'selected':'notSelected' " (click)='select(service)'>
+        
+             <mat-card class="insideMat">
+               <div>Price: ${{service.price}} per Month</div>
+               <div>{{service.name | uppercase}}</div>
+               <div>
+                 <ul>
+                   <li>${{service.price}}/Month</li>
+                   <li>{{service.description}}</li>
+ 
+                 </ul>
+               </div>
+             </mat-card>
+            
+             <div class="message" *ngIf="productId==service.id">Selected</div>
+             <div class="message" *ngIf="productId!=service.id">Add to Cart</div>
+           </mat-card>
+      </div>
+ 
+ 
+ 
+    
+     </div> -->
 
-          <div>
-            <button mat-raised-button color="primary" [disabled]="!loginForm.valid">login</button>
-          </div>
-        </div>
-      </mat-card-content>
-    </form>
-  </mat-card>
+
+
+
+
 </div>

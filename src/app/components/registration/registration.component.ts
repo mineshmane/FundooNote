@@ -52,6 +52,7 @@ export class RegistrationComponent implements OnInit {
   service: any;
   cartModel: addToCart;
   cartid: string;
+  productName: any;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router,
     private snackBar: MatSnackBar, private cartService: CartServiceService) {
@@ -87,7 +88,7 @@ export class RegistrationComponent implements OnInit {
     this.productId = localStorage.getItem('serviceId')
     this.cartid = localStorage.getItem('cartId')
     console.log(" product id ", this.productId);
-
+    this.getcartDetails()
     //  this.registerForm = new FormGroup({
     //    firstName:new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
     //    lastName:new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
@@ -95,6 +96,17 @@ export class RegistrationComponent implements OnInit {
     // password: ['', [Validators.required, Validators.minLength(6),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
     //cpassword: ['', [Validators.minLength(6)]]
     //     });
+  }
+  getcartDetails() {
+    let data = {
+      cartId: this.cartid
+    }
+    this.cartService.getCartDetails(this.cartid).subscribe(data => {
+      console.log(" data ", data);
+      this.productName = data['data'].product
+      console.log(" product name", this.productName.name);
+
+    })
   }
   // public hasError = (controlName: string, errorName: string) => {
   //   return this.registerForm.controls[controlName].hasError(errorName);
@@ -158,13 +170,13 @@ export class RegistrationComponent implements OnInit {
         email: registerFormValue.email,
         password: registerFormValue.password,
         // service: 'advance',
-        service: this.service,
+        service: this.productName.name,
         imageurl: '',
         phoneNumber: "",
-        cartId: ""
+        cartId: this.cartid
       }
       console.log("new user created ", newUser);
-      
+
 
       this.userService.register(newUser).subscribe(response => {
         console.log('response ', response);
@@ -181,10 +193,10 @@ export class RegistrationComponent implements OnInit {
     }
   }
 
-/********************************************************
-       * @description user service called here wiht  argument new user data for registration
-       * @returns response/error
-       */
+  /********************************************************
+         * @description user service called here wiht  argument new user data for registration
+         * @returns response/error
+         */
   select(item) {
     // this.getErrorMessageserver='';
     console.log(item);
@@ -199,10 +211,10 @@ export class RegistrationComponent implements OnInit {
 
   }
 
-/********************************************************
-       * @description user service called here wiht  argument new user data for registration
-       * @returns response/error
-       */
+  /********************************************************
+         * @description user service called here wiht  argument new user data for registration
+         * @returns response/error
+         */
   addToCart(id: string) {
     this.cartModel = new addToCart();
     this.cartModel.productId = id;
@@ -216,8 +228,8 @@ export class RegistrationComponent implements OnInit {
   }
 
   login() {
-    localStorage.removeItem('cartId')
-    localStorage.removeItem('serviceId')
+    // localStorage.removeItem('cartId')
+    // localStorage.removeItem('serviceId')
     this.router.navigate(['login']);
   }
 
