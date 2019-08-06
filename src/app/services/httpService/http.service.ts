@@ -129,7 +129,7 @@ export class HttpService {
         'Authorization': localStorage.getItem('token')
       })
     }
-    return this.http.delete(environment.baseUrl + path, httpOptions);
+    return this.http.delete(this.baseUrl + path, httpOptions);
   }
 
 
@@ -141,7 +141,7 @@ export class HttpService {
         // 'Authorization': localStorage.getItem('token')
       })
     }
-    return this.http.post(environment.baseUrl + path, body, httpAuthOptions);
+    return this.http.post(this.baseUrl + path, body, httpAuthOptions);
   }
 
   getDataService(path) {
@@ -151,7 +151,7 @@ export class HttpService {
         //  'Authorization': localStorage.getItem('token')
       })
     };
-    return this.http.get(environment.baseUrl + path, httpOptions);
+    return this.http.get(this.baseUrl + path, httpOptions);
   }
 
   getData(path) {
@@ -161,6 +161,6 @@ export class HttpService {
         'Authorization': localStorage.getItem('token')
       })
     };
-    return this.http.get(environment.baseUrl + path, httpOptions);
+    return this.http.get(this.baseUrl + path, httpOptions);
   }
 }

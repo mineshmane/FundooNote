@@ -1,45 +1,44 @@
 
-<div fxFlex=100 fxFlex.xs=100 fxFlex.sm=100 fxFlex.md=100  >
-  <mat-card fxFlex=100   >
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-      <mat-card-title>
-        <h3>Select Profile Photo</h3>
-      </mat-card-title>
-      <button mat-icon-button (click)='close()'>
-        <!-- <img src="../../../assets/svg-icons/multiply.svg" height="20px" width="20px"> -->
-      </button>
-    </div>
-    <div class="divider"></div>
-    <div class="button" fxLayout="row" fxLayoutAlign="center center">
-      <mat-card-content>
-        <input type="file" (change)="getprofilephoto($event)" accept="image/*"/>
-          
-      </mat-card-content>
-      <div>
-          <image-cropper [imageChangedEvent]="imageChangedEvent"
-           (imageCropped)="imageCropped($event)"
-            style="width:250px;height:250px;float:left;" ></image-cropper>
+
+<div class="crop">
+  <div class="select">
+    Select profile photo
+  </div>
+
+<div>
+<div class="smallLetter">
+    To crop this image, drag the region below and then click "Set as profile photo"
+</div>
+
+<div>
+  <input type="file" (change)="getprofilephoto($event)" accept="image/*"/>
+    
+</div>
+<div  fxLayout="row" fxLayoutAlign="center center" >
+    <div class="image" fxFlex='80'>
+        <image-cropper
+        [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true"
+        [aspectRatio]="4 / 4"
+        [resizeToWidth]="128"
+        format="png"
+        (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()"
+        (loadImageFailed)="loadImageFailed()"
+      ></image-cropper>
       </div>
-    </div>
-    <div class="divider"></div>
-    <div>
-      <mat-card-footer>
-        <div class="footer" fxLayout="row" fxLayoutGap="50px">
-          <div>
-            <button mat-raised-button (click)="setprofilephoto()" id="input-btn" color="primary">set profile
-              photo</button>
+</div>
+<div *ngIf='progressBar'>
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
 
-          </div>
-          <div>
-            <button mat-raised-button (click)="cancel()" id="input-btn" color="">cancel</button>
+</div>
 
-          </div>
 
-        </div>
-
-      </mat-card-footer>
-    </div>
-
-  </mat-card>
+<mat-divider></mat-divider>
+<div fxLayout='row' class="downButton" >
+<button mat-button (click)="upload()" class="upload">Set as profile photo</button>
+<button mat-button (click)="cancel()">cancel</button>
+</div>
 
 </div>

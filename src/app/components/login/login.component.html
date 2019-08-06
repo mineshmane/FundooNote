@@ -53,70 +53,76 @@
             </div>
           </mat-card-content>
         </form>
-      </mat-card>
-
-    </div>
+     
 
 
 
-    <div fxLayout="column" fxFlex="80" fxFlex.xs="100">
+    <!-- <div fxLayout="column" fxFlex="80" fxFlex.xs="100">
       <div fxLayout="row" fxLayout.sm="row wrap" fxLayout.xs="row wrap" fxLayoutGap="5%" fxLayoutGap.xs="0">
         <div class="main1" *ngFor="let data of services">
           <div class="card">
-            <mat-card class="card3">
-              <h5>ADD TO CART</h5>
-            </mat-card>
-          </div>
-          <div class="card1" style="margin-right: 10%;">
-            <mat-card>
-              <div style="height:1vh;"></div>
-              <h4>${{data.price}} Per Month</h4>
-              <div fxLayoutAlign="start" class="openDialog">
-                <button mat-button (click)="openDialogAdvance(data)">{{data.name}}</button>
-              </div>
-              <li>Unlimited Wall Space</li>
-              <li>Nice Interface</li>
-              <li>${{data.price}}/Month</li>
-              <li>{{data.description}}</li>
-            </mat-card>
-          </div>
+            <mat-card class="card3" [ngClass]="productId==data.id ? 'selected':'notSelected' "
+              (click)='select(data)'>
 
+
+              <div style="margin-right: 10%;">
+                <mat-card class="card1" >
+                  <div style="height:1vh;"></div>
+                  <h4>${{data.price}} Per Month</h4>
+                  <div fxLayoutAlign="start" class="openDialog">
+                    <button mat-button (click)="openDialogAdvance(data)">{{data.name | uppercase}}</button>
+                  </div>
+                  <li>Unlimited Wall Space</li>
+                  <li>Nice Interface</li>
+                  <li>${{data.price}}/Month</li>
+                  <li>{{data.description}}</li>
+                </mat-card>
+
+                <div class="message" *ngIf="productId==data.id">Selected</div>
+                <div class="message" *ngIf="productId!=data.id">Add to Cart</div>
+
+            </mat-card>
+            </div>
+          </div>
         </div>
+
       </div>
     </div>
+  </div> -->
+<!-- </div> -->
 
-  </div>
-  <!-- <div class="service" fxLayout="row"  fxLayout.sm="column" fxLayout.xs="column"
-     fxLayoutAlign.xs="space-around center" fxLayoutAlign.lg="start center" 
-     fxLayoutAlign.sm="space-around center" fxLayoutGap.sm='10%'  fxLayoutGap.xs='10%'
-      fxLayoutGap.lg='7%'  fxLayoutAlign="space-around none" >
+ <div class="service" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.xs="space-around center"
+      fxLayoutAlign.lg="start center" fxLayoutAlign.sm="space-around center" fxLayoutGap.sm='10%' fxLayoutGap.xs='10%'
+      fxLayoutGap.lg='7%' fxLayoutAlign="space-around none">
 
-      <div  *ngFor="let service of services" >
-         <mat-card    [ngClass]="productId==service.id ? 'selected':'notSelected' " (click)='select(service)'>
-        
-             <mat-card class="insideMat">
-               <div>Price: ${{service.price}} per Month</div>
-               <div>{{service.name | uppercase}}</div>
-               <div>
-                 <ul>
-                   <li>${{service.price}}/Month</li>
-                   <li>{{service.description}}</li>
- 
-                 </ul>
-               </div>
-             </mat-card>
-            
-             <div class="message" *ngIf="productId==service.id">Selected</div>
-             <div class="message" *ngIf="productId!=service.id">Add to Cart</div>
-           </mat-card>
+      <div *ngFor="let service of services">
+        <mat-card [ngClass]="productId==service.id ? 'selected':'notSelected' " (click)='select(service)'>
+
+          <mat-card class="insideMat">
+            <div>Price: ${{service.price}} per Month</div>
+            <div>{{service.name | uppercase}}</div>
+            <div>
+              <ul>
+                <li>${{service.price}}/Month</li>
+                <li>{{service.description}}</li>
+
+              </ul>
+            </div>
+          </mat-card>
+
+          <div class="message" *ngIf="productId==service.id">Selected</div>
+          <div class="message" *ngIf="productId!=service.id">Add to Cart</div>
+        </mat-card>
       </div>
- 
- 
- 
-    
-     </div> -->
 
 
+
+
+    </div> 
+
+  </mat-card>
+
+</div>
 
 
 

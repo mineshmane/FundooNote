@@ -1,25 +1,27 @@
-<div class="cart" >
+<div class="cart">
   <mat-toolbar class="navbar">
     <div FxLayout="row" fxLayoutAlign="space-between center">
-            <div >{{serviceData.name}} Pack Details</div>
-            <div >${{serviceData.price}}/Month</div>
-        </div>
-  </mat-toolbar>
-  <mat-tab-group>
-    <mat-tab label="feature1" class="size"> Unlimited Wall Space</mat-tab>i
-    <mat-tab label="feature2" class="size"> Nice Interface</mat-tab>
-    <mat-tab label="feature3" class="size"> {{serviceData.description }} </mat-tab>
-  </mat-tab-group>
-  <!-- <div style="height : 2vh;"></div> -->
-  <div style="height : 5vh;" ngStyle.xs="height:15vh"></div>
-  <div fxLayout="row" fxLayoutAlign="space-between center">
-    <div>
-      <button mat-raised-button style="background-color: green" ngstyle.xs="font-size:11px;"
-        ngstyle.lg="font-size:20px;" (click)=Remove()>Remove</button>
+    <div>{{serviceData.name |titlecase}} Pack Details</div>
+    <div style="float: right">${{serviceData.price}}/Month</div>
     </div>
-    <div>
-      <button mat-raised-button ngstyle.xs="font-size:11px;" color="warn" ngstyle.lg="font-size:20px;"
-        (click)=proceedto()>Proceed To Checkout</button>
+  </mat-toolbar>
+  <div style="padding: 2px">
+    <mat-tab-group>
+      <mat-tab label="feature1" class="size"> Unlimited Wall Space</mat-tab>i
+      <mat-tab label="feature2" class="size"> Nice Interface</mat-tab>
+      <mat-tab label="feature3" class="size"> {{serviceData.description }} </mat-tab>
+    </mat-tab-group>
+    <!-- <div style="height : 2vh;"></div> -->
+    <div style="height : 5vh;" ngStyle.xs="height:15vh"></div>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div>
+        <button mat-raised-button style="background-color: green" ngstyle.xs="font-size:11px;"
+          ngstyle.lg="font-size:20px;" (click)=Remove()>Remove</button>
+      </div>
+      <div>
+        <button mat-raised-button ngstyle.xs="font-size:11px;" color="warn" ngstyle.lg="font-size:20px;"
+          (click)=proceedto()>Proceed To Checkout</button>
+      </div>
     </div>
   </div>
 </div>

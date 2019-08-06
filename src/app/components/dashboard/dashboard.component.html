@@ -5,8 +5,12 @@
       <mat-icon>menu</mat-icon>
     </button>
     <!-- <mat-icon> <img src="../../../assets/image/keep.svg"></mat-icon> -->
+    <div fxLayoutAlign="center" fxHide.xs='true' fxHide.sm='true'>
+        <img class="keepimg" src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png">
+        <!-- <mat-icon><img class="keepimg" src="../../../assets/image/keep.svg"></mat-icon> -->
+      </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
-      <div fxFlex.md="30" fxFlex.xm="28" fxFlex.xs="30" fxFlex="30">
+      <div  >
         <h1 class="app-name">
           <p>
             <span class="f">F</span>
@@ -20,16 +24,26 @@
 
       </div>
 
-      <div fxFlex.sm="50" fxFlex.md="50" fxFlex.xs="50">
-        <span fxShow fxHide.xs fxShow fxHide.xs class="example-spacer"></span>
+       <div class="search" fxFlex.md='35' fxFlex='45' fxFlexOffset='14' fxFlexOffset.sm='12' >
+        <!-- <span fxShow fxHide.xs fxShow fxHide.xs class="example-spacer"></span> -->
         <mat-form-field [style.fontSize.px]="12" appearance="outline" routerLink="search" fxFlex.sm="50" fxFlex.md="50"
           fxFlex.xs="50">
           <button mat-icon-button matSuffix fxFlex.xs="50" matTooltip="Search">
-            <mat-icon fxFlex.xs="50">search</mat-icon>
+              <mat-icon matPrefix>search</mat-icon>
           </button>
           <input matInput type="text" [(ngModel)]="title" placeholder="search" (keyup)="search($event)">
         </mat-form-field>
-      </div>
+      </div> 
+
+      <!-- <div class="search" fxFlex.md='35' fxFlex='45' fxFlexOffset='14' fxFlexOffset.sm='12' fxHide.xs='true'>
+          <mat-form-field appearance="outline" [style.fontSize.px]=12>
+    
+            <input matInput placeholder="search" class="place" [(ngModel)]="title" (keyup)="search($event)"
+              autocomplete="off">
+            <mat-icon matPrefix>search</mat-icon>
+    
+          </mat-form-field>
+        </div> -->
 
       <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="30">
 
@@ -80,7 +94,7 @@
                   </div>
 
                   <div style="margin-top: -50px" class="gb_3a">
-                    <div class="gb_eb">{{userName}}</div>
+                    <div class="gb_eb">{{userName | titlecase}}</div>
                     <div class="gb_gb">{{email}}</div>
                   </div>
 

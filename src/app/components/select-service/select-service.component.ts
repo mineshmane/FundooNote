@@ -29,6 +29,7 @@ export class SelectServiceComponent implements OnInit {
     const dialogRef = this.dialog.open(DialogCartComponent, {
       // width: '850px',
       // height: '300px',
+      panelClass: 'updateDialog',
       data: {
         data: data,
       }

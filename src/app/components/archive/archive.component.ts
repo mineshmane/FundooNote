@@ -6,19 +6,19 @@ import { NotesService } from '../../services/notes-service/notes.service'
   styleUrls: ['./archive.component.scss']
 })
 export class ArchiveComponent implements OnInit {
-  notes=[];
-  pinedArray=[];
-  unpinedArray=[];
-  constructor(private noteService:NotesService) { }
+  notes = [];
+  pinedArray = [];
+  unpinedArray = [];
+  constructor(private noteService: NotesService) { }
 
   ngOnInit() {
 
-this.getArchiveNote();
-   
+    this.getArchiveNote();
+
   }
 
 
-  getArchiveNote(){
+  getArchiveNote() {
     this.noteService.getArchiveNotesList().subscribe(response => {
       console.log('response ', response['data'].data);
       this.notes = response['data'].data
@@ -26,7 +26,7 @@ this.getArchiveNote();
       this.unpinedArray = []
       this.notes.reverse();
       for (let i = this.notes.length; i > 0; i--) {
-     
+        if (this.notes[i - 1]["isDeleted"] == false){
           if (this.notes[i - 1]["isPined"] == true) {
             this.pinedArray.push(this.notes[i - 1]);
             this.pinedArray.reverse();
@@ -37,7 +37,7 @@ this.getArchiveNote();
             this.unpinedArray.reverse();
             console.log("unpinned array@@@@@@@", this.unpinedArray);
           }
-
+        }
       }
     }, error => {
       console.log('error ', error);
@@ -45,5 +45,5 @@ this.getArchiveNote();
     })
   }
 
-  
+
 }

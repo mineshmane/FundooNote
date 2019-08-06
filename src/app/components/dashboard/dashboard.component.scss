@@ -33,6 +33,29 @@ h1.app-name {
   display: flex;
   flex-direction: column;
 }
+.keepimg{
+  display: flex;
+  flex-direction: row;
+    }
+.keep{
+  // border: 1px solid black;
+  .keepimg{
+display: flex;
+flex-direction: row;
+  }
+
+}
+.search{
+  height: 60px;
+  display: flex;
+  // border: 1px solid blue;
+  flex-direction: column;
+  align-content: center;
+  mat-form-field{
+    margin-top: 2px;
+width: 100%;
+  }
+}
 
 .example-container > * {
   width: 100%;

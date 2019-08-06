@@ -12,13 +12,13 @@ import { DataService } from '../../services/dataService/data.service';
   styleUrls: ['./shopping-cart.component.scss']
 })
 export class ShoppingCartComponent implements OnInit {
-  public placeOrderModel: placeOrder;
+  public orderModel: placeOrder;
   constructor(private cartService: CartServiceService, private snackBar: MatSnackBar, private spinnerService: Ng4LoadingSpinnerService, private dataService: DataService) { }
   cartData = [];
-  Delivery = new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(8)]);
-  firstComplete = true;
-  SecondComplete = false;
-  ThirdComplete = false;
+  DeliveryAddress = new FormControl('', [Validators.required, Validators.maxLength(100), Validators.minLength(8)]);
+  firstStepComplete = true;
+  SecondStepComplete = false;
+  ThirdStepComplete = false;
   emptyCart = false;
   side = false;
   cartId = localStorage.getItem('cartId');
@@ -65,10 +65,10 @@ export class ShoppingCartComponent implements OnInit {
         }
         console.log(this.cartData);
 
-        if (this.cartData['isOrderPlaced']) {
-          this.firstComplete = false;
-          this.SecondComplete = false;
-          this.ThirdComplete = true;
+        if (this.cartData['isOrderPlaced']==true) {
+          this.firstStepComplete = false;
+          this.  SecondStepComplete = false;
+          this.ThirdStepComplete = true;
         }
 
       }, err => {
@@ -88,8 +88,8 @@ export class ShoppingCartComponent implements OnInit {
    * @returns nothing
    */
   proceed() {
-    this.firstComplete = false;
-    this.SecondComplete = true;
+    this.firstStepComplete = false;
+    this.SecondStepComplete = true;
   }
   /**
    * @description this method is for when user hit placeorder button then this method run
@@ -97,22 +97,22 @@ export class ShoppingCartComponent implements OnInit {
    */
   placeOrder() {
     try {
-      if (this.Delivery.hasError('required')) {
+      if (this.DeliveryAddress.hasError('required')) {
         this.openSnackBar('Please Enter Delivery Address ', '');
-      } else if (this.Delivery.hasError('minlength')) {
+      } else if (this.DeliveryAddress.hasError('minlength')) {
 
-        this.openSnackBar('Please Enter Correct Address ', '');
+        this.openSnackBar('Please Enter Correct and Valid  Address ', '');
 
-      } else if (this.Delivery.hasError('maxlength')) {
-        this.openSnackBar('Please Enter Correct Address ', '');
+      } else if (this.DeliveryAddress.hasError('maxlength')) {
+        this.openSnackBar('Please Enter Correct and valid Address  ', '');
 
       } else {
-        this.SecondComplete = false;
-        this.ThirdComplete = true;
-        this.placeOrderModel = new placeOrder();
-        this.placeOrderModel.address = this.Delivery.value;
-        this.placeOrderModel.cartId = this.cartId;
-        this.placeOrderService(this.placeOrderModel);
+        this.  SecondStepComplete = false;
+        this.ThirdStepComplete = true;
+        this.orderModel = new placeOrder();
+        this.orderModel.address = this.DeliveryAddress.value;
+        this.orderModel.cartId = this.cartId;
+        this.placeOrderService(this.orderModel);
       }
     } catch (error) {
       console.log('error in place order ', error);
@@ -136,10 +136,10 @@ export class ShoppingCartComponent implements OnInit {
    */
   placeOrderService(data: object) {
     this.cartService.placeOrder(data).subscribe(data => {
-      console.log('data after place order', data);
+      console.log('data after place  order', data);
       this.openSnackBar('Your Order Placed SuccessFully ', '');
-    }, err => {
-      console.log('error after place order', err);
+    }, error => {
+      console.log('error after place  order', error);
 
     })
   }

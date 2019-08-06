@@ -15,3 +15,75 @@ tc {
 // {
 //     margin-left: -250px;
 // }
+
+
+
+.crop{
+    width: 800px;
+    border: 1px solid grey;
+    padding: 20px;
+}
+.select{
+    font-family: Roboto,Arial,sans-serif;
+    font-size: 20px;
+}
+.smallLetter{
+    font-size: 11px;
+    padding: 10px;
+    color: #444;
+    font-family: Roboto,Arial,sans-serif;
+
+}
+// .image{
+//     // max-width: 80%;
+// }
+image-cropper{
+    max-height: 400px;
+
+}
+.downButton{
+    padding-top: 10px;
+    .upload{
+        background-color: #4d90fe;
+        color: white;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .crop{
+        width: 600px;
+        border: 1px solid grey;
+        padding: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    .crop{
+        width: 400px;
+        border: 1px solid grey;
+        padding: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 550px) {
+    .crop{
+        width: 300px;
+        border: 1px solid grey;
+        padding: 20px;
+    }
+  }
+
+  @media only screen and (max-width: 400px) {
+    .crop{
+        width: 250px;
+        border: 1px solid grey;
+        padding: 20px;
+    }
+  }
+  @media only screen and (max-width: 300px) {
+    .crop{
+        width: 180px;
+        border: 1px solid grey;
+        padding: 20px;
+    }
+  }

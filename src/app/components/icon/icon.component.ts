@@ -42,16 +42,16 @@ export class IconComponent implements OnInit {
   public colorArray: any = [
     [{ color: '#00FFFF' },
     { color: '#7FFFD4' },
-    { color: '#F0E68C' },
-    { color: '#2E8B57' }],
+    { color: '#C0C0C0' },
+    { color: '#008080' }],
     [{ color: '#FFFF00' },
     { color: '#ADFF2F' },
     { color: '#00FF7F' },
     { color: '#FFDEAD' }],
-    [{ color: '#8A2BE2' },
-    { color: '#663399' },
+    [{ color: '#FFA07A' },
+    { color: '#F08080' },
     { color: '#00BFFF' },
-    { color: '#0000FF' }]
+    { color: '#808080' }]
   ]
 
 
@@ -272,7 +272,7 @@ export class IconComponent implements OnInit {
     try {
       if (card == undefined) {
 
-        this.onChangeColor.emit(color)
+        this.onChangeColor.emit(color);
         console.log(" undefined cardf ", color);
         // this.dataService.colorDatasend({
         //   data
