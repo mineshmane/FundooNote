@@ -1,0 +1,190 @@
+<!-- <ngx-masonry>
+ 
+  <div ngxMasonryItem class="masonry-item" *ngFor="let item of unPinedMessage">
+<mat-card>
+
+    {{item.title}}
+  
+</mat-card>
+</div>
+</ngx-masonry> -->
+
+
+<div *ngIf="pinedMessage.length > 0" style="margin-top: 30px;">pinned</div>
+<ngx-masonry>
+  <div *ngIf="pinedMessage.length > 0" fxLayout="center" style="margin-top:10px;" fxFlexOffset="8" fxFlexOffset.xs="0"
+    fxFlexOffset.sm="3">
+    <mat-card ngxMasonryItem *ngFor="let card of pinedMessage" class="main-card" [style.background-color]=card.color
+      fxLayout.xs="column" fxFlex.xs="95">
+      <div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+            <p>{{card.title}}</p>
+          </div>
+          <div class="div">
+            <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin">
+
+              <img *ngIf=!isPin (click)=pin() src="../../../assets/image/unpin.svg">
+              <img *ngIf=isPin (click)=pin() src="../../../assets/image/pin.svg">
+            </button>
+          </div>
+        </div>
+        <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+
+          <p fxLayout="row wrap">{{card.description}}</p>
+        </div>
+      </div>
+
+
+      <div fxLayout="row" fxLayout="row wrap">
+
+        <div *ngFor="let rem of card.reminder">
+          <mat-chip-list *ngIf="!isTrash" aria-label="Fish selection">
+            <mat-chip [style.background-color]=card.color *ngIf="!isTrash">
+              <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time
+              </mat-icon>
+              <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
+
+              <mat-icon class="i" matChipRemove *ngIf="removable" class="div" (click)="removeNoteReminder(rem,card)">
+                cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+
+
+        <div *ngFor="let label of card.noteLabels">
+          <mat-chip-list aria-label="Fish selection ">
+            <mat-chip [style.background-color]=card.color>
+              <div class="XPtOyb-fmcmS"> {{label.label}}</div>
+              <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
+              </mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+
+
+        <div *ngFor="let colab of card.collaborators">
+          <button class="collo" [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}" id="label"
+            (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
+        </div>
+
+      </div>
+
+
+      <div class="div">
+        <app-icon [isTrash]="isTrash" (noteTrash)="getTrashNotes()" (onArchiveChange)="onArchive()"
+          (reminderToNote)="reminderAddedToNote()" (labelToNote)="labelAddedToNote()" add [card]="card">
+        </app-icon>
+      </div>
+
+
+
+      <div *ngIf="card.questionAndAnswerNotes.length > 0">
+        <div style="height:2vh;"></div>
+        <mat-divider [inset]="true"></mat-divider>
+        <div (click)="askquestion(card)" style="height:2vh;"></div>
+        <h3>Question Asked</h3>
+      </div>
+      <div *ngFor="let item of card.questionAndAnswerNotes" (click)="askquestion(card)" class="question">
+        <div *ngIf="!item.parentId" fxFlex="93">
+          <div innerHTML="{{item.message}}"></div>
+        </div>
+      </div>
+
+
+
+    </mat-card>
+  </div>
+</ngx-masonry>
+
+
+
+
+
+
+
+<div *ngIf="unPinedMessage.length > 0" style="margin-top: 30px;">others</div>
+<ngx-masonry>
+  <div fxLayout="center" style="margin-top:10px;" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3">
+    <mat-card ngxMasonryItem *ngFor="let card of unPinedMessage" class="main-card" [style.background-color]=card.color
+      fxLayout.xs="column" fxFlex.xs="95">
+      <div>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+            <p>{{card.title}}</p>
+          </div>
+          <div class="div">
+            <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin">
+
+              <img *ngIf=!isPin (click)=pin() src="../../../assets/image/unpin.svg">
+              <img *ngIf=isPin (click)=pin() src="../../../assets/image/pin.svg">
+            </button>
+          </div>
+        </div>
+        <div style="text-overflow: ellipsis" (click)="openDialog(card)">
+
+          <p fxLayout="row wrap">{{card.description}}</p>
+        </div>
+      </div>
+
+
+      <div fxLayout="row" fxLayout="row wrap">
+
+        <div *ngFor="let rem of card.reminder">
+          <mat-chip-list *ngIf="!isTrash" aria-label="Fish selection">
+            <mat-chip [style.background-color]=card.color *ngIf="!isTrash">
+              <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time
+              </mat-icon>
+              <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
+
+              <mat-icon class="i" matChipRemove *ngIf="removable" class="div" (click)="removeNoteReminder(rem,card)">
+                cancel</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+
+
+        <div *ngFor="let label of card.noteLabels">
+          <mat-chip-list aria-label="Fish selection ">
+            <mat-chip [style.background-color]=card.color>
+              <div class="XPtOyb-fmcmS"> {{label.label}}</div>
+              <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
+              </mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+        </div>
+
+
+        <div *ngFor="let colab of card.collaborators">
+          <button class="collo" [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}" id="label"
+            (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
+        </div>
+
+      </div>
+
+
+      <div class="div">
+        <app-icon [isTrash]="isTrash" (noteTrash)="getTrashNotes()" (onArchiveChange)="onArchive()"
+          (reminderToNote)="reminderAddedToNote()" (labelToNote)="labelAddedToNote()" add [card]="card">
+        </app-icon>
+      </div>
+
+
+
+      <div *ngIf="card.questionAndAnswerNotes.length > 0">
+        <div style="height:2vh;"></div>
+        <mat-divider [inset]="true"></mat-divider>
+        <div (click)="askquestion(card)" style="height:2vh;"></div>
+        <h3>Question Asked</h3>
+      </div>
+      <div *ngFor="let item of card.questionAndAnswerNotes" (click)="askquestion(card)" class="question">
+        <div *ngIf="!item.parentId" fxFlex="93">
+          <div innerHTML="{{item.message}}"></div>
+        </div>
+      </div>
+
+
+
+    </mat-card>
+  </div>
+</ngx-masonry>

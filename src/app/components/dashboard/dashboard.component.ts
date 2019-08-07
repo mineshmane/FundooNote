@@ -57,7 +57,7 @@ export class DashboardComponent implements OnInit {
   message: string;
   imageurl: string
   localstorage_image: any
-
+  searchInput = false
   isList: any;
   fName;
   lName;
@@ -89,11 +89,11 @@ export class DashboardComponent implements OnInit {
 
     this.dataService.profilePicData.subscribe(data => {
       console.log(" data from set profile in dash", data);
-        this.changeProfilePic()
+      this.changeProfilePic()
 
     })
 
-    
+
 
     // this.dataService.labelEmmitedData.subscribe(message => {
     //   console.log(" message from label list",message);
@@ -102,31 +102,41 @@ export class DashboardComponent implements OnInit {
     // })
 
   }
+  notes(){
+    console.log("hello every one");
+    
+  }
 
   refresh() {
 
     this.route.navigate(['dashboard/notes']);
   }
 
+  searchVisible() {
+    console.log(" visible", this.searchInput);
 
+    this.searchInput = !this.searchInput
+    console.log(" after click ", this.searchInput);
 
-    /**
-   * @description this method is for open shopping cart component
-   * @returns nothing
-   */
-  shoppingCartOpen(){
+  }
+
+  /**
+ * @description this method is for open shopping cart component
+ * @returns nothing
+ */
+  shoppingCartOpen() {
     this.route.navigate(['dashboard/cart'])
-      }
+  }
   /**
  * @description :  Grid and List View
  */
   View() {
     if (this.list == true) {
-     // this.grid = true;
+      // this.grid = true;
       this.list = false;
-    } else  {
+    } else {
       this.list = true;
-     // this.grid = false;
+      // this.grid = false;
     }
     this.isList = this.list;
     localStorage.setItem('isListView', this.isList);

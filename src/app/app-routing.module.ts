@@ -21,6 +21,7 @@ import { DisplayComponent } from './components/display/display.component';
 import { SelectServiceComponent } from './components/select-service/select-service.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ECartComponent } from './components/e-cart/e-cart.component';
+import { MasonryComponent } from './masonry/masonry.component';
 
 
 const routes: Routes = [
@@ -38,8 +39,12 @@ const routes: Routes = [
       {
         path: '', redirectTo: 'notes', pathMatch: 'full'
       },
+     
       {
         path: 'notes', component: NotesComponent
+      },
+      {
+        path: 'display', component: MasonryComponent
       },
       {
         path: 'display', component: DisplayComponent

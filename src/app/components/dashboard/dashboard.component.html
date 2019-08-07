@@ -6,11 +6,11 @@
     </button>
     <!-- <mat-icon> <img src="../../../assets/image/keep.svg"></mat-icon> -->
     <div fxLayoutAlign="center" fxHide.xs='true' fxHide.sm='true'>
-        <img class="keepimg" src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png">
-        <!-- <mat-icon><img class="keepimg" src="../../../assets/image/keep.svg"></mat-icon> -->
-      </div>
+      <img class="keepimg" src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png">
+      <!-- <mat-icon><img class="keepimg" src="../../../assets/image/keep.svg"></mat-icon> -->
+    </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100">
-      <div  >
+      <div>
         <h1 class="app-name">
           <p>
             <span class="f">F</span>
@@ -24,32 +24,36 @@
 
       </div>
 
-       <div class="search" fxFlex.md='35' fxFlex='45' fxFlexOffset='14' fxFlexOffset.sm='12' >
+      <div class="search" fxFlex.md='35' fxFlex='45' fxFlexOffset='14' fxFlexOffset.sm='12'>
         <!-- <span fxShow fxHide.xs fxShow fxHide.xs class="example-spacer"></span> -->
-        <mat-form-field [style.fontSize.px]="12" appearance="outline" routerLink="search" fxFlex.sm="50" fxFlex.md="50"
-          fxFlex.xs="50">
+        <mat-form-field [style.fontSize.px]="12" fxShow fxHide.xs fxShow fxHide.xs appearance="outline"
+          routerLink="search" fxFlex.sm="50" fxFlex.md="50" fxFlex.xs="50">
           <button mat-icon-button matSuffix fxFlex.xs="50" matTooltip="Search">
-              <mat-icon matPrefix>search</mat-icon>
+            <mat-icon matPrefix>search</mat-icon>
           </button>
           <input matInput type="text" [(ngModel)]="title" placeholder="search" (keyup)="search($event)">
         </mat-form-field>
-      </div> 
+      </div>
 
-      <!-- <div class="search" fxFlex.md='35' fxFlex='45' fxFlexOffset='14' fxFlexOffset.sm='12' fxHide.xs='true'>
-          <mat-form-field appearance="outline" [style.fontSize.px]=12>
-    
-            <input matInput placeholder="search" class="place" [(ngModel)]="title" (keyup)="search($event)"
-              autocomplete="off">
-            <mat-icon matPrefix>search</mat-icon>
-    
-          </mat-form-field>
-        </div> -->
+      <div fxShow fxShow.xs fxHide><button mat-icon-button matSuffix fxFlex.xs="50" matTooltip="Search">
+          <mat-icon matPrefix (click)="searchVisible()">search</mat-icon>
+        </button> </div>
+      <div *ngIf="searchInput==true" fxFlex.md='35' fxFlex='45' fxFlexOffset='14' fxFlexOffset.sm='12' fxHide.xs='true'>
+        <mat-form-field appearance="outline" [style.fontSize.px]=12>
+
+          <input matInput placeholder="search" class="place" [(ngModel)]="title" (keyup)="search($event)"
+            autocomplete="off">
+          <!-- <mat-icon matPrefix>search</mat-icon> -->
+
+        </mat-form-field>
+      </div>
+
 
       <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="30">
 
         <span class="example-spacer"></span>
         <div fxFlex="20" fxFlex.md="60" fxFlex.xs="80" fxFlex.sm="90">
-          <div fxFlex="25" ngStyle.xs="margin-left: 53px;">
+          <div fxFlex="25" fxShow fxHide.xs fxShow fxHide.xs>
             <button style="margin-top:10px; outline: none" mat-icon-button (click)="refresh()">
               <i class="material-icons">refresh</i>
             </button>
@@ -122,36 +126,38 @@
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">
-      <mat-nav-list style="width:217px">
+      <mat-nav-list style="width:240px">
+       
         <div>
-          <a mat-list-item routerLink="notes">
+          <a class="nav-div" mat-list-item routerLink="notes">
             <mat-icon>lightbulb_outline</mat-icon>
-            <div class="noteReminder">Notes</div>
+            <div class="mar">Notes</div>
           </a>
         </div>
         <div>
-          <a mat-list-item routerLink="reminder">
+          <a class="nav-div" mat-list-item routerLink="reminder">
             <mat-icon>notifications_outline</mat-icon>
-            <div class="noteReminder">Reminders</div>
+            <div class="mar">Reminders</div>
           </a>
         </div>
         <mat-divider></mat-divider>
+        <div class="JNdkSc-tJHJj">Labels</div>
         <div (labelDelete)="getLabelList()">
           <div *ngFor="let lab of allLabel">
 
             <div>
-              <a mat-list-item (click)="openLabel(lab)">
+              <a mat-list-item class="nav-div"  (click)="openLabel(lab)">
                 <mat-icon>label_outline</mat-icon>
-                <p class="label" class="noteReminder">{{lab.label}}</p>
+                <p class="label" class="mar">{{lab.label}}</p>
               </a>
             </div>
           </div>
 
           <div class="label">
             <div>
-              <a mat-list-item (click)="openDialogLabel()">
+              <a mat-list-item class="nav-div"  (click)="openDialogLabel()">
                 <mat-icon>create</mat-icon>
-                <div class="noteReminder">Edit Label</div>
+                <div class="mar">Edit Label</div>
               </a>
             </div>
           </div>
@@ -159,18 +165,18 @@
         </div>
         <mat-divider></mat-divider>
         <div>
-          <a mat-list-item routerLink="archive">
+          <a mat-list-item class="nav-div" routerLink="archive">
             <mat-icon>archive_outline</mat-icon>
-            <div class="noteReminder">Archive</div>
+            <div class="mar">Archive</div>
           </a>
         </div>
-        <div fxLayout="row" fxLayoutAlign="space-between center">
-          <a mat-list-item routerLink="trash">
+        <div fxLayout="row"  fxLayoutAlign="space-between center">
+          <a mat-list-item class="nav-div" routerLink="trash">
 
             <div>
-              <mat-icon>delete</mat-icon>
+              <mat-icon >delete</mat-icon>
             </div>
-            <div class="noteReminder">Trash</div>
+            <div class="mar">Trash</div>
 
           </a>
 

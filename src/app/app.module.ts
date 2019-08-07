@@ -39,7 +39,8 @@ import { SelectServiceComponent } from './components/select-service/select-servi
 import { DialogCartComponent } from './components/dialog-cart/dialog-cart.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { ECartComponent } from './components/e-cart/e-cart.component';
-
+import { NgxMasonryModule } from 'ngx-masonry';
+import { MasonryComponent } from './masonry/masonry.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,13 +59,14 @@ import { ECartComponent } from './components/e-cart/e-cart.component';
     DialogCartComponent,
     ShoppingCartComponent,
     ECartComponent,
+    MasonryComponent,
 
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule,NgxMasonryModule,
     MatCardModule,
     materialModule,
     FormsModule, ReactiveFormsModule, HttpClientModule,

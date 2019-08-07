@@ -4,7 +4,8 @@
   <div fxLayout="16px">
     <button mat-icon-button [matMenuTriggerFor]="menumenu" *ngIf="!isTrash" matTooltip="Reminde me"
       aria-label="Example icon-button with a menu" (click)="$event.stopPropagation()">
-      <mat-icon *ngIf="!isTrash">add_alert</mat-icon>
+      <!-- <mat-icon *ngIf="!isTrash">add_alert</mat-icon> -->
+      <img  src="../../../assets/image/alert.svg">
     </button>
     <mat-menu #menumenu="matMenu">
       <div fxLayout="column" class="reminderMenu">
@@ -98,7 +99,8 @@
 
   <div fxLayout="16px" fxLayout.xs="10px">
     <button mat-icon-button [matMenuTriggerFor]="menuu" *ngIf="!isTrash" matTooltip="Change Color">
-      <mat-icon>color_lens</mat-icon>
+      <!-- <mat-icon>color_lens</mat-icon> -->
+      <img class="img" src="../../../assets/image/color_lens.svg">
     </button>
     <mat-menu #menuu="matMenu">
       <div *ngFor="let colors of colorArray" fxLayout="row">
@@ -113,25 +115,29 @@
   <div fxLayout="16px">
     <button mat-icon-button matSuffix (click)="hide = !hide" *ngIf="!isTrash" matTooltip="add image" fxLayout="16px"
       (click)="$event.stopPropagation()">
-      <mat-icon>crop_original</mat-icon>
+      <!-- <mat-icon>crop_original</mat-icon> -->
+      <img class="img" src="../../../assets/image/image.svg">
     </button>
   </div>
   <div fxLayout="16px">
     <button mat-icon-button matSuffix (click)="hide = !hide"  (click)="openCollaboratorDialog(card)" *ngIf="!isTrash" matTooltip="Collaborator" fxLayout="16px"
       (click)="$event.stopPropagation()">
-      <mat-icon>person_add</mat-icon>
+      <!-- <mat-icon>person_add</mat-icon> -->
+      <img class="img" src="../../../assets/image/collaborator.svg">
     </button>
   </div>
 
   <div fxLayout="16px">
     <button mat-icon-button matSuffix (click)="archiveNote()" (click)="Archive()" *ngIf="!isTrash" (click)="$event.stopPropagation()"
       matTooltip="Archive">
-      <mat-icon>archive</mat-icon>
+      <!-- <mat-icon>archive</mat-icon> -->
+      <img class="img" src="../../../assets/image/archive.svg">
     </button>
 
     <button mat-icon-button matSuffix (click)="unArchiveNote()" (click)="Archive()" *ngIf="!isTrash && isarchive" (click)="$event.stopPropagation()"
       matTooltip="Archive">
-      <mat-icon>archive</mat-icon>
+      <!-- <mat-icon>archive</mat-icon> -->
+      <img class="img" src="../../../assets/image/unarchive.svg">
     </button>
     <!-- <abbr title="Archive">
       <button style="outline: none;" mat-icon-button (click)="archiveNote()">
@@ -148,6 +154,7 @@
     <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
       (click)="$event.stopPropagation()">
       <mat-icon>more_vert</mat-icon>
+     
     </button>
     <mat-menu #menu="matMenu">
       <button *ngIf="isTrash" mat-menu-item (click)="deleteForeverNote()">

@@ -32,7 +32,7 @@ export class IconComponent implements OnInit {
     private route: Router) { }
   @Input() card;
   @Input() isTrash;
-  @Input()isarchive;
+  @Input() isarchive;
   @Input() isTakeNote;
   isArchive = true
   isDeleted = true
@@ -40,18 +40,39 @@ export class IconComponent implements OnInit {
   //isDeleted=this.card.isDeleted;
 
   public colorArray: any = [
-    [{ color: '#00FFFF' },
-    { color: '#7FFFD4' },
-    { color: '#C0C0C0' },
-    { color: '#008080' }],
-    [{ color: '#FFFF00' },
+    // [{ color: '#00FFFF' },
+    // { color: '#7FFFD4' },
+    // { color: '#C0C0C0' },
+    // { color: '#008080' }],
+
+    // [{ color: '#FFFF00' },
+    // { color: '#ADFF2F' },
+    // { color: '#00FF7F' },
+    // { color: '#FFDEAD' }],
+
+    // [{ color: '#FFA07A' },
+    // { color: '#F08080' },
+    // { color: '#00BFFF' },
+    // { color: '#808080' }]
+
+
+
+    [{ color: '#E0FFFF' },
+    { color: '#f28b82' },
+    { color: '#fbbc04' },
+    { color: '#E6E6FA' }],
+
+    [{ color: '#ccff90' },
     { color: '#ADFF2F' },
-    { color: '#00FF7F' },
-    { color: '#FFDEAD' }],
-    [{ color: '#FFA07A' },
-    { color: '#F08080' },
-    { color: '#00BFFF' },
-    { color: '#808080' }]
+    { color: '#cbf0f8' },
+    { color: '#aecbfa' }],
+
+    [{ color: '#d7aefb' },
+    { color: '#fdcfe8' },
+    { color: '#e6c9a8' },
+    { color: '#FFDEAD' }]
+
+
   ]
 
 
@@ -99,6 +120,7 @@ export class IconComponent implements OnInit {
 
     })
   }
+
   Archive() {
     this.isArchive = !this.isArchive;
     // this.onChange.emit(this.isPin);
@@ -130,10 +152,7 @@ export class IconComponent implements OnInit {
   openCollaboratorDialog(card): void {
     console.log(" log dia", card);
 
-
     try {
-
-
       if (typeof card === 'undefined') {
         console.log(" dilog undefinedwala");
 
@@ -380,26 +399,20 @@ export class IconComponent implements OnInit {
     if (cardItem == undefined) {
       this.onChangeReminder.emit(this.date)
     } else {
-
-
       this.todayDate = {
         reminder: [this.date],
-
         isPined: false,
         isArchived: false,
         isDeleted: false,
         noteIdList: [this.card.id],
         userId: localStorage.getItem('userId')
-
       };
       console.log(" todya date", this.todayDate);
       this.notesService.setReminder(this.todayDate).subscribe(response => {
         console.log(" response from setReminder", response);
         this.reminderToNote.emit({});
-
       }, error => {
         console.log(error);
-
       })
       // return console.log("today date and time printing ", new Date(2018, 1, 12, 20, 0));
     }

@@ -8,6 +8,29 @@
   right: 0;
 }
 
+.gb_Oc .gb_Sc, .gb_Pc {
+  padding-left: 32px;
+  display: inline-block;
+  line-height: 40px;
+  vertical-align: top;
+  width: 176px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.JNdkSc-tJHJj {
+  color: #5f6368;
+  cursor: default;
+  letter-spacing: .07272727em;
+  font-family: Roboto,Arial,sans-serif;
+  font-size: .6875rem;
+  font-weight: 500;
+  line-height: 1rem;
+  text-transform: uppercase;
+  padding: 15px 24px 10px;
+}
 .example-is-mobile .example-toolbar {
   position: fixed;
 
@@ -188,4 +211,26 @@ a{
   
   }
 
-
+  .mar{
+    margin-left: 10%;
+    font-size: 14px;
+  }
+  
+  .nav-div{
+    // width: 194px;
+    font-size: 13px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    outline: none;
+    height: 50px;
+    // font-size: x-large;
+}
+.nav-div:hover{
+    background-color: lightgray;
+    
+}
+.nav-div:focus{
+    background-color: #fcefc4;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+}

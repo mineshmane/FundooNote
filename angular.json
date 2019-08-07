@@ -38,7 +38,8 @@
 
             ],
             "scripts": [  "./node_modules/jquery/dist/jquery.js",
-              "./node_modules/froala-editor/js/froala_editor.min.js" ]
+              "./node_modules/froala-editor/js/froala_editor.min.js",
+              "./node_modules/masonry-layout/dist/masonry.pkgd.min.js" ]
           },
           "configurations": {
             "production": {

@@ -21,9 +21,9 @@ export class UpdateComponent implements OnInit {
 
     this.labels = data.card.noteLabels
     console.log(" labels in update", this.labels);
-    this.reminders=data.card.reminder
-    console.log(" reminder in update",this.reminders);
-    
+    this.reminders = data.card.reminder
+    console.log(" reminder in update", this.reminders);
+
 
 
   }
@@ -36,17 +36,19 @@ export class UpdateComponent implements OnInit {
 
   updateNote(card) {
     try {
-      console.log(" card ", card);
+      console.log(" card in update ", card.card.id);
       let data = {
-        // cardidList:this.cardId,
-        noteId: card.id,
-        title: card.title,
-        description: card.description
-
+        noteId: card.card.id,
+        title: card.card.title,
+        description: card.card.description,
+        // collaborators:card.card.collaborators
       }
       this.noteService.updateNote(data).subscribe(response => {
         console.log(response, " succsesfully updated note ");
         this.bar.open(" note update succesFully ", '', { duration: 2000 });
+      }, error => {
+        console.log(error);
+
       })
 
       this.dialogRef.close();

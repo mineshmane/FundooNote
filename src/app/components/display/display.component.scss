@@ -1,12 +1,22 @@
-.main-card {
-  width: 240px;
-  // width: auto;
-  min-height: 20px;
-  max-height: 350px;
-  position: relative;
-  border-radius: 10px;
+// .main-card {
+//   width: 600px;
+//   min-height: 20px;
+//   max-height: 350px;
+//   position: relative;
+//   border-radius: 10px;
+//   margin-right: 10px;
+//   margin-bottom: 10px;
+//   overflow: hidden;
+// }
 
-  overflow: hidden;
+.mar {
+  margin-left: 17%;
+}
+
+@media screen and (max-width: 600px) {
+  .mar {
+    margin-left: 3%;
+  }
 }
 
 ::ng-deep .mat-card {
@@ -123,6 +133,8 @@
   min-height: 20px;
   max-height: 350px;
   position: relative;
+  margin-right: 10px;
+  margin-bottom: 10px;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -134,4 +146,12 @@
   flex-direction: column;
   place-content: center;
   align-items: center;
+}
+@media screen and (max-width: 600px) {
+  .main-card {
+    width: 600px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+  }
 }

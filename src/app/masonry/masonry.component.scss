@@ -1,0 +1,17 @@
+.masonry-item { width: 200px; }
+
+.main-card {
+    width: 230px;
+    // width: auto;
+    min-height: 20px;
+    max-height: 350px;
+    position: relative;
+    border-radius: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+  }
+  
+//   ::ng-deep .mat-card {
+//     margin-top: 10px;
+//   }
