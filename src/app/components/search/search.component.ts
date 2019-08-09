@@ -48,17 +48,20 @@ export class SearchComponent implements OnInit {
   }
 
   filterArray(note) {
+    this.pinedArray=[];
+    this.unpinedArray=[];
     for (let i = note.length; i > 0; i--) {
+ 
       if (note[i - 1]["isDeleted"] === false) {
 
         if (note[i - 1]["isPined"] === true) {
           this.pinedArray.push(note[i - 1]);
-          this.pinedArray.reverse();
+          // this.pinedArray.reverse();
           console.log("pinned array@@@@@@@", this.pinedArray);
         }
         else {
           this.unpinedArray.push(note[i - 1]);
-          this.unpinedArray.reverse();
+          // this.unpinedArray.reverse();
           console.log("unpinned array@@@@@@@", this.unpinedArray);
         }
 

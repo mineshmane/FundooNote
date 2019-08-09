@@ -5,7 +5,7 @@ import { UpdateComponent } from '../update/update.component';
 import { MatDialog } from '@angular/material/dialog';
 import { DataService } from '../../services/dataService/data.service'
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
-import {Router} from '@angular/router'
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-display',
@@ -24,10 +24,15 @@ export class DisplayComponent implements OnInit {
   addOnBlur = true;
   islist;
   title = '';
+  
   description = '';
   isPin: boolean = false;
+  openCheckListArray = [];
+  closeCheckListArray = [];
+  tickBoxValue = true;
+  tickBoxUpdate = true;
   constructor(
-    private notesService: NotesService, private dataService: DataService,private route :Router,
+    private notesService: NotesService, private dataService: DataService, private route: Router,
     private bar: MatSnackBar,
     public dialog: MatDialog) { }
   @Input() childMessage;
@@ -35,6 +40,7 @@ export class DisplayComponent implements OnInit {
   @Input() unPinedMessage;
   @Input() trashMessage;
   @Input() isTrash;
+  @Input() isArchive;
   @Input() card
   @Output() update = new EventEmitter<any>();
   @Output() notePined = new EventEmitter();
@@ -69,7 +75,11 @@ export class DisplayComponent implements OnInit {
     })
   }
 
-
+  EventFromCheckList(item) {
+    console.log('i am run');
+    this.openDialog(item);
+    this.openDialog(item);
+  }
   listView() {
 
     this.isList = localStorage.getItem('isListView')
@@ -172,7 +182,7 @@ export class DisplayComponent implements OnInit {
     this.notesService.removeNoteReminder(data).subscribe(response => {
       console.log("response", response);
       this.removeReminder.emit();
-      this.bar.open(" label removed succesFully ", '', { duration: 2000 });
+      this.bar.open(" reminder removed succesFully ", '', { duration: 2000 });
     }, error => {
       console.log(error);
 
@@ -183,8 +193,6 @@ export class DisplayComponent implements OnInit {
   openDialog(card): void {
     try {
       const dialogRef = this.dialog.open(UpdateComponent, {
-        // width: '700px',
-        // height: '200px',
         panelClass: 'updateDialog',
         data: { card }
       });

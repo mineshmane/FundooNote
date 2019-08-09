@@ -1,14 +1,229 @@
-.div {
-  // background-color: yellow;
-  // padding: 20px;
-  // display: none;
-  visibility: hidden;
+// .div {
+//   // background-color: yellow;
+//   // padding: 20px;
+//   // display: none;
+//   visibility: hidden;
+// }
+
+// .upd {
+//   transform: none;
+//   padding-bottom: -50px;
+//   padding-right: -50px;
+//   padding-top: -50px;
+//   padding-left: -50px;
+// }
+
+
+::ng-deep  .mat-card {
+  margin-top: 0px;
+}
+.takeNote{
+  padding-bottom: 10px;
+  padding-top: 3px;
+  font-size: 80%;
+  font-weight: bold;
+  color:#44484f;
+
+.titlePin{
+  padding-top: 5px;
 }
 
-.upd {
-  transform: none;
-  padding-bottom: -50px;
-  padding-right: -50px;
-  padding-top: -50px;
-  padding-left: -50px;
+.iconDisplay{
+  padding-bottom: 5px;
 }
+  // match
+  // margin-left: 15%;
+// margin-top:3%;
+
+}
+
+.mainDialog{
+  height: 100%;
+}
+
+.inner{
+  height: 200px;
+  width: 200px;
+  border: 2px solid orangered;
+}
+
+
+
+//   @media only screen and (min-width: 1278px) {
+
+//     .takeNote{
+//         width: 60%;
+//     }
+//   }
+
+.bodyTextArea{
+
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  max-height: 400px;
+ 
+  overflow-y: auto;
+  overflow-x: hidden;
+  // overflow: hidden;
+
+}
+
+::ng-deep .timepicker[_ngcontent-c18]{
+  margin-bottom: initial;
+} 
+.image{
+  height: 25px;
+  width: 28px;
+  background-size: cover;
+  cursor: pointer;  
+  background-position: center center;
+  border-radius: 50px;
+  // background-image: url(../../../assets/images/collaborator/smallcolab.jpg);
+  border: 1px solid darkgrey;
+}
+//   .checkList{
+//       padding: 8px 0px 8px 0px;
+//   }
+
+
+//   .list{
+//       align-self: center;
+//   }
+//   .done{
+//       cursor: pointer;
+//   }
+//   .closeInput{
+//       text-decoration: line-through;
+//   }
+
+// .deleteChecklist{
+//     display: none;
+//     cursor: pointer;
+// }
+// .showCheckList{
+//     height: 24px;
+
+// }
+// .showCheckList:hover .deleteChecklist{
+//     display: block;
+// }
+// .hide{
+//     height: 24px;
+//     width: 24px;
+// }
+
+.hideCheckList
+{
+.CheckListDisplay{
+  height: 24px;
+  .checkBox{
+      display: none;
+  }
+  .deleteChecklist{
+      display: none;
+  }
+
+}
+.addIcon{
+  display: none;
+}
+.addCheck{
+  display: none;
+}
+}
+.showCheckList{
+.CheckListDisplay{
+  height: 24px;
+  .checkBox{
+      display: block;
+  }
+  .deleteChecklist{
+      display: none;
+  }
+  .closeInput{
+            text-decoration: line-through;
+        }
+        
+  
+}
+.addIcon{
+  display: block;
+}
+.CheckListDisplay:hover .deleteChecklist{
+  display: block;
+  cursor: default;
+}
+.addCheck{
+  display: block;
+  .checkList{
+      height: 24px;
+  }
+  .done{
+      cursor: default;
+  }
+}
+
+}
+
+
+.img{
+  max-height: 400px;
+  max-width: -webkit-fill-available;
+}
+@media only screen and (max-width: 600px) {
+  .smallImage{
+      display: none;
+  }
+  //   checklist css
+  .hideCheckList
+  {
+  .CheckListDisplay{
+      .checkBox{
+          display: block;
+      }
+      .deleteChecklist{
+          display: block;
+      }
+    
+  }
+  .addIcon{
+      display: block;
+  }
+  .addCheck{
+      display: block;
+  }
+  }
+  
+  .showCheckList{
+      .CheckListDisplay{
+          .checkBox{
+              display: block;
+          }
+          .deleteChecklist{
+              display: block;
+              cursor: default;
+      
+          }
+  
+          
+      }
+      .addIcon{
+          display: block;
+      }
+  
+      .addCheck{
+          display: block;
+          .checkList{
+              height: 24px;
+          }
+          .done{
+              cursor: default;
+          }
+      }
+      
+      }
+
+
+ }

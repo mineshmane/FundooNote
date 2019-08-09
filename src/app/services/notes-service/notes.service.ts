@@ -213,6 +213,30 @@ export class NotesService {
   removeNoteReminder(data) {
     return this.httpService.postAth('notes/removeReminderNotes', data);
   }
+    /**
+   * @description : this method is for add checklist to note
+   * @param body
+   */
+  addChecklist(body){
+    return this.httpService.postAth('notes/'+body.notesId+'/noteCheckLists',body);
+  }
+
+      /**
+   * @description : this method is for update checklist to note
+   * @param body
+   */
+  updateChecklist(body){
+    return this.httpService.postAth('notes/'+body.noteId+'/checklist/'+body.checkListId+'/update',body);
+  }
+
+
+        /**
+   * @description : this method is for remove checklist from note
+   * @param body
+   */
+  removeChecklist(body){
+    return this.httpService.postAth('notes/'+body.noteId+'/checklist/'+body.checkListId+'/remove',body);
+  }
 
 
 /**

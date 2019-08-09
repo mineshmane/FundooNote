@@ -41,6 +41,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { ECartComponent } from './components/e-cart/e-cart.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { MasonryComponent } from './masonry/masonry.component';
+import { CheckListDisplayComponent } from './components/check-list-display/check-list-display.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,6 +61,7 @@ import { MasonryComponent } from './masonry/masonry.component';
     ShoppingCartComponent,
     ECartComponent,
     MasonryComponent,
+    CheckListDisplayComponent,
 
 
   ],

@@ -45,7 +45,7 @@ export class DataService {
   private arrayData = new BehaviorSubject({ type: '', data: [] });
   currentData = this.arrayData.asObservable();
   changeData(message: any) {
-    console.log(" data service called", message);
+    // console.log(" data service called", message);
     this.arrayData.next(message)
   }
 

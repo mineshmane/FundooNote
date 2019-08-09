@@ -1,5 +1,5 @@
-<div fxLayoutAlign="center center" fxLayoutAlign.xs="center center" fxLayoutAlign.sm="center center" fxFlexOffset.xs="5"
-  fxFlex.xs="95">
+
+<div fxLayoutAlign="center center">
   <mat-card [style.background-color]=setColor>
     <div *ngIf="isOpen " fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" (click)="isOpen = !isOpen">
 
@@ -31,7 +31,7 @@
           </div>
           <div>
             <button mat-icon-button matSuffix (click)="hide = !hide" matTooltip="pin">
-                <img  src="../../../assets/image/unpin.svg">
+              <img src="../../../assets/image/unpin.svg">
               <!-- <mat-icon><img src="../../../assets/image/pin .svg"></mat-icon> -->
             </button>
           </div>
@@ -45,7 +45,7 @@
       </div>
 
       <div>
-        <mat-chip-list aria-label="Fish selection">
+        <mat-chip-list aria-label="Fish selection" *ngIf="setReminder">
           <mat-chip [style.background-color]=setcolor>
             <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time</mat-icon>
             <div class="XPtOyb-fmcmS">{{setReminder | dateTime:'dateTime'}}</div>
@@ -56,26 +56,25 @@
         </mat-chip-list>
       </div>
       <div>
+        <div *ngIf="label">
+          <mat-chip-list aria-label="Fish selection " *ngFor="let label of noteLabels" >
 
-        <mat-chip-list aria-label="Fish selection ">
-          <div>
             <mat-chip [style.background-color]=setcolor>
-              <span class="XPtOyb-fmcmS"> {{labels.label}}</span>
+              <span class="XPtOyb-fmcmS"> {{label.label}}</span>
               <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
               </mat-icon>
             </mat-chip>
+
+          </mat-chip-list>
+        </div>
+        <div *ngIf="collaboratorsArray">
+          <div *ngFor="let colab of collaboratorsArray">
+            <button class="collo" *ngIf="colab" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+              (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
+
           </div>
-        </mat-chip-list>
-        <div *ngFor="let colab of collaboratorsArray">
-       
-              <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
-                (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
-          
         </div>
       </div>
-
-
-
 
       <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
         <div fxFlex="60">

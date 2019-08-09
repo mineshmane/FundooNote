@@ -57,3 +57,26 @@ export class Editor {
 export class Reply {
   "message": string
 }
+export class addCheckList{
+  itemName: string;
+  status: string;
+  isDeleted: boolean;
+  notesId:string;    
+}
+export class updateCheckList{
+noteId:string;
+checkListId:string;
+itemName:string;
+status:string;
+}
+
+export class deleteCheckList{
+noteId:string;
+checkListId:string;
+}
+export class updateCard{
+noteId:string;
+file:File;
+title:string;
+description:string;
+}

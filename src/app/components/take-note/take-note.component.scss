@@ -3,6 +3,8 @@
 }
 ::ng-deep .mat-card {
   width: 14cm;
+  // border:solid white;
+  border-radius: 10px;
 }
 .XPtOyb-fmcmS {
   border: 1px solid transparent;
@@ -10,4 +12,14 @@
   text-overflow: ellipsis;
   font-size: 12px;
  
+}
+::ng-deep .mat-standard-chip {
+  transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+  display: inline-flex;
+  /* padding: 7px 12px; */
+  border-radius: 16px;
+  align-items: center;
+  cursor: default;
+  min-height: 32px;
+  height: 1px;
 }

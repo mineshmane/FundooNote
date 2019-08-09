@@ -106,11 +106,7 @@
               </div>
 
               <mat-divider></mat-divider>
-              <!-- <div class="image-container">
-                  <img [src]="url ? url : '../../../assets/image/card.jpg'" class="">
-                  <input type='file'  class="select-profile-picture">
-                  <span class="message">Tap here to select your picture</span>
-                 </div> -->
+        
               <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-around  center">
                 <button mat-raised-button>add Acount</button>
                 <button mat-raised-button (click)="logout()">logout</button>
@@ -122,7 +118,7 @@
     </div>
   </mat-toolbar>
 
-
+  <mat-divider></mat-divider>
   <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
       fixedTopGap="56">

@@ -27,17 +27,16 @@ export class IconComponent implements OnInit {
   allLabel = []
   date;
   todayDate;
+  tickBox=true;
   constructor(private notesService: NotesService,
     private dialog: MatDialog, private snackBar: MatSnackBar, private dataService: DataService,
     private route: Router) { }
   @Input() card;
   @Input() isTrash;
-  @Input() isarchive;
+  @Input() isArchive;
   @Input() isTakeNote;
-  isArchive = true
+  isArchived = true
   isDeleted = true
-  //date=new Date();
-  //isDeleted=this.card.isDeleted;
 
   public colorArray: any = [
     // [{ color: '#00FFFF' },
@@ -94,13 +93,9 @@ export class IconComponent implements OnInit {
   }
 
 
-  // askquestion(noteData) {
-  //   this.route.navigateByUrl('askquestion' + '/' + this.card.id);
-  //   //this.route.navigate(['icon/search']);
-  // }
 
   askquestion(card) {
-    console.log(" label ts", card);
+    // console.log(" label ts", card);
 
     this.route.navigate(['dashboard/askquestion/' + card.id]);
 
@@ -114,24 +109,25 @@ export class IconComponent implements OnInit {
       else if (message.type == 'search') {
 
       }
-      // console.log(" all labelin icon",this.allLabel);
-
-      // console.log("searched cards", this.card);
-
     })
   }
 
-  Archive() {
-    this.isArchive = !this.isArchive;
-    // this.onChange.emit(this.isPin);
-    // this.notePined.emit(this.isPin);
+  changeTickBoxValue(item) {
+    this.tickBox = !this.tickBox;
+    let obj = {
+      type: 'tickBox',
+      value: this.tickBox,
+      item: item
+    }
+    // this.childObject.emit(obj);
   }
+
   archiveNote() {
     try {
       let data = {
         // cardidList:this.cardId,
         noteIdList: [this.card.id],
-        isArchived: this.isArchive,
+        isArchived: this.isArchived,
       }
       console.log(data);
       this.notesService.archiveNote(data).subscribe(response => {

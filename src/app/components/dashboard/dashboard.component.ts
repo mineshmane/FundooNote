@@ -88,7 +88,7 @@ export class DashboardComponent implements OnInit {
     localStorage.setItem('username', this.userName)
 
     this.dataService.profilePicData.subscribe(data => {
-      console.log(" data from set profile in dash", data);
+      // console.log(" data from set profile in dash", data);
       this.changeProfilePic()
 
     })
@@ -107,16 +107,19 @@ export class DashboardComponent implements OnInit {
     
   }
 
-  refresh() {
+  // refresh() {
 
-    this.route.navigate(['dashboard/notes']);
-  }
+  //   this.route.navigate(['dashboard/notes']);
+  // }
+  refresh(): void {
+    window.location.reload();
+}
 
   searchVisible() {
-    console.log(" visible", this.searchInput);
+    // console.log(" visible", this.searchInput);
 
     this.searchInput = !this.searchInput
-    console.log(" after click ", this.searchInput);
+    // console.log(" after click ", this.searchInput);
 
   }
 
@@ -224,8 +227,8 @@ export class DashboardComponent implements OnInit {
   getLabelList() {
     try {
       this.noteService.getLableList().subscribe(response => {
-        console.log('response labels ', response);
-        console.log(" response label 2", response['data'].details);
+        // console.log('response labels ', response);
+        // console.log(" response label 2", response['data'].details);
 
         this.allLabel = response['data'].details
 

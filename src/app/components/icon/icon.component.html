@@ -1,211 +1,223 @@
-<div fxLayout="row" fxLayoutGap="25" fxLayoutAlign="space-between center" fxFlex="100" fxFlex.md="90" fxFlex.xm="90"
-  fxFlex.xs="auto">
+<!-- <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="100" fxFlex.md="90" fxFlex.xm="90" fxFlex.xs="auto"> -->
 
-  <div fxLayout="16px">
-    <button mat-icon-button [matMenuTriggerFor]="menumenu" *ngIf="!isTrash" matTooltip="Reminde me"
-      aria-label="Example icon-button with a menu" (click)="$event.stopPropagation()">
+<div fxLayout='row'>
+  <div fxFlex='100' fxFlex.xs='80' fxLayout='row' fxLayoutGap='2.5%' fxLayoutGap.xs='5%'>
+    <div fxFlex='14'>
+      <!-- <button mat-icon-button [matMenuTriggerFor]="menumenu" *ngIf="!isTrash" matTooltip="Reminde me"
+      aria-label="Example icon-button with a menu" (click)="$event.stopPropagation()"> -->
       <!-- <mat-icon *ngIf="!isTrash">add_alert</mat-icon> -->
-      <img  src="../../../assets/image/alert.svg">
-    </button>
-    <mat-menu #menumenu="matMenu">
-      <div fxLayout="column" class="reminderMenu">
-        <div fxLayoutAlign="space-between center">
-          <label class="noteReminder1">Reminder : </label>
-        </div>
-        <div>
-          <div class="date" (click)="today(card)" class="noteReminder" fxLayout="row" fxLayoutAlign="space-around center">
+      <img [matMenuTriggerFor]="menumenu" *ngIf="!isTrash" matTooltip="Reminde me"
+        aria-label="Example icon-button with a menu" (click)="$event.stopPropagation()"
+        src="../../../assets/image/alert.svg">
+      <!-- </button> -->
+      <mat-menu #menumenu="matMenu">
+        <div fxLayout="column" class="reminderMenu">
+          <div fxLayoutAlign="space-between center">
+            <label class="noteReminder1">Reminder : </label>
+          </div>
+          <div>
+            <div class="date" (click)="today(card)" class="noteReminder" fxLayout="row"
+              fxLayoutAlign="space-around center">
 
-            <!-- <label class="noteReminder" id="reminderLabel">Later today</label>
+              <!-- <label class="noteReminder" id="reminderLabel">Later today</label>
             <label class="lb" >8:pm </label> -->
-            <a>Later Today</a>
-            <a>8:pm</a>
+              <a>Later Today</a>
+              <a>8:pm</a>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <div class="date" fxLayout="row" (click)="tommorrow(card)" class="noteReminder" fxLayoutAlign="space-around center">
-            <div>Tommorrow</div>
-            <div>8:am</div>
-            <!-- <label id="reminderLabel" class="noteReminder" >Tommorow</label>
+          <div>
+            <div class="date" fxLayout="row" (click)="tommorrow(card)" class="noteReminder"
+              fxLayoutAlign="space-around center">
+              <div>Tommorrow</div>
+              <div>8:am</div>
+              <!-- <label id="reminderLabel" class="noteReminder" >Tommorow</label>
             <label class="lb"> 8:pm </label> -->
+            </div>
           </div>
-        </div>
 
-        <div>
-          <div class="date" fxLayout="row" class="noteReminder" (click)=" nextWeekMonday(card)" fxLayoutAlign="space-around center">
-            <div>Next Week</div>
-            <div>Mon 8:am</div>
-            <!-- <label  >Next week</label>
+          <div>
+            <div class="date" fxLayout="row" class="noteReminder" (click)=" nextWeekMonday(card)"
+              fxLayoutAlign="space-around center">
+              <div>Next Week</div>
+              <div>Mon 8:am</div>
+              <!-- <label  >Next week</label>
             <label >Mon 8:pm </label> -->
+            </div>
+          </div>
+          <button mat-menu-item [matMenuTriggerFor]="datepicker">
+            <mat-icon>access_time</mat-icon>
+            <span>pick Date & Time</span>
+          </button>
+        </div>
+      </mat-menu>
+
+
+
+
+
+      <mat-menu #datepicker="matMenu">
+
+        <div fxLayout='row'>
+          <button mat-icon-button>
+            <i class="material-icons">
+              keyboard_backspace
+            </i>
+          </button>
+          <!-- <mat-icon>keyboard_backspace</mat-icon> -->
+          <h6>Pick date & time</h6>
+        </div>
+
+        <button mat-menu-item>
+          <label>
+            <input matInput [owlDateTimeTrigger]="dt3" [(ngModel)]="dateTime" [owlDateTime]="dt3"
+              placeholder=" select date">
+            <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+          </label>
+        </button>
+
+        <button mat-menu-item><label>
+            <input matInput [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" [(ngModel)]="dateTime"
+              placeholder="select time">
+            <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
+          </label>
+        </button>
+
+        <button mat-menu-item>
+          <mat-form-field>
+            <select (click)="$event.stopPropagation()" matNativeControl required>
+              <option value="volvo" (click)="$event.stopPropagation()">daily</option>
+              <option value="saab" (click)="$event.stopPropagation()">repeat</option>
+              <option value="mercedes" (click)="$event.stopPropagation()">do notreapeat</option>
+              <option value="audi" (click)="$event.stopPropagation()">weekly</option>
+              <option value="audi" (click)="$event.stopPropagation()">monthly</option>
+            </select>
+          </mat-form-field>
+        </button>
+
+
+        <mat-divider></mat-divider>
+        <div mat-dialog-actions fxLayoutAlign='end end'>
+          <button mat-button cdkFocusInitial (click)="setReminder(dateTime,card)">done</button>
+        </div>
+      </mat-menu>
+    </div>
+
+
+
+
+    <div fxFlex='14'>
+      <!-- <button mat-icon-button matSuffix *ngIf="!isTrash" matTooltip="Collaborator" (click)="$event.stopPropagation()"> -->
+      <!-- <mat-icon>person_add</mat-icon> -->
+      <img class="img" *ngIf="!isTrash" matTooltip="Collaborator" (click)="$event.stopPropagation()"
+        (click)="openCollaboratorDialog(card)" src="../../../assets/image/collaborator.svg">
+      <!-- </button> -->
+    </div>
+
+
+    <div fxFlex='14'>
+      <!-- <button mat-icon-button [matMenuTriggerFor]="menuu" *ngIf="!isTrash" matTooltip="Change Color"> -->
+      <!-- <mat-icon>color_lens</mat-icon> -->
+      <img class="img" [matMenuTriggerFor]="menuu" *ngIf="!isTrash" matTooltip="Change Color"
+        src="../../../assets/image/color_lens.svg">
+      <!-- </button> -->
+      <mat-menu #menuu="matMenu">
+        <div *ngFor="let colors of colorArray" fxLayout="row">
+          <div *ngFor='let bgColor of colors'>
+            <div (click)='setColor(bgColor.color,card)' (click)="$event.stopPropagation()"
+              [ngStyle]="{'background-color': bgColor.color}" class="colorPicker"></div>
           </div>
         </div>
-        <button mat-menu-item [matMenuTriggerFor]="datepicker">
-          <mat-icon>access_time</mat-icon>
-          <span>pick Date & Time</span>
-        </button>
-      </div>
-    </mat-menu>
+      </mat-menu>
 
-
-
-
-
-    <mat-menu #datepicker="matMenu">
-
-      <div fxLayout='row'>
-          <button mat-icon-button>
-              <i class="material-icons">
-                keyboard_backspace
-              </i>
-            </button>
-        <!-- <mat-icon>keyboard_backspace</mat-icon> -->
-        <h6>Pick date & time</h6>
-      </div>
-
-      <button mat-menu-item>
-        <label>
-          <input matInput [owlDateTimeTrigger]="dt3" [(ngModel)]="dateTime" [owlDateTime]="dt3"
-            placeholder=" select date">
-          <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
-        </label>
-      </button>
-
-      <button mat-menu-item><label>
-          <input matInput [owlDateTimeTrigger]="dt4" [owlDateTime]="dt4" [(ngModel)]="dateTime" placeholder="select time">
-          <owl-date-time [pickerType]="'timer'" #dt4></owl-date-time>
-        </label>
-      </button>
-
-      <button mat-menu-item>
-        <mat-form-field>
-          <select (click)="$event.stopPropagation()" matNativeControl required>
-            <option value="volvo" (click)="$event.stopPropagation()">daily</option>
-            <option value="saab" (click)="$event.stopPropagation()">repeat</option>
-            <option value="mercedes" (click)="$event.stopPropagation()">do notreapeat</option>
-            <option value="audi" (click)="$event.stopPropagation()">weekly</option>
-            <option value="audi" (click)="$event.stopPropagation()">monthly</option>
-          </select>
-        </mat-form-field>
-      </button>
-
-
-      <mat-divider></mat-divider>
-      <div mat-dialog-actions fxLayoutAlign='end end'>
-        <button mat-button cdkFocusInitial (click)="setReminder(dateTime,card)">done</button>
-      </div>
-    </mat-menu>
-  </div>
-
-
-  <div fxLayout="16px" fxLayout.xs="10px">
-    <button mat-icon-button [matMenuTriggerFor]="menuu" *ngIf="!isTrash" matTooltip="Change Color">
-      <!-- <mat-icon>color_lens</mat-icon> -->
-      <img class="img" src="../../../assets/image/color_lens.svg">
-    </button>
-    <mat-menu #menuu="matMenu">
-      <div *ngFor="let colors of colorArray" fxLayout="row">
-        <div *ngFor='let bgColor of colors'>
-          <div (click)='setColor(bgColor.color,card)' (click)="$event.stopPropagation()"
-            [ngStyle]="{'background-color': bgColor.color}" class="colorPicker"></div>
-        </div>
-      </div>
-    </mat-menu>
-
-  </div>
-  <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="hide = !hide" *ngIf="!isTrash" matTooltip="add image" fxLayout="16px"
-      (click)="$event.stopPropagation()">
+    </div>
+    <div fxFlex='14'>
+      <!-- <button mat-icon-button matSuffix (click)="hide = !hide" *ngIf="!isTrash" matTooltip="add image"
+      (click)="$event.stopPropagation()"> -->
       <!-- <mat-icon>crop_original</mat-icon> -->
-      <img class="img" src="../../../assets/image/image.svg">
-    </button>
-  </div>
-  <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="hide = !hide"  (click)="openCollaboratorDialog(card)" *ngIf="!isTrash" matTooltip="Collaborator" fxLayout="16px"
-      (click)="$event.stopPropagation()">
-      <!-- <mat-icon>person_add</mat-icon> -->
-      <img class="img" src="../../../assets/image/collaborator.svg">
-    </button>
-  </div>
+      <img class="img" *ngIf="!isTrash" matTooltip="add image" (click)="$event.stopPropagation()"
+        src="../../../assets/image/image.svg">
+      <!-- </button> -->
+    </div>
 
-  <div fxLayout="16px">
-    <button mat-icon-button matSuffix (click)="archiveNote()" (click)="Archive()" *ngIf="!isTrash" (click)="$event.stopPropagation()"
-      matTooltip="Archive">
+    <div fxFlex='14'>
+      <!-- <button mat-icon-button matSuffix (click)="archiveNote()" (click)="Archive()" *ngIf="!isTrash"
+      (click)="$event.stopPropagation()" matTooltip="Archive"> -->
       <!-- <mat-icon>archive</mat-icon> -->
-      <img class="img" src="../../../assets/image/archive.svg">
-    </button>
+      <img class="img" (click)="archiveNote()" (click)="Archive()" *ngIf="!isTrash && !isArchive"
+        (click)="$event.stopPropagation()" matTooltip="Archive" src="../../../assets/image/archive.svg">
+      <!-- </button> -->
 
-    <button mat-icon-button matSuffix (click)="unArchiveNote()" (click)="Archive()" *ngIf="!isTrash && isarchive" (click)="$event.stopPropagation()"
-      matTooltip="Archive">
+      <!-- <button mat-icon-button matSuffix (click)="unArchiveNote()" (click)="Archive()" *ngIf="!isTrash && isarchive"
+      (click)="$event.stopPropagation()" matTooltip="Archive"> -->
       <!-- <mat-icon>archive</mat-icon> -->
-      <img class="img" src="../../../assets/image/unarchive.svg">
-    </button>
-    <!-- <abbr title="Archive">
-      <button style="outline: none;" mat-icon-button (click)="archiveNote()">
-        <i class="material-icons">
-          archive
-        </i>
-      </button>
-    </abbr> -->
-  </div>
+      <img class="img" (click)="unArchiveNote()" *ngIf="!isTrash && isArchive" (click)="$event.stopPropagation()"
+        matTooltip="unArchive" src="../../../assets/image/unarchive.svg">
+      <!-- </button> -->
+
+    </div>
 
 
-  <div fxLayout="16px">
+    <div fxFlex='14'>
 
-    <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
-      (click)="$event.stopPropagation()">
-      <mat-icon>more_vert</mat-icon>
-     
-    </button>
-    <mat-menu #menu="matMenu">
-      <button *ngIf="isTrash" mat-menu-item (click)="deleteForeverNote()">
-        <span>Deleteforever</span>
-      </button>
-      <button *ngIf="isTrash" mat-menu-item (click)="unTrashNote()">
-        <span>Restore</span>
-      </button>
-      <button *ngIf="!isTrash" mat-menu-item (click)="trashNote()">
-        <span>Delete note</span>
-      </button>
-
-      <button *ngIf="!isTrash" mat-menu-item [matMenuTriggerFor]="fish">add label</button>
-
-      <button *ngIf="!isTrash" mat-menu-item>
-        <span>Add drawaing</span>
-      </button>
-      <button *ngIf="!isTrash" mat-menu-item (click)="askquestion(card)">
-        <span>ask Question</span>
-      </button>
-      <button *ngIf="!isTrash" mat-menu-item>
-        <span>Show checkBoxes</span>
-      </button>
-    </mat-menu>
-    <mat-menu #fish="matMenu">
-
-      <div mat-dialog-content>
-        <button mat-button (click)="$event.stopPropagation()" *ngIf="value" matSuffix mat-icon-button aria-label="Clear"
-          (click)="value=''">
-          <mat-icon>close</mat-icon>
+      <!-- <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+      (click)="$event.stopPropagation()"> -->
+      <!-- <mat-icon>more_vert</mat-icon> -->
+      <img matTooltip="more" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
+        (click)="$event.stopPropagation()" src="../../../assets/image/more.svg">
+      <!-- </button> -->
+      <mat-menu #menu="matMenu">
+        <button *ngIf="isTrash" mat-menu-item (click)="deleteForeverNote()">
+          <span>Deleteforever</span>
         </button>
-        <mat-form-field class="example-form-field" (click)="$event.stopPropagation()">
+        <button *ngIf="isTrash" mat-menu-item (click)="unTrashNote()">
+          <span>Restore</span>
+        </button>
+        <button *ngIf="!isTrash" mat-menu-item (click)="trashNote()">
+          <span>Delete note</span>
+        </button>
 
-          <input matInput type="text" placeholder="Create label" [(ngModel)]="labelText">
+        <button *ngIf="!isTrash" mat-menu-item [matMenuTriggerFor]="fish">add label</button>
 
-        </mat-form-field>
-      </div>
-      <div>
+        <!-- <button *ngIf="!isTrash" mat-menu-item>
+        <span>Add drawaing</span>
+      </button> -->
 
-        <div *ngFor="let label of allLabel |searchFilter: labelText ">
-          <mat-checkbox (click)="$event.stopPropagation()" class="noteReminder" (click)="addLabelToNote(label,card)">{{label.label}}
-          </mat-checkbox>
+        <div *ngIf="tickBox==false"> <button mat-menu-item (click)="changeTickBoxValue(card)">Show
+            checkList</button></div>
+        <div *ngIf="tickBox==true"><button mat-menu-item (click)="changeTickBoxValue(card)">Hide
+            checkList</button></div>
+        <button *ngIf="!isTrash" mat-menu-item (click)="askquestion(card)">
+          <span>ask Question</span>
+        </button>
+        <button *ngIf="!isTrash" mat-menu-item>
+          <span>Show checkBoxes</span>
+        </button>
+      </mat-menu>
+      <mat-menu #fish="matMenu">
+
+        <div mat-dialog-content>
+          <button mat-button (click)="$event.stopPropagation()" *ngIf="value" matSuffix mat-icon-button
+            aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+          <mat-form-field class="example-form-field" (click)="$event.stopPropagation()">
+
+            <input matInput type="text" placeholder="Create label" [(ngModel)]="labelText">
+
+          </mat-form-field>
         </div>
-      </div>
+        <div>
 
-    </mat-menu>
+          <div *ngFor="let label of allLabel |searchFilter: labelText ">
+            <mat-checkbox (click)="$event.stopPropagation()" class="noteReminder" (click)="addLabelToNote(label,card)">
+              {{label.label}}
+            </mat-checkbox>
+          </div>
+        </div>
+
+      </mat-menu>
+    </div>
+
   </div>
-
 </div>
-
-<!-- <div *ngIf="card.isDeleted">
-  <p>{{card}}</p>
-
-</div> -->

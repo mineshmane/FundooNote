@@ -1,0 +1,32 @@
+.hideCheckList {
+  .CheckListDisplay {
+    cursor: default;
+
+    .checkBox {
+      display: none;
+    }
+  }
+}
+.showCheckList {
+  .CheckListDisplay {
+    cursor: default;
+
+    .checkBox {
+      display: block;
+    }
+
+    .closeInput {
+      text-decoration: line-through;
+    }
+  }
+
+  .addCheck {
+    display: block;
+    .checkList {
+      height: 24px;
+    }
+  }
+}
+.completeItemDisplay {
+  padding: 13px 0px 3px 0px;
+}

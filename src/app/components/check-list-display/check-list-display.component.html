@@ -1,0 +1,31 @@
+<div [ngClass]="checkListClass">
+  <!-- open checklist display -->
+  <div>
+    <div  class="CheckListDisplay" *ngFor="let open of openCheckListArray">
+     <div *ngIf=" open.isDeleted==false" fxLayout='row'>
+      <div class="checkBox" >
+        <mat-checkbox (click)="updateChecklist(open,'close')"></mat-checkbox>
+      </div>
+      <div fxFlexOffset='1%' (click)="openDialog()"> {{open.itemName}}</div>
+    </div>
+  </div>
+  </div>
+<!-- complete task display -->
+  <div *ngIf=" tickBox && closeCheckListArray.length >0" class="completeItemDisplay">
+    {{closeCheckListArray.length}} completed items
+  </div>
+
+  <!-- close checklist display -->
+  <div>
+    <div class="CheckListDisplay" *ngFor="let close of closeCheckListArray">
+      <div *ngIf="close.isDeleted==false" >
+      <div class="checkBox" >
+        <mat-checkbox color="primary" checked=true (click)="updateChecklist(close,'open')"></mat-checkbox>
+      </div>
+      <div  fxFlexOffset='1%' (click)="openDialog()" class="closeInput"> {{close.itemName}}
+      </div>
+    </div>
+    </div>
+  </div>
+
+</div>

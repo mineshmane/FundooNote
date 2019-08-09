@@ -1,0 +1,702 @@
+.box {
+  border: 1px solid #a7a7a7;
+  border-radius: 3px;
+  padding: 10px;
+  width: fit-content;
+}
+
+.mat-step-header .mat-step-icon {
+    background-color: rgba(0,0,0,.54);
+    color: #540f0f;
+}
+
+
+mat-progress-bar {
+  position: absolute;
+  z-index: -1;
+  margin-top: 2px;
+  width: 50%;
+}
+
+::ng-deep .mat-app-background {
+  background-color: transparent;
+}
+
+.delivaryAddress {
+  font-size: larger;
+  font-family: serif;
+}
+.payement {
+  margin-top: 15px;
+}
+.order {
+  color: #006abc;
+  font-weight: 600;
+}
+.orderDone {
+  color: rgb(48, 204, 0);
+  font-weight: 600;
+}
+
+.open {
+  .progressFirst {
+    margin-top: 27px;
+    margin-left: 1%;
+
+    .chip {
+      color: white;
+      background-color: #ffce12;
+      font-size: larger;
+    }
+
+    .progressFirstSteps {
+      width: -webkit-fill-available;
+      mat-icon {
+        margin-top: -14px;
+        margin-left: 5%;
+      }
+      .steps {
+        font-size: x-small;
+        font-family: monospace;
+        font-weight: 600;
+        .sign {
+          color: #ffce12;
+        }
+      }
+    }
+
+    // second step
+    .progressSecondSteps {
+      width: -webkit-fill-available;
+      mat-icon {
+        margin-top: -14px;
+        margin-left: 24%;
+      }
+      .steps {
+        font-size: x-small;
+        font-family: monospace;
+        font-weight: 600;
+        .sign {
+          color: #ffce12;
+          margin-right: 20%;
+        }
+        .review {
+          color: #ffce12;
+          margin-right: 20%;
+        }
+      }
+    }
+
+    // third step
+    .progressThirdSteps {
+      width: -webkit-fill-available;
+      mat-icon {
+        margin-top: -14px;
+        margin-left: 55%;
+      }
+      .steps {
+        font-size: x-small;
+        font-family: monospace;
+        font-weight: 600;
+        .sign {
+          color: #ffce12;
+          margin-right: 22%;
+        }
+        .review {
+          color: #ffce12;
+          margin-right: 22%;
+        }
+        .complete {
+          color: #ffce12;
+        }
+      }
+    }
+  }
+}
+
+.close {
+  .progressFirst {
+    margin-top: 27px;
+    margin-left: 19%;
+
+    .chip {
+      color: white;
+      background-color: #ffce12;
+      font-size: larger;
+    }
+
+    .progressFirstSteps {
+      width: -webkit-fill-available;
+      mat-icon {
+        margin-top: -14px;
+        margin-left: 5%;
+      }
+      .steps {
+        font-size: x-small;
+        font-family: monospace;
+        font-weight: 600;
+        .sign {
+          color: #ffce12;
+        }
+      }
+    }
+
+    // second step
+    .progressSecondSteps {
+      width: -webkit-fill-available;
+      mat-icon {
+        margin-top: -14px;
+        margin-left: 30%;
+      }
+      .steps {
+        font-size: x-small;
+        font-family: monospace;
+        font-weight: 600;
+        .sign {
+          color: #ffce12;
+          margin-right: 26%;
+        }
+        .review {
+          color: #ffce12;
+          margin-right: 26%;
+        }
+      }
+    }
+
+    // third step
+    .progressThirdSteps {
+      width: -webkit-fill-available;
+      mat-icon {
+        margin-top: -14px;
+        margin-left: 68%;
+      }
+      .steps {
+        font-size: x-small;
+        font-family: monospace;
+        font-weight: 600;
+        .sign {
+          color: #ffce12;
+          margin-right: 26%;
+        }
+        .review {
+          color: #ffce12;
+          margin-right: 26%;
+        }
+        .complete {
+          color: #ffce12;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .progressFirst {
+      margin-left: 1%;
+    }
+  }
+}
+
+.card {
+  background-color: #676363;
+  width: fit-content;
+  padding: 8px;
+  border-radius: 8px;
+  color: white;
+  max-width: 60px;
+}
+
+.downStage {
+  //  max-width: 70%;
+  width: -webkit-fill-available;
+  background-color: #fafafa;
+}
+
+.checkOut {
+  .checkOutInside {
+    background-color: #e1dfdf;
+    padding: 3%;
+    .priceSubtotal {
+      color: rgb(245, 102, 102);
+    }
+    .button {
+      padding-right: 12%;
+      padding-bottom: 5%;
+
+      button {
+        color: white;
+        background-color: #008afa;
+        padding-left: 12%;
+        padding-right: 12%;
+      }
+    }
+    .buttonSecond {
+      // padding-right: 2%;
+      padding-bottom: 5%;
+
+      button {
+        color: white;
+        background-color: #008afa;
+        //     padding-left: 21%;
+        //  padding-right: 21%;
+      }
+    }
+  }
+}
+.shop {
+  margin-top: 30px;
+  // margin-left: 100px;
+  font-size: larger;
+  font-weight: 600;
+  font-family: sans-serif;
+  padding-left: 30px;
+}
+.condition {
+  padding-left: 30px;
+  font-size: x-small;
+  font-weight: lighter;
+  .privacy {
+    color: #008afa;
+  }
+}
+.downMain {
+  padding: 2%;
+}
+
+// .checkOutClose{
+
+// }
+
+.checkOutOpen {
+  max-width: 80%;
+}
+
+.details {
+  .name {
+    color: #006abc;
+    font-weight: 600;
+    // margin-left: 10%
+  }
+}
+.price {
+  .name {
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+  }
+  .rate {
+    color: #006abc;
+  }
+}
+
+.downPrice {
+  align-self: flex-end;
+  .priceSubtotal {
+    color: rgb(245, 102, 102);
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .checkOut {
+    .checkOutInside {
+      max-width: 30%;
+    }
+  }
+  ::ng-deep .checkOut ng-star-inserted {
+    max-width: 30%;
+  }
+
+  .close {
+    .progressFirst {
+      .progressSecondSteps {
+        mat-icon {
+          margin-left: 30%;
+        }
+        .steps {
+          .sign {
+            margin-right: 26%;
+          }
+          .review {
+            margin-right: 26%;
+          }
+        }
+      }
+
+      // third step
+      .progressThirdSteps {
+        width: -webkit-fill-available;
+        mat-icon {
+          margin-top: -14px;
+          margin-left: 68%;
+        }
+        .steps {
+          font-size: x-small;
+          font-family: monospace;
+          font-weight: 600;
+          .sign {
+            color: #ffce12;
+            margin-right: 26%;
+          }
+          .review {
+            color: #ffce12;
+            margin-right: 26%;
+          }
+          .complete {
+            color: #ffce12;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  .checkOut {
+    .checkOutInside {
+      padding: 0%;
+
+      .button {
+        padding-right: 12%;
+        padding-left: 12%;
+
+        button {
+          padding-left: 5%;
+          padding-right: 5%;
+        }
+      }
+      .buttonSecond {
+        // padding-right: 2%;
+
+        button {
+          color: white;
+          background-color: #008afa;
+          //     padding-left: 21%;
+          //  padding-right: 21%;
+        }
+      }
+    }
+  }
+
+  .close {
+    .progressFirst {
+      .progressSecondSteps {
+        mat-icon {
+          margin-left: 32%;
+        }
+        .steps {
+          .sign {
+            margin-right: 26%;
+          }
+          .review {
+            margin-right: 26%;
+          }
+        }
+      }
+
+      // third step
+      .progressThirdSteps {
+        width: -webkit-fill-available;
+        mat-icon {
+          margin-top: -14px;
+          margin-left: 72%;
+        }
+        .steps {
+          font-size: x-small;
+          font-family: monospace;
+          font-weight: 600;
+          .sign {
+            color: #ffce12;
+            margin-right: 26%;
+          }
+          .review {
+            color: #ffce12;
+            margin-right: 26%;
+          }
+          .complete {
+            color: #ffce12;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 850px) {
+  .progressFirst {
+    margin-left: 15%;
+  }
+  .open {
+    .progressFirst {
+      .progressSecondSteps {
+        mat-icon {
+          margin-left: 24%;
+        }
+        .steps {
+          .sign {
+            margin-right: 18%;
+          }
+          .review {
+            margin-right: 18%;
+          }
+        }
+      }
+
+      // third step
+      .progressThirdSteps {
+        width: -webkit-fill-available;
+        mat-icon {
+          margin-top: -14px;
+          margin-left: 58%;
+        }
+        .steps {
+          font-size: x-small;
+          font-family: monospace;
+          font-weight: 600;
+          .sign {
+            color: #ffce12;
+            margin-right: 19%;
+          }
+          .review {
+            color: #ffce12;
+            margin-right: 19%;
+          }
+          .complete {
+            color: #ffce12;
+          }
+        }
+      }
+    }
+  }
+  .close {
+    .progressFirst {
+      // third step
+      .progressThirdSteps {
+        width: -webkit-fill-available;
+        mat-icon {
+          margin-top: -14px;
+          margin-left: 74%;
+        }
+        .steps {
+          font-size: x-small;
+          font-family: monospace;
+          font-weight: 600;
+          .sign {
+            color: #ffce12;
+            margin-right: 26%;
+          }
+          .review {
+            color: #ffce12;
+            margin-right: 26%;
+          }
+          .complete {
+            color: #ffce12;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .progressFirst {
+    margin-left: 10%;
+  }
+  .checkOut {
+    width: -webkit-fill-available;
+  }
+  .checkOutOpen {
+    max-width: 100%;
+  }
+
+  .close {
+    .progressFirst {
+      .progressSecondSteps {
+        mat-icon {
+          margin-left: 28%;
+        }
+        .steps {
+          .sign {
+            margin-right: 18%;
+          }
+          .review {
+            margin-right: 18%;
+          }
+        }
+      }
+
+      // third step
+      .progressThirdSteps {
+        width: -webkit-fill-available;
+        mat-icon {
+          margin-top: -14px;
+          margin-left: 63%;
+        }
+        .steps {
+          font-size: x-small;
+          font-family: monospace;
+          font-weight: 600;
+          .sign {
+            color: #ffce12;
+            margin-right: 19%;
+          }
+          .review {
+            color: #ffce12;
+            margin-right: 19%;
+          }
+          .complete {
+            color: #ffce12;
+          }
+        }
+      }
+    }
+  }
+
+  .open {
+    .progressFirst {
+      .progressSecondSteps {
+        mat-icon {
+          margin-left: 26%;
+        }
+        .steps {
+          .sign {
+            margin-right: 18%;
+          }
+          .review {
+            margin-right: 18%;
+          }
+        }
+      }
+
+      // third step
+      .progressThirdSteps {
+        width: -webkit-fill-available;
+        mat-icon {
+          margin-top: -14px;
+          margin-left: 60%;
+        }
+        .steps {
+          font-size: x-small;
+          font-family: monospace;
+          font-weight: 600;
+          .sign {
+            color: #ffce12;
+            margin-right: 12%;
+          }
+          .review {
+            color: #ffce12;
+            margin-right: 12%;
+          }
+          .complete {
+            color: #ffce12;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .progressFirst {
+    margin-left: 0%;
+    .chip {
+      font-size: small;
+    }
+
+    .progressSecondSteps {
+      mat-icon {
+        margin-left: 40%;
+      }
+    }
+  }
+  mat-progress-bar {
+    width: 60%;
+  }
+  .downStage {
+    .shop {
+      font-size: small;
+    }
+  }
+
+  .close {
+    .progressFirst {
+      .progressSecondSteps {
+        mat-icon {
+          margin-left: 35%;
+        }
+        .steps {
+          .sign {
+            margin-right: 16%;
+          }
+          .review {
+            margin-right: 26%;
+          }
+        }
+      }
+
+      // third step
+      .progressThirdSteps {
+        width: -webkit-fill-available;
+        mat-icon {
+          margin-top: -14px;
+          margin-left: 86%;
+        }
+        .steps {
+          font-size: x-small;
+          font-family: monospace;
+          font-weight: 600;
+          .sign {
+            color: #ffce12;
+            margin-right: 16%;
+          }
+          .review {
+            color: #ffce12;
+            margin-right: 16%;
+          }
+          .complete {
+            color: #ffce12;
+          }
+        }
+      }
+    }
+  }
+  .open {
+    .progressFirst {
+      .progressSecondSteps {
+        mat-icon {
+          margin-left: 35%;
+        }
+        .steps {
+          .sign {
+            margin-right: 18%;
+          }
+          .review {
+            margin-right: 18%;
+          }
+        }
+      }
+
+      // third step
+      .progressThirdSteps {
+        width: -webkit-fill-available;
+        mat-icon {
+          margin-top: -14px;
+          margin-left: 81%;
+        }
+        .steps {
+          font-size: x-small;
+          font-family: monospace;
+          font-weight: 600;
+          .sign {
+            color: #ffce12;
+            margin-right: 16%;
+          }
+          .review {
+            color: #ffce12;
+            margin-right: 16%;
+          }
+          .complete {
+            color: #ffce12;
+          }
+        }
+      }
+    }
+  }
+}

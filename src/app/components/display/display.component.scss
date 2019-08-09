@@ -128,14 +128,35 @@
 //   max-width: 100%;
 //  }
 
+.wordBreak {
+  // word-break: break-all;
+  // text-overflow: hide;
+  // // width: 250px;
+  // white-space: nowrap;
+  // // overflow: hidden;
+  // text-overflow:ellipsis;
+  // max-height: 3.6em;
+  // line-height: 1.8em;
+
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  overflow: hidden;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 15.5em;
+}
+.fontpixel {
+
+  max-height: 50px;
+}
 .main-card {
   width: 240px;
   min-height: 20px;
-  max-height: 350px;
+  // max-height: 400px;
   position: relative;
   margin-right: 10px;
   margin-bottom: 10px;
-  border-radius: 10px;
+  // border-radius: 10px;
   overflow: hidden;
 }
 
