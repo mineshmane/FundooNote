@@ -1,7 +1,19 @@
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> notes.component.ts 
+*        
+*  Purpose         :this component is for get all notes  
+* 
+*  @file           : notes.component.ts 
+*  @module         : notes.component.ts  - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
+
+
 import { Component, OnInit } from '@angular/core';
 import { NotesService } from '../../services/notes-service/notes.service'
 import { DataService } from '../../services/dataService/data.service';
-import { Collaborator } from 'src/app/model/register';
 
 
 @Component({
@@ -24,6 +36,13 @@ export class NotesComponent implements OnInit {
     })
   }
 
+
+   /**
+    * @description: this method is for getting All notes and devides pined and unpinned cards
+    *                component
+    * @param      :id
+    * @returns    :response/eror
+    */
 
   getAllNote() {
     try {

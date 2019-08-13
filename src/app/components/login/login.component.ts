@@ -15,7 +15,7 @@ import { UserService } from '../../services/userService/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { addToCart } from 'src/app/model/cartModel';
-import {CartServiceService} from '../../services/cartService/cart-service.service'
+import { CartServiceService } from '../../services/cartService/cart-service.service'
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -23,7 +23,7 @@ import {CartServiceService} from '../../services/cartService/cart-service.servic
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
-
+  cardID;
   hide = true;
   productId: any;
   // cartid: string;
@@ -31,12 +31,13 @@ export class LoginComponent implements OnInit {
   cartModel: addToCart;
   cartid: any;
   productName: any;
-  constructor(private userService: UserService, private router: Router,private cartService :CartServiceService,
+  constructor(private userService: UserService, private router: Router, private cartService: CartServiceService,
     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.productId = localStorage.getItem('serviceId')
     this.cartid = localStorage.getItem('cartId')
+
     this.getServices()
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -51,7 +52,11 @@ export class LoginComponent implements OnInit {
 
 
   services: any;
-
+  /**
+     * @description: this method is for getting service details 
+     *                component
+     * @param      : note object
+     */
   getServices() {
     try {
       this.userService.getService().subscribe(data => {
@@ -73,18 +78,23 @@ export class LoginComponent implements OnInit {
          * @description user service called here wiht  argument new user data for registration
          * @returns response/error
          */
-        addToCart(id: string) {
-          this.cartModel = new addToCart();
-          this.cartModel.productId = id;
-          this.cartService.addToCartService(this.cartModel).subscribe(data => {
-            console.log('data after add to cart', data);
-            localStorage.setItem('cartId', data['data']['details'].id)
-          }, err => {
-            console.log('error after add to cart ', err);
-      
-          })
-        }
+  addToCart(id: string) {
+    this.cartModel = new addToCart();
+    this.cartModel.productId = id;
+    this.cartService.addToCartService(this.cartModel).subscribe(data => {
+      console.log('data after add to cart', data);
+      localStorage.setItem('cartId', data['data']['details'].id)
+    }, err => {
+      console.log('error after add to cart ', err);
 
+    })
+  }
+
+ /**
+* @description: this method is for it show selected service as selected 
+*                component
+* @param      : note object
+*/
 
   select(item) {
     // this.getErrorMessageserver='';
@@ -109,26 +119,26 @@ export class LoginComponent implements OnInit {
     try {
       console.log(" login event called ", loginFormvalue);
       this.userService.login(loginFormvalue).subscribe(response => {
-       // console.log('response ', response);
+        // console.log('response ', response);
         localStorage.setItem('token', response['id']);
-        localStorage.setItem('userId',response['userId'])
-        localStorage.setItem('firstName',response['firstName'])
-        localStorage.setItem('lastName',response['lastName'])
-        localStorage.setItem('imageUrl',response['imageUrl'])
-       // localStorage.setItem('image', response['status']['imageUrl']);
-        localStorage.setItem('email',response['email'])
+        localStorage.setItem('userId', response['userId'])
+        localStorage.setItem('firstName', response['firstName'])
+        localStorage.setItem('lastName', response['lastName'])
+        localStorage.setItem('imageUrl', response['imageUrl'])
+        // localStorage.setItem('image', response['status']['imageUrl']);
+        localStorage.setItem('email', response['email'])
         this.snackBar.open('login succesfully', '', { duration: 2000 });
         this.router.navigate(['/dashboard']);
-  
-  
-      },error => {
+
+
+      }, error => {
         console.log('error ', error);
         this.snackBar.open("login failed  wrong password or username")
       });
     } catch (error) {
       console.log(error);
-      
+
     }
- 
+
   }
 }

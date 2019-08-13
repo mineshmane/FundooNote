@@ -1,3 +1,15 @@
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> check-list.display.ts 
+*        
+*  Purpose         :this component is for check list add and remove
+* 
+*  @file           : check-list.display.ts 
+*  @module         : check-list.display.ts  - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
+
 
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { updateCheckList } from "../../model/notes";

@@ -1,3 +1,15 @@
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> set-profile-photo.ts 
+*        
+*  Purpose         :this component is for open dialog for image crop
+* 
+*  @file           : set-profile-photo.ts
+*  @module         : setprofile-photo.ts - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
+
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({

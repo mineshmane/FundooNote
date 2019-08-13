@@ -40,6 +40,38 @@
               </div>
             </div>
 
+
+            <div class="service" fxLayout="row" *ngIf="cartid" fxLayout.sm="column" fxLayout.xs="column"
+              fxLayoutAlign.xs="space-around center" fxLayoutAlign.lg="start center"
+              fxLayoutAlign.sm="space-around center" fxLayoutGap.sm='10%' fxLayoutGap.xs='10%' fxLayoutGap.lg='7%'
+              fxLayoutAlign="space-around none">
+
+              <div *ngFor="let service of services">
+                <mat-card [ngClass]="productId==service.id ? 'selected':'notSelected' " (click)='select(service)'>
+
+                  <mat-card class="insideMat">
+                    <div>Price: ${{service.price}} per Month</div>
+                    <div>{{service.name | uppercase}}</div>
+                    <div>
+                      <ul>
+                        <li>${{service.price}}/Month</li>
+                        <li>{{service.description}}</li>
+
+                      </ul>
+                    </div>
+                  </mat-card>
+
+                  <div class="message" *ngIf="productId==service.id">Selected</div>
+                  <div class="message" *ngIf="productId!=service.id">Add to Cart</div>
+                </mat-card>
+              </div>
+
+
+
+
+            </div>
+
+
             <div fxLayoutAlign="space-between center">
               <div>
                 <p> <a routerLink="../register">CreateAccount</a></p>
@@ -53,11 +85,11 @@
             </div>
           </mat-card-content>
         </form>
-     
 
 
 
-    <!-- <div fxLayout="column" fxFlex="80" fxFlex.xs="100">
+
+        <!-- <div fxLayout="column" fxFlex="80" fxFlex.xs="100">
       <div fxLayout="row" fxLayout.sm="row wrap" fxLayout.xs="row wrap" fxLayoutGap="5%" fxLayoutGap.xs="0">
         <div class="main1" *ngFor="let data of services">
           <div class="card">
@@ -89,41 +121,13 @@
       </div>
     </div>
   </div> -->
-<!-- </div> -->
+        <!-- </div> -->
 
- <div class="service" fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.xs="space-around center"
-      fxLayoutAlign.lg="start center" fxLayoutAlign.sm="space-around center" fxLayoutGap.sm='10%' fxLayoutGap.xs='10%'
-      fxLayoutGap.lg='7%' fxLayoutAlign="space-around none">
 
-      <div *ngFor="let service of services">
-        <mat-card [ngClass]="productId==service.id ? 'selected':'notSelected' " (click)='select(service)'>
+      </mat-card>
 
-          <mat-card class="insideMat">
-            <div>Price: ${{service.price}} per Month</div>
-            <div>{{service.name | uppercase}}</div>
-            <div>
-              <ul>
-                <li>${{service.price}}/Month</li>
-                <li>{{service.description}}</li>
-
-              </ul>
-            </div>
-          </mat-card>
-
-          <div class="message" *ngIf="productId==service.id">Selected</div>
-          <div class="message" *ngIf="productId!=service.id">Add to Cart</div>
-        </mat-card>
-      </div>
+    </div>
 
 
 
-
-    </div> 
-
-  </mat-card>
-
-</div>
-
-
-
-</div>
+  </div>

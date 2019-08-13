@@ -1,11 +1,14 @@
-/******************************************************************************
- *  Execution       :cmd> node ng s                  
- *  @description    :dashboard whre some basic fumnctionality are implemented
- *  @file           :dashboard.ts
- *  @author         :Minesh Mane <mineshmane94@gmail.com>
- *  @version        :1.0
- 
- ******************************************************************************/
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> search.component.ts 
+*        
+*  Purpose         :this component is for search note in the note using title and description 
+* 
+*  @file           : search.component.ts 
+*  @module         : search.component.ts  - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
 
 
 
@@ -48,10 +51,10 @@ export class SearchComponent implements OnInit {
   }
 
   filterArray(note) {
-    this.pinedArray=[];
-    this.unpinedArray=[];
+    this.pinedArray = [];
+    this.unpinedArray = [];
     for (let i = note.length; i > 0; i--) {
- 
+
       if (note[i - 1]["isDeleted"] === false) {
 
         if (note[i - 1]["isPined"] === true) {

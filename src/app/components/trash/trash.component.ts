@@ -1,3 +1,15 @@
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> trash.ts 
+*        
+*  Purpose         :this component is for getting trash notes from database
+* 
+*  @file           : trash.ts
+*  @module         : trash.ts - 
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
+
 import { Component, OnInit } from '@angular/core';
 import { NotesService } from '../../services/notes-service/notes.service'
 @Component({

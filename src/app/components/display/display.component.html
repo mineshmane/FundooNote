@@ -1,4 +1,4 @@
-<!-- <div *ngIf="pinedMessage.length > 0">PINNED</div>
+ <!-- <div *ngIf="pinedMessage.length > 0">PINNED</div>
   <div  [ngClass]=" direction =='row' ? 'gridView':'listiew'">
 
       <div style="width: fit-content" *ngFor="let card of pinedMessage" >
@@ -60,11 +60,11 @@
       
         </mat-card>
       </div>
-  </div>
+  </div> -->
 
 
 
-  <div *ngIf="pinedMessage.length > 0">PINNED</div>
+  <!-- <div *ngIf="pinedMessage.length > 0">PINNED</div>
   <div  [ngClass]=" direction =='row' ? 'gridView':'listiew'">
 
       <div style="width: fit-content" *ngFor="let card of unPinedMessage" >
@@ -126,8 +126,8 @@
       
         </mat-card>
       </div>
-  </div> 
- -->
+  </div>  -->
+
 
 
 <!-- <div *ngIf="!islist.data " fxFlex="100" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3"
@@ -630,7 +630,7 @@
 
 
   </div> -->
-
+<ng4-loading-spinner> </ng4-loading-spinner>
 
 <div class="mar">
   <div *ngIf="pinedMessage.length > 0" style="margin-top: 30px;">PINNED</div>
@@ -640,7 +640,7 @@
         fxLayout.xs="column" fxFlex.xs="95">
         <div>
           <div fxLayout="row" fxLayoutAlign="space-between center">
-            <div  (click)="openDialog(card)">
+            <div (click)="openDialog(card)">
               <p class="wordBreak">{{card.title}}</p>
             </div>
             <div class="div">
@@ -724,7 +724,7 @@
 
 <div class="mar">
 
-  <div *ngIf="unPinedMessage.length > 0" style="margin-top: 30px;">OTHERS</div>
+  <div *ngIf="unPinedMessage.length > 0 && !isTrash" style="margin-top: 30px;">OTHERS</div>
   <ngx-masonry>
     <div fxLayout="center" style="margin-top:10px;" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3">
       <mat-card ngxMasonryItem *ngFor="let card of unPinedMessage" class="main-card" [style.background-color]=card.color
@@ -737,7 +737,7 @@
             <div class="div">
               <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin Note">
 
-                <img  src="../../../assets/image/pin.svg">
+                <img src="../../../assets/image/pin.svg">
               </button>
             </div>
           </div>
@@ -749,7 +749,7 @@
 
         <!-- checklist display -->
         <app-check-list-display [noteCheckLists]=card.noteCheckLists (checkListEvent)="EventFromCheckList($event)"
-        [tickBoxInput]="tickBoxValue" [cardId]="item"></app-check-list-display>
+          [tickBoxInput]="tickBoxValue" [cardId]="item"></app-check-list-display>
 
         <div fxLayout="row" fxLayout="row wrap">
 

@@ -1,6 +1,17 @@
 <!-- <div>
   <app-take-note></app-take-note>
 </div> -->
+<!-- <div *ngIf="labels" class="box" fxLayoutAlign="center center ">
+    <mat-card >
+        <span> cards not found </span>
+    </mat-card>
+</div> -->
+
+<div *ngIf="labels" fxLayoutAlign="center center center ">
+    <mat-card style="margin-top: 15%;background-color:darkkhaki">
+        <span> cards not found </span>
+    </mat-card>
+</div>
 
 <div>
   <app-display [isTrash]=false (removeLabel)="getArchiveNote()" (labelToNote)="getArchiveNote()"

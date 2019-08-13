@@ -1,3 +1,16 @@
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> display.component.ts 
+*        
+*  Purpose         :this component is for display note card i
+* 
+*  @file           : display.component.ts 
+*  @module         : display.component.ts - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
+
+
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { NotesService } from '../../services/notes-service/notes.service'
 import { MatSnackBar } from '@angular/material'
@@ -24,7 +37,7 @@ export class DisplayComponent implements OnInit {
   addOnBlur = true;
   islist;
   title = '';
-  
+
   description = '';
   isPin: boolean = false;
   openCheckListArray = [];
@@ -59,13 +72,13 @@ export class DisplayComponent implements OnInit {
       this.isPin = this.card.isPined;
     }
 
-    console.log(" list view ", this.isList);
+    // console.log(" list view ", this.isList);
     this.isList = localStorage.getItem('isListView')
     this.dataService.viewListData.subscribe(data => {
-      console.log(" data", data);
+      // console.log(" data", data);
 
       this.islist = data;
-      console.log(" islist data in diplay", this.islist.data);
+      // console.log(" islist data in diplay", this.islist.data);
       /* Grid View*/
       this.dataService.getView().subscribe((response) => {
         this.view1 = response;
@@ -80,8 +93,8 @@ export class DisplayComponent implements OnInit {
     this.openDialog(item);
     this.openDialog(item);
   }
-  listView() {
 
+  listView() {
     this.isList = localStorage.getItem('isListView')
     this.islist = 'http://34.213.106.173/' + this.isList;
   }
@@ -125,19 +138,24 @@ export class DisplayComponent implements OnInit {
 
   }
 
+
+  /**
+    * @description: this method is for open collabortaor dialogbox
+    *                component
+    * @param      : note object
+    */
+
   openCollaboratorDialog(card): void {
     try {
       const dialogRef = this.dialog.open(CollaboratorComponent, {
-        // width: '600px',
-        // height: '275px',
+       
         //data: { allCollborators: this.card }
 
         data: { card }
       });
-      // console.log(" in card ",card);
+   
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        //this.title = result;
+       
       });
     } catch (error) {
       console.log(error);
@@ -146,9 +164,14 @@ export class DisplayComponent implements OnInit {
 
   }
 
+  /**
+    * @description: this method is for remove note labels from note
+    *                component
+    * @param      : noteid,and label id
+    */
+
   removeNoteLabel(label, card): void {
-    console.log(label.id, " labelin ");
-    console.log("card in disp[lay", card.id);
+   
 
     let data = {
       noteId: [card.id],
@@ -167,9 +190,14 @@ export class DisplayComponent implements OnInit {
     })
   }
 
+
+   /**
+    * @description: this method is for remove note reminder from note
+    * @param      : noteid,reminder id
+    */
   removeNoteReminder(reminder, card) {
-    console.log(card, " labelin ");
-    console.log("card in disp[lay", card);
+    // console.log(card, " labelin ");
+    // console.log("card in disp[lay", card);
 
     let data = {
       noteIdList: [card.id],
@@ -177,10 +205,10 @@ export class DisplayComponent implements OnInit {
 
 
     }
-    console.log("data ", data);
+   
 
     this.notesService.removeNoteReminder(data).subscribe(response => {
-      console.log("response", response);
+      // console.log("response", response);
       this.removeReminder.emit();
       this.bar.open(" reminder removed succesFully ", '', { duration: 2000 });
     }, error => {
@@ -189,6 +217,11 @@ export class DisplayComponent implements OnInit {
     })
   }
 
+   /**
+    * @description: this method is for open dialogbox for update note component
+    *                component
+    * @param      : note:object
+    */
 
   openDialog(card): void {
     try {
@@ -201,7 +234,7 @@ export class DisplayComponent implements OnInit {
 
       dialogRef.afterClosed().subscribe(result => {
 
-        console.log('The dialog was closed', result);
+        // console.log('The dialog was closed', result);
         this.title = result;
       }, error => {
         console.log('error ', error);
@@ -212,15 +245,21 @@ export class DisplayComponent implements OnInit {
     }
 
   }
+
+  //event emmiter for trash note update
   getTrashNotes() {
     this.update.emit();
   }
+  // event emmit fro label add and dlete 
   labelAddedToNote() {
     this.labelToNote.emit();
   }
+  // ebent emmiter for add reminder to note 
   reminderAddedToNote() {
     this.reminderToNote.emit();
   }
+
+  // event emmiter for when note archive
   onArchive() {
     this.onArchiveChange.emit();
   }

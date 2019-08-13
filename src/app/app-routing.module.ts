@@ -20,15 +20,14 @@ import { UpdateComponent } from './components/update/update.component';
 import { DisplayComponent } from './components/display/display.component';
 import { SelectServiceComponent } from './components/select-service/select-service.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
-import { ECartComponent } from './components/e-cart/e-cart.component';
 import { MasonryComponent } from './masonry/masonry.component';
 
 
 const routes: Routes = [
   { path: 'resetpassword/:token', component: ResetComponent },
   // { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: '', redirectTo: '/selectService', pathMatch: 'full' },
-  { path: 'selectService', component: SelectServiceComponent },
+  { path: '', redirectTo: '/product', pathMatch: 'full' },
+  { path: 'product', component: SelectServiceComponent },
   { path: 'register', component: RegistrationComponent },
   { path: 'login', component: LoginComponent },
   { path: 'forget', component: ForgetComponent },
@@ -39,7 +38,7 @@ const routes: Routes = [
       {
         path: '', redirectTo: 'notes', pathMatch: 'full'
       },
-     
+
       {
         path: 'notes', component: NotesComponent
       },
@@ -77,10 +76,9 @@ const routes: Routes = [
       {
         path: 'icon', component: IconComponent
       },
-      {path:'cart',component:ECartComponent},
-      // {path:'cart',component:ShoppingCartComponent},
+      { path: 'cart', component: ShoppingCartComponent },
 
-    
+
 
     ]
 

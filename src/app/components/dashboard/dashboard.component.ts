@@ -1,12 +1,14 @@
-/******************************************************************************
- *  Execution       :cmd> node ng s                  
- *  @description    :dashboard whre some basic fumnctionality are implemented
- *  @file           :dashboard.ts
- *  @author         :Minesh Mane <mineshmane94@gmail.com>
- *  @version        :1.0
- 
- ******************************************************************************/
-
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> dashboard.ts 
+*        
+*  Purpose         :this component is for dashboard component toolbar and naav bar
+* 
+*  @file           : dashboard.ts 
+*  @module         : dashboard.ts  - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
 
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -92,20 +94,8 @@ export class DashboardComponent implements OnInit {
       this.changeProfilePic()
 
     })
-
-
-
-    // this.dataService.labelEmmitedData.subscribe(message => {
-    //   console.log(" message from label list",message);
-
-    //   this.getLabelList();
-    // })
-
   }
-  notes(){
-    console.log("hello every one");
-    
-  }
+
 
   // refresh() {
 
@@ -113,7 +103,7 @@ export class DashboardComponent implements OnInit {
   // }
   refresh(): void {
     window.location.reload();
-}
+  }
 
   searchVisible() {
     // console.log(" visible", this.searchInput);
@@ -162,7 +152,7 @@ export class DashboardComponent implements OnInit {
       });
       // console.log(" in card ",card);
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
+        // console.log('The dialog was closed');
         //this.title = result;
       });
     } catch (error) {
@@ -186,14 +176,12 @@ export class DashboardComponent implements OnInit {
   openSetProfileDialog(): void {
     try {
       const dialogRef = this.dialog.open(SetProfilePhotoComponent, {
-        // width: '250px',
-        // height:'500px',
+
         data: {}
       });
-      // console.log(" in card ",card);
+
       dialogRef.afterClosed().subscribe(result => {
-        console.log('The dialog was closed');
-        //this.title = result;
+
       });
     } catch (error) {
       console.log(error);
@@ -227,9 +215,6 @@ export class DashboardComponent implements OnInit {
   getLabelList() {
     try {
       this.noteService.getLableList().subscribe(response => {
-        // console.log('response labels ', response);
-        // console.log(" response label 2", response['data'].details);
-
         this.allLabel = response['data'].details
 
         this.dataService.changeData({
@@ -237,9 +222,6 @@ export class DashboardComponent implements OnInit {
           data: response['data'].details
         })
         this.allLabel.reverse();
-        //console.log(" alllabels",this.allLabel);
-        //  this.data.changeMessage(response['data'].details)
-        //this.data.changeMessage(this.allLabel)
 
       }, error => {
         console.log(" error is ", error);
@@ -255,7 +237,7 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  //  .pipe(takeUntil(this.destroy$))
+
 
 
 
@@ -270,6 +252,13 @@ export class DashboardComponent implements OnInit {
 
   }
 
+
+
+  /**
+    * @description: this method is for logout the account it will clear the all local storage
+    *                component
+    * @param      : no param
+    */
   logout() {
     console.log(" logout called");
     this.userService.logoutUser();

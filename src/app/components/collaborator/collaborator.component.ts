@@ -1,3 +1,16 @@
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> collaborator.component.ts
+*        
+*  Purpose         :this component is for open dialog for add and delete collaborator 
+* 
+*  @file           : collaborator.component.ts
+*  @module         : collaborator.component.ts - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
+
+
 import { Component, OnInit, Inject, Input } from '@angular/core';
 import { UserService } from '../../services/userService/user.service';
 import { NotesService } from '../../services/notes-service/notes.service'
@@ -75,6 +88,11 @@ export class CollaboratorComponent implements OnInit {
     this.searchList(this.values);
 
   }
+  /**
+    * @description: this method is for searching collborator from all users in database from all users
+    *                component
+    * @param      : data object
+    */
   searchList(event: any) {
     this.values = event.target.value;
     let data = {
@@ -96,6 +114,12 @@ export class CollaboratorComponent implements OnInit {
     this.dialogRef.close();
   }
 
+
+  /**
+    * @description: this method is for add collaborator to note and calling api add collborator 
+    *                component
+    * @param      : collaborator 
+    */
   addCollaborator(collaborator) {
 
     console.log(" data in ", this.data);
@@ -144,6 +168,12 @@ export class CollaboratorComponent implements OnInit {
   }
 
 
+
+  /**
+    * @description: this method is for remove collaborator from collaborator of note and calling api remove collaborator
+    *                component
+    * @param      : collaborator:object
+    */
 
   removeCol(item) {
     console.log("Note iddddd", this.data);

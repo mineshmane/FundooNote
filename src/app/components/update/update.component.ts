@@ -1,3 +1,15 @@
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> update.component.ts
+*        
+*  Purpose         :this component is for open dialog for update notes
+* 
+*  @file           : update.component.ts
+*  @module         : update.component.ts - This is not optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 12-7-2019
+*
+*************************************************************************************************/
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { notes, addCheckList, updateCheckList, deleteCheckList } from 'src/app/model/notes';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -19,9 +31,9 @@ export class UpdateComponent implements OnInit {
 
 
   label = [];
-  image:string;
+  image: string;
   checked = true;
-  tickBox=true;
+  tickBox = true;
   change = {
     colorChange: false,
     pinChange: false,
@@ -61,23 +73,23 @@ export class UpdateComponent implements OnInit {
     console.log(" labels in update", this.labels);
     this.reminders = data.card.reminder
     console.log(" reminder in update", this.reminders);
-this.pin=data.card.isPined;
-console.log(" it is pined ",this.pin);
+    this.pin = data.card.isPined;
+    console.log(" it is pined ", this.pin);
 
 
 
 
-// this.bgcolor = data.color;
-// this.pin = this.data.isPined;
-// this.rem = this.data.reminder;
-// this.labelsArray = this.data.noteLabels;
-// this.Type = this.data.type;
-// this.collaborator = this.data.collaborators;
-// this.tickBox=this.data.checkBox;
-// this.checkListClass.showCheckList=this.tickBox;
-// this.checkListClass.hideCheckList=!this.tickBox;
-// this.image=environment.url+data.imageUrl;
-// this.seprateCheckList(this.data.noteCheckLists);
+    // this.bgcolor = data.color;
+    // this.pin = this.data.isPined;
+    // this.rem = this.data.reminder;
+    // this.labelsArray = this.data.noteLabels;
+    // this.Type = this.data.type;
+    // this.collaborator = this.data.collaborators;
+    // this.tickBox=this.data.checkBox;
+    // this.checkListClass.showCheckList=this.tickBox;
+    // this.checkListClass.hideCheckList=!this.tickBox;
+    // this.image=environment.url+data.imageUrl;
+    // this.seprateCheckList(this.data.noteCheckLists);
 
   }
 
@@ -117,193 +129,193 @@ console.log(" it is pined ",this.pin);
 
 
 
-   /**
-  * @description this method is for when user click on add list then it will show the input automatically
+  /**
+ * @description this method is for when user click on add list then it will show the input automatically
+ * @returns nothing
+ */
+  checkListAddStart() {
+    try {
+      this.list = true;
+    } catch (error) {
+      console.log('error in checklistAddStart method in note update');
+
+    }
+  }
+
+  /**
+  * @description this method is for check the size of checklistvalue if it is greater then 1 then automatically it show
+  *               save icon
   * @returns nothing
   */
- checkListAddStart() {
-  try {
-    this.list = true;
-  } catch (error) {
-    console.log('error in checklistAddStart method in note update');
-
-  }
-}
-
-/**
-* @description this method is for check the size of checklistvalue if it is greater then 1 then automatically it show
-*               save icon
-* @returns nothing
-*/
-check() {
-  if (this.checkListValue.value.length > 0) {
-    this.saveFlag = true;
-  }
-  else {
-    this.saveFlag = false;
-  }
-}
-
-
-/**
-* @description this method is for save the checklist to the card
-* @returns nothing
-*/
-saveChecklist(value) {
-  try {
-
-    this.noteModel = new addCheckList();
-    this.noteModel.itemName = this.checkListValue.value;
-    this.noteModel.status = value;
-    this.noteModel.isDeleted = false;
-    this.noteModel.notesId = this.data.id;
-    if (value == 'open') {
-      this.openCheckListArray.push(this.noteModel);
-    } else {
-      this.closeCheckListArray.push(this.noteModel);
+  check() {
+    if (this.checkListValue.value.length > 0) {
+      this.saveFlag = true;
     }
-    this.addCheckListService(this.noteModel);
-    this.checkListValue.reset();
-    this.list = false;
-    this.saveFlag = false;
-
-  } catch (error) {
-
+    else {
+      this.saveFlag = false;
+    }
   }
 
-}
 
-/**
- * @description this method is for call add checklist service to card
- * @param object 
- */
+  /**
+  * @description this method is for save the checklist to the card
+  * @returns nothing
+  */
+  saveChecklist(value) {
+    try {
 
-addCheckListService(object) {
-  try {
-    this.noteService.addChecklist(object).subscribe(data => {
-      console.log('data after add check list', data);
-
-    }, err => {
-      console.log('error after add checlist', err);
-
-    })
-  } catch (error) {
-    console.log('error in addCheckListService', error);
-
-  }
-
-}
-/**
-* @description this method is for seprate the checklist
-* @param array
-*/
-seprateCheckList(array) {
-  console.log(array);
-
-  try {
-    for (let index = 0; index < array.length; index++) {
-      if(array[index].isDeleted==false)
-      if (array[index].status == 'open') {
-        this.openCheckListArray.push(array[index]);
+      this.noteModel = new addCheckList();
+      this.noteModel.itemName = this.checkListValue.value;
+      this.noteModel.status = value;
+      this.noteModel.isDeleted = false;
+      this.noteModel.notesId = this.data.id;
+      if (value == 'open') {
+        this.openCheckListArray.push(this.noteModel);
       } else {
-        this.closeCheckListArray.push(array[index]);
+        this.closeCheckListArray.push(this.noteModel);
       }
+      this.addCheckListService(this.noteModel);
+      this.checkListValue.reset();
+      this.list = false;
+      this.saveFlag = false;
+
+    } catch (error) {
 
     }
-  } catch (error) {
-    console.log(error);
 
   }
-}
-/**
- * @description this method is for update the checklist
- * @param item
- * @param value
- */
-updateChecklist(item, value) {
-  // value is for adding checklist to array according to it 
-  console.log(item, value);
-  this.updateCheckListModel = new updateCheckList();
-  this.updateCheckListModel.noteId = item.notesId;
-  this.updateCheckListModel.checkListId = item.id;
-  this.updateCheckListModel.itemName = item.itemName;
-  this.updateCheckListModel.status = value;
-  // it means we have to push item in close array
-  if (value == 'close') {
-    let ind = this.openCheckListArray.indexOf(item);
-    this.openCheckListArray.splice(ind, 1);
-    this.closeCheckListArray.push(item);
-  } else {
-    let ind = this.closeCheckListArray.indexOf(item);
-    this.closeCheckListArray.splice(ind, 1);
-    this.openCheckListArray.push(item);
-  }
-  this.updateCheckListService(this.updateCheckListModel);
-}
 
-/**
- * @description this method is for call service checklist update
- * @param body
- */
-updateCheckListService(body) {
-  try {
-    this.noteService.updateChecklist(body).subscribe(data => {
-      console.log('data after updateCheckList', data);
-
-    }, err => {
-      console.log('error in updateCheckListService', err);
-
-    })
-  } catch (error) {
-    console.log('error in updateCheckListService', error);
-  }
-
-}
-/**
-   * @description this method is for delete the checklist
-   * @param value
-   * @param item
+  /**
+   * @description this method is for call add checklist service to card
+   * @param object 
    */
-removeCheckList(item, value) {
-  console.log(item,value);
-  
-  try {
-    this.deleteCheckList = new deleteCheckList();
-    this.deleteCheckList.checkListId = item.id;
-    this.deleteCheckList.noteId = item.notesId;
-    if (value == 'open') {
+
+  addCheckListService(object) {
+    try {
+      this.noteService.addChecklist(object).subscribe(data => {
+        console.log('data after add check list', data);
+
+      }, err => {
+        console.log('error after add checlist', err);
+
+      })
+    } catch (error) {
+      console.log('error in addCheckListService', error);
+
+    }
+
+  }
+  /**
+  * @description this method is for seprate the checklist
+  * @param array
+  */
+  seprateCheckList(array) {
+    console.log(array);
+
+    try {
+      for (let index = 0; index < array.length; index++) {
+        if (array[index].isDeleted == false)
+          if (array[index].status == 'open') {
+            this.openCheckListArray.push(array[index]);
+          } else {
+            this.closeCheckListArray.push(array[index]);
+          }
+
+      }
+    } catch (error) {
+      console.log(error);
+
+    }
+  }
+  /**
+   * @description this method is for update the checklist
+   * @param item
+   * @param value
+   */
+  updateChecklist(item, value) {
+    // value is for adding checklist to array according to it 
+    console.log(item, value);
+    this.updateCheckListModel = new updateCheckList();
+    this.updateCheckListModel.noteId = item.notesId;
+    this.updateCheckListModel.checkListId = item.id;
+    this.updateCheckListModel.itemName = item.itemName;
+    this.updateCheckListModel.status = value;
+    // it means we have to push item in close array
+    if (value == 'close') {
       let ind = this.openCheckListArray.indexOf(item);
       this.openCheckListArray.splice(ind, 1);
+      this.closeCheckListArray.push(item);
     } else {
       let ind = this.closeCheckListArray.indexOf(item);
-      console.log(ind);
-      
       this.closeCheckListArray.splice(ind, 1);
+      this.openCheckListArray.push(item);
+    }
+    this.updateCheckListService(this.updateCheckListModel);
+  }
+
+  /**
+   * @description this method is for call service checklist update
+   * @param body
+   */
+  updateCheckListService(body) {
+    try {
+      this.noteService.updateChecklist(body).subscribe(data => {
+        console.log('data after updateCheckList', data);
+
+      }, err => {
+        console.log('error in updateCheckListService', err);
+
+      })
+    } catch (error) {
+      console.log('error in updateCheckListService', error);
     }
 
-    this.removeCheckListService(this.deleteCheckList);
+  }
+  /**
+     * @description this method is for delete the checklist
+     * @param value
+     * @param item
+     */
+  removeCheckList(item, value) {
+    console.log(item, value);
 
-  } catch (error) {
-    console.log('error in removeChecklist', error);
+    try {
+      this.deleteCheckList = new deleteCheckList();
+      this.deleteCheckList.checkListId = item.id;
+      this.deleteCheckList.noteId = item.notesId;
+      if (value == 'open') {
+        let ind = this.openCheckListArray.indexOf(item);
+        this.openCheckListArray.splice(ind, 1);
+      } else {
+        let ind = this.closeCheckListArray.indexOf(item);
+        console.log(ind);
+
+        this.closeCheckListArray.splice(ind, 1);
+      }
+
+      this.removeCheckListService(this.deleteCheckList);
+
+    } catch (error) {
+      console.log('error in removeChecklist', error);
+
+    }
+
 
   }
 
 
-}
+  removeCheckListService(body) {
+    try {
+      this.noteService.removeChecklist(body).subscribe(data => {
+        console.log('data after remove checklist', data);
 
+      }, err => {
+        console.log('error after remove checklist', err);
 
-removeCheckListService(body){
-  try {
-    this.noteService.removeChecklist(body).subscribe(data=>{
-      console.log('data after remove checklist',data);
-      
-    },err=>{
-      console.log('error after remove checklist',err);
-      
-    })
-  } catch (error) {
-    
+      })
+    } catch (error) {
+
+    }
+
   }
-
-}
 }

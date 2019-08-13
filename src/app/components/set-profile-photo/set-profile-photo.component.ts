@@ -6,7 +6,7 @@
 *  @file           : set-profile-photo.ts
 *  @module         : setprofile-photo.ts - This is optional if expeclictly its an npm or local package
 *  @author         : Minesh Mane <mineshmane94@gmail.com>
-*  @since          : 28-2-2019
+*  @since          : 19-7-2019
 *
 *************************************************************************************************/
 

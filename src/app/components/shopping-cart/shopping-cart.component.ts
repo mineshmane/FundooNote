@@ -1,3 +1,16 @@
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> shopping-cart.ts 
+*        
+*  Purpose         :this component is for shopping cart payment place order process
+* 
+*  @file           : shopping-cart.ts 
+*  @module         : shopping-cart.ts - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 8-8-2019
+*
+*************************************************************************************************/
+
+
 import { Component, OnInit } from '@angular/core';
 import { CartServiceService } from "../../services/cartService/cart-service.service";
 import { FormControl, Validators } from '@angular/forms';

@@ -1,3 +1,10 @@
+<div *ngIf="labels" fxLayoutAlign="center center center ">
+    <mat-card style="margin-top: 15%;background-color:darkkhaki">
+        <span> cards not found </span>
+    </mat-card>
+</div>
+
 <div>
-    <app-display  (removeLabel)="getnoteByLabel()"  [unPinedMessage]="unpinedArray" [pinedMessage]="pinedArray"></app-display>
-</div> 
+    <app-display (removeLabel)="getnoteByLabel()" [unPinedMessage]="unpinedArray" [pinedMessage]="pinedArray">
+    </app-display>
+</div>

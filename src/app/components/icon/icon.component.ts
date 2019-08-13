@@ -1,12 +1,15 @@
-
-/******************************************************************************
- *  Execution       :cmd> node ng s                  
- *  @description    :dashboard whre some basic fumnctionality are implemented
- *  @file           :dashboard.ts
- *  @author         :Minesh Mane <mineshmane94@gmail.com>
- *  @version        :1.0
- 
- ******************************************************************************/
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> icon.component.ts 
+*        
+*  Purpose         :this component is for icons all icons are in this component and operations 
+*                  :of that component 
+* 
+*  @file           : icon.component.ts 
+*  @module         : icon.component.ts - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
 
 
 
@@ -27,7 +30,7 @@ export class IconComponent implements OnInit {
   allLabel = []
   date;
   todayDate;
-  tickBox=true;
+  tickBox = true;
   constructor(private notesService: NotesService,
     private dialog: MatDialog, private snackBar: MatSnackBar, private dataService: DataService,
     private route: Router) { }
@@ -93,6 +96,11 @@ export class IconComponent implements OnInit {
   }
 
 
+  /**
+    * @description: this method is for navigate to askquestion component 
+    *                component
+    * @param      : note object with id
+    */
 
   askquestion(card) {
     // console.log(" label ts", card);
@@ -101,6 +109,11 @@ export class IconComponent implements OnInit {
 
   }
 
+  /**
+   * @description: this method is for method is for calling data service of label search  
+   *                component
+   * @param      : note object
+   */
   shareLabelArrayData() {
     this.dataService.currentData.subscribe(message => {
       //  console.log("data in icon", message);
@@ -121,6 +134,13 @@ export class IconComponent implements OnInit {
     }
     // this.childObject.emit(obj);
   }
+
+
+  /**
+   * @description: this method is for Archive Note 
+   *                component
+   * @param      : note object
+   */
 
   archiveNote() {
     try {
@@ -144,6 +164,11 @@ export class IconComponent implements OnInit {
 
   }
 
+  /**
+   * @description: this method is for open collaborator dialogbox
+   *                component
+   * @param      : note object
+   */
 
   openCollaboratorDialog(card): void {
     console.log(" log dia", card);
@@ -188,7 +213,11 @@ export class IconComponent implements OnInit {
 
 
 
-
+ /**
+    * @description: this method is for unArchive note
+    *                component
+    * @param      : note object
+    */
 
   unArchiveNote() {
     try {
@@ -213,6 +242,12 @@ export class IconComponent implements OnInit {
   }
 
 
+
+   /**
+    * @description: this method is for restore note from Trash npotes
+    *                component
+    * @param      : note object
+    */
   unTrashNote() {
     try {
       let data = {
@@ -233,6 +268,13 @@ export class IconComponent implements OnInit {
 
     }
   }
+
+
+   /**
+    * @description: this method is for Move note In trash Note
+    *                component
+    * @param      : note object
+    */
   trashNote() {
     try {
       let data = {
@@ -255,6 +297,11 @@ export class IconComponent implements OnInit {
 
   }
 
+   /**
+    * @description: this method is for delete note Forever
+    *                component
+    * @param      : note object
+    */
   deleteForeverNote() {
     try {
       let data = {
@@ -277,7 +324,11 @@ export class IconComponent implements OnInit {
 
   }
 
-
+ /**
+    * @description: this method is for Change Color of cards
+    *                component
+    * @param      : note object
+    */
 
 
 
@@ -315,6 +366,11 @@ export class IconComponent implements OnInit {
     }
   }
 
+   /**
+    * @description: this method is for AddLabel to Note 
+    *                component
+    * @param      : note object and label id
+    */
 
   addLabelToNote(label, carditem) {
     if (carditem == undefined) {
@@ -344,7 +400,11 @@ export class IconComponent implements OnInit {
 
   }
 
-
+ /**
+    * @description: this method is for setReminder To Notes using datePicker
+    *                component
+    * @param      : note object
+    */
 
   setReminder(dateTime, carditem) {
 
@@ -388,6 +448,12 @@ export class IconComponent implements OnInit {
 
   }
 
+
+   /**
+    * @description: this method is for  set reminder to card for today
+    *                component
+    * @param      : note object
+    */
   today(cardItem) {
     this.date = new Date();
     this.date.setHours(20, 0, 0)
@@ -413,6 +479,13 @@ export class IconComponent implements OnInit {
       // return console.log("today date and time printing ", new Date(2018, 1, 12, 20, 0));
     }
   }
+
+
+   /**
+    * @description: this method is for setreminder for tomarrrow 
+    *                component
+    * @param      : note object
+    */
   tommorrow(cardItem) {
     var today = new Date();
     var tomorrow = new Date();
@@ -447,6 +520,11 @@ export class IconComponent implements OnInit {
 
   }
 
+   /**
+    * @description: this method is for finding next MOnday date  
+    *                component
+    * @param      : note object
+    */
   closestMonday = () => {
     var curr_date = new Date(); // current date
     var day_info = 8.64e+7; // milliseconds per day
@@ -459,6 +537,12 @@ export class IconComponent implements OnInit {
     return next_monday;
   }
 
+
+   /**
+    * @description: this method is for setReminder to Next monday only 
+    *                component
+    * @param      : note object
+    */
   nextWeekMonday(cardItem) {
 
     var monday = this.closestMonday()

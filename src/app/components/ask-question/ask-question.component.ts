@@ -1,3 +1,15 @@
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> ask-question.component.ts
+*        
+*  Purpose         :this component is for question and answer show and reply to question
+* 
+*  @file           : ask-question.component.ts
+*  @module         : ask-question.component.ts- This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
+
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Params, ActivatedRoute, Router } from '@angular/router';
@@ -41,9 +53,9 @@ export class AskQuestionComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe((params: Params) => {
-        this.noteId = params['id'];
-        console.log("this.noteId in ask question================>", this.noteId);
-      })
+      this.noteId = params['id'];
+      console.log("this.noteId in ask question================>", this.noteId);
+    })
     this.getNotesDetail();
   }
   /**
@@ -57,14 +69,14 @@ export class AskQuestionComponent implements OnInit {
     console.log('add Message data============>', body);
     try {
       this.noteService.addMessageQA(body).subscribe(data => {
-            this.snackbar.open('Message added successfully.', '', { duration: 3000 });
-            console.log('Add Message data..........', data);
-            // this.getNotesDetail();
-            this.dataService.getNotesDetail('');
-          },error => {
-            this.snackbar.open('Error while adding Message!', 'Error', { duration: 3000 });
-            console.log("Error something wrong: ", error)
-          });
+        this.snackbar.open('Message added successfully.', '', { duration: 3000 });
+        console.log('Add Message data..........', data);
+        // this.getNotesDetail();
+        this.dataService.getNotesDetail('');
+      }, error => {
+        this.snackbar.open('Error while adding Message!', 'Error', { duration: 3000 });
+        console.log("Error something wrong: ", error)
+      });
     } catch (error) {
       this.snackbar.open('error', "", { duration: 3000 });
 
@@ -86,7 +98,7 @@ export class AskQuestionComponent implements OnInit {
 
       console.log("this.notes[questionAndAnswerNotes]", this.notes[0].questionAndAnswerNotes);
       this.noteDataList = this.notes[0].questionAndAnswerNotes[0];
- 
+
       // this.snackbar.open('Notes Detail.', '', { duration: 3000 });
       console.log('Notes Detail data..........', data);
     },
@@ -94,7 +106,7 @@ export class AskQuestionComponent implements OnInit {
         this.snackbar.open('Error while Notes Detail!', 'Error', { duration: 3000 });
         console.log("Error something wrong: ", error)
       });
-      
+
   }
   /**
   * @description : send reply
@@ -123,21 +135,21 @@ export class AskQuestionComponent implements OnInit {
       if (body.message == undefined) {
         this.showfroalaeditor2 = !this.showfroalaeditor2;
         return;
-      }else{
+      } else {
         this.noteService.sendReply(body, superid).subscribe(data => {
           this.notes = data["data"].data;
           console.log("data in view Reply notelist ask question=========>", data["data"].data);
           // this.snackbar.open('Notes Detail.', '', { duration: 3000 });
           console.log('Notes Detail data..........', data);
-           this.getNotesDetail();
+          this.getNotesDetail();
           this.dataService.getNotesDetail('');
         })
         setTimeout(() => this.getNotesDetail(), 10);
-      this.addMsg.message = null;
-      // this.showfroalaeditor = this.showfroalaeditor;
+        this.addMsg.message = null;
+        // this.showfroalaeditor = this.showfroalaeditor;
         this.showfroalaeditor2 = !this.showfroalaeditor2;
       }
-    
+
     } catch (error) {
       console.log(error);
 
@@ -154,12 +166,12 @@ export class AskQuestionComponent implements OnInit {
   * @description : add likes in question and answer
   */
   setLikes() {
-    console.log("parentId in setLikes=====>",this.parentId);
+    console.log("parentId in setLikes=====>", this.parentId);
     var body = {
       "like": this.like
     }
     try {
-      this.noteService.addLikes(body,this.parentId).subscribe(data => {
+      this.noteService.addLikes(body, this.parentId).subscribe(data => {
         this.snackbar.open('like add successfully!', '', { duration: 3000 });
         console.log('like add successfully......!', data);
         this.getNotesDetail();
@@ -186,13 +198,13 @@ export class AskQuestionComponent implements OnInit {
         this.starList[i] = true;
       }
     }
-    console.log('check parentId in rating ====>',this.parentId);
+    console.log('check parentId in rating ====>', this.parentId);
     var body = {
       "rate": this.ratings = data + 1
     }
     console.log('Rate Question ====>', body)
     try {
-      this.noteService.addRating(body,this.parentId)
+      this.noteService.addRating(body, this.parentId)
 
         .subscribe(
           data => {

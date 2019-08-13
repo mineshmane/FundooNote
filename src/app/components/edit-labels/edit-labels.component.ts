@@ -1,20 +1,21 @@
-/******************************************************************************
- *  Execution       :cmd> node ng s                  
- *  @description    :dashboard whre some basic fumnctionality are implemented
- *  @file           :dashboard.ts
- *  @author         :Minesh Mane <mineshmane94@gmail.com>
- *  @version        :1.0
- 
- ******************************************************************************/
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> edit-labels.ts 
+*        
+*  Purpose         : this component is for create and edit and delete labels
+* 
+*  @file           :  edit-labels.ts 
+*  @module         :  edit-labels.ts - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
 
 
 import { Component, OnInit, Inject, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { notes } from 'src/app/model/notes';
 import { NotesService } from '../../services/notes-service/notes.service';
 import { DataService } from '../../services/dataService/data.service';
 import { MatSnackBar } from '@angular/material'
-import { DialogData } from '../dashboard/dashboard.component';
 
 
 @Component({
@@ -44,6 +45,13 @@ export class EditLabelsComponent implements OnInit {
     // })
 
   }
+
+    /**
+    * @description: this method is for create new label 
+    *                component
+    * @param      : label name
+    */
+
   addLabel(lab) {
     try {
       this.allLabel.push(lab)
@@ -81,11 +89,19 @@ export class EditLabelsComponent implements OnInit {
   done() {
     this.dialogRef.close();
   }
+
+
+    /**
+    * @description: this method is for delete label
+    *                component
+    * @param      : label:object
+    */
+
   deleteLabel(deleteLabel) {
     try {
-      console.log(deleteLabel, "data in edit delete label");
-      console.log("label id", deleteLabel.id);
-     // this.allLabel.splice(deleteLabel)
+      // console.log(deleteLabel, "data in edit delete label");
+      // console.log("label id", deleteLabel.id);
+      // this.allLabel.splice(deleteLabel)
 
       for (let i = 0; i < this.allLabel.length; i++) {
         if (this.allLabel[i] == deleteLabel) {
@@ -99,7 +115,7 @@ export class EditLabelsComponent implements OnInit {
         label: deleteLabel
       }
       this.noteService.deletelabel(data).subscribe(response => {
-        console.log(" label deleted successfully ", response);
+        // console.log(" label deleted successfully ", response);
         this.labelDelete.emit({});
         this.dataService.labelDatasend({
           data: {},
@@ -114,8 +130,13 @@ export class EditLabelsComponent implements OnInit {
     }
 
   }
+    /**
+    * @description: this method is for update labels
+    * @param      : label object
+    */
+
   editLabel(lab) {
-    console.log(" label in edit label", lab);
+    // console.log(" label in edit label", lab);
 
     let data = {
       id: lab.id,

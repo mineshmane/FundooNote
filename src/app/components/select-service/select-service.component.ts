@@ -1,9 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
-import{Service} from '../../model/register';
-import {NotesService} from '../../services/notes-service/notes.service';
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> select.service.ts 
+*        
+*  Purpose         :this component is for select product to add cart
+* 
+*  @file           : select.service.ts 
+*  @module         : select.service.ts  - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
 
-import {MatDialog} from '@angular/material'
-import { from } from 'rxjs';
+import { Component, OnInit, Input } from '@angular/core';
+import { Service } from '../../model/register';
+import { NotesService } from '../../services/notes-service/notes.service';
+import { MatDialog } from '@angular/material'
 import { Router } from '@angular/router';
 import { DialogCartComponent } from '../dialog-cart/dialog-cart.component';
 @Component({
@@ -23,9 +33,9 @@ export class SelectServiceComponent implements OnInit {
     this.getService();
   }
   openDialogAdvance(data): void {
-    console.log("data",data);
-    
-    localStorage.setItem('serviceId',data.id)
+    console.log("data", data);
+
+    localStorage.setItem('serviceId', data.id)
     const dialogRef = this.dialog.open(DialogCartComponent, {
       // width: '850px',
       // height: '300px',
@@ -44,16 +54,19 @@ export class SelectServiceComponent implements OnInit {
   // destroy$: Subject<boolean> = new Subject<boolean>();
   getService() {
     this.noteService.getService().subscribe((response) => {
-        this.services = response["data"].data;
-        console.log("get addcart details note ===============>", this.services);
-      }, (error) => {
-        console.log(" error ",error);
-        
-      });
+      this.services = response["data"].data;
+      console.log("get addcart details note ===============>", this.services);
+    }, (error) => {
+      console.log(" error ", error);
+
+    });
   }
-  productCarts(){
-    
+  productCarts() {
+
   }
 
+  signIn() {
+    this.router.navigate(['login']);
+  }
 
 }

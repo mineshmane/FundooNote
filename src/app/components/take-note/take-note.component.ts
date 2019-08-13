@@ -1,3 +1,14 @@
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> take-Note.ts 
+*        
+*  Purpose         :this component is for open dialog for image crop
+* 
+*  @file           : take-Note.ts 
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
+
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NotesService } from '../../services/notes-service/notes.service'
 import { MatSnackBar } from '@angular/material/snack-bar';

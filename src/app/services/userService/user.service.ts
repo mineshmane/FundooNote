@@ -1,3 +1,14 @@
+
+/************************************************************************************************        
+*  Purpose         : To send request to http client methods service
+* 
+*  @file           : user.service.ts
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 19-6-2019
+*
+*************************************************************************************************/
+
+
 import { Injectable } from '@angular/core';
 
 import { HttpService } from '../httpService/http.service';

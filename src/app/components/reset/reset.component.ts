@@ -1,7 +1,7 @@
 
 /******************************************************************************
  *  Execution       :cmd> node server.js                      
- *  @description    :ts file used for reset the code 
+ *  @description    :ts file used for reset the password
  *  @file           :reset.compoenet.ts
  *  @author         :Minesh Mane <mineshmane94@gmail.com>
  *  @version        :1.0

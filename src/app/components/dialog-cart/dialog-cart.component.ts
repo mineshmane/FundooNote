@@ -1,3 +1,15 @@
+/************************************************************************************************
+*  Execution       : 1. default node         cmd> dialog-cart.ts 
+*        
+*  Purpose         :this component is for open dialog for selection and showing fetures of product
+* 
+*  @file           : dialog-cart.ts 
+*  @module         : dialog-cart.ts  - This is optional if expeclictly its an npm or local package
+*  @author         : Minesh Mane <mineshmane94@gmail.com>
+*  @since          : 28-2-2019
+*
+*************************************************************************************************/
+
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { NotesService } from '../../services/notes-service/notes.service';
@@ -25,6 +37,12 @@ export class DialogCartComponent implements OnInit {
   }
 
 
+  /**
+    * @description: this method is for getting service details
+    *                component
+    * @param      : 
+    */
+
   getDetails() {
     let body = {
       productId: this.serviceData.id
@@ -35,20 +53,37 @@ export class DialogCartComponent implements OnInit {
       console.log(" responsse from backend", response);
       this.service = response["data"].details;
       console.log(" this. service details ", this.service);
-      this.productId=this.service['id']
+      this.productId = this.service['id']
       localStorage.setItem("cartId", this.productId);
     }, error => {
       console.log(error);
 
     })
   }
+
+  /**
+    * @description: this method is for next step towords place order after reading fetures of product
+    *                component route to resgoiter component after selecting product
+    * @param      : notes Array
+    */
   proceedto() {
     this.dialogRef.close();
-    this.router.navigateByUrl('register',this.productId);
+    localStorage.setItem('serviceId', this.serviceData.id)
+    console.log(" this .serviceData", this.serviceData.id);
+
+    localStorage.setItem("cartId", this.productId);
+    this.router.navigateByUrl('register', this.productId);
   }
+
+  /**
+    * @description: this method is for removing product from cart 
+    *                component
+    * @param      : notes Array
+    */
   Remove() {
     this.dialogRef.close();
     localStorage.removeItem("cartId");
-    this.router.navigateByUrl('addcart');
+    localStorage.removeItem('serviceId')
+    this.router.navigateByUrl('product');
   }
 }
