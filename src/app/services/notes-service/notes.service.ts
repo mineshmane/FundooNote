@@ -228,6 +228,8 @@ export class NotesService {
    * @param body
    */
   addChecklist(body){
+    console.log(" but body in body",body.notesId);
+    
     return this.httpService.postAth('notes/'+body.notesId+'/noteCheckLists',body);
   }
 

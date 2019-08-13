@@ -41,6 +41,10 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { NgxMasonryModule } from 'ngx-masonry';
 import { MasonryComponent } from './masonry/masonry.component';
 import { CheckListDisplayComponent } from './components/check-list-display/check-list-display.component';
+import {AuthGuradService} from './auth-gurad.service';
+import {AuthService} from './services/authService/auth.service'
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -77,7 +81,7 @@ import { CheckListDisplayComponent } from './components/check-list-display/check
   ],
   entryComponents: [UpdateComponent, EditLabelsComponent, SetProfilePhotoComponent, CollaboratorComponent,
     DialogCartComponent],
-  providers: [],
+  providers: [AuthGuradService,AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

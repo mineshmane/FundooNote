@@ -21,7 +21,7 @@ import { DisplayComponent } from './components/display/display.component';
 import { SelectServiceComponent } from './components/select-service/select-service.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { MasonryComponent } from './masonry/masonry.component';
-
+import {AuthGuradService} from './auth-gurad.service'
 
 const routes: Routes = [
   { path: 'resetpassword/:token', component: ResetComponent },
@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'forget', component: ForgetComponent },
   {
-    path: 'dashboard', component: DashboardComponent,
+    path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuradService],
 
     children: [
       {

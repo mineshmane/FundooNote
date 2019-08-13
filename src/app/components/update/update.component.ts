@@ -11,12 +11,13 @@
 *************************************************************************************************/
 
 import { Component, OnInit, Inject } from '@angular/core';
-import { notes, addCheckList, updateCheckList, deleteCheckList } from 'src/app/model/notes';
+import { addCheckList, updateCheckList, deleteCheckList } from 'src/app/model/notes';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotesService } from '../../services/notes-service/notes.service';
 
 import { MatSnackBar } from '@angular/material'
-import { FormControl } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -53,9 +54,9 @@ export class UpdateComponent implements OnInit {
   Type = '';
   labelsArray = [];
   list = false;
-  // parentSubject: Subject<any> = new Subject();
-  // title = new FormControl(this.data.title, [Validators.minLength(1)]);
-  // description = new FormControl(this.data.description);
+  parentSubject: Subject<any> = new Subject();
+  title = new FormControl(this.data.title, [Validators.minLength(1)]);
+  description = new FormControl(this.data.description);
   checkListValue = new FormControl('');
 
   // // flag
@@ -79,17 +80,17 @@ export class UpdateComponent implements OnInit {
 
 
 
-    // this.bgcolor = data.color;
-    // this.pin = this.data.isPined;
-    // this.rem = this.data.reminder;
-    // this.labelsArray = this.data.noteLabels;
-    // this.Type = this.data.type;
-    // this.collaborator = this.data.collaborators;
-    // this.tickBox=this.data.checkBox;
-    // this.checkListClass.showCheckList=this.tickBox;
-    // this.checkListClass.hideCheckList=!this.tickBox;
+    this.bgcolor = data.color;
+    this.pin = this.data.isPined;
+    this.rem = this.data.reminder;
+    this.labelsArray = this.data.noteLabels;
+    this.Type = this.data.type;
+    this.collaborator = this.data.collaborators;
+    this.tickBox = this.data.checkBox;
+    this.checkListClass.showCheckList = this.tickBox;
+    this.checkListClass.hideCheckList = !this.tickBox;
     // this.image=environment.url+data.imageUrl;
-    // this.seprateCheckList(this.data.noteCheckLists);
+    this.seprateCheckList(this.data.noteCheckLists);
 
   }
 
@@ -106,7 +107,7 @@ export class UpdateComponent implements OnInit {
         noteId: card.card.id,
         title: card.card.title,
         description: card.card.description,
-        // collaborators:card.card.collaborators
+        collaborators: card.card.collaborators
       }
       this.noteService.updateNote(data).subscribe(response => {
         console.log(response, " succsesfully updated note ");
@@ -191,6 +192,8 @@ export class UpdateComponent implements OnInit {
    */
 
   addCheckListService(object) {
+    console.log(" body object ", object);
+
     try {
       this.noteService.addChecklist(object).subscribe(data => {
         console.log('data after add check list', data);

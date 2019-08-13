@@ -16,12 +16,8 @@
     </button>
   </div>
 </div>
-
-
 <div *ngFor="let lab of allLabel" fxLayout="row" (mouseover)="changeText=true" (mouseout)="changeText=false">
   <div>
-
-
     <button mat-button (click)="deleteLabel(lab)">
       <span [hidden]="changeText">
         <mat-icon>label_outline</mat-icon>
@@ -32,7 +28,8 @@
     </button>
   </div>
   <div>
-    <input matInput class="label" [(ngModel)]="lab.label">
+    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
+      cdkAutosizeMinColumns="50" cdkAutosizeMaxRows="15" placeholder="Take a Note" [(ngModel)]="lab.label"></textarea>
 
   </div>
   <div>
