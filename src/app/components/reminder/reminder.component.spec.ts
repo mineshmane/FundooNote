@@ -26,6 +26,13 @@ import { materialModule } from 'src/app/app.material.module';
 import { DebugElement } from '@angular/core';
 import { SearchFilterPipe } from 'src/app/pipe/search-filter.pipe';
 import { DateTimePipe } from 'src/app/pipes/date-time.pipe';
+import { MatCardModule, MatIconModule, MatChipsModule, MatMenuModule, MatDividerModule, MatCheckboxModule, MatTooltipModule, MatFormFieldModule, MatSnackBarModule, MatDialogModule, MatTextareaAutosize, MatInputModule } from '@angular/material';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { NgxMasonryModule } from 'ngx-masonry';
+import { BrowserModule } from '@angular/platform-browser';
 
 describe('ReminderComponent', () => {
   let component: ReminderComponent;
@@ -33,12 +40,16 @@ describe('ReminderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArchiveComponent ,User,AskQuestionComponent,TrashComponent,SetProfilePhotoComponent,CollaboratorComponent
-        ,SearchComponent,DisplayComponent,IconComponent,LabelComponent,EditLabelsComponent,LoginComponent,RegistrationComponent,
-      ,ForgetComponent,ResetComponent,ReminderComponent,DashboardComponent,DisplayComponent,NotesComponent,SearchComponent,TakeNoteComponent,
-   UpdateComponent,AskQuestionComponent,ArchiveComponent ],
-        imports: [FlexLayoutModule, RouterTestingModule,
-                  materialModule,DebugElement
+      declarations: [ ReminderComponent,TakeNoteComponent,SearchFilterPipe, DateTimePipe,DisplayComponent,
+      IconComponent ],
+        imports: [MatCardModule, RouterTestingModule, Ng4LoadingSpinnerModule,FormsModule,HttpClientModule,
+          MatIconModule, MatChipsModule,MatMenuModule,OwlDateTimeModule, OwlNativeDateTimeModule
+         , NgxMasonryModule, MatDividerModule, MatCheckboxModule, BrowserModule,ReactiveFormsModule,
+         MatInputModule,
+
+         
+         MatTooltipModule,MatFormFieldModule,MatSnackBarModule,MatDialogModule
+                
                 ],
                 providers: [SearchFilterPipe, DateTimePipe]
     })

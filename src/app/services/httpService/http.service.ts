@@ -16,9 +16,11 @@ import { environment } from '../../../environments/environment'
   providedIn: 'root'
 })
 export class HttpService {
-
-  constructor(private http: HttpClient) { }
-  baseUrl = environment.baseUrl;
+// baseUrl;
+  constructor(private http: HttpClient) {
+  
+   }
+   baseUrl = environment.baseUrl;
 
   post(url, user) {
 

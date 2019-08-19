@@ -25,6 +25,7 @@ import { MatSnackBar } from '@angular/material'
 })
 export class EditLabelsComponent implements OnInit {
   message: any;
+  value;
   allLabel = []
   constructor(public dialogRef: MatDialogRef<EditLabelsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private noteService: NotesService,

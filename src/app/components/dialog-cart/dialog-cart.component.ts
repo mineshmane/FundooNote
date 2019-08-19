@@ -23,12 +23,19 @@ export class DialogCartComponent implements OnInit {
   serviceData: any;
   service: any;
   productId;
+  id;
+  name: any;
+
   constructor(public dialogRef: MatDialogRef<DialogCartComponent>, private noteService: NotesService, private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any, ) {
     console.log(" data in dialog cart ", data);
 
     this.serviceData = data['data']
     console.log(" after assign ", this.serviceData.id);
+    this.name = this.serviceData.name
+    
+
+
 
   }
 

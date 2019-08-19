@@ -29,6 +29,9 @@ import { Router } from '@angular/router';
 export class IconComponent implements OnInit {
   allLabel = []
   date;
+  dateTime;
+  value;
+  labelText;
   todayDate;
   tickBox = true;
   constructor(private notesService: NotesService,
@@ -86,7 +89,7 @@ export class IconComponent implements OnInit {
   @Output() labelToNote = new EventEmitter<any>();
   @Output() reminderToNote = new EventEmitter<any>();
   @Output() noteTrash = new EventEmitter();
-
+  @Output() childObject = new EventEmitter();
   ngOnInit() {
     this.shareLabelArrayData()
     if (this.card) {
@@ -132,7 +135,7 @@ export class IconComponent implements OnInit {
       value: this.tickBox,
       item: item
     }
-    // this.childObject.emit(obj);
+    this.childObject.emit(obj);
   }
 
 
@@ -213,11 +216,11 @@ export class IconComponent implements OnInit {
 
 
 
- /**
-    * @description: this method is for unArchive note
-    *                component
-    * @param      : note object
-    */
+  /**
+     * @description: this method is for unArchive note
+     *                component
+     * @param      : note object
+     */
 
   unArchiveNote() {
     try {
@@ -243,11 +246,11 @@ export class IconComponent implements OnInit {
 
 
 
-   /**
-    * @description: this method is for restore note from Trash npotes
-    *                component
-    * @param      : note object
-    */
+  /**
+   * @description: this method is for restore note from Trash npotes
+   *                component
+   * @param      : note object
+   */
   unTrashNote() {
     try {
       let data = {
@@ -270,11 +273,11 @@ export class IconComponent implements OnInit {
   }
 
 
-   /**
-    * @description: this method is for Move note In trash Note
-    *                component
-    * @param      : note object
-    */
+  /**
+   * @description: this method is for Move note In trash Note
+   *                component
+   * @param      : note object
+   */
   trashNote() {
     try {
       let data = {
@@ -297,11 +300,11 @@ export class IconComponent implements OnInit {
 
   }
 
-   /**
-    * @description: this method is for delete note Forever
-    *                component
-    * @param      : note object
-    */
+  /**
+   * @description: this method is for delete note Forever
+   *                component
+   * @param      : note object
+   */
   deleteForeverNote() {
     try {
       let data = {
@@ -324,11 +327,11 @@ export class IconComponent implements OnInit {
 
   }
 
- /**
-    * @description: this method is for Change Color of cards
-    *                component
-    * @param      : note object
-    */
+  /**
+     * @description: this method is for Change Color of cards
+     *                component
+     * @param      : note object
+     */
 
 
 
@@ -366,11 +369,11 @@ export class IconComponent implements OnInit {
     }
   }
 
-   /**
-    * @description: this method is for AddLabel to Note 
-    *                component
-    * @param      : note object and label id
-    */
+  /**
+   * @description: this method is for AddLabel to Note 
+   *                component
+   * @param      : note object and label id
+   */
 
   addLabelToNote(label, carditem) {
     if (carditem == undefined) {
@@ -400,11 +403,11 @@ export class IconComponent implements OnInit {
 
   }
 
- /**
-    * @description: this method is for setReminder To Notes using datePicker
-    *                component
-    * @param      : note object
-    */
+  /**
+     * @description: this method is for setReminder To Notes using datePicker
+     *                component
+     * @param      : note object
+     */
 
   setReminder(dateTime, carditem) {
 
@@ -449,11 +452,11 @@ export class IconComponent implements OnInit {
   }
 
 
-   /**
-    * @description: this method is for  set reminder to card for today
-    *                component
-    * @param      : note object
-    */
+  /**
+   * @description: this method is for  set reminder to card for today
+   *                component
+   * @param      : note object
+   */
   today(cardItem) {
     this.date = new Date();
     this.date.setHours(20, 0, 0)
@@ -481,11 +484,11 @@ export class IconComponent implements OnInit {
   }
 
 
-   /**
-    * @description: this method is for setreminder for tomarrrow 
-    *                component
-    * @param      : note object
-    */
+  /**
+   * @description: this method is for setreminder for tomarrrow 
+   *                component
+   * @param      : note object
+   */
   tommorrow(cardItem) {
     var today = new Date();
     var tomorrow = new Date();
@@ -520,11 +523,11 @@ export class IconComponent implements OnInit {
 
   }
 
-   /**
-    * @description: this method is for finding next MOnday date  
-    *                component
-    * @param      : note object
-    */
+  /**
+   * @description: this method is for finding next MOnday date  
+   *                component
+   * @param      : note object
+   */
   closestMonday = () => {
     var curr_date = new Date(); // current date
     var day_info = 8.64e+7; // milliseconds per day
@@ -538,11 +541,11 @@ export class IconComponent implements OnInit {
   }
 
 
-   /**
-    * @description: this method is for setReminder to Next monday only 
-    *                component
-    * @param      : note object
-    */
+  /**
+   * @description: this method is for setReminder to Next monday only 
+   *                component
+   * @param      : note object
+   */
   nextWeekMonday(cardItem) {
 
     var monday = this.closestMonday()

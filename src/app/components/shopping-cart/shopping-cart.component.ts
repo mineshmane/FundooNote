@@ -34,6 +34,7 @@ export class ShoppingCartComponent implements OnInit {
   ThirdStepComplete = false;
   emptyCart = false;
   side = false;
+  product:any;
   cartId = localStorage.getItem('cartId');
   sidnav = {
     'open': this.side,

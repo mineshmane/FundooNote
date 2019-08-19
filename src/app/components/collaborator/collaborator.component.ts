@@ -29,7 +29,7 @@ import { MatSnackBar } from '@angular/material';
 export class CollaboratorComponent implements OnInit {
   values: any;
   userArray = []
-  collaborators = []
+  collaboratorsArray = []
   destroy$: Subject<boolean> = new Subject<boolean>();
   @Input() card
 
@@ -42,10 +42,9 @@ export class CollaboratorComponent implements OnInit {
     if (data) {
       console.log(" data undefined  called in  constructor");
 
-      this.collaborators = data.card.collaborators
+      this.collaboratorsArray = data.card.collaborators
     }
-    console.log(data);
-    console.log(" collaboraArray", this.collaborators);
+    console.log(" collaboraArray", this.collaboratorsArray);
 
 
 
@@ -53,7 +52,8 @@ export class CollaboratorComponent implements OnInit {
   private img;
   imageurl: string
   localstorage_image: any
-
+  searchValue;
+  user;
   firstName = localStorage.getItem("FirstName");
   lastName = localStorage.getItem("LastName");
   email = localStorage.getItem("email");
@@ -131,7 +131,7 @@ export class CollaboratorComponent implements OnInit {
       console.log(" else part called");
 
 
-      this.collaborators.push(collaborator)
+      this.collaboratorsArray.push(collaborator)
       var collaboratorObject = {
         firstName: collaborator.firstName,
         lastName: collaborator.lastName,
@@ -145,11 +145,11 @@ export class CollaboratorComponent implements OnInit {
 
         this.dataService.collaboratorDatasend({
 
-          data:  [collaboratorObject] 
+          data: [collaboratorObject]
         })
         console.log(" object of collabo", collaboratorObject);
 
-      } else{
+      } else {
         this.noteService.addCollaborator(collaboratorObject, this.data).pipe(takeUntil(this.destroy$)).subscribe(response => {
           console.log(" response", response);
           this.snackbar.open('Added collaborator sucessfully......!', 'Done...!', { duration: 3000 });
@@ -163,7 +163,7 @@ export class CollaboratorComponent implements OnInit {
 
         })
       }
-      
+
     }
   }
 
@@ -179,11 +179,11 @@ export class CollaboratorComponent implements OnInit {
     console.log("Note iddddd", this.data);
     console.log("id remove data============>", item.id);
     console.log("this.data.UserId================>", item.userId);
-   // this.collaborators.splice(item)
+    // this.collaborators.splice(item)
 
-    for (let i = 0; i <  this.collaborators.length; i++) {
-      if ( this.collaborators[i] == item) {
-        this.collaborators.splice(i, 1);
+    for (let i = 0; i < this.collaboratorsArray.length; i++) {
+      if (this.collaboratorsArray[i] == item) {
+        this.collaboratorsArray.splice(i, 1);
       }
     }
 

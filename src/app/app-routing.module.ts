@@ -22,6 +22,7 @@ import { SelectServiceComponent } from './components/select-service/select-servi
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { MasonryComponent } from './masonry/masonry.component';
 import {AuthGuradService} from './auth-gurad.service'
+import { AskQuestionsComponent } from './components/ask-questions/ask-questions.component';
 
 const routes: Routes = [
   { path: 'resetpassword/:token', component: ResetComponent },
@@ -69,8 +70,11 @@ const routes: Routes = [
       {
         path: 'noteBylabel/:label', component: LabelComponent
       },
+      // {
+      //   path: 'askquestion/:id', component: AskQuestionComponent
+      // },
       {
-        path: 'askquestion/:id', component: AskQuestionComponent
+        path: 'askquestions/:id', component: AskQuestionsComponent
       },
 
       {

@@ -671,7 +671,7 @@
               </mat-chip>
             </mat-chip-list>
           </div>
-
+          image
 
           <div *ngFor="let label of card.noteLabels">
             <mat-chip-list aria-label="Fish selection ">
@@ -681,7 +681,7 @@
                 </mat-icon>
               </mat-chip>
             </mat-chip-list>
-          </div>
+          </div>pinNote
 
 
           <div *ngFor="let colab of card.collaborators">
@@ -711,9 +711,6 @@
             <div innerHTML="{{item.message}}"></div>
           </div>
         </div>
-
-
-
       </mat-card>
     </div>
   </ngx-masonry>
@@ -723,7 +720,6 @@
 
 
 <div class="mar">
-
   <div *ngIf="unPinedMessage.length > 0 && !isTrash" style="margin-top: 30px;">OTHERS</div>
   <ngx-masonry>
     <div fxLayout="center" style="margin-top:10px;" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3">
@@ -748,8 +744,8 @@
         </div>
 
         <!-- checklist display -->
-        <app-check-list-display [noteCheckLists]=card.noteCheckLists (checkListEvent)="EventFromCheckList($event)"
-          [tickBoxInput]="tickBoxValue" [cardId]="item"></app-check-list-display>
+        <!-- <app-check-list-display [noteCheckLists]=card.noteCheckLists (checkListEvent)="EventFromCheckList($event)"
+          [tickBoxInput]="tickBoxValue" [cardId]="item"></app-check-list-display> -->
 
         <div fxLayout="row" fxLayout="row wrap">
 

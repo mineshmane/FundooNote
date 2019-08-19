@@ -1,0 +1,222 @@
+// @import '../../../scss/variable.scss';
+// @import '../../../scss/mixin.scss';
+
+.sideNavClose{
+    margin-top: 40px;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: stretch center;
+    align-items: stretch;
+    flex: 1 1 100%;
+    max-width: 100%;
+    background-color: #F9F8F8;
+    .matCardQuestion{
+        border: 2px solid #D7D5D5;
+    }
+    .mainInside{
+    border-bottom: 2px solid darkgray;
+
+.title{
+    font-size: 28px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+.description{
+    font-size: 25px;
+    padding: 5px 0px 5px 5px;
+    font-weight: 300;
+}
+.close{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
+.cardDetail{
+    padding: 14px 4px 14px 4px;
+}
+
+
+.ask{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    // color:$linkColor;
+    
+    .submit{
+        background-color: rgb(250, 126, 54);
+        padding: 3px 24px;
+        color: white;
+    }
+}
+    }
+}
+
+.sideNavOpen{
+    margin-top: 40px;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    place-content: stretch flex-start;
+    align-items: stretch;
+    flex: 1 1 100%;
+    max-width: 100%;
+    background-color: #F9F8F8;
+    .matCardQuestion{
+        border: 2px solid #D7D5D5;
+    }
+    .mainInside{
+    border-bottom: 2px solid darkgray;
+
+.title{
+    font-size: 28px;
+    overflow: hidden;
+    word-wrap: break-word;
+}
+.description{
+    font-size: 25px;
+    padding: 5px 0px 5px 5px;
+    font-weight: 300;
+}
+.close{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 600;
+}
+.cardDetail{
+    padding: 14px 4px 14px 4px;
+}
+
+.ask{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    // color:$linkColor;
+    .submit{
+        background-color: rgb(250, 126, 54);
+        padding: 3px 24px;
+        color: white;
+    }
+}
+    }
+}
+.questionGuidline{
+    .guidDes{
+        p{
+            line-height: 1.58;
+    font-size: 14px;
+    font-weight: 400;
+    font-family: Open Sans,Tahoma,Geneva,Sans-Serif;
+    color: #363232;
+    padding: 8px;
+        }
+    }
+}
+// .image{
+//     @include roundImage();
+// }
+
+.nameDate{
+    margin-top: 2px;
+}
+.countLike{
+    margin-top: auto;
+}
+.icon{
+    mat-icon{
+    cursor: pointer;
+
+    }
+}
+.innerhtml{
+   p{
+    margin: 0px;
+
+   }
+        font-weight: 600;
+    overflow: auto;
+    font-family: "Ubuntu", "Helvetica", "Arial", "FreeSans", sans-serif;
+    font-weight: bold;
+    font-size: 1.125em;
+    line-height: 1.35em;
+    color: #2980b9;
+    font-size:x-large;
+    margin: 0px;
+    
+}
+.arrowQuestion{
+    // margin-left: 1%;
+    mat-icon{
+        font-size: -webkit-xxx-large;
+    }
+}
+.image1{
+    height: 40px;
+    width: 40px;
+    background-color: #b8b3b369;
+    border-radius: 50%;
+    font-size: x-large;
+    cursor: pointer;
+    place-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+  
+  }
+  .imageAnswer{
+    // @include roundImage();
+    height: 35px;
+    width: 35px;
+  }
+
+  .answerDisplay{
+    margin-left: 30px;
+    margin-top: 0px;
+    padding-bottom: 30px;
+    .innerhtmlAnswer{
+       margin-left: 35px;
+    font-family: "Ubuntu", "Helvetica", "Arial", "FreeSans", sans-serif;
+            overflow: auto;
+        
+            
+    }
+  }
+  .userAnswer{
+       padding-bottom: 5px;
+  }
+  .firstReply{
+      margin-left: 40px;
+  }
+  .secondReply{
+      margin-left: 40px;
+  }
+  .showFirstReply{
+cursor: pointer;
+  }
+  @media only screen and (max-width: 380px) {
+//  .image{
+//      display: none;
+//  }
+//  .image1{
+//      display: none;
+//  }
+//  .imageAnswer{
+//      display: none;
+//  }
+ .answerDisplay{
+     margin-left: 1px;
+ }
+ .secondReply{
+    margin-left: 2px;
+}
+.firstReply{
+    margin-left: 0px;
+}
+  }
+  @media only screen and (max-width: 300px) {
+    .answerDisplay{
+        margin-left: 0px;
+    }
+    .secondReply{
+       margin-left: 1px;
+   }
+   .firstReply{
+       margin-left: 0px;
+   }
+}

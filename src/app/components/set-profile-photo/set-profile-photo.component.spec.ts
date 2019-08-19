@@ -26,6 +26,9 @@ import { materialModule } from 'src/app/app.material.module';
 import { DebugElement } from '@angular/core';
 import { SearchFilterPipe } from 'src/app/pipe/search-filter.pipe';
 import { DateTimePipe } from 'src/app/pipes/date-time.pipe';
+import { ImageCropperModule } from 'ngx-image-cropper';
+import { MatProgressBarModule, MatDividerModule, MatDialogRef, MAT_DIALOG_DATA, MatSnackBarModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('SetProfilePhotoComponent', () => {
   let component: SetProfilePhotoComponent;
@@ -33,16 +36,19 @@ describe('SetProfilePhotoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArchiveComponent ,User,AskQuestionComponent,TrashComponent,SetProfilePhotoComponent,CollaboratorComponent
-        ,SearchComponent,DisplayComponent,IconComponent,LabelComponent,EditLabelsComponent,LoginComponent,RegistrationComponent,
-      ,ForgetComponent,ResetComponent,ReminderComponent,DashboardComponent,DisplayComponent,NotesComponent,SearchComponent,TakeNoteComponent,
-   UpdateComponent,AskQuestionComponent,ArchiveComponent ],
-        imports: [FlexLayoutModule, RouterTestingModule,
-                  materialModule,DebugElement
-                ],
-                providers: [SearchFilterPipe, DateTimePipe]
+      declarations: [SetProfilePhotoComponent],
+      imports: [FlexLayoutModule, RouterTestingModule, ImageCropperModule, MatProgressBarModule,
+        MatDividerModule, HttpClientModule, MatSnackBarModule
+
+      ],
+      providers: [SearchFilterPipe, DateTimePipe, {
+        provide: MatDialogRef,
+        useValue: {
+          close: (dialogResult: any) => { }
+        }
+      }, { provide: MAT_DIALOG_DATA, useValue: {} },]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

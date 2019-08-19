@@ -1,9 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
-import { MatCardModule } from '@angular/material';
-import { FormGroup, FormsModule } from '@angular/forms';
-import { materialModule } from '../../app.material.module';
+import { MatCardModule, MatFormFieldModule, MatInputModule, MatIconModule, MatSnackBarModule } from '@angular/material';
+
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
@@ -11,7 +15,18 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [MatCardModule, materialModule, FormsModule]
+      imports: [MatCardModule,
+        BrowserModule,
+        MatFormFieldModule,
+        MatInputModule,
+      BrowserAnimationsModule,
+      // NgxSpinnerModule,
+      MatIconModule,
+      MatSnackBarModule,
+      FormsModule,
+      ReactiveFormsModule,
+      HttpClientModule,
+      RouterTestingModule.withRoutes([{path:'login',component:LoginComponent}])]
     })
       .compileComponents();
   }));

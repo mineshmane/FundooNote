@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -40,9 +39,12 @@ import { DialogCartComponent } from './components/dialog-cart/dialog-cart.compon
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { MasonryComponent } from './masonry/masonry.component';
+import { AuthGuradService } from './auth-gurad.service';
+import { AuthService } from './services/authService/auth.service';
 import { CheckListDisplayComponent } from './components/check-list-display/check-list-display.component';
-import {AuthGuradService} from './auth-gurad.service';
-import {AuthService} from './services/authService/auth.service'
+import { LikeComponent } from './components/like/like.component';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { AskQuestionsComponent } from './components/ask-questions/ask-questions.component'
 
 
 @NgModule({
@@ -64,24 +66,31 @@ import {AuthService} from './services/authService/auth.service'
     ShoppingCartComponent,
     MasonryComponent,
     CheckListDisplayComponent,
+    LikeComponent,
+    StarRatingComponent,
+    AskQuestionsComponent,
 
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule,NgxMasonryModule,
+    BrowserAnimationsModule, NgxMasonryModule,
     MatCardModule,
     materialModule,
     FormsModule, ReactiveFormsModule, HttpClientModule,
     MatSnackBarModule, MatNativeDateModule, MatRippleModule,
-    ImageCropperModule, OwlDateTimeModule, OwlNativeDateTimeModule,FroalaEditorModule.forRoot(),
+    ImageCropperModule, OwlDateTimeModule, OwlNativeDateTimeModule, FroalaEditorModule.forRoot(),
     FroalaViewModule.forRoot()
 
   ],
-  entryComponents: [UpdateComponent, EditLabelsComponent, SetProfilePhotoComponent, CollaboratorComponent,
+  entryComponents: [UpdateComponent,
+    EditLabelsComponent,
+    SetProfilePhotoComponent,
+    CollaboratorComponent,
     DialogCartComponent],
-  providers: [AuthGuradService,AuthService],
+
+  providers: [AuthGuradService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

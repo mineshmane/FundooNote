@@ -54,7 +54,7 @@ export class DisplayComponent implements OnInit {
   @Input() trashMessage;
   @Input() isTrash;
   @Input() isArchive;
-  @Input() card
+  @Input() card;
   @Output() update = new EventEmitter<any>();
   @Output() notePined = new EventEmitter();
   @Output() onArchiveChange = new EventEmitter();
@@ -134,7 +134,7 @@ export class DisplayComponent implements OnInit {
   askquestion(card) {
     console.log(" label ts", card);
 
-    this.route.navigate(['dashboard/askquestion/' + card.id]);
+    this.route.navigate(['dashboard/askquestions/' + card.id]);
 
   }
 

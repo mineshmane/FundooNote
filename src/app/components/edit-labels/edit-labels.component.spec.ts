@@ -26,6 +26,13 @@ import { materialModule } from 'src/app/app.material.module';
 import { DebugElement } from '@angular/core';
 import { SearchFilterPipe } from 'src/app/pipe/search-filter.pipe';
 import { DateTimePipe } from 'src/app/pipes/date-time.pipe';
+import { MatIconModule, MatDividerModule, MatMenuModule, MatCardModule, MatChipsModule, MatTooltipModule, MatInputModule, MatCheckboxModule, MatSnackBarModule, MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { NgxMasonryModule } from 'ngx-masonry';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { OwlDateTimeModule } from 'ng-pick-datetime';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('EditLabelsComponent', () => {
   let component: EditLabelsComponent;
@@ -33,14 +40,17 @@ describe('EditLabelsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArchiveComponent ,User,AskQuestionComponent,TrashComponent,SetProfilePhotoComponent,CollaboratorComponent
-        ,SearchComponent,DisplayComponent,IconComponent,LabelComponent,EditLabelsComponent,LoginComponent,RegistrationComponent,
-      ,ForgetComponent,ResetComponent,ReminderComponent,DashboardComponent,DisplayComponent,NotesComponent,SearchComponent,TakeNoteComponent,
-   UpdateComponent,AskQuestionComponent,ArchiveComponent ],
-        imports: [FlexLayoutModule, RouterTestingModule,
-                  materialModule,DebugElement
+      declarations: [EditLabelsComponent  ],
+        imports: [ RouterTestingModule,RouterTestingModule, NgxMasonryModule, MatDividerModule, MatMenuModule,
+          MatCardModule, Ng4LoadingSpinnerModule, MatIconModule, MatChipsModule, MatTooltipModule,OwlDateTimeModule,
+          MatInputModule,MatMenuModule,MatCheckboxModule,FormsModule,HttpClientModule,
+          MatSnackBarModule,MatDialogModule,BrowserAnimationsModule
                 ],
-                providers: [SearchFilterPipe, DateTimePipe]
+                providers: [SearchFilterPipe, DateTimePipe,{provide: MatDialogRef,
+                  useValue: {
+                    close: (dialogResult: any) => { }
+                  }
+                },{ provide: MAT_DIALOG_DATA, useValue: {} }]
     })
     .compileComponents();
   }));

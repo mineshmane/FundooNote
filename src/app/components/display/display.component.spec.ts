@@ -26,6 +26,13 @@ import { materialModule } from 'src/app/app.material.module';
 import { DebugElement } from '@angular/core';
 import { SearchFilterPipe } from 'src/app/pipe/search-filter.pipe';
 import { DateTimePipe } from 'src/app/pipes/date-time.pipe';
+import { MatCardModule, MatIconModule, MatChipsModule, MatTooltipModule, MatDividerModule, MatMenuModule, MatInputModule, MatCheckboxModule, MatSnackBarModule, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { NgxMasonryModule } from 'ngx-masonry';
+import { CheckListDisplayComponent } from '../check-list-display/check-list-display.component';
+import { OwlDateTimeModule } from 'ng-pick-datetime';
+import { NgModel, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('DisplayComponent', () => {
   let component: DisplayComponent;
@@ -33,16 +40,20 @@ describe('DisplayComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArchiveComponent ,User,AskQuestionComponent,TrashComponent,SetProfilePhotoComponent,CollaboratorComponent
-        ,SearchComponent,DisplayComponent,IconComponent,LabelComponent,EditLabelsComponent,LoginComponent,RegistrationComponent,
-      ,ForgetComponent,ResetComponent,ReminderComponent,DashboardComponent,DisplayComponent,NotesComponent,SearchComponent,TakeNoteComponent,
-   UpdateComponent,AskQuestionComponent,ArchiveComponent ],
-        imports: [FlexLayoutModule, RouterTestingModule,
-                  materialModule,DebugElement
-                ],
-                providers: [SearchFilterPipe, DateTimePipe]
+      declarations: [DisplayComponent, SearchFilterPipe, DateTimePipe, IconComponent, CheckListDisplayComponent],
+      imports: [FlexLayoutModule, RouterTestingModule, NgxMasonryModule, MatDividerModule, MatMenuModule,
+        MatCardModule, Ng4LoadingSpinnerModule, MatIconModule, MatChipsModule, MatTooltipModule,OwlDateTimeModule,
+        MatInputModule,MatMenuModule,MatCheckboxModule,FormsModule,HttpClientModule,
+        MatSnackBarModule,MatDialogModule
+      ],
+      providers: [SearchFilterPipe, DateTimePipe,{
+        provide: MatDialogRef,
+        useValue: {
+          close: (dialogResult: any) => { }
+        }
+      },{ provide: MAT_DIALOG_DATA, useValue: {} },]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

@@ -26,6 +26,13 @@ import { materialModule } from 'src/app/app.material.module';
 import { DebugElement } from '@angular/core';
 import { SearchFilterPipe } from 'src/app/pipe/search-filter.pipe';
 import { DateTimePipe } from 'src/app/pipes/date-time.pipe';
+import { MatCardModule, MatIconModule, MatChipsModule, MatDividerModule, MatTooltipModule, MatMenuModule, MatCheckboxModule, MatSnackBarModule, MatFormFieldModule, MatDialogModule, MatInputModule } from '@angular/material';
+import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
+import { NgxMasonryModule } from 'ngx-masonry';
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('LabelComponent', () => {
   let component: LabelComponent;
@@ -33,14 +40,16 @@ describe('LabelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ArchiveComponent ,User,AskQuestionComponent,TrashComponent,SetProfilePhotoComponent,CollaboratorComponent
-        ,SearchComponent,DisplayComponent,IconComponent,LabelComponent,EditLabelsComponent,LoginComponent,RegistrationComponent,
-      ,ForgetComponent,ResetComponent,ReminderComponent,DashboardComponent,DisplayComponent,NotesComponent,SearchComponent,TakeNoteComponent,
-   UpdateComponent,AskQuestionComponent,ArchiveComponent ],
-        imports: [FlexLayoutModule, RouterTestingModule,
-                  materialModule,DebugElement
+      declarations: [ LabelComponent,DisplayComponent,IconComponent ,SearchFilterPipe, DateTimePipe],
+        imports: [FlexLayoutModule, RouterTestingModule, MatCardModule, Ng4LoadingSpinnerModule,
+           MatIconModule,
+          MatChipsModule, MatDividerModule, NgxMasonryModule,MatTooltipModule,MatMenuModule,
+          OwlDateTimeModule,
+          MatCheckboxModule,ReactiveFormsModule,FormsModule,HttpClientModule,MatSnackBarModule,
+          MatFormFieldModule,BrowserAnimationsModule,MatDialogModule,
+          MatInputModule, 
                 ],
-                providers: [SearchFilterPipe, DateTimePipe]
+                providers: []
     })
     .compileComponents();
   }));

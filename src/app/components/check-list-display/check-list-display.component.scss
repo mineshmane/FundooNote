@@ -1,32 +1,38 @@
-.hideCheckList {
-  .CheckListDisplay {
+.hideCheckList
+{
+.CheckListDisplay{
     cursor: default;
 
-    .checkBox {
-      display: none;
+    .checkBox{
+        display: none;
     }
-  }
+  
+  
 }
-.showCheckList {
-  .CheckListDisplay {
+}
+.showCheckList{
+.CheckListDisplay{
     cursor: default;
 
-    .checkBox {
-      display: block;
+    .checkBox{
+        display: block;
     }
+  
+    .closeInput{
+              text-decoration: line-through;
+          }
+    
+}
 
-    .closeInput {
-      text-decoration: line-through;
-    }
-  }
 
-  .addCheck {
+.addCheck{
     display: block;
-    .checkList {
-      height: 24px;
+    .checkList{
+        height: 24px;
     }
-  }
 }
-.completeItemDisplay {
-  padding: 13px 0px 3px 0px;
+
+}
+.completeItemDisplay{
+    padding: 13px 0px 3px 0px;
 }

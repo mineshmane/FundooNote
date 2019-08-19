@@ -223,85 +223,109 @@ export class NotesService {
   removeNoteReminder(data) {
     return this.httpService.postAth('notes/removeReminderNotes', data);
   }
-    /**
-   * @description : this method is for add checklist to note
-   * @param body
-   */
-  addChecklist(body){
-    console.log(" but body in body",body.notesId);
-    
-    return this.httpService.postAth('notes/'+body.notesId+'/noteCheckLists',body);
+  /**
+ * @description : this method is for add checklist to note
+ * @param body
+ */
+  addChecklist(body) {
+    console.log(" but body in body", body.notesId);
+
+    return this.httpService.postAth('notes/' + body.notesId + '/noteCheckLists', body);
   }
 
-      /**
-   * @description : this method is for update checklist to note
-   * @param body
-   */
-  updateChecklist(body){
-    return this.httpService.postAth('notes/'+body.noteId+'/checklist/'+body.checkListId+'/update',body);
-  }
-
-
-        /**
-   * @description : this method is for remove checklist from note
-   * @param body
-   */
-  removeChecklist(body){
-    return this.httpService.postAth('notes/'+body.noteId+'/checklist/'+body.checkListId+'/remove',body);
+  /**
+* @description : this method is for update checklist to note
+* @param body
+*/
+  updateChecklist(body) {
+    return this.httpService.postAth('notes/' + body.noteId + '/checklist/' + body.checkListId + '/update', body);
   }
 
 
-/**
-   * @Purpose : add collaborator note
-  **/
- addColNote(body, id) {
-  //return this.httpservice.postDataForSearchUser("notes/" + id + "/AddcollaboratorsNotes", body)
-  return this.httpService.postAth("notes/" + id + "/AddcollaboratorsNotes", body)
-}
-// removeColaborator(noteId, userId) {
-//   return this.httpservice.deleteData("notes/" + noteId + "/removeCollaboratorsNotes/" + userId);
-// }
+  /**
+* @description : this method is for remove checklist from note
+* @param body
+*/
+  removeChecklist(body) {
+    return this.httpService.postAth('notes/' + body.noteId + '/checklist/' + body.checkListId + '/remove', body);
+  }
 
 
- /**
-     *  @description  : Question and Answers
-     */
-
-    addMessageQA(body) {
-      return this.httpService.postAth("questionAndAnswerNotes/addQuestionAndAnswer", body)
-    }
-    getNotesDetail(noteId) {
-      return this.httpService.getNotes("notes/getNotesDetail/" + noteId)
-    }
-    sendReply(body, parentId) {
-      return this.httpService.postAth("questionAndAnswerNotes/reply/" + parentId, body)
-    }
-    addRating(body, parentId) {
-      return this.httpService.postAth("questionAndAnswerNotes/rate/" + parentId, body);
-    }
-    addLikes(body, parentId){
-      return this.httpService.postAth("questionAndAnswerNotes/like/" + parentId,body)
-    }
-  
-  
+  /**
+     * @Purpose : add collaborator note
+    **/
+  addColNote(body, id) {
+    //return this.httpservice.postDataForSearchUser("notes/" + id + "/AddcollaboratorsNotes", body)
+    return this.httpService.postAth("notes/" + id + "/AddcollaboratorsNotes", body)
+  }
+  // removeColaborator(noteId, userId) {
+  //   return this.httpservice.deleteData("notes/" + noteId + "/removeCollaboratorsNotes/" + userId);
+  // }
 
 
-    getService(){
-      return this.httpService.getDataService("user/service")
-    }
-    productCarts(body){
-      return this.httpService.postDataService("productcarts/addToCart",body)
-  
-    }
-    getCartDetails(cartId){
-      return this.httpService.getDataService("productcarts/getCartDetails/"+cartId)
-    }
-    placeOrder(body){
-      return this.httpService.postData("productcarts/placeOrder",body)
-    }
-    myCart(){
-      return this.httpService.getData("productcarts/myCart");
-    }
+  /**
+      *  @description  : Question and Answers
+      */
+
+  addMessageQA(body) {
+    return this.httpService.postAth("questionAndAnswerNotes/addQuestionAndAnswer", body)
+  }
+  getNotesDetail(noteId) {
+    return this.httpService.getNotes("notes/getNotesDetail/" + noteId)
+  }
+  sendReply(body, parentId) {
+    return this.httpService.postAth("questionAndAnswerNotes/reply/" + parentId, body)
+  }
+  /**
+   * @description this method is for reply the question
+   * @param body 
+   */
+  reply(body) {
+    return this.httpService.postAth("questionAndAnswerNotes/reply/" + body.id, body);
+  }
+
+  addRating(body, parentId) {
+    return this.httpService.postAth("questionAndAnswerNotes/rate/" + parentId, body);
+  }
+
+  /**
+* @description this method is for rate the question and answer
+* @param body 
+*/
+  rate(body) {
+    return this.httpService.postAth("questionAndAnswerNotes/rate/" + body.id, body);
+  }
+
+
+  addLikes(body, parentId) {
+    return this.httpService.postAth("questionAndAnswerNotes/like/" + parentId, body)
+  }
+
+  /**
+ * @description this method is for like And dislike service call
+ * @param body 
+ */
+  likeDislike(body) {
+    return this.httpService.postAth("questionAndAnswerNotes/like/" + body.id, body);
+  }
+
+
+  getService() {
+    return this.httpService.getDataService("user/service")
+  }
+  productCarts(body) {
+    return this.httpService.postDataService("productcarts/addToCart", body)
+
+  }
+  getCartDetails(cartId) {
+    return this.httpService.getDataService("productcarts/getCartDetails/" + cartId)
+  }
+  placeOrder(body) {
+    return this.httpService.postData("productcarts/placeOrder", body)
+  }
+  myCart() {
+    return this.httpService.getData("productcarts/myCart");
+  }
 
 
 

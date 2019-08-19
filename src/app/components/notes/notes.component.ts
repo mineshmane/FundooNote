@@ -34,15 +34,18 @@ export class NotesComponent implements OnInit {
     this.dataService.collaboratorEmmitedData.subscribe(response => {
       this.getAllNote();
     })
+    this.dataFromCollab();
   }
 
-
-   /**
-    * @description: this method is for getting All notes and devides pined and unpinned cards
-    *                component
-    * @param      :id
-    * @returns    :response/eror
-    */
+  dataFromCollab() {
+    
+  }
+  /**
+   * @description: this method is for getting All notes and devides pined and unpinned cards
+   *                component
+   * @param      :id
+   * @returns    :response/eror
+   */
 
   getAllNote() {
     try {
@@ -61,12 +64,11 @@ export class NotesComponent implements OnInit {
             if (this.notes[i - 1]["isPined"] == true) {
               this.pinedArray.push(this.notes[i - 1]);
               this.pinedArray.reverse();
-             
             }
             else {
               this.unpinedArray.push(this.notes[i - 1]);
               this.unpinedArray.reverse();
-              
+
             }
           }
         } console.log("pinned array@@@@@@@", this.pinedArray);

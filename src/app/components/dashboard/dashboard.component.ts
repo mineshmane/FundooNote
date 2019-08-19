@@ -39,7 +39,7 @@ export class DashboardComponent implements OnInit {
   "isDeleted": true
   values = '';
   ab = '';
-
+  title;
   @Input() childMessage;
   @Input()
   fillerNav = Array.from({ length: 1 }, (_, i) => `Nav Item ${i + 1}`);
@@ -82,7 +82,7 @@ export class DashboardComponent implements OnInit {
       this.getLabelList();
     })
 
-    // this.changeProfilePic();
+    this.changeProfilePic();
     this.fName = localStorage.getItem('firstName')
     this.lName = localStorage.getItem('lastName')
     this.email = localStorage.getItem('email')
@@ -96,6 +96,14 @@ export class DashboardComponent implements OnInit {
     })
   }
 
+
+  /**
+* @description : it call when profile pic change  
+*/
+  changeProfilePic() {
+    this.localstorage_image = localStorage.getItem('imageUrl');
+    this.imageurl = 'http://34.213.106.173/' + this.localstorage_image;
+  }
 
   // refresh() {
 
@@ -163,13 +171,7 @@ export class DashboardComponent implements OnInit {
   }
 
 
-  /**
- * @description : it call when profile pic change  
- */
-  changeProfilePic() {
-    this.localstorage_image = localStorage.getItem('imageUrl');
-    this.imageurl = 'http://34.213.106.173/' + this.localstorage_image;
-  }
+
   /**
  * @description :  open dialogBox for Setprofile photo component
  */
