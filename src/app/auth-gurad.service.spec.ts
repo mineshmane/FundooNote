@@ -35,21 +35,25 @@ import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MasonryComponent } from './masonry/masonry.component';
+import { AskQuestionsComponent } from './components/ask-questions/ask-questions.component';
+import { LikeComponent } from './components/like/like.component';
+import { StarRatingComponent } from './components/star-rating/star-rating.component';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 describe('AuthGuradService', () => {
   beforeEach(() => TestBed.configureTestingModule({
 
-    declarations: [ResetComponent,SelectServiceComponent,DashboardComponent, ResetComponent, SelectServiceComponent, RegistrationComponent, LoginComponent, ForgetComponent
+    declarations: [ResetComponent,AskQuestionsComponent, SelectServiceComponent,DashboardComponent, ResetComponent, SelectServiceComponent, RegistrationComponent, LoginComponent, ForgetComponent
       , NotesComponent, DisplayComponent, TakeNoteComponent, ReminderComponent, ArchiveComponent, TrashComponent, UpdateComponent
       , SearchComponent, LabelComponent, AskQuestionComponent, IconComponent, ShoppingCartComponent,
-      AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent,MasonryComponent  ],
+      AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent,MasonryComponent,LikeComponent,StarRatingComponent  ],
    
    
       imports: [AppRoutingModule ,MatIconModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatMenuModule, MatCardModule
       , MatDividerModule, MatToolbarModule, MatSidenavModule, BrowserModule, HttpClientModule,
       MatInputModule, Ng4LoadingSpinnerModule, MatChipsModule, MatTooltipModule, NgxMasonryModule, MatCheckboxModule,
       FroalaEditorModule, FroalaViewModule,OwlDateTimeModule,
-      BrowserAnimationsModule,MatDialogModule,MatToolbarModule,
+      BrowserAnimationsModule,MatDialogModule,MatToolbarModule,BarRatingModule,
       FormsModule,
       AppRoutingModule,
       MatListModule, RouterTestingModule,MatProgressBarModule ],

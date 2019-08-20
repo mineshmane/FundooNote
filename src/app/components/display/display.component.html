@@ -1,4 +1,4 @@
- <!-- <div *ngIf="pinedMessage.length > 0">PINNED</div>
+<!-- <div *ngIf="pinedMessage.length > 0">PINNED</div>
   <div  [ngClass]=" direction =='row' ? 'gridView':'listiew'">
 
       <div style="width: fit-content" *ngFor="let card of pinedMessage" >
@@ -64,7 +64,7 @@
 
 
 
-  <!-- <div *ngIf="pinedMessage.length > 0">PINNED</div>
+<!-- <div *ngIf="pinedMessage.length > 0">PINNED</div>
   <div  [ngClass]=" direction =='row' ? 'gridView':'listiew'">
 
       <div style="width: fit-content" *ngFor="let card of unPinedMessage" >
@@ -644,7 +644,8 @@
               <p class="wordBreak">{{card.title}}</p>
             </div>
             <div class="div">
-              <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="unPin Note">
+              <button mat-icon-button matSuffix (click)="pinNote(card)" (click)="pin()" *ngIf="!isTrash"
+                matTooltip="unPin Note">
 
                 <img src="../../../assets/image/unpin.svg">
               </button>
@@ -671,7 +672,7 @@
               </mat-chip>
             </mat-chip-list>
           </div>
-          image
+
 
           <div *ngFor="let label of card.noteLabels">
             <mat-chip-list aria-label="Fish selection ">
@@ -681,7 +682,7 @@
                 </mat-icon>
               </mat-chip>
             </mat-chip-list>
-          </div>pinNote
+          </div>
 
 
           <div *ngFor="let colab of card.collaborators">
@@ -731,7 +732,8 @@
               <p class="wordBreak">{{card.title}}</p>
             </div>
             <div class="div">
-              <button mat-icon-button matSuffix (click)="pinNote(card)" *ngIf="!isTrash" matTooltip="pin Note">
+              <button mat-icon-button matSuffix (click)="pinNote(card)" (click)=" pin()" *ngIf="!isTrash"
+                matTooltip="pin Note">
 
                 <img src="../../../assets/image/pin.svg">
               </button>

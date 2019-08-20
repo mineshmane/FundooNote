@@ -35,6 +35,10 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AskQuestionsComponent } from 'src/app/components/ask-questions/ask-questions.component';
+import { LikeComponent } from 'src/app/components/like/like.component';
+import { StarRatingComponent } from 'src/app/components/star-rating/star-rating.component';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 describe('HttpService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -42,7 +46,8 @@ describe('HttpService', () => {
     declarations: [ResetComponent,SelectServiceComponent,DashboardComponent, ResetComponent, SelectServiceComponent, RegistrationComponent, LoginComponent, ForgetComponent
       , NotesComponent, DisplayComponent, TakeNoteComponent, ReminderComponent, ArchiveComponent, TrashComponent, UpdateComponent
       , SearchComponent, LabelComponent, AskQuestionComponent, IconComponent, ShoppingCartComponent,
-      AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent,MasonryComponent  ],
+      AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent,MasonryComponent,AskQuestionsComponent,
+    LikeComponent,StarRatingComponent  ],
    
    
       imports: [AppRoutingModule ,MatIconModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatMenuModule, MatCardModule
@@ -50,7 +55,7 @@ describe('HttpService', () => {
       MatInputModule, Ng4LoadingSpinnerModule, MatChipsModule, MatTooltipModule, NgxMasonryModule, MatCheckboxModule,
       FroalaEditorModule, FroalaViewModule,OwlDateTimeModule,
       BrowserAnimationsModule,MatDialogModule,MatToolbarModule,
-      FormsModule,
+      FormsModule,BarRatingModule,
       AppRoutingModule,
       MatListModule, RouterTestingModule,MatProgressBarModule ],
   }));

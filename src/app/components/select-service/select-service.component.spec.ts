@@ -12,6 +12,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchFilterPipe } from 'src/app/pipe/search-filter.pipe';
 import { DateTimePipe } from 'src/app/pipes/date-time.pipe';
+import { AskQuestionsComponent } from '../ask-questions/ask-questions.component';
+import { LikeComponent } from '../like/like.component';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { BarRatingModule } from 'ngx-bar-rating';
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 
 describe('SelectServiceComponent', () => {
   let component: SelectServiceComponent;
@@ -19,12 +24,12 @@ describe('SelectServiceComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SelectServiceComponent],
+      declarations: [SelectServiceComponent,AskQuestionsComponent,LikeComponent,StarRatingComponent],
       imports: [FlexLayoutModule, RouterTestingModule, MatCardModule, Ng4LoadingSpinnerModule, MatIconModule,
         MatChipsModule, MatDividerModule, NgxMasonryModule, MatTooltipModule, MatMenuModule, OwlDateTimeModule,
         MatCheckboxModule, ReactiveFormsModule, FormsModule, HttpClientModule, MatSnackBarModule,
         MatFormFieldModule, BrowserAnimationsModule, MatToolbarModule,
-        MatInputModule, MatDialogModule
+        MatInputModule, MatDialogModule,BarRatingModule,FroalaEditorModule,FroalaViewModule
 
       ],
       providers: [SearchFilterPipe, DateTimePipe]

@@ -37,6 +37,10 @@ import { Ng4LoadingSpinnerModule } from 'ng4-loading-spinner';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { FroalaEditorModule } from 'angular-froala-wysiwyg';
 import { OwlDateTimeModule } from 'ng-pick-datetime';
+import { AskQuestionsComponent } from '../ask-questions/ask-questions.component';
+import { LikeComponent } from '../like/like.component';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 describe('CheckListDisplayComponent', () => {
   let component: CheckListDisplayComponent;
@@ -49,14 +53,14 @@ describe('CheckListDisplayComponent', () => {
         ForgetComponent, DashboardComponent, NotesComponent, DisplayComponent, MasonryComponent,
         TakeNoteComponent, ReminderComponent, ArchiveComponent, TrashComponent, UpdateComponent, CollaboratorComponent,
         SearchComponent, LabelComponent, EditLabelsComponent, AskQuestionComponent, IconComponent, ShoppingCartComponent,
-      ],
+      AskQuestionsComponent,LikeComponent,StarRatingComponent],
       imports: [MatCheckboxModule, RouterTestingModule, BrowserModule,
     BrowserModule, MatCardModule, ReactiveFormsModule, MatFormFieldModule,
         HttpClientModule, MatIconModule, MatToolbarModule, MatInputModule, MatDividerModule,
          MatSidenavModule, MatMenuModule,
         BrowserAnimationsModule, Ng4LoadingSpinnerModule, MatChipsModule,
         FormsModule, MatListModule,MatTooltipModule,NgxMasonryModule,MatOptionModule,FroalaEditorModule,
-        AppRoutingModule,OwlDateTimeModule,MatProgressBarModule
+        AppRoutingModule,OwlDateTimeModule,MatProgressBarModule,BarRatingModule
 
         // RouterTestingModule.withRoutes([{ path: 'addNote', component: CheckListDisplayComponent }])
       ],

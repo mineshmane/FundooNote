@@ -35,6 +35,10 @@ import { SearchFilterPipe } from 'src/app/pipe/search-filter.pipe';
 import { DateTimePipe } from 'src/app/pipes/date-time.pipe';
 import { CheckListDisplayComponent } from 'src/app/components/check-list-display/check-list-display.component';
 import { MasonryComponent } from 'src/app/masonry/masonry.component';
+import { LikeComponent } from 'src/app/components/like/like.component';
+import { StarRatingComponent } from 'src/app/components/star-rating/star-rating.component';
+import { AskQuestionsComponent } from 'src/app/components/ask-questions/ask-questions.component';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 describe('CartServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({
@@ -42,7 +46,7 @@ describe('CartServiceService', () => {
     declarations: [ResetComponent,SelectServiceComponent,DashboardComponent, ResetComponent, SelectServiceComponent, RegistrationComponent, LoginComponent, ForgetComponent
       , NotesComponent, DisplayComponent, TakeNoteComponent, ReminderComponent, ArchiveComponent, TrashComponent, UpdateComponent
       , SearchComponent, LabelComponent, AskQuestionComponent, IconComponent, ShoppingCartComponent,
-      AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent,MasonryComponent  ],
+      AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent,MasonryComponent ,AskQuestionsComponent,LikeComponent,StarRatingComponent ],
    
    
       imports: [AppRoutingModule ,MatIconModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatMenuModule, MatCardModule
@@ -50,7 +54,7 @@ describe('CartServiceService', () => {
       MatInputModule, Ng4LoadingSpinnerModule, MatChipsModule, MatTooltipModule, NgxMasonryModule, MatCheckboxModule,
       FroalaEditorModule, FroalaViewModule,OwlDateTimeModule,
       BrowserAnimationsModule,MatDialogModule,MatToolbarModule,
-      FormsModule,
+      FormsModule,BarRatingModule,
       AppRoutingModule,
       MatListModule, RouterTestingModule,MatProgressBarModule ],
   }));

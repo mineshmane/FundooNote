@@ -49,14 +49,15 @@ describe('DialogCartComponent', () => {
       declarations: [DashboardComponent, DialogCartComponent, ResetComponent, SelectServiceComponent, RegistrationComponent, LoginComponent, ForgetComponent
         , NotesComponent, DisplayComponent, TakeNoteComponent, ReminderComponent, ArchiveComponent, TrashComponent, UpdateComponent
         , SearchComponent, LabelComponent, AskQuestionComponent, IconComponent, ShoppingCartComponent,
-        AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent, MasonryComponent
+        AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent, MasonryComponent,
+        AskQuestionsComponent,LikeComponent,StarRatingComponent
       ],
       imports: [MatIconModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatMenuModule, MatCardModule
         , MatDividerModule, MatToolbarModule, MatSidenavModule,  HttpClientModule,
         MatInputModule, Ng4LoadingSpinnerModule, MatChipsModule, MatTooltipModule, NgxMasonryModule, MatCheckboxModule,
         FroalaEditorModule, FroalaViewModule, OwlDateTimeModule,
         BrowserAnimationsModule, MatDialogModule, MatToolbarModule, MatTabsModule,
-        FormsModule,
+        FormsModule,BarRatingModule,
         AppRoutingModule,
         MatListModule, RouterTestingModule, MatProgressBarModule
       ],
@@ -81,4 +82,8 @@ describe('DialogCartComponent', () => {
   });
 }); import { from } from 'rxjs';
 import { MasonryComponent } from 'src/app/masonry/masonry.component';
+import { AskQuestionsComponent } from '../ask-questions/ask-questions.component';
+import { LikeComponent } from '../like/like.component';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { BarRatingModule } from 'ngx-bar-rating';
 

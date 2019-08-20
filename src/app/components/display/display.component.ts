@@ -107,7 +107,7 @@ export class DisplayComponent implements OnInit {
   pin() {
     this.isPin = !this.isPin;
     // this.onChange.emit(this.isPin);
-    // this.notePined.emit(this.isPin);
+    this.notePined.emit(this.isPin);
   }
   pinNote(card) {
     try {
@@ -116,6 +116,7 @@ export class DisplayComponent implements OnInit {
         // cardidList:this.cardId,
         noteIdList: [card.id],
         isPined: this.isPin,
+        // isPined: true,
       }
       this.notesService.pinNote(data).subscribe(response => {
         console.log(response, " succsesfully pined ");

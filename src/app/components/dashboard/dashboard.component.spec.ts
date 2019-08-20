@@ -40,6 +40,9 @@ import { CheckListDisplayComponent } from '../check-list-display/check-list-disp
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { MasonryComponent } from 'src/app/masonry/masonry.component';
+import { AskQuestionsComponent } from '../ask-questions/ask-questions.component';
+import { LikeComponent } from '../like/like.component';
+import { StarRatingComponent } from '../star-rating/star-rating.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
@@ -50,7 +53,8 @@ describe('DashboardComponent', () => {
       declarations: [DashboardComponent, ResetComponent, SelectServiceComponent, RegistrationComponent, LoginComponent, ForgetComponent
         , NotesComponent, DisplayComponent, TakeNoteComponent, ReminderComponent, ArchiveComponent, TrashComponent, UpdateComponent
         , SearchComponent, LabelComponent, AskQuestionComponent, IconComponent, ShoppingCartComponent,
-        AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent,MasonryComponent
+        AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent,
+        MasonryComponent,AskQuestionsComponent,LikeComponent,StarRatingComponent
       ],
       imports: [MatIconModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatMenuModule, MatCardModule
         , MatDividerModule, MatToolbarModule, MatSidenavModule, BrowserModule, HttpClientModule,
@@ -59,7 +63,7 @@ describe('DashboardComponent', () => {
         BrowserAnimationsModule,MatDialogModule,MatToolbarModule,
         FormsModule,
         AppRoutingModule,
-        MatListModule, RouterTestingModule,MatProgressBarModule
+        MatListModule, RouterTestingModule,MatProgressBarModule,materialModule
       ],
       providers: [SearchFilterPipe, DateTimePipe]
     })
