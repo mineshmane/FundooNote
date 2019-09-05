@@ -15,6 +15,7 @@ import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CheckListDisplayComponent } from '../check-list-display/check-list-display.component';
 
 describe('LikeComponent', () => {
   let component: LikeComponent;
@@ -22,7 +23,7 @@ describe('LikeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LabelComponent, DisplayComponent, IconComponent, LikeComponent ,SearchFilterPipe, DateTimePipe],
+      declarations: [LabelComponent, DisplayComponent, IconComponent,CheckListDisplayComponent, LikeComponent ,SearchFilterPipe, DateTimePipe],
 
       imports: [FlexLayoutModule, RouterTestingModule, MatCardModule, Ng4LoadingSpinnerModule,
         MatIconModule,

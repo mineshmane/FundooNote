@@ -1,20 +1,3 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-star-rating',
-//   templateUrl: './star-rating.component.html',
-//   styleUrls: ['./star-rating.component.scss']
-// })
-// export class StarRatingComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
-
 import { Component, OnInit, Input } from '@angular/core';
 import { NotesService } from "../../services/notes-service/notes.service";
 import { rating } from "../../model/QAModel";
@@ -25,9 +8,13 @@ import { rating } from "../../model/QAModel";
 })
 export class StarRatingComponent implements OnInit {
   public ratingModel: rating;
+//  @Input()rateMessage;
   constructor(public askService:NotesService) { }
 
   ngOnInit() {
+    // this.rate=this.rateMessage.rate.length;
+    // console.log(" rate message",this.rateMessage);
+    
   }
 
   rate = 0;
@@ -41,6 +28,7 @@ export class StarRatingComponent implements OnInit {
     if (v.rate != undefined)
       this.rate = v.rate.length;
   }
+
 
   /**
    * @description this method is for give the rating to the user quetion or answer

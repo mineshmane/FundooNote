@@ -17,6 +17,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BarRatingModule } from 'ngx-bar-rating';
+import { CheckListDisplayComponent } from '../check-list-display/check-list-display.component';
 
 describe('StarRatingComponent', () => {
   let component: StarRatingComponent;
@@ -24,7 +25,7 @@ describe('StarRatingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [StarRatingComponent,LabelComponent, DisplayComponent, IconComponent, LikeComponent ,SearchFilterPipe, DateTimePipe],
+      declarations: [StarRatingComponent,LabelComponent,CheckListDisplayComponent, DisplayComponent, IconComponent, LikeComponent ,SearchFilterPipe, DateTimePipe],
 
       imports: [FlexLayoutModule, RouterTestingModule, MatCardModule, Ng4LoadingSpinnerModule,
         MatIconModule,

@@ -37,9 +37,9 @@ export class DisplayComponent implements OnInit {
   addOnBlur = true;
   islist;
   title = '';
-
+  class = true
   description = '';
-  isPin: boolean = false;
+  isPin;
   openCheckListArray = [];
   closeCheckListArray = [];
   tickBoxValue = true;
@@ -62,10 +62,7 @@ export class DisplayComponent implements OnInit {
   @Output() labelToNote = new EventEmitter<any>();
   @Output() reminderToNote = new EventEmitter<any>()
   @Output() removeReminder = new EventEmitter<any>();
-  class = {
-    listView: false,
-    gridView: true
-  }
+
   ngOnInit() {
     this.listView()
     if (this.card) {
@@ -76,18 +73,32 @@ export class DisplayComponent implements OnInit {
     this.isList = localStorage.getItem('isListView')
     this.dataService.viewListData.subscribe(data => {
       // console.log(" data", data);
-
-      this.islist = data;
-      // console.log(" islist data in diplay", this.islist.data);
+      this.grid(data)
+      // this.islist = data['data'];
+      // console.log(" islist data in diplay", this.islist);
       /* Grid View*/
-      this.dataService.getView().subscribe((response) => {
-        this.view1 = response;
-        this.direction = this.view1.data
-      });
+      // this.dataService.getView().subscribe((response) => {
+      //   this.view1 = response;
+      //   this.direction = this.view1.data
+      // });
 
     })
   }
+  public ListClass = {
+    "listView": this.class,
+    "gridView": !this.class,
+  }
 
+
+  public gridClass = {
+    "mainCard": this.class,
+    "mainCardGrid": !this.class,
+  }
+  public mainClass = {
+    "main1": this.class,
+    // "main1a": this.sidnav,
+    "main2": !this.class,
+  }
   EventFromCheckList(item) {
     console.log('i am run');
     this.openDialog(item);
@@ -99,18 +110,69 @@ export class DisplayComponent implements OnInit {
     this.islist = 'http://34.213.106.173/' + this.isList;
   }
 
+  /**
+   * @description this method is for handle service for grid view or list view change css class according to grid
+   * @param data 
+   * @returns nothing
+   */
+  grid(data) {
+    console.log(" data in grid method", data, '   ');
+    console.log(" data ", data.view);
+
+
+    try {
+      if (data.view != undefined)
+        if (data.view != this.class) {
+          console.log(" this. class ", this.class);
+          console.log(" this. data .view", data.view);
+
+          this.class = data.view;
+          this.gridClass.mainCard = this.class;
+          this.gridClass.mainCardGrid = !this.class;
+          this.mainClass.main1 = this.class;
+          this.mainClass.main2 = !this.class;
+        }
+    } catch (error) {
+      console.log('error in grid  in display component');
+
+    }
+
+  }
+
+  updateEventFromIcon(event) {
+    if (event.type == 'tickBox') {
+
+      this.tickBoxValue = event;
+      this.tickBoxUpdate = event.value;
+    }
+  }
   /********************************************************
       * @description this method is for note pin  
       * @returns true/false
       */
 
   pin() {
+
     this.isPin = !this.isPin;
+
     // this.onChange.emit(this.isPin);
     this.notePined.emit(this.isPin);
   }
+
+  addlabel(event: any) {
+    console.log(" this is onchange label wmmiter in dospalyu ");
+    console.log("label in display", event);
+
+  }
+
   pinNote(card) {
     try {
+
+
+      if (card) {
+        this.isPin = card.isPined;
+        this.isPin = !this.isPin;
+      }
       console.log(" card ", card);
       let data = {
         // cardidList:this.cardId,
@@ -149,14 +211,14 @@ export class DisplayComponent implements OnInit {
   openCollaboratorDialog(card): void {
     try {
       const dialogRef = this.dialog.open(CollaboratorComponent, {
-       
+
         //data: { allCollborators: this.card }
 
         data: { card }
       });
-   
+
       dialogRef.afterClosed().subscribe(result => {
-       
+
       });
     } catch (error) {
       console.log(error);
@@ -172,7 +234,7 @@ export class DisplayComponent implements OnInit {
     */
 
   removeNoteLabel(label, card): void {
-   
+
 
     let data = {
       noteId: [card.id],
@@ -192,10 +254,10 @@ export class DisplayComponent implements OnInit {
   }
 
 
-   /**
-    * @description: this method is for remove note reminder from note
-    * @param      : noteid,reminder id
-    */
+  /**
+   * @description: this method is for remove note reminder from note
+   * @param      : noteid,reminder id
+   */
   removeNoteReminder(reminder, card) {
     // console.log(card, " labelin ");
     // console.log("card in disp[lay", card);
@@ -206,7 +268,7 @@ export class DisplayComponent implements OnInit {
 
 
     }
-   
+
 
     this.notesService.removeNoteReminder(data).subscribe(response => {
       // console.log("response", response);
@@ -218,11 +280,11 @@ export class DisplayComponent implements OnInit {
     })
   }
 
-   /**
-    * @description: this method is for open dialogbox for update note component
-    *                component
-    * @param      : note:object
-    */
+  /**
+   * @description: this method is for open dialogbox for update note component
+   *                component
+   * @param      : note:object
+   */
 
   openDialog(card): void {
     try {
@@ -242,6 +304,75 @@ export class DisplayComponent implements OnInit {
       });
     } catch (error) {
       console.log(error);
+
+    }
+
+  }
+
+
+
+  /**
+   * @description this method is for open dialog box for update the card 
+   * @param notes whole card object
+   * @emits event
+   * @returns nothing
+   */
+  openDialogup(card): void {
+    try {
+      // notes.toWhom = 'icon';
+      // console.log(this.Type, '   ');
+      // notes.type = this.Type
+      // this.gridview = localStorage.getItem('gridView');
+      // console.log('grid view in 306 ', this.gridview);
+      localStorage.setItem('updateId', card.id);
+      //problem in this line 
+      // this.data.changeMessage(notes); 
+      // localStorage.setItem('gridView', 'true')
+
+      console.log('i am call ', card);
+      // this.gridview = localStorage.getItem('gridView');
+      //  check box open or close
+      card.checkBox = this.tickBoxUpdate;
+      console.log(this.tickBoxUpdate);
+
+
+      // console.log('grid view in dialog in 303', this.gridview)
+      const dialogRef = this.dialog.open(UpdateComponent, {
+        panelClass: 'updateDialog',
+        width: '600px',
+        maxWidth: 'auto',
+        maxHeight: '600px',
+        data: { card }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        console.log('The dialog was closed');
+        // console.log('grid view after close dialog in 314', this.gridview)
+        localStorage.removeItem('updateId');
+        console.log(result, 'result is ');
+        card.close = true;
+        if (result != undefined) {
+          // if (result.whichUpdate.colorChange) {
+
+          //   this.updatecolor(result);
+          // }
+          if (result.whichUpdate.isArchivedChange) {
+            // this.addToArchived(result);
+            // if (this.Type == 'archive') {
+            //   let ind;
+            //   if (result.isPined) {
+            //     ind = this.cardpin.indexOf(result);
+            //     console.log('index is ', ind);
+
+            //   }
+            // }
+          }
+
+        }
+        this.update.emit({});
+      });
+    } catch (error) {
+      console.log('error in open dailog in display component');
 
     }
 

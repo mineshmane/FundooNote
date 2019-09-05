@@ -16,6 +16,7 @@ import { DisplayComponent } from '../display/display.component';
 import { IconComponent } from '../icon/icon.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterTestingModule } from '@angular/router/testing';
+import { CheckListDisplayComponent } from '../check-list-display/check-list-display.component';
 
 describe('SearchComponent', () => {
   let component: SearchComponent;
@@ -23,7 +24,7 @@ describe('SearchComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SearchComponent, TakeNoteComponent, SearchFilterPipe, DateTimePipe, DisplayComponent,
+      declarations: [SearchComponent, TakeNoteComponent,CheckListDisplayComponent, SearchFilterPipe, DateTimePipe, DisplayComponent,
         IconComponent],
       imports: [FlexLayoutModule, RouterTestingModule, MatCardModule, Ng4LoadingSpinnerModule, MatIconModule,
         MatChipsModule, MatDividerModule, NgxMasonryModule, MatTooltipModule, MatMenuModule, OwlDateTimeModule,

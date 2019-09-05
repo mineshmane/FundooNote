@@ -89,13 +89,13 @@ export class RegistrationComponent implements OnInit {
     this.cartid = localStorage.getItem('cartId')
     console.log(" product id ", this.productId);
     this.getcartDetails()
-    //  this.registerForm = new FormGroup({
-    //    firstName:new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
-    //    lastName:new FormControl('',[Validators.required,Validators.pattern('[a-zA-Z ]*')]),
-    //    email:new FormControl('',[Validators.required,Validators.email])
-    // password: ['', [Validators.required, Validators.minLength(6),Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
-    //cpassword: ['', [Validators.minLength(6)]]
-    //     });
+    // this.registerForm = new FormGroup({
+    //   firstName: new FormControl('', [Validators.required,Validators.minLength(3), Validators.maxLength(12), Validators.pattern('[a-zA-Z ]*')]),
+    //   lastName: new FormControl('', [Validators.required,Validators.minLength(3), Validators.maxLength(12), Validators.pattern('[a-zA-Z ]*')]),
+    //   email: new FormControl('', [Validators.required, Validators.email]),
+      // password: ['', [Validators.required, Validators.minLength(6), Validators.pattern('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}')]],
+    //   // cpassword: ['', [Validators.minLength(6)]]
+    // });
   }
   getcartDetails() {
     let data = {

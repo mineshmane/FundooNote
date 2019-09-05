@@ -3,11 +3,19 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BarRatingModule } from 'ngx-bar-rating';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import { ForgetComponent } from './components/forget/forget.component';
 import { ResetComponent } from './components/reset/reset.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { CdkTableModule } from '@angular/cdk/table';
+import { CdkTreeModule } from '@angular/cdk/tree';
+import { A11yModule } from '@angular/cdk/a11y';
+
 import { MatCardModule } from '@angular/material/card';
 import { materialModule } from './app.material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -45,8 +53,7 @@ import { CheckListDisplayComponent } from './components/check-list-display/check
 import { LikeComponent } from './components/like/like.component';
 import { StarRatingComponent } from './components/star-rating/star-rating.component';
 import { AskQuestionsComponent } from './components/ask-questions/ask-questions.component'
-
-
+// import { By } from "@angular/platform-browser";
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,11 +80,11 @@ import { AskQuestionsComponent } from './components/ask-questions/ask-questions.
 
   ],
   imports: [
-    BrowserModule,
+    BrowserModule, 
     AppRoutingModule,
-    BrowserAnimationsModule, NgxMasonryModule,
-    MatCardModule,
-    materialModule,
+    NgxMasonryModule, BrowserAnimationsModule, ScrollingModule, CdkTableModule,
+    MatCardModule, CdkTreeModule, A11yModule,
+    materialModule, BarRatingModule,
     FormsModule, ReactiveFormsModule, HttpClientModule,
     MatSnackBarModule, MatNativeDateModule, MatRippleModule,
     ImageCropperModule, OwlDateTimeModule, OwlNativeDateTimeModule, FroalaEditorModule.forRoot(),

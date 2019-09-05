@@ -35,24 +35,35 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AskQuestionsComponent } from 'src/app/components/ask-questions/ask-questions.component';
+import { LikeComponent } from 'src/app/components/like/like.component';
+import { StarRatingComponent } from 'src/app/components/star-rating/star-rating.component';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 describe('NotesService', () => {
   beforeEach(() => TestBed.configureTestingModule({
 
-    declarations: [ResetComponent,SelectServiceComponent,DashboardComponent, ResetComponent, SelectServiceComponent, RegistrationComponent, LoginComponent, ForgetComponent
-      , NotesComponent, DisplayComponent, TakeNoteComponent, ReminderComponent, ArchiveComponent, TrashComponent, UpdateComponent
-      , SearchComponent, LabelComponent, AskQuestionComponent, IconComponent, ShoppingCartComponent,
-      AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent,MasonryComponent  ],
-   
-   
-      imports: [AppRoutingModule ,MatIconModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatMenuModule, MatCardModule
+    declarations: [ResetComponent, SelectServiceComponent, DashboardComponent,
+      ResetComponent, SelectServiceComponent,
+      RegistrationComponent, LoginComponent, ForgetComponent
+      , NotesComponent, DisplayComponent, TakeNoteComponent, ReminderComponent,
+      ArchiveComponent, TrashComponent, UpdateComponent
+      , SearchComponent, LabelComponent, AskQuestionComponent, IconComponent,
+      ShoppingCartComponent,
+      AppComponent, SearchFilterPipe, DateTimePipe, CheckListDisplayComponent,
+      MasonryComponent, AskQuestionsComponent, LikeComponent,StarRatingComponent],
+
+
+    imports: [AppRoutingModule, MatIconModule, FormsModule, ReactiveFormsModule,BarRatingModule,
+      MatFormFieldModule, MatMenuModule, MatCardModule
       , MatDividerModule, MatToolbarModule, MatSidenavModule, BrowserModule, HttpClientModule,
-      MatInputModule, Ng4LoadingSpinnerModule, MatChipsModule, MatTooltipModule, NgxMasonryModule, MatCheckboxModule,
-      FroalaEditorModule, FroalaViewModule,OwlDateTimeModule,
-      BrowserAnimationsModule,MatDialogModule,MatToolbarModule,
+      MatInputModule, Ng4LoadingSpinnerModule, MatChipsModule, MatTooltipModule,
+      NgxMasonryModule, MatCheckboxModule,
+      FroalaEditorModule, FroalaViewModule, OwlDateTimeModule,
+      BrowserAnimationsModule, MatDialogModule, MatToolbarModule,
       FormsModule,
-      AppRoutingModule,
-      MatListModule, RouterTestingModule,MatProgressBarModule ],
+   
+      MatListModule, RouterTestingModule, MatProgressBarModule],
 
   }));
 

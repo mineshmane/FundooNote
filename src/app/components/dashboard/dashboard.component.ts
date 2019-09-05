@@ -19,7 +19,7 @@ import { EditLabelsComponent } from '../edit-labels/edit-labels.component'
 import { NotesService } from '../../services/notes-service/notes.service';
 import { DataService } from '../../services/dataService/data.service'
 import { UserService } from '../../services/userService/user.service'
-// import { Routes, RouterModule } from '@angular/router';
+import { environment } from '../../../environments/environment'
 import { Router } from '@angular/router';
 import { SetProfilePhotoComponent } from '../set-profile-photo/set-profile-photo.component';
 
@@ -63,8 +63,14 @@ export class DashboardComponent implements OnInit {
   isList: any;
   fName;
   lName;
+  gridView = (localStorage.getItem('gridView') == 'true');
+
   email;
   userName;
+  object = {
+    view: this.gridView,
+   
+  }
   // list: boolean = true;
   // grid: boolean = false;
   list: any
@@ -75,7 +81,7 @@ export class DashboardComponent implements OnInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.getLabelList();
 
-    this.list = localStorage.getItem('isListView')
+    // this.list = localStorage.getItem('isListView')
     this.grid = localStorage.getItem('gridView')
 
     this.dataService.labelEmmitedData.subscribe(response => {
@@ -97,12 +103,34 @@ export class DashboardComponent implements OnInit {
   }
 
 
+/**
+   * @description this method is for view change  and send view value to data service 
+   * @returns nothing
+   */
+  gridUnGrid() {
+    try {
+      console.log("grid called inj ndashboard ");
+      
+      this.gridView = !this.gridView;
+      // this.sidenavClass.sidenav1 = this.gridView;
+      // this.sidenavClass.sidenav2 = !this.gridView;
+      this.object.view = this.gridView;
+      console.log(" object passsed in data serbvice ",this.object);
+      
+      this.dataToService(this.object);
+    } catch (error) {
+      console.log('error in gridUnGrid in toolbar');
+    }
+  }
+
+
   /**
 * @description : it call when profile pic change  
 */
   changeProfilePic() {
     this.localstorage_image = localStorage.getItem('imageUrl');
-    this.imageurl = 'http://34.213.106.173/' + this.localstorage_image;
+    // this.imageurl = 'http://34.213.106.173/' + this.localstorage_image;
+    this.imageurl = environment.imagebaseUrl + this.localstorage_image
   }
 
   // refresh() {
@@ -132,12 +160,15 @@ export class DashboardComponent implements OnInit {
  * @description :  Grid and List View
  */
   View() {
+    // this.list = localStorage.getItem('isListView');
     if (this.list == true) {
-      // this.grid = true;
+      this.grid = true;
       this.list = false;
+      localStorage.setItem('isListView', this.isList);
     } else {
       this.list = true;
-      // this.grid = false;
+      this.grid = false;
+      localStorage.setItem('isListView', this.isList);
     }
     this.isList = this.list;
     localStorage.setItem('isListView', this.isList);
@@ -147,7 +178,21 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+   /**
+ * @description this method is for sending data to data service
+ * @param object
+ * @returns nothing
+ */
+dataToService(object) {
+  console.log(" data in data service method in dash boiard",object);
+  
+    try {
+      this.dataService.listViewData(object)
+    } catch (error) {
+      console.log('error in   in toolbar');
 
+    }
+  }
   /**
   * @description :  open dialogBox for Add and Edit Label 
   */

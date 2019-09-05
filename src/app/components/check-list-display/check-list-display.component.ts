@@ -1,4 +1,3 @@
-
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 // import { updateCheckList } from "../../model/noteModel/noteModel";
 // import { NoteServiceService } from "../../service/note service/note-service.service";

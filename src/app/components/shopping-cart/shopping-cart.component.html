@@ -70,7 +70,7 @@
 
     </div>
     <!-- <mat-card> -->
-    <div *ngIf="cartData.product!=undefined">
+    <div *ngIf="cartData.product!=undefined" class="project">
       <div *ngIf="firstStepComplete" class="shop">
         Shopping Cart
       </div>
@@ -79,7 +79,7 @@
         <div class="shop">
           Review Your Order
         </div>
-        <!-- <div class="condition" fxLayout='row' fxLayout.xs='column'>
+        <div class="condition" fxLayout='row' fxLayout.xs='column'>
           <div>
             By Click on the 'Place Your Order ' You agree with fundooNotes
           </div>
@@ -87,7 +87,7 @@
             <div class="privacy"> &nbsp; privacy policy </div>
             &nbsp; and &nbsp; <div class="privacy"> condition of use </div>
           </div>
-        </div> -->
+        </div>
       </div>
     </div>
 
@@ -97,7 +97,7 @@
       <mat-card fxLayout="column" fxLayoutGap='2%' class="downStage" fxFlex='70'>
 
 
-        <mat-divider></mat-divider>
+        <!-- <mat-divider></mat-divider> -->
 
         <div *ngIf="cartData.product!=undefined" fxLayout="row" fxLayout.xs="column"
           fxLayoutAlign.xs="space-around start" fxLayoutAlign="space-between start">
@@ -163,7 +163,7 @@
         </div>
 
         <div *ngIf="SecondStepComplete">
-          <mat-divider></mat-divider>
+          <!-- <mat-divider></mat-divider> -->
           <div class="payement" fxFlex='100' fxLayout='row' fxLayoutGap='8%'>
             <div fxLayout='column' fxFlex='70'>
               <div class="delivaryAddress"> Delivery Address</div>

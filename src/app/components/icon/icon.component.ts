@@ -108,7 +108,7 @@ export class IconComponent implements OnInit {
   askquestion(card) {
     // console.log(" label ts", card);
 
-    this.route.navigate(['dashboard/askquestion/' + card.id]);
+    this.route.navigate(['dashboard/askquestions/' + card.id]);
 
   }
 

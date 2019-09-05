@@ -33,6 +33,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { NgxMasonryModule } from 'ngx-masonry';
 import { BrowserModule } from '@angular/platform-browser';
+import { CheckListDisplayComponent } from '../check-list-display/check-list-display.component';
 
 describe('ReminderComponent', () => {
   let component: ReminderComponent;
@@ -40,7 +41,7 @@ describe('ReminderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ReminderComponent,TakeNoteComponent,SearchFilterPipe, DateTimePipe,DisplayComponent,
+      declarations: [ ReminderComponent,TakeNoteComponent,SearchFilterPipe,CheckListDisplayComponent, DateTimePipe,DisplayComponent,
       IconComponent ],
         imports: [MatCardModule, RouterTestingModule, Ng4LoadingSpinnerModule,FormsModule,HttpClientModule,
           MatIconModule, MatChipsModule,MatMenuModule,OwlDateTimeModule, OwlNativeDateTimeModule

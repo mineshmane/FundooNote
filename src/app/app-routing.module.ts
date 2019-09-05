@@ -23,6 +23,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
 import { MasonryComponent } from './masonry/masonry.component';
 import {AuthGuradService} from './auth-gurad.service'
 import { AskQuestionsComponent } from './components/ask-questions/ask-questions.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const routes: Routes = [
   { path: 'resetpassword/:token', component: ResetComponent },
@@ -95,7 +97,8 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes), BrowserModule,
+    BrowserAnimationsModule,],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

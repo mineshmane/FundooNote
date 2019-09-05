@@ -1,4 +1,4 @@
-<div class="main" fxLayoutAlign="center center" style="margin-top: 100px" fxFlex="100" fxFlexOffset.xs="0"
+<div class="main" fxLayoutAlign="center center"  fxFlex="100" fxFlexOffset.xs="0"
   fxFlex.xs="100">
   <mat-card fxFlex.xs="100">
     <div>
@@ -97,15 +97,15 @@
               </div>
             </div>
 
-            <div fxLayoutAlign="space-between center">
+            <!-- <div fxLayoutAlign="space-between center">
               <a (click)="login()">login in instead</a>
               <button mat-raised-button color="primary" [disabled]="!registerForm.valid">REGISTER</button>
-            </div>
+            </div> 
           </mat-card-content>
         </div>
 
       </form>
-    </div>
+    </div> -->
 
 
     <!-- <div fxLayout="column">
@@ -147,7 +147,15 @@
     </div>
 
 
+    <div fxLayoutAlign="space-between center">
+      <a class="signIn" (click)="login()">login in instead</a>
+      <button mat-raised-button color="primary" [disabled]="!registerForm.valid">REGISTER</button>
+    </div> 
+  </mat-card-content>
+</div>
 
+</form>
+</div>
 
 
   </mat-card>

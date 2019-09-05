@@ -15,6 +15,7 @@ import { UserService } from '../../services/userService/user.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { addToCart } from 'src/app/model/cartModel';
+import { loginModel } from '../../model/register'
 import { CartServiceService } from '../../services/cartService/cart-service.service'
 @Component({
   selector: 'app-login',
@@ -31,9 +32,18 @@ export class LoginComponent implements OnInit {
   cartModel: addToCart;
   cartid: any;
   productName: any;
-  constructor(private userService: UserService, private router: Router, private cartService: CartServiceService,
-    private snackBar: MatSnackBar) { }
+  email;
+  password;
 
+  public loginModel: loginModel;
+  loginFormvalue: any;
+  constructor(private userService: UserService, private router: Router, private cartService: CartServiceService,
+    private snackBar: MatSnackBar) {
+    this.loginModel = new loginModel();
+  }
+
+  // email: new FormControl('', [Validators.required, Validators.email]),
+  //   password: new FormControl('', [Validators.required])
   ngOnInit() {
     this.productId = localStorage.getItem('serviceId')
     this.cartid = localStorage.getItem('cartId')
@@ -90,11 +100,11 @@ export class LoginComponent implements OnInit {
     })
   }
 
- /**
-* @description: this method is for it show selected service as selected 
-*                component
-* @param      : note object
-*/
+  /**
+ * @description: this method is for it show selected service as selected 
+ *                component
+ * @param      : note object
+ */
 
   select(item) {
     // this.getErrorMessageserver='';
@@ -116,9 +126,19 @@ export class LoginComponent implements OnInit {
       */
 
   loginUser(loginFormvalue) {
+
     try {
       console.log(" login event called ", loginFormvalue);
-      this.userService.login(loginFormvalue).subscribe(response => {
+
+      this.loginModel.email = loginFormvalue.email;
+      this.loginModel.password = loginFormvalue.password;
+      if (this.cartid != null)
+        this.loginModel.cartId = this.cartid;
+      // this.spinner.show();
+
+
+
+      this.userService.login(this.loginModel).subscribe(response => {
         // console.log('response ', response);
         localStorage.setItem('token', response['id']);
         localStorage.setItem('userId', response['userId'])

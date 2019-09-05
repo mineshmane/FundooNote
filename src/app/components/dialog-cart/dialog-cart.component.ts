@@ -24,16 +24,26 @@ export class DialogCartComponent implements OnInit {
   service: any;
   productId;
   id;
-  name: any;
+  name;
+  price;
+  description;
 
   constructor(public dialogRef: MatDialogRef<DialogCartComponent>, private noteService: NotesService, private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any, ) {
     console.log(" data in dialog cart ", data);
-
+    // if (data != undefined) {
     this.serviceData = data['data']
-    console.log(" after assign ", this.serviceData.id);
-    this.name = this.serviceData.name
-    
+    // console.log(" after assign ", this.serviceData.id);
+    if (this.serviceData != undefined) {
+      this.name = this.serviceData.name;
+      this.id = this.serviceData.id;
+      this.price=this.serviceData.price;
+      this.description=this.serviceData.description;
+    }
+
+    // }
+
+
 
 
 
@@ -52,7 +62,7 @@ export class DialogCartComponent implements OnInit {
 
   getDetails() {
     let body = {
-      productId: this.serviceData.id
+      productId: this.id
     }
     console.log(" data in body", body);
 

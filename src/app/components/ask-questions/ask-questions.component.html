@@ -3,7 +3,7 @@
 
 
 
-<div *ngIf="display"  [ngClass]="mainClass">
+<div *ngIf="display" [ngClass]="mainClass">
   <mat-card class="matCardQuestion" fxFlex=70 fxFlex.sm=80 fxFlex.xs=100 fxLayout='column' fxFlexOffset.xs='0%'>
 
     <div class="mainInside" fxLayout='column' fxFlex='100'>
@@ -27,12 +27,12 @@
       <!-- new question ask display -->
       <div *ngIf="question == undefined">
         <h2>Ask a Question</h2>
-        <p>Make sure what you’re asking is unique, concise, and phrased like a question.</p>
+        <p>Make sure what you’re asking is unique,  phrased like a question.</p>
         <div [froalaEditor] [(froalaModel)]="editorContent">
         </div>
         <div fxLayout='row' fxLayoutAlign='end'>
           <div class="ask">
-            <button mat-raised-button class="submit" (click)="submit()">SUBMIT-QUESTION</button>
+            <button mat-raised-button class="submit" (click)="submit()">Ask</button>
           </div>
         </div>
       </div>
@@ -45,16 +45,30 @@
             <div fxLayout='row'>
               <div *ngIf="question.user.imageUrl!=undefined" class="image"
                 [ngStyle]="{'background-image': 'url(' + imgUrl+question.user.imageUrl+ ')'}"></div>
-              <div *ngIf="question.user.imageUrl==undefined" class="image1" fxLayout='row'
+              <!-- <div *ngIf="question.user.imageUrl!=undefined">
+                <div mat-card-avatar [src]="imageurl">
+                  <div fxFlex="7" class=nameIcon>
+                    {{question.user.firstName[0].toUpperCase()}}{{question.user.lastName[0].toUpperCase()}}
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- <div *ngIf="question.user.imageUrl==undefined" class="image1" fxLayout='row'
                 fxLayoutAlign="center center">
                 {{question.user.firstName | slice:0:1 |uppercase}}
+              </div> -->
+
+              <div mat-card-avatar *ngIf="question.user.imageUrl==undefined">
+                <div fxFlex="7" class=nameIcon>
+                  {{question.user.firstName[0].toUpperCase()}}{{question.user.lastName[0].toUpperCase()}}
+                </div>
               </div>
               <div fxLayout=row class="nameDate"> {{question.user.firstName}} {{question.user.lastName}}
                 &nbsp; <div fxHide.xs=true>{{question.createdDate | date:'medium'}} </div>
               </div>
             </div>
-            <div class="icon" fxLayout='row' fxFlexOffset='5%' fxFlexOffset.xs='0%'  fxLayoutAlign.xs="end center"
-              fxLayoutAlign="space-around start" fxLayoutGap='8%'  fxLayoutGap.xs='1%' >
+            <div class="icon" fxLayout='row' fxFlexOffset='5%' fxFlexOffset.xs='0%' fxLayoutAlign.xs="end center"
+              fxLayoutAlign="space-around start" fxLayoutGap='8%' fxLayoutGap.xs='1%'>
               <div (click)="showEditorId=true">
                 <mat-icon>reply</mat-icon>
               </div>
@@ -79,7 +93,7 @@
       </div>
       <!-- reply the answer to question -->
       <div *ngIf="showEditorId">
-          <div> <button mat-button (click)="showEditorId=false">close</button></div>
+        <div> <button mat-button (click)="showEditorId=false">close</button></div>
         <div [froalaEditor] [(froalaModel)]="editorContent">
         </div>
         <div fxLayout='row' fxLayoutAlign='end'>
@@ -154,9 +168,10 @@
             <!-- ------------------------------------------first reply display --------------------------------------------->
             <div *ngIf="this.showSecondId != index.id" class="showFirstReply" fxLayout="row" fxLayoutAlign="end center"
               (click)="showSecondReplyMethod(index.id)">
-              <mat-icon>expand_more</mat-icon> View reply </div>
+              <mat-icon>expand_more</mat-icon> View reply
+            </div>
             <div *ngIf="this.showSecondId == index.id" class="showFirstReply" fxLayout="row" fxLayoutAlign="end center"
-            (click)="hideSecondReplyMethod(index.id)">
+              (click)="hideSecondReplyMethod(index.id)">
               <mat-icon>expand_less</mat-icon> Hide reply
             </div>
             <div *ngIf="showSecondReply && this.showSecondId == index.id" class="firstReply">
@@ -173,8 +188,8 @@
                         &nbsp;<div fxHide.xs=true> {{user1.createdDate | date:'medium'}} </div>
                       </div>
                     </div>
-                    <div class="icon" fxLayout='row' fxFlexOffset='5%' fxLayoutAlign="space-around start" fxLayoutAlign.xs="end center"
-                      fxLayoutGap='8%' fxLayoutGap.xs='1%'>
+                    <div class="icon" fxLayout='row' fxFlexOffset='5%' fxLayoutAlign="space-around start"
+                      fxLayoutAlign.xs="end center" fxLayoutGap='8%' fxLayoutGap.xs='1%'>
                       <div (click)="setSecondId(user1)">
                         <mat-icon>reply</mat-icon>
                       </div>

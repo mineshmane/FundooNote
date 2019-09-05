@@ -1,6 +1,36 @@
 // @import '../../../scss/variable.scss';
 // @import '../../../scss/mixin.scss';
+.wordBreak {
+    word-break: break-all;
+   // text-overflow: hide;
+   // // width: 250px;
+   // white-space: nowrap;
+   // // overflow: hidden;
+   // text-overflow:ellipsis;
+   // max-height: 3.6em;
+   // line-height: 1.8em;
+ 
+   display: block; /* or inline-block */
+   text-overflow: ellipsis;
+   overflow: hidden;
+   word-wrap: break-word;
+   overflow: hidden;
+   max-height: 15.5em;
+ }
+.mat-card-avatar{
+    background-color:#1a73e8;
+    background-size:cover;
+    height:50px;
+    width:50px;
+    border-radius:50%;
+}
 
+.nameIcon{
+    font-size: 20px;
+    padding-left: 10px;
+    color: white;
+    padding-top: 11px;
+}
 .sideNavClose{
     margin-top: 40px;
     flex-direction: row;
@@ -26,6 +56,8 @@
     font-size: 25px;
     padding: 5px 0px 5px 5px;
     font-weight: 300;
+    text-overflow: ellipsis;
+   overflow: hidden;
 }
 .close{
     font-family: Georgia, 'Times New Roman', Times, serif;
@@ -75,6 +107,8 @@
     font-size: 25px;
     padding: 5px 0px 5px 5px;
     font-weight: 300;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 .close{
     font-family: Georgia, 'Times New Roman', Times, serif;

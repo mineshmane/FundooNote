@@ -35,3 +35,9 @@ export class Service {
     "price": number
     "id": string
 }
+
+export class loginModel{
+    "email":string;
+    "password":string;
+    "cartId":string;
+}

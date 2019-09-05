@@ -33,6 +33,7 @@ import { OwlDateTimeModule } from 'ng-pick-datetime';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CheckListDisplayComponent } from '../check-list-display/check-list-display.component';
 
 describe('ForgetComponent', () => {
   let component: ForgetComponent;
@@ -40,12 +41,12 @@ describe('ForgetComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ArchiveComponent, DisplayComponent,ForgetComponent, IconComponent,SearchFilterPipe, DateTimePipe],
-     
+      declarations: [ArchiveComponent, CheckListDisplayComponent, DisplayComponent, ForgetComponent, IconComponent, SearchFilterPipe, DateTimePipe],
+
       imports: [FlexLayoutModule, RouterTestingModule, MatCardModule, Ng4LoadingSpinnerModule, MatIconModule,
-        MatChipsModule, MatDividerModule, NgxMasonryModule,MatTooltipModule,MatMenuModule,OwlDateTimeModule,
-        MatCheckboxModule,ReactiveFormsModule,FormsModule,HttpClientModule,MatSnackBarModule,
-        MatFormFieldModule,BrowserAnimationsModule,
+        MatChipsModule, MatDividerModule, NgxMasonryModule, MatTooltipModule, MatMenuModule, OwlDateTimeModule,
+        MatCheckboxModule, ReactiveFormsModule, FormsModule, HttpClientModule, MatSnackBarModule,
+        MatFormFieldModule, BrowserAnimationsModule,
         MatInputModule
 
       ],

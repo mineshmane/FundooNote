@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { NgxMasonryModule } from 'ngx-masonry';
+import { CheckListDisplayComponent } from '../components/check-list-display/check-list-display.component';
 
 describe('MasonryComponent', () => {
   let component: MasonryComponent;
@@ -19,7 +20,7 @@ describe('MasonryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MasonryComponent,DisplayComponent,IconComponent,SearchFilterPipe, DateTimePipe],
+      declarations: [ MasonryComponent,DisplayComponent,IconComponent,SearchFilterPipe, DateTimePipe,CheckListDisplayComponent],
         imports: [MatCardModule, RouterTestingModule, Ng4LoadingSpinnerModule,FormsModule,HttpClientModule,
           MatIconModule, MatChipsModule,MatMenuModule,OwlDateTimeModule, OwlNativeDateTimeModule
          , NgxMasonryModule, MatDividerModule, MatCheckboxModule, MatTooltipModule,MatFormFieldModule,MatSnackBarModule,MatDialogModule

@@ -19,14 +19,14 @@ describe('LoginComponent', () => {
         BrowserModule,
         MatFormFieldModule,
         MatInputModule,
-      BrowserAnimationsModule,
-      // NgxSpinnerModule,
-      MatIconModule,
-      MatSnackBarModule,
-      FormsModule,
-      ReactiveFormsModule,
-      HttpClientModule,
-      RouterTestingModule.withRoutes([{path:'login',component:LoginComponent}])]
+        BrowserAnimationsModule,
+        // NgxSpinnerModule,
+        MatIconModule,
+        MatSnackBarModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        RouterTestingModule.withRoutes([{ path: 'login', component: LoginComponent }])]
     })
       .compileComponents();
   }));
@@ -40,7 +40,29 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  // });
+
+
+  it('form should be invalid', () => {
+// component.loginFormvalue.email.setValue();
+    component.loginFormvalue.email.setValue('');
+    component.loginFormvalue.password.setValue('');
+    expect(component.email.valid).toBeFalsy();
+    expect(component.password.valid).toBeFalsy();
+    // component.email.setValue('');
+    // component.password.setValue('');
+    // expect(component.email.valid).toBeFalsy();
+    // expect(component.password.valid).toBeFalsy();
+
+  })
+
+  it('form shouble be valid',()=>{
+
+    
+    component.loginFormvalue.email.setValue('mineshmane94@gmail.com');
+    component.loginFormvalue.password.setValue('Rahul@123454');
+    expect(component.email.valid).toBeTruthy();
+    expect(component.password.valid).toBeTruthy();
+  })
 
 
 

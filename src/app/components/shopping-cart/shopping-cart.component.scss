@@ -281,16 +281,17 @@ background-color: #fafafa;
  }
  .shop{
   margin-top: 30px;
-  // margin-left: 100px;
+   margin-left: 2%;
     font-size: larger;
     font-weight: 600;
     font-family: sans-serif;
-    padding-left: 30px;
+     padding-left: 2px;
    
 
  }
  .condition{
-  padding-left: 30px;
+  margin-left: 2%;
+   padding-left: 2px;
   font-size: x-small;
   font-weight: lighter;
   .privacy{
@@ -300,8 +301,18 @@ background-color: #fafafa;
  .downMain{
    padding: 2%;
   //  padding: 2%;
-    margin-left: 19%;
+    // margin-left: 19%;
  }
+
+
+
+@media screen and (max-width : 600px){
+  .downMain{
+    padding: 2%;
+    margin-left: 2%;
+    //  margin-left: 19%;
+  }
+}
 
 // .checkOutClose{
 
@@ -332,7 +343,7 @@ background-color: #fafafa;
   .name{
     color: #006ABC;
     font-weight: 600;
-    // margin-left: 10%
+    margin-left: 5%
   }
 }
 .price{
@@ -763,6 +774,7 @@ mat-progress-bar{
    
     .shop{
      font-size: small;
+    //  margin-left: 19%;
  
     }
   }

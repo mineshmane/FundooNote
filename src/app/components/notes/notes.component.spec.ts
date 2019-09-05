@@ -33,6 +33,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CheckListDisplayComponent } from '../check-list-display/check-list-display.component';
 
 describe('NotesComponent', () => {
   let component: NotesComponent;
@@ -40,7 +41,7 @@ describe('NotesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NotesComponent, TakeNoteComponent, DisplayComponent, SearchFilterPipe, DateTimePipe, IconComponent],
+      declarations: [NotesComponent, TakeNoteComponent,CheckListDisplayComponent, DisplayComponent, SearchFilterPipe, DateTimePipe, IconComponent],
       imports: [FlexLayoutModule, RouterTestingModule, MatCardModule, Ng4LoadingSpinnerModule,
         MatIconModule,
         MatChipsModule, MatDividerModule, NgxMasonryModule, MatTooltipModule, MatMenuModule,

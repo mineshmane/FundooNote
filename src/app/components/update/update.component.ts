@@ -14,10 +14,33 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { addCheckList, updateCheckList, deleteCheckList } from 'src/app/model/notes';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NotesService } from '../../services/notes-service/notes.service';
-
+import {DataService} from '../../services/dataService/data.service'
 import { MatSnackBar } from '@angular/material'
 import { FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
+
+
+
+
+// export interface DialogData {
+//   collaborators: any[];
+//   title: string;
+//   description: string;
+//   id: string;
+//   label: string;
+//   color: string;
+//   isPined: boolean;
+//   isArchived: boolean;
+//   reminder: [];
+//   noteLabels: [];
+//   whichUpdate: object;
+//   type: string;
+//   noteCheckLists: [];
+//   checkBox:boolean;
+//   imageUrl:string;
+// }
+
+
 @Component({
   selector: 'app-update',
   templateUrl: './update.component.html',
@@ -29,10 +52,9 @@ export class UpdateComponent implements OnInit {
   pin;
   reminders = [];
 
-
-
   label = [];
   image: string;
+  removable = true;
   checked = true;
   tickBox = true;
   change = {
@@ -54,34 +76,48 @@ export class UpdateComponent implements OnInit {
   Type = '';
   labelsArray = [];
   list = false;
+  title='';
+  description='';
+  isPined;
   parentSubject: Subject<any> = new Subject();
-  title = new FormControl(this.data.title, [Validators.minLength(1)]);
-  description = new FormControl(this.data.description);
+  // title = new FormControl(title, [Validators.minLength(1)]);
+  // description = new FormControl(this.data.description);
   checkListValue = new FormControl('');
-
+  color;
   // // flag
   saveFlag = false;
   public noteModel: addCheckList;
   public updateCheckListModel: updateCheckList;
   public deleteCheckList: deleteCheckList;
   constructor(public dialogRef: MatDialogRef<UpdateComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any, private noteService: NotesService, private bar: MatSnackBar) {
+    @Inject(MAT_DIALOG_DATA) public data: any, private noteService: NotesService,
+    private dataService : DataService, private bar: MatSnackBar) {
     console.log(" data in update", data);
-    this.collaborators = data.card.collaborators
+    // this.collaborators = data.card.collaborators
     console.log(" this is collab in update", this.collaborators);
 
-    this.labels = data.card.noteLabels
-    console.log(" labels in update", this.labels);
-    this.reminders = data.card.reminder
-    console.log(" reminder in update", this.reminders);
-    this.pin = data.card.isPined;
-    console.log(" it is pined ", this.pin);
+    if (data.card != undefined) {
+      this.labels = data.card.noteLabels
+      this.reminders = data.card.reminder
+      this.pin = data.card.isPined;
+      this.title = data.card.title;
+      this.description = data.card.description;
+      this.color = data.card.color;
+      console.log(" labels in update", this.labels);
+
+      console.log(" reminder in update", this.reminders);
+
+      console.log(" it is pined ", this.pin);
+
+    }
+
+
 
 
 
 
     this.bgcolor = data.color;
-    this.pin = this.data.isPined;
+    // this.pin = this.data.isPined;
     this.rem = this.data.reminder;
     this.labelsArray = this.data.noteLabels;
     this.Type = this.data.type;
@@ -90,7 +126,7 @@ export class UpdateComponent implements OnInit {
     this.checkListClass.showCheckList = this.tickBox;
     this.checkListClass.hideCheckList = !this.tickBox;
     // this.image=environment.url+data.imageUrl;
-    this.seprateCheckList(this.data.noteCheckLists);
+    // this.seprateCheckList(this.data.noteCheckLists);
 
   }
 
@@ -105,12 +141,21 @@ export class UpdateComponent implements OnInit {
       console.log(" card in update ", card.card.id);
       let data = {
         noteId: card.card.id,
-        title: card.card.title,
-        description: card.card.description,
+        // title: card.card.title,
+        title: this.title,
+        description:this.description,
         collaborators: card.card.collaborators
       }
+
+
+      // this.title = this.title;
+      // this.description = this.description;
+      // this.color = this.color,
+      //   this.isPined = this.pin
+      // this.data.whichUpdate = this.change
       this.noteService.updateNote(data).subscribe(response => {
         console.log(response, " succsesfully updated note ");
+        this.dataService.noteUpdate({});
         this.bar.open(" note update succesFully ", '', { duration: 2000 });
       }, error => {
         console.log(error);
@@ -126,7 +171,11 @@ export class UpdateComponent implements OnInit {
   }
 
 
+  addlabel(event) {
+    console.log(" event");
 
+    this.labels.push(event)
+  }
 
 
 

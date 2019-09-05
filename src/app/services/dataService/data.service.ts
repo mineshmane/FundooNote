@@ -40,6 +40,12 @@ export class DataService {
     this.gridView();
     return this.subject.asObservable();
   }
+  obj = {
+
+    view: localStorage.getItem('isListView') == undefined ? 'true' : localStorage.getItem('isListView')
+   
+  }
+
 
   private messageSource = new BehaviorSubject({ type: '', data: [] });
   currentMessage = this.messageSource.asObservable();
@@ -60,18 +66,30 @@ export class DataService {
   }
 
 
-  private listData = new BehaviorSubject([]);
+  private listData = new BehaviorSubject(this.obj);
   viewListData = this.listData.asObservable();
-  listViewData(message) {
+  
+  listViewData(message:any) {
     console.log(" data service called", message);
     this.listData.next(message)
   }
 
   private profileData = new BehaviorSubject([]);
   profilePicData = this.profileData.asObservable();
+  
   setProfileData(message) {
     console.log(" data service called", message);
     this.profileData.next(message)
+  }
+
+
+
+  private updateNote = new BehaviorSubject([]);
+  noteUpdated = this.updateNote.asObservable();
+  
+  noteUpdate(message:any) {
+    console.log(" data service called", message);
+    this.updateNote.next(message)
   }
 
 

@@ -62,6 +62,14 @@
   margin-left: 0px;
 }
 
+p {
+  display: block;
+  margin-block-start: 0.3em;
+  margin-block-end: 0.4em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
 .noteReminder {
   font-size: 13px;
   line-height: 40px;
@@ -74,12 +82,15 @@
   cursor: pointer;
 }
 .collo {
-  margin-right: 6px;
-  margin-top: 0px;
+  margin-right: 0px;
+  margin-top: -100px;
+  // margin-bottom: 50px;
+  font-size: 15px;
+  font-style: inherit
 }
 ::ng-deep .mat-mini-fab {
   height: 30px;
-
+  // text-align: center;
   width: 30px;
 }
 #label {
@@ -98,7 +109,7 @@
   flex-direction: row;
   flex-flow: wrap;
   width: 100%;
-  .matCard {
+  .main-card {
     width: 240px;
   }
 
@@ -129,7 +140,7 @@
 //  }
 
 .wordBreak {
-   word-break: break-all;
+  word-break: break-all;
   // text-overflow: hide;
   // // width: 250px;
   // white-space: nowrap;
@@ -145,8 +156,29 @@
   overflow: hidden;
   max-height: 15.5em;
 }
-.fontpixel {
 
+.wordBreakTitle {
+  word-break: break-all;
+  // text-overflow: hide;
+  // // width: 250px;
+  // white-space: nowrap;
+  // // overflow: hidden;
+  // text-overflow:ellipsis;
+  // max-height: 3.6em;
+  // line-height: 1.8em;
+  letter-spacing: 0.00625em;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  // line-height: 1.5rem;
+  display: block; /* or inline-block */
+  text-overflow: ellipsis;
+  //  overflow: hidden;
+  word-wrap: break-word;
+  overflow: hidden;
+  max-height: 3.6em;
+}
+.fontpixel {
   max-height: 50px;
 }
 .main-card {
@@ -155,7 +187,7 @@
   // max-height: 400px;
   position: relative;
   margin-right: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
   // border-radius: 10px;
   overflow: hidden;
 }
@@ -168,6 +200,7 @@
   place-content: center;
   align-items: center;
 }
+
 @media screen and (max-width: 600px) {
   .main-card {
     width: 600px;

@@ -32,6 +32,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { NgxMasonryModule } from 'ngx-masonry';
+import { CheckListDisplayComponent } from '../check-list-display/check-list-display.component';
 
 describe('TrashComponent', () => {
   let component: TrashComponent;
@@ -39,7 +40,7 @@ describe('TrashComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TrashComponent,DisplayComponent,IconComponent,SearchFilterPipe, DateTimePipe],
+      declarations: [ TrashComponent,DisplayComponent,IconComponent,SearchFilterPipe, DateTimePipe,CheckListDisplayComponent],
         imports: [MatCardModule, RouterTestingModule, Ng4LoadingSpinnerModule,FormsModule,HttpClientModule,
           MatIconModule, MatChipsModule,MatMenuModule,OwlDateTimeModule, OwlNativeDateTimeModule
          , NgxMasonryModule, MatDividerModule, MatCheckboxModule, MatTooltipModule,MatFormFieldModule,MatSnackBarModule,MatDialogModule

@@ -1,25 +1,8 @@
-// import { Component, OnInit } from '@angular/core';
-
-// @Component({
-//   selector: 'app-ask-questions',
-//   templateUrl: './ask-questions.component.html',
-//   styleUrls: ['./ask-questions.component.scss']
-// })
-// export class AskQuestionsComponent implements OnInit {
-
-//   constructor() { }
-
-//   ngOnInit() {
-//   }
-
-// }
-
-
-
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute,Params } from "@angular/router"
+import { Router, ActivatedRoute, Params } from "@angular/router"
 import { NotesService } from "../../services/notes-service/notes.service";
 import { Ng4LoadingSpinnerService } from 'ng4-loading-spinner';
+
 import { MatSnackBar } from '@angular/material';
 import { Question, reply } from "../../model/QAModel";
 import { DataService } from '../../services/dataService/data.service';
@@ -32,10 +15,10 @@ import { DataService } from '../../services/dataService/data.service';
 export class AskQuestionsComponent implements OnInit {
   public QuestionModel: Question;
   public replyModel: reply;
-  constructor(public route: Router, public activeRoute: ActivatedRoute, public noteService: NotesService,  private spinnerService: Ng4LoadingSpinnerService,
+  constructor(public route: Router, public activeRoute: ActivatedRoute,
+    public noteService: NotesService, private spinnerService: Ng4LoadingSpinnerService,
+    private snackBar: MatSnackBar, private dataservice: DataService) { }
 
-    private snackBar: MatSnackBar,private dataservice:DataService) { }
-  //  cardId
   cardToken = this.activeRoute.snapshot.params.cardId;
   title = '';
   description = '';
@@ -45,23 +28,29 @@ export class AskQuestionsComponent implements OnInit {
   questions = ''
   AnswerArray = [];
   question: any;
-  display=false;
+  display = false;
   user: any;
   rate = 5;
   htmlField: any;
   parentId = ''
-  sidnav=false;
+  sidnav = false;
   likeCount = 3;
   showId = '';
-  likeObject = { "userId": "5c67f5371524250040082dba", "like": true };
-  imgUrl = 'http://34.213.106.173/';
+  // likeObject = { "userId": "5c67f5371524250040082dba", "like": true };
+  likeObject = { "userId": "5ce7d52e4b57f70040e63766", "like": true };
+  imgUrl = 'http://fundoonotes.incubation.bridgelabz.com/';
+  // imgUrl = environment.imagebaseUrl;
+
+
+  // localstorage_image = localStorage.getItem('imageUrl');
+  // imageurl = 'http://fundoonotes.incubation.bridgelabz.com/' + this.localstorage_image;
   showFirstReply = false;
   showSecondReply = false;
   showSecondId = '';
   showEditorId = false;
-  mainClass={
-    sideNavOpen:this.sidnav,
-    sideNavClose:!this.sidnav
+  mainClass = {
+    sideNavOpen: this.sidnav,
+    sideNavClose: !this.sidnav
   }
   ngOnInit() {
 
@@ -72,15 +61,15 @@ export class AskQuestionsComponent implements OnInit {
     })
     console.log(this.cardToken);
     this.getCardDetails();
-    this.dataservice.sideNaveMessage.subscribe(data=>{
-      console.log('data in ask question',data);
-      this.sidnav=data;
-      this.mainClass.sideNavOpen=this.sidnav;
-      this.mainClass.sideNavClose=!this.sidnav;
-      
-    },err=>{
-      console.log('error in ask question',err);
-      
+    this.dataservice.sideNaveMessage.subscribe(data => {
+      console.log('data in ask question', data);
+      this.sidnav = data;
+      this.mainClass.sideNavOpen = this.sidnav;
+      this.mainClass.sideNavClose = !this.sidnav;
+
+    }, err => {
+      console.log('error in ask question', err);
+
     })
 
   }
@@ -90,7 +79,7 @@ export class AskQuestionsComponent implements OnInit {
  */
   getCardDetails() {
     console.log(this.question);
-    
+
     this.spinnerService.show();
     try {
       this.noteService.getNotesDetail(this.cardToken).subscribe(data => {
@@ -101,13 +90,13 @@ export class AskQuestionsComponent implements OnInit {
         this.description = this.card[0].description;
         this.question = this.card[0].questionAndAnswerNotes[0];
         console.log(this.question);
-        
+
         this.AnswerArray = this.card[0].questionAndAnswerNotes;
         if (this.card[0].questionAndAnswerNotes[0] != undefined)
           this.parentId = this.card[0].questionAndAnswerNotes[0].id;
         this.AnswerArray.splice(0, 1);
         console.log(this.question);
-        this.display=true;
+        this.display = true;
         this.spinnerService.hide();
         console.log(this.AnswerArray);
         if (this.AnswerArray != null)
@@ -124,6 +113,14 @@ export class AskQuestionsComponent implements OnInit {
 
     }
 
+  }
+  Askquestion() {
+    if (this.editorContent == '') {
+      return;
+    }
+    else {
+      this.submit();
+    }
   }
 
   /**

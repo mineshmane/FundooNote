@@ -60,9 +60,9 @@ describe('CheckListDisplayComponent', () => {
          MatSidenavModule, MatMenuModule,
         BrowserAnimationsModule, Ng4LoadingSpinnerModule, MatChipsModule,
         FormsModule, MatListModule,MatTooltipModule,NgxMasonryModule,MatOptionModule,FroalaEditorModule,
-        AppRoutingModule,OwlDateTimeModule,MatProgressBarModule,BarRatingModule
+        AppRoutingModule,OwlDateTimeModule,MatProgressBarModule,BarRatingModule,
 
-        // RouterTestingModule.withRoutes([{ path: 'addNote', component: CheckListDisplayComponent }])
+         RouterTestingModule.withRoutes([{ path: 'addNote', component: CheckListDisplayComponent }])
       ],
       providers: [SearchFilterPipe, DateTimePipe]
 

@@ -39,7 +39,7 @@ export class CollaboratorComponent implements OnInit {
     private noteService: NotesService) {
     console.log(" dilog d data ", data);
 
-    if (data) {
+    if (data.card != undefined) {
       console.log(" data undefined  called in  constructor");
 
       this.collaboratorsArray = data.card.collaborators
@@ -72,7 +72,8 @@ export class CollaboratorComponent implements OnInit {
 
   changeProfilePic() {
     this.localstorage_image = localStorage.getItem('imageUrl');
-    this.imageurl = 'http://34.213.106.173/' + this.localstorage_image;
+    // this.imageurl = 'http://34.213.106.173/' + this.localstorage_image;
+    this.imageurl = environment.imagebaseUrl + this.localstorage_image;
   }
 
   // clearbutton() {

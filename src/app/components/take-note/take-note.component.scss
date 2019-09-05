@@ -1,8 +1,29 @@
 .nop {
   text-decoration: none;
 }
+.takeNote:hover {
+  box-shadow: 0 0 11px rgb(119, 118, 118);
+}
+// button:hover {
+//   background-color: green;
+// }
+.view1:hover {
+  box-shadow: 0 0 11px rgb(119, 118, 118);
+}
+.view1{
+  // .mat-card {
+    transition: box-shadow 280ms cubic-bezier(.4,0,.2,1);
+    display: block;
+    position: relative;
+    padding: 9px;
+    border-radius: 10px;
+    // width: 14cm;
+// }
+}
+
 ::ng-deep .mat-card {
   width: 14cm;
+
   // border:solid white;
   border-radius: 10px;
 }

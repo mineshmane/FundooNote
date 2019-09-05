@@ -76,17 +76,17 @@
 
 
 
- <div fxLayout="row" fxLayoutAlign="center center"[style.background-color]=data.card.color class="mainDialog">
-  <mat-card [style.background-color]=data.card.color class="takeNote" fxLayout='column' fxFlex.xs='98' fxFlex='100'>
+ <div fxLayout="row" fxLayoutAlign="center center"[style.background-color]=color class="mainDialog">
+  <mat-card [style.background-color]=color class="takeNote" fxLayout='column' fxFlex.xs='98' fxFlex='100'>
 
 
-    <div fxLayout="row" fxLayoutAlign="space-between center">
-      <div fxFlex="70">
+    <div fxLayout="row" >
+      <div fxFlex="95" >
         <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
-          cdkAutosizeMinColumns="auto" cdkAutosizeMaxRows="auto" placeholder="Title"
-          [(ngModel)]="data.card.title"></textarea>
+          cdkAutosizeMinColumns="50" cdkAutosizeMaxRows="5" placeholder="Title"
+          [(ngModel)]="title"></textarea>
       </div>
-      <div fxFlex="30">
+      <div fxFlex="5">
         <button mat-icon-button matSuffix  matTooltip="pin">
           <img *ngIf="pin === true" src="../../../assets/image/unpin.svg">
           <img *ngIf="pin === false" src="../../../assets/image/pin.svg">
@@ -99,11 +99,11 @@
     <div fxFlex="100" style="width: 500px">
       <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
         cdkAutosizeMinColumns="50" cdkAutosizeMaxRows="15" placeholder="Take a Note"
-        [(ngModel)]="data.card.description"></textarea>
+        [(ngModel)]="description"></textarea>
     </div>
     
 
-     <!-- <div [ngClass]="checkListClass">
+     <div [ngClass]="checkListClass">
 
       <div>
         <div fxLayout='row' class="CheckListDisplay" *ngFor="let item of openCheckListArray">
@@ -117,9 +117,9 @@
             <mat-icon>close</mat-icon>
           </div>
         </div>
-      </div> -->
+      </div> 
 
-<!-- 
+
       <div *ngIf="list" class="addCheck">
 
         <mat-divider></mat-divider>
@@ -137,9 +137,9 @@
           </div>
         </div>
         <mat-divider></mat-divider>
-      </div> -->
+      </div> 
 
-      <!-- <div class="addIcon" *ngIf="!list || saveFlag" (click)="checkListAddStart()">
+       <div class="addIcon" *ngIf="!list || saveFlag" (click)="checkListAddStart()">
         <div fxLayout="row" fxLayoutAlign="start center">
           <div>
             <button mat-icon-button>
@@ -148,10 +148,10 @@
           </div>
           <div class="list">List</div>
         </div>
-      </div> -->
+      </div> 
 
 
-      <!-- <div>
+      <div>
         <div class="CheckListDisplay" *ngFor="let item of closeCheckListArray">
           <div class="checkBox" fxFlex='5'>
             <mat-checkbox color="primary" checked=true (click)="updateChecklist(item,'open')"></mat-checkbox>
@@ -164,15 +164,15 @@
         </div>
       </div>
 
-    </div>  -->
+    </div> 
 
 
 
 
 
 
-    <div [ngClass]="checkListClass">  
-      <!-- open checklist display -->
+    <!-- <div [ngClass]="checkListClass">  
+   
       <div>
         <div fxLayout='row' class="CheckListDisplay" *ngFor="let item of openCheckListArray">
 
@@ -188,7 +188,7 @@
 
 
       <div *ngIf="list" class="addCheck">
-        <!-- add checklist -->
+  
         <mat-divider></mat-divider>
         <div fxLayout="row" fxLayoutAlign="none center">
           <div fxFlex='5' class="hide" *ngIf="!saveFlag"></div>
@@ -204,7 +204,7 @@
         </div>
         <mat-divider></mat-divider>
       </div>
-      <!-- addlistshow -->
+  
       <div class="addIcon" *ngIf="!list || saveFlag"  (click)="checkListAddStart()">
        <div fxLayout="row" fxLayoutAlign="start center" >
         <div>
@@ -216,7 +216,6 @@
       </div>
       </div>
 
-      <!-- close checklist display -->
       <div>
         <div class="CheckListDisplay" *ngFor="let item of closeCheckListArray">
           <div class="checkBox" fxFlex='5'>
@@ -230,14 +229,14 @@
         </div>
       </div>
 
-    </div>
+    </div> -->
 
 
     <div fxLayout="row" fxLayout="row wrap">
 
       <div *ngFor="let rem of reminders">
         <mat-chip-list aria-label="Fish selection">
-          <mat-chip [style.background-color]=data.card.color>
+          <mat-chip [style.background-color]=color>
             <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time</mat-icon>
             <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
 
@@ -250,7 +249,7 @@
 
       <div *ngFor="let label of labels">
         <mat-chip-list aria-label="Fish selection ">
-          <mat-chip [style.background-color]=data.card.color>
+          <mat-chip [style.background-color]=color>
             <div class="XPtOyb-fmcmS"> {{label.label}}</div>
             <mat-icon matChipRemove *ngIf="removable" class="div" (click)="removeNoteLabel(label,card)">cancel
             </mat-icon>
@@ -268,7 +267,7 @@
 
     <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
       <div fxFlex="60">
-        <app-icon></app-icon>
+        <app-icon ></app-icon>
       </div>
       <div>
         <button mat-icon-button matSuffix (click)='updateNote(data)'>close</button>

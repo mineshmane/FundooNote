@@ -10,9 +10,9 @@
 </ngx-masonry> -->
 
 
-<div *ngIf="pinedMessage.length > 0" style="margin-top: 30px;">pinned</div>
+<div *ngIf="pinedMessage?.length > 0" style="margin-top: 30px;">pinned</div>
 <ngx-masonry>
-  <div *ngIf="pinedMessage.length > 0" fxLayout="center" style="margin-top:10px;" fxFlexOffset="8" fxFlexOffset.xs="0"
+  <div *ngIf="pinedMessage?.length > 0" fxLayout="center" style="margin-top:10px;" fxFlexOffset="8" fxFlexOffset.xs="0"
     fxFlexOffset.sm="3">
     <mat-card ngxMasonryItem *ngFor="let card of pinedMessage" class="main-card" [style.background-color]=card.color
       fxLayout.xs="column" fxFlex.xs="95">
@@ -103,7 +103,7 @@
 
 
 
-<div *ngIf="unPinedMessage.length > 0" style="margin-top: 30px;">others</div>
+<div *ngIf="unPinedMessage?.length > 0" style="margin-top: 30px;">others</div>
 <ngx-masonry>
   <div fxLayout="center" style="margin-top:10px;" fxFlexOffset="8" fxFlexOffset.xs="0" fxFlexOffset.sm="3">
     <mat-card ngxMasonryItem *ngFor="let card of unPinedMessage" class="main-card" [style.background-color]=card.color

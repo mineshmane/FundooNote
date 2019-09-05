@@ -1,7 +1,7 @@
 
 <div fxLayoutAlign="center center">
-  <mat-card [style.background-color]=setColor>
-    <div *ngIf="isOpen " fxFlex="100" fxLayout="row" fxLayoutAlign="space-between center" (click)="isOpen = !isOpen">
+  <mat-card   class="view1" *ngIf="isOpen " (click)="isOpen = !isOpen" [style.background-color]=setColor>
+    <div  fxLayout="row" fxLayoutAlign="space-between center" >
 
       <div>
         Take a Note
@@ -21,9 +21,10 @@
         </div>
       </div>
     </div>
-
-    <div *ngIf="!isOpen " fxFlex="100" fxLayout="column">
-      <div>
+  </mat-card>
+<mat-card *ngIf="!isOpen " class="takeNote">
+    <div  fxFlex="100" fxLayout="column">
+      <div >
         <div fxLayout="row" fxLayoutAlign="space-between center">
           <div fxFlex="100">
             <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
@@ -56,7 +57,7 @@
         </mat-chip-list>
       </div>
       <div>
-        <div *ngIf="label">
+        <div *ngIf="labels">
           <mat-chip-list aria-label="Fish selection " *ngFor="let label of noteLabels" >
 
             <mat-chip [style.background-color]=setcolor>

@@ -29,16 +29,26 @@ export class NotesComponent implements OnInit {
   notes = []
   pinedArray = [];
   unpinedArray = [];
+  
   ngOnInit() {
     this.getAllNote()
+
+    this.dataService.noteUpdated.subscribe(Message => {
+      this.getAllNote();
+      console.log(" notec upadte called");
+      
+    })
+
     this.dataService.collaboratorEmmitedData.subscribe(response => {
       this.getAllNote();
+      console.log(" collaboratir emmited");
+      
     })
     this.dataFromCollab();
   }
 
   dataFromCollab() {
-    
+
   }
   /**
    * @description: this method is for getting All notes and devides pined and unpinned cards
