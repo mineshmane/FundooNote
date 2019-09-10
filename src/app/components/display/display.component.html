@@ -1,18 +1,17 @@
-
 <ng4-loading-spinner> </ng4-loading-spinner>
 <div>
   <div class="mar">
-    <div *ngIf="pinedMessage?.length > 0" style="margin-top: 30px;">PINNED</div>
+    <div *ngIf="pinedMessage?.length > 0  && !isTrash" style="margin-top: 30px;">PINNED</div>
     <ngx-masonry>
       <div *ngIf="pinedMessage?.length > 0" [ngClass]="ListClass">
         <mat-card ngxMasonryItem *ngFor="let card of pinedMessage" class="main-card" [style.background-color]=card.color
           fxLayout.xs="column" fxFlex.xs="95">
-          <div >
-            <div fxLayout="row" >
-              <div fxFlex="90"  (click)="openDialog(card)"  >
+          <div>
+            <div fxLayout="row">
+              <div fxFlex="90" (click)="openDialog(card)">
                 <p class="wordBreakTitle">{{card.title}}</p>
               </div>
-              <div   fxFlex="10" fxLayoutAlign="start start" class="div">
+              <div fxFlex="10" fxLayoutAlign="start start" class="div">
                 <button mat-icon-button matSuffix (click)="pinNote(card)" (click)="pin()" *ngIf="!isTrash"
                   matTooltip="unPin Note">
 
@@ -31,7 +30,7 @@
 
             <div *ngFor="let rem of card.reminder">
               <mat-chip-list *ngIf="!isTrash" aria-label="Fish selection">
-                <mat-chip [style.background-color]=card.color *ngIf="!isTrash">
+                <mat-chip class="padd" [style.background-color]=card.color *ngIf="!isTrash">
                   <mat-icon matChipRemove *ngIf="removable" (click)="removeNoteReminder(rem,card)">access_time
                   </mat-icon>
                   <div class="XPtOyb-fmcmS">{{rem | dateTime:'dateTime'}}</div>
@@ -56,14 +55,14 @@
 
 
             <div *ngFor="let colab of card.collaborators">
-              <button  [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}"
-                id="label" (click)="openCollaboratorDialog(card)">
-                <p class="collo">{{colab.email[0].toUpperCase()}}</p></button>
+              <button [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}" id="label"
+                (click)="openCollaboratorDialog(card)">
+                <span class="collo">{{colab.email[0].toUpperCase()}}</span></button>
             </div>
 
           </div>
 
-
+          <div style="height:2vh;"></div>
           <div class="div">
             <app-icon [isTrash]="isTrash" (noteTrash)="getTrashNotes()" (onArchiveChange)="onArchive()"
               (reminderToNote)="reminderAddedToNote()" (labelToNote)="labelAddedToNote()" add [card]="card">
@@ -98,15 +97,15 @@
         <mat-card ngxMasonryItem *ngFor="let card of unPinedMessage" class="main-card"
           [style.background-color]=card.color fxLayout.xs="column" fxFlex.xs="95">
           <div>
-            <div fxLayout="row" >
-              <div fxFlex="90"  (click)="openDialog(card)">
+            <div fxLayout="row">
+              <div fxFlex="90" (click)="openDialog(card)">
                 <p class="wordBreakTitle">{{card.title}}</p>
               </div>
-              <div fxFlex="10"  class="div">
+              <div fxFlex="10" class="div">
                 <!-- <button mat-icon-button matSuffix > -->
 
-                  <img (click)="pinNote(card)" (click)=" pin()" *ngIf="!isTrash"
-                  matTooltip="pin Note" src="../../../assets/image/pin.svg">
+                <img (click)="pinNote(card)" (click)=" pin()" *ngIf="!isTrash" matTooltip="pin Note"
+                  src="../../../assets/image/pin.svg">
                 <!-- </button> -->
               </div>
             </div>
@@ -149,9 +148,9 @@
 
 
             <div *ngFor="let colab of card.collaborators">
-              <button  [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}"
-                id="label" (click)="openCollaboratorDialog(card)">
-                <p class="collo">{{colab.email[0].toUpperCase()}}</p>
+              <button [style.background-color]=card.color mat-mini-fab matTooltip="{{colab.email}}" id="label"
+                (click)="openCollaboratorDialog(card)">
+                <span class="collo">{{colab.email[0].toUpperCase()}}</span>
               </button>
             </div>
 
@@ -811,5 +810,3 @@
 
 
   </div> -->
-
-

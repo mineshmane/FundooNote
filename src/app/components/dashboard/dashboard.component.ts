@@ -47,6 +47,14 @@ export class DashboardComponent implements OnInit {
   fillerContent = Array.from({ length: 50 }, () =>
     ``);
 
+    isOpen = true;
+    //hide = true;
+    click() {
+      console.log(" is open ca;lled");
+      
+      this.isOpen = true;
+    }
+
   private _mobileQueryListener: () => void;
   constructor(private userService: UserService,
     changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private route: Router, private dataService: DataService,
@@ -59,7 +67,8 @@ export class DashboardComponent implements OnInit {
   message: string;
   imageurl: string
   localstorage_image: any
-  searchInput = false
+  searchInput=false ;
+  searchIn;
   isList: any;
   fName;
   lName;
@@ -142,10 +151,10 @@ export class DashboardComponent implements OnInit {
   }
 
   searchVisible() {
-    // console.log(" visible", this.searchInput);
+    console.log(" visible", this.searchInput);
 
-    this.searchInput = !this.searchInput
-    // console.log(" after click ", this.searchInput);
+    this.searchIn = !this.searchInput
+    console.log(" after click ", this.searchIn);
 
   }
 
@@ -201,6 +210,7 @@ dataToService(object) {
       const dialogRef = this.dialog.open(EditLabelsComponent, {
         // width: '250px',
         // height:'500px',
+        panelClass: 'updateLabel',
         data: { allLabel: this.allLabel }
       });
       // console.log(" in card ",card);

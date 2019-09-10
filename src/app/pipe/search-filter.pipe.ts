@@ -18,7 +18,7 @@ export class SearchFilterPipe implements PipeTransform {
     }
     return value.filter(item =>{
       return  item.label.toLocaleLowerCase().includes(args);
-          //return  item.label.startsWith(args)==true
+          // return  item.label.startsWith(args)==true
     })
  
   }

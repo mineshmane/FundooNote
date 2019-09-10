@@ -1,11 +1,14 @@
 <p mat-dialog-title>Edit labels </p>
 <div mat-dialog-content fxLayout="row" class="parent">
 
-  <mat-form-field>
-    <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+  <div>
+    <button mat-button matPrefix mat-icon-button aria-label="Clear" (click)="value=''">
       <mat-icon>close</mat-icon>
     </button>
-    <input matInput type="text" placeholder="Create label" [(ngModel)]="value">
+  </div>
+
+  <mat-form-field class="example-form-field">
+    <input matInput type="text" placeholder="create Label" [(ngModel)]="value">
 
   </mat-form-field>
   <div class="done">
@@ -16,28 +19,37 @@
     </button>
   </div>
 </div>
-<div *ngFor="let lab of allLabel" fxLayout="row" (mouseover)="changeText=true" (mouseout)="changeText=false">
-  <div>
-    <button mat-button (click)="deleteLabel(lab)">
-      <span [hidden]="changeText">
+<div id="show" *ngFor="let lab of allLabels" (mouseover)="changeText=true" (mouseout)="changeText=false">
+  <div style="height:2vh;"></div>
+  <div fxLayout="row" fxLayoutAlign="space-around center">
+    <div>
+      <div id="label">
         <mat-icon>label_outline</mat-icon>
-      </span>
-      <span [hidden]="!changeText">
-        <mat-icon>delete</mat-icon>
-      </span>
-    </button>
-  </div>
-  <div>
-    <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
-      cdkAutosizeMinColumns="50" cdkAutosizeMaxRows="15" placeholder="Take a Note" [(ngModel)]="lab.label"></textarea>
+      </div>
+      <div id="delete">
+        <mat-icon (click)="deleteLabel(lab)">delete</mat-icon>
+      </div>
+    </div>
 
-  </div>
-  <div>
-    <!-- <mat-icon>label_outline</mat-icon> -->
-
-    <button mat-button (click)="editLabel(lab)">
-      <mat-icon>create</mat-icon>
-    </button>
+    <div>
+      <!-- <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
+      class="notranslate Q0hgme-y4JFTd AHmuwe-VtOx3e mQXP-YPqjbf" cdkAutosizeMinColumns="50" cdkAutosizeMaxRows="15"
+       [(ngModel)]="lab.label"></textarea> -->
+      <input matInput type="text" class="notranslate Q0hgme-y4JFTd AHmuwe-VtOx3e mQXP-YPqjbf" placeholder="create Label"
+        [(ngModel)]="lab.label">
+    </div>
+    <div>
+      <div>
+        <div id="label">
+          <mat-icon>create</mat-icon>
+        </div>
+        <div id="delete">
+          <i class="material-icons" (click)="editLabel(lab)">
+            done
+          </i>
+        </div>
+      </div>
+    </div>
   </div>
 
 </div>
@@ -45,14 +57,3 @@
 <div mat-dialog-actions>
   <button mat-button cdkFocusInitial (click)="done()">done</button>
 </div>
-<!-- <div (mouseenter)="changeText=true" (mouseLeave)="changeText=false">
-    <span *ngIf="!changeText">Hide</span>
-    <span *ngIf="changeText">Show</span>
-  </div> -->
-
-<!-- <div>  {{message}}</div> -->
-<!-- </div>  -->
-<!-- <div (mouseover)="changeText=true" (mouseout)="changeText=false">
-  <span [hidden]="changeText">   <mat-icon>label_outline</mat-icon></span>
-  <span [hidden]="!changeText">  <mat-icon>delete</mat-icon></span>
-</div> -->

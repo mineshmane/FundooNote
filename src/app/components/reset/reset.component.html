@@ -1,8 +1,5 @@
-
-
-
-<div class="main" fxLayoutAlign="center center" style="margin-top: 140px" fxFlexOffset="35" fxFlexOffset.xs="0" fxFlex.xs="100">
-  <mat-card fxFlex.xs="100" >
+<div class="main" fxLayoutAlign="center center center " style="margin-top: 0px" fxFlexOffset.xs="0" fxFlex.xs="100">
+  <mat-card fxFlex.xs="100">
 
     <mat-card-title fxLayoutAlign="center center">
       <p>
@@ -24,8 +21,8 @@
               <mat-label>New Password</mat-label>
               <input matInput type="text" placeholder="Enter New Password" formControlName="password" id="password"
                 [type]="hide ? 'password' : 'text'">
-              
-               
+
+
               <mat-error *ngIf="hasError('password', 'required')">password is required</mat-error>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
@@ -39,7 +36,7 @@
               <mat-label>newPassword</mat-label>
               <input matInput type="text" placeholder="confirm-Password" formControlName="cpassword" id="cpassword"
                 [type]="hide ? 'password' : 'text'">
-                
+
               <mat-error *ngIf="hasError('cpassword', 'required')">confirm-Password is required</mat-error>
               <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">
