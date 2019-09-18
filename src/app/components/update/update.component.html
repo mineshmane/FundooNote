@@ -1,8 +1,8 @@
-<!-- <mat-card  fxFlex="100" [style.background-color]=data.card.color> -->
+<!-- <mat-card  fxFlex="100" [style.background-color]=data.card.color>
 
 
  
-<!-- <div fxFlex="100%" class="upd" [style.background-color]=data.card.color fxLayout="column"
+ <div fxFlex="100%" class="upd" [style.background-color]=data.card.color fxLayout="column"
   fxLayoutAlign="space-between start">
   <div class="upd">
     <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -71,29 +71,28 @@
   </div>
 
 
-</div>  -->
-<!-- </mat-card> -->
+</div>  
+</mat-card> -->
 
 
 
- <div fxLayout="row" fxLayoutAlign="center center"[style.background-color]=color class="mainDialog">
+<div fxLayout="row" fxLayoutAlign="center center" [style.background-color]=color class="mainDialog">
   <mat-card [style.background-color]=color class="takeNote" fxLayout='column' fxFlex.xs='98' fxFlex='100'>
 
 
-    <div fxLayout="row" >
-      <div fxFlex="95" >
+    <div fxLayout="row">
+      <div fxFlex="95">
         <textarea matInput cdkTextareaAutosize #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="auto"
-          cdkAutosizeMinColumns="50" cdkAutosizeMaxRows="5" placeholder="Title"
-          [(ngModel)]="title"></textarea>
+          cdkAutosizeMinColumns="50" cdkAutosizeMaxRows="5" placeholder="Title" [(ngModel)]="title"></textarea>
       </div>
       <div fxFlex="5">
-        <button mat-icon-button matSuffix  matTooltip="pin">
+        <button mat-icon-button matSuffix matTooltip="pin">
           <img *ngIf="pin === true" src="../../../assets/image/unpin.svg">
           <img *ngIf="pin === false" src="../../../assets/image/pin.svg">
         </button>
       </div>
     </div>
-  
+
 
 
     <div fxFlex="100" style="width: 500px">
@@ -101,78 +100,10 @@
         cdkAutosizeMinColumns="50" cdkAutosizeMaxRows="15" placeholder="Take a Note"
         [(ngModel)]="description"></textarea>
     </div>
-    
-
-     <div [ngClass]="checkListClass">
-
-      <div>
-        <div fxLayout='row' class="CheckListDisplay" *ngFor="let item of openCheckListArray">
-
-          <div class="checkBox" fxFlex='5'>
-            <mat-checkbox (click)="updateChecklist(item,'close')"></mat-checkbox>
-          </div>
-          <div fxFlexOffset='1%' fxFlex='88'> <input matInput type="text"
-             value={{item.itemName}}></div>
-          <div fxFlex='4' class="deleteChecklist" (click)="removeCheckList(item,'open')">
-            <mat-icon>close</mat-icon>
-          </div>
-        </div>
-      </div> 
 
 
-      <div *ngIf="list" class="addCheck">
+    <div [ngClass]="checkListClass">
 
-        <mat-divider></mat-divider>
-        <div fxLayout="row" fxLayoutAlign="none center">
-          <div fxFlex='5' class="hide" *ngIf="!saveFlag"></div>
-          <div fxFlex='5' *ngIf="!list || saveFlag">
-            <mat-checkbox (click)="saveChecklist('close')"></mat-checkbox>
-          </div>
-          <div fxFlex='88' fxFlexOffset='1%'>
-            <input matInput placeholder="List" [formControl]='checkListValue' 
-            (keyup)="check()" class="checkList">
-          </div>
-          <div *ngIf="saveFlag" fxFlex='4' class='done'>
-            <mat-icon (click)="saveChecklist('open')"> done</mat-icon>
-          </div>
-        </div>
-        <mat-divider></mat-divider>
-      </div> 
-
-       <div class="addIcon" *ngIf="!list || saveFlag" (click)="checkListAddStart()">
-        <div fxLayout="row" fxLayoutAlign="start center">
-          <div>
-            <button mat-icon-button>
-              <mat-icon>add</mat-icon>
-            </button>
-          </div>
-          <div class="list">List</div>
-        </div>
-      </div> 
-
-
-      <div>
-        <div class="CheckListDisplay" *ngFor="let item of closeCheckListArray">
-          <div class="checkBox" fxFlex='5'>
-            <mat-checkbox color="primary" checked=true (click)="updateChecklist(item,'open')"></mat-checkbox>
-          </div>
-          <div fxFlex='89' fxFlexOffset='1%'> <input class="closeInput" matInput type="text" value={{item.itemName}}>
-          </div>
-          <div fxFlex='4' class="deleteChecklist" (click)="removeCheckList(item,'close')">
-            <mat-icon>close</mat-icon>
-          </div>
-        </div>
-      </div>
-
-    </div> 
-
-
-
-
-
-
-    <!-- <div [ngClass]="checkListClass">  
-   
       <div>
         <div fxLayout='row' class="CheckListDisplay" *ngFor="let item of openCheckListArray">
 
@@ -188,7 +119,7 @@
 
 
       <div *ngIf="list" class="addCheck">
-  
+
         <mat-divider></mat-divider>
         <div fxLayout="row" fxLayoutAlign="none center">
           <div fxFlex='5' class="hide" *ngIf="!saveFlag"></div>
@@ -204,16 +135,82 @@
         </div>
         <mat-divider></mat-divider>
       </div>
-  
-      <div class="addIcon" *ngIf="!list || saveFlag"  (click)="checkListAddStart()">
-       <div fxLayout="row" fxLayoutAlign="start center" >
-        <div>
-          <button mat-icon-button>
-            <mat-icon>add</mat-icon>
-          </button>
+
+      <div class="addIcon" *ngIf="!list || saveFlag" (click)="checkListAddStart()">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div>
+            <button mat-icon-button>
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div class="list">List</div>
         </div>
-        <div class="list">List</div>
       </div>
+
+
+      <div>
+        <div class="CheckListDisplay" *ngFor="let item of closeCheckListArray">
+          <div class="checkBox" fxFlex='5'>
+            <mat-checkbox color="primary" checked=true (click)="updateChecklist(item,'open')"></mat-checkbox>
+          </div>
+          <div fxFlex='89' fxFlexOffset='1%'> <input class="closeInput" matInput type="text" value={{item.itemName}}>
+          </div>
+          <div fxFlex='4' class="deleteChecklist" (click)="removeCheckList(item,'close')">
+            <mat-icon>close</mat-icon>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+    <div [ngClass]="checkListClass">
+
+      <div>
+        <div fxLayout='row' class="CheckListDisplay" *ngFor="let item of openCheckListArray">
+
+          <div class="checkBox" fxFlex='5'>
+            <mat-checkbox (click)="updateChecklist(item,'close')"></mat-checkbox>
+          </div>
+          <div fxFlexOffset='1%' fxFlex='88'> <input matInput type="text" value={{item.itemName}}></div>
+          <div fxFlex='4' class="deleteChecklist" (click)="removeCheckList(item,'open')">
+            <mat-icon>close</mat-icon>
+          </div>
+        </div>
+      </div>
+
+
+      <div *ngIf="list" class="addCheck">
+
+        <mat-divider></mat-divider>
+        <div fxLayout="row" fxLayoutAlign="none center">
+          <div fxFlex='5' class="hide" *ngIf="!saveFlag"></div>
+          <div fxFlex='5' *ngIf="!list || saveFlag">
+            <mat-checkbox (click)="saveChecklist('close')"></mat-checkbox>
+          </div>
+          <div fxFlex='88' fxFlexOffset='1%'>
+            <input matInput placeholder="List" [formControl]='checkListValue' (keyup)="check()" class="checkList">
+          </div>
+          <div *ngIf="saveFlag" fxFlex='4' class='done'>
+            <mat-icon (click)="saveChecklist('open')"> done</mat-icon>
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+      </div>
+
+      <div class="addIcon" *ngIf="!list || saveFlag" (click)="checkListAddStart()">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <div>
+            <button mat-icon-button>
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+          <div class="list">List</div>
+        </div>
       </div>
 
       <div>
@@ -229,7 +226,7 @@
         </div>
       </div>
 
-    </div> -->
+    </div>
 
 
     <div fxLayout="row" fxLayout="row wrap">
@@ -267,11 +264,11 @@
 
     <div fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center">
       <div fxFlex="60">
-        <app-icon ></app-icon>
+        <app-icon></app-icon>
       </div>
       <div>
         <button mat-icon-button matSuffix (click)='updateNote(data)'>close</button>
       </div>
     </div>
   </mat-card>
-</div> 
+</div>

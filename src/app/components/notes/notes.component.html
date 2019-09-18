@@ -1,14 +1,16 @@
-<mat-divider></mat-divider>
+<!-- <mat-divider></mat-divider> -->
 <br>
-<div class="LwH6nd ">
-    <app-take-note (update)="getAllNote()"></app-take-note>
-</div>
 <div>
-    <app-display (update)="getAllNote()"  (notePined)="getAllNote()" [childMessage]="notes" [childMessage]="notes"
-        (onArchiveChange)=" getAllNote()" (removeLabel)="getAllNote()" (removeReminder)="getAllNote()"
-        (reminderToNote)="getAllNote()" (labelToNote)="getAllNote()" [isTrash]=false [unPinedMessage]="unpinedArray"
-        [pinedMessage]="pinedArray">
-    </app-display>
+    <div class="LwH6nd ">
+        <app-take-note (update)="getAllNote()"></app-take-note>
+    </div>
+    <div >
+        <app-display (update)="getAllNote()" (notePined)="getAllNote()" [childMessage]="notes" [childMessage]="notes"
+            (onArchiveChange)=" getAllNote()" (removeLabel)="getAllNote()" (removeReminder)="getAllNote()"
+            (reminderToNote)="getAllNote()" (labelToNote)="getAllNote()" [isTrash]=false [unPinedMessage]="unpinedArray"
+            [pinedMessage]="pinedArray">
+        </app-display>
+    </div>
 </div>
 <!-- [childMessage]="unpinedArray" [pinedMessage]="pinedArray"    [childMessage]="notes" -->
 <!-- <app-masonry [pinedMessage]="pinedArray"  [unPinedMessage]="unpinedArray"></app-masonry> -->

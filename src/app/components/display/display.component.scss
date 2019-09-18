@@ -29,6 +29,11 @@
 .mar {
   margin-left: 17%;
 }
+@media screen and (max-width: 700px) {
+  .mar {
+    margin-left: 6%;
+  }
+}
 
 @media screen and (max-width: 600px) {
   .mar {

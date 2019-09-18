@@ -201,11 +201,21 @@
             aria-label="Clear" (click)="value=''">
             <mat-icon>close</mat-icon>
           </button>
-          <mat-form-field class="example-form-field" (click)="$event.stopPropagation()">
+          <!-- <mat-form-field class="example-form-field" > -->
 
-            <input matInput type="text" placeholder="Create label" [(ngModel)]="labelText">
+          <div class="labelNote">LabelNote</div>
+          <div style="margin-left: 9px;"> <input matInput type="text" placeholder="Create label" (click)="$event.stopPropagation()"
+              [(ngModel)]="labelText"></div>
 
-          </mat-form-field>
+
+
+          <!-- </mat-form-field> -->
+          <!-- <mat-icon >plus</mat-icon> -->
+          <mat-divider *ngIf="labelText"></mat-divider>
+          <div *ngIf="labelText" (click)="addLabel(labelText)" style="cursor: pointer">
+            <img src='../../../assets//image//plus.svg'  >
+         create</div>
+
         </div>
         <div>
 

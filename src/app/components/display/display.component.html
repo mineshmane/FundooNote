@@ -14,7 +14,6 @@
               <div fxFlex="10" fxLayoutAlign="start start" class="div">
                 <button mat-icon-button matSuffix (click)="pinNote(card)" (click)="pin()" *ngIf="!isTrash"
                   matTooltip="unPin Note">
-
                   <img src="../../../assets/image/unpin.svg">
                 </button>
               </div>
@@ -75,7 +74,7 @@
             <div style="height:2vh;"></div>
             <mat-divider [inset]="true"></mat-divider>
             <div (click)="askquestion(card)" style="height:2vh;"></div>
-            <h3>Question Asked</h3>
+            <h3 (click)="askquestion(card)" style="cursor: pointer">Question Asked</h3>
           </div>
           <div *ngFor="let item of card.questionAndAnswerNotes" (click)="askquestion(card)" class="question">
             <div *ngIf="!item.parentId" fxFlex="93">
@@ -166,11 +165,11 @@
 
 
 
-          <div (click)="askquestion(card)" *ngIf="card.questionAndAnswerNotes.length > 0">
+          <div *ngIf="card.questionAndAnswerNotes.length > 0">
             <div style="height:2vh;"></div>
             <mat-divider [inset]="true"></mat-divider>
-            <div (click)="askquestion(card)" style="height:2vh;"></div>
-            <h3>Question Asked</h3>
+            <div style="height:2vh;"></div>
+            <h3 (click)="askquestion(card)" style="cursor: pointer">Question Asked</h3>
           </div>
           <div *ngFor="let item of card.questionAndAnswerNotes" (click)="askquestion(card)" class="question">
             <div *ngIf="!item.parentId" fxFlex="93">

@@ -21,6 +21,7 @@ import { MatDialog } from '@angular/material/dialog'
 import { CollaboratorComponent } from '../collaborator/collaborator.component';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-icon',
   templateUrl: './icon.component.html',
@@ -80,7 +81,7 @@ export class IconComponent implements OnInit {
 
   ]
 
-
+@Output() labelCreated= new EventEmitter();
   @Output() update = new EventEmitter<any>();
   @Output() onChangeColor = new EventEmitter();
   @Output() onChangeReminder = new EventEmitter();
@@ -90,6 +91,9 @@ export class IconComponent implements OnInit {
   @Output() reminderToNote = new EventEmitter<any>();
   @Output() noteTrash = new EventEmitter();
   @Output() childObject = new EventEmitter();
+
+
+  
   ngOnInit() {
     this.shareLabelArrayData()
     if (this.card) {
@@ -368,6 +372,58 @@ export class IconComponent implements OnInit {
 
     }
   }
+
+
+  createLabel(){
+
+  }
+
+   /**
+  * @description: this method is for create new label 
+  *                component
+  * @param      : label name
+  */
+
+ addLabel(lab) {
+  // this.allLabels.push(lab)
+  try {
+
+    if (lab == undefined) {
+      console.log(" empty");
+      // this.dialogRef.close();
+      return;
+    } else {
+
+      console.log(" card ", lab);
+      let data = {
+        label: lab,
+        isDeleted: false,
+        userId: localStorage.getItem('userId')
+
+      }
+      this.notesService.addLabel(data).subscribe(response => {
+        console.log(response, " succsesfully updated note ");
+        // this.bar.open(" label added succesFully ", '', { duration: 2000 });
+        this.labelCreated.emit({});
+        this.labelText = '';
+        this.dataService.labelDatasend({
+
+        })
+
+      }, error => {
+        console.log('error ', error);
+      })
+    }
+
+  } catch (error) {
+    console.log(error);
+
+  }
+}
+done() {
+  // this.dialogRef.close();
+}
+
 
   /**
    * @description: this method is for AddLabel to Note 

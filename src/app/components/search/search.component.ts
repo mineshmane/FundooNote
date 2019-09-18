@@ -84,7 +84,7 @@ export class SearchComponent implements OnInit {
       console.log(error);
     }
   }
-  findCard = function (note, searchValue) {
+  findCard = (note, searchValue) => {
     var cardNote = note.filter(item => {
       return item.title.toLowerCase().includes(searchValue.toLowerCase()) || item.description.toLowerCase().includes(searchValue.toLowerCase())
     });
