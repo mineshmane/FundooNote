@@ -40,6 +40,11 @@ describe('RegistrationComponent', () => {
   });
 
   it('should create', () => {
+    component.registerForm.controls['firstName'].setValue('minesh');
+    component.registerForm.controls['lastName'].setValue('Mane');
+    component.registerForm.controls['email'].setValue('mineshmane94@gmail.com');
+    component.registerForm.controls['password'].setValue('123123');
+    component.registerForm.controls['cpassword'].setValue('123123');
     expect(component).toBeTruthy();
   });
 });

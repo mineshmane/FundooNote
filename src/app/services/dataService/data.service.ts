@@ -70,7 +70,7 @@ export class DataService {
   viewListData = this.listData.asObservable();
   
   listViewData(message:any) {
-    console.log(" data service called", message);
+
     this.listData.next(message)
   }
 
@@ -78,7 +78,7 @@ export class DataService {
   profilePicData = this.profileData.asObservable();
   
   setProfileData(message) {
-    console.log(" data service called", message);
+
     this.profileData.next(message)
   }
 
@@ -88,7 +88,8 @@ export class DataService {
   noteUpdated = this.updateNote.asObservable();
   
   noteUpdate(message:any) {
-    console.log(" data service called", message);
+    console.log(" data serbice calling ",message);
+    
     this.updateNote.next(message)
   }
 

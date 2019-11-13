@@ -12,12 +12,13 @@
 
 import { Component, OnInit, Inject } from '@angular/core';
 import { addCheckList, updateCheckList, deleteCheckList } from 'src/app/model/notes';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { NotesService } from '../../services/notes-service/notes.service';
-import {DataService} from '../../services/dataService/data.service'
+import { DataService } from '../../services/dataService/data.service'
 import { MatSnackBar } from '@angular/material'
 import { FormControl, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
+import { CollaboratorComponent } from '../collaborator/collaborator.component';
 
 
 
@@ -70,40 +71,46 @@ export class UpdateComponent implements OnInit {
   }
   bgcolor = '';
   rem = [];
-  collaborator = [];
+  collaboratorArray = [];
   openCheckListArray = [];
   closeCheckListArray = [];
   Type = '';
   labelsArray = [];
   list = false;
-  title='';
-  description='';
+  title = '';
+  description = '';
   isPined;
+  noteId;
   parentSubject: Subject<any> = new Subject();
   // title = new FormControl(title, [Validators.minLength(1)]);
   // description = new FormControl(this.data.description);
   checkListValue = new FormControl('');
   color;
   // // flag
+  card;
   saveFlag = false;
   public noteModel: addCheckList;
   public updateCheckListModel: updateCheckList;
   public deleteCheckList: deleteCheckList;
   constructor(public dialogRef: MatDialogRef<UpdateComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any, private noteService: NotesService,
-    private dataService : DataService, private bar: MatSnackBar) {
+    private dataService: DataService, private bar: MatSnackBar, public dialog: MatDialog) {
     console.log(" data in update", data);
-    // this.collaborators = data.card.collaborators
+    // this.collaboratorArray = data.card.collaborators
     console.log(" this is collab in update", this.collaborators);
 
     if (data.card != undefined) {
+      this.card = data
       this.labels = data.card.noteLabels
       this.reminders = data.card.reminder
       this.pin = data.card.isPined;
       this.title = data.card.title;
       this.description = data.card.description;
       this.color = data.card.color;
-      console.log(" labels in update", this.labels);
+      this.noteId = data.card.id
+      this.collaboratorArray = data.card.collaborators
+      console.log(" this is collab in update", this.collaboratorArray);
+      console.log(" id in &*&&&&&&&********&*&*&*& in update", this.noteId);
 
       console.log(" reminder in update", this.reminders);
 
@@ -119,20 +126,47 @@ export class UpdateComponent implements OnInit {
     this.bgcolor = data.color;
     // this.pin = this.data.isPined;
     this.rem = this.data.reminder;
-    this.labelsArray = this.data.noteLabels;
+    // this.labelsArray = this.data.noteLabels;
     this.Type = this.data.type;
-    this.collaborator = this.data.collaborators;
+    // this.collaboratorArray = this.data.collaborators;
     this.tickBox = this.data.checkBox;
     this.checkListClass.showCheckList = this.tickBox;
     this.checkListClass.hideCheckList = !this.tickBox;
     // this.image=environment.url+data.imageUrl;
-    // this.seprateCheckList(this.data.noteCheckLists);
+    this.seprateCheckList(this.data.noteCheckLists);
 
   }
 
 
   ngOnInit() {
 
+
+  }
+
+
+  /**
+  * @description: this method is for open collabortaor dialogbox
+  *                component
+  * @param      : note object
+  */
+
+  openCollaboratorDialog(): void {
+    try {
+      const dialogRef = this.dialog.open(CollaboratorComponent, {
+
+        //data: { allCollborators: this.card }
+        panelClass: 'updateDialog',
+        data: this.card
+        // { card: this.card }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+
+      });
+    } catch (error) {
+      console.log(error);
+
+    }
 
   }
 
@@ -143,7 +177,7 @@ export class UpdateComponent implements OnInit {
         noteId: card.card.id,
         // title: card.card.title,
         title: this.title,
-        description:this.description,
+        description: this.description,
         collaborators: card.card.collaborators
       }
 
@@ -218,7 +252,7 @@ export class UpdateComponent implements OnInit {
       this.noteModel.itemName = this.checkListValue.value;
       this.noteModel.status = value;
       this.noteModel.isDeleted = false;
-      this.noteModel.notesId = this.data.id;
+      this.noteModel.notesId = this.noteId
       if (value == 'open') {
         this.openCheckListArray.push(this.noteModel);
       } else {

@@ -140,7 +140,10 @@ export class DisplayComponent implements OnInit {
   }
 
   updateEventFromIcon(event) {
+    console.log(" emmiter in display",event);
+    
     if (event.type == 'tickBox') {
+      console.log(" event in display emmiter ", event);
 
       this.tickBoxValue = event;
       this.tickBoxUpdate = event.value;
@@ -213,7 +216,7 @@ export class DisplayComponent implements OnInit {
       const dialogRef = this.dialog.open(CollaboratorComponent, {
 
         //data: { allCollborators: this.card }
-
+        panelClass: 'updateDialog',
         data: { card }
       });
 
@@ -292,8 +295,6 @@ export class DisplayComponent implements OnInit {
         panelClass: 'updateDialog',
         data: { card }
       });
-      console.log(" in card ", card);
-
 
       dialogRef.afterClosed().subscribe(result => {
 

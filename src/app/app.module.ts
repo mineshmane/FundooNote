@@ -57,9 +57,8 @@ import { AskQuestionsComponent } from './components/ask-questions/ask-questions.
 @NgModule({
   declarations: [
     AppComponent,
-    RegistrationComponent, LoginComponent, ForgetComponent,
-    ResetComponent, DashboardComponent,
-    NotesComponent, TakeNoteComponent,
+    RegistrationComponent, LoginComponent, ForgetComponent, ResetComponent,
+     DashboardComponent, NotesComponent, TakeNoteComponent,
     IconComponent, DisplayComponent,
     ReminderComponent, ArchiveComponent,
     TrashComponent, UpdateComponent,
@@ -80,7 +79,7 @@ import { AskQuestionsComponent } from './components/ask-questions/ask-questions.
 
   ],
   imports: [
-    BrowserModule, 
+    BrowserModule,
     AppRoutingModule,
     NgxMasonryModule, BrowserAnimationsModule, ScrollingModule, CdkTableModule,
     MatCardModule, CdkTreeModule, A11yModule,
@@ -91,11 +90,15 @@ import { AskQuestionsComponent } from './components/ask-questions/ask-questions.
     FroalaViewModule.forRoot()
 
   ],
-  entryComponents: [UpdateComponent,
+  entryComponents: [
+
+    UpdateComponent,
     EditLabelsComponent,
     SetProfilePhotoComponent,
     CollaboratorComponent,
-    DialogCartComponent],
+    DialogCartComponent
+    
+  ],
 
   providers: [AuthGuradService, AuthService],
   bootstrap: [AppComponent]

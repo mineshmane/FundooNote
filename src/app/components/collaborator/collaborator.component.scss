@@ -1,71 +1,79 @@
-.dia{
-    border-radius: 10px; 
-  }
+.dia {
+  border-radius: 10px;
+}
 
+.navbar {
+  //   @include back-ground-color(#fb0);
+  background-color: #323232;
+  width: 100%;
+  font-size: 15px;
+}
+.pclass{
+    text-decoration-color: white;
+}
 
-
-  .Collaborators{
-    font-size: 25px;
+.Collaborators {
+  font-size: 25px;
 }
-.margin{
-    margin-top: 15px;
+.margin {
+  margin-top: 15px;
 }
-button{
-    outline: none;
-    border-radius: 200px;
+button {
+  outline: none;
+  border-radius: 200px;
 }
-.btns{
-    height: 70px;
-    margin-top: 10px;
-   background-color: rgb(233, 233, 233)
+.btns {
+  height: 50px;
+  margin-top: 10px;
+  background-color: rgb(233, 233, 233);
 }
-.btns button{
-    margin-bottom: 15px;
-    // margin-left: 15px;
-    font-size: 20px;
-    height: 35px;
+.btns button {
+  margin-bottom: 10px;
+//   margin-left: 15px;
+  font-size: 15px;
+  height: 35px;
 }
-.addPerson{
-    border: 1px solid black;
-    border-radius:  50%;
-    opacity: 0.4;
+.addPerson {
+  border: 1px solid black;
+  border-radius: 50%;
+  opacity: 0.4;
 }
-.icon{
-    padding: 6px;
+.icon {
+  padding: 6px;
 }
-input{
-    width: 575px;
-    outline: none;
-    border-style: hidden; 
+input {
+  width: 575px;
+  outline: none;
+  border-style: hidden;
 }
-.done{
-float: right;
-//margin-right: 10px;
+.done {
+  float: right;
+  //margin-right: 10px;
 }
-.clear{
-   height: 40px;
-   margin-left: 243px;
-   width: 30px;
-    // margin-right: 10px;
+.clear {
+  height: 40px;
+  //    margin-left: 243px;
+  float: right;
+  width: 30px;
+  // margin-right: 10px;
 }
-.nameIcon{
-    font-size: 20px;
-    padding-left: 10px;
-    color: white;
-    padding-top: 11px;
+.nameIcon {
+  font-size: 20px;
+  padding-left: 10px;
+  color: white;
+  padding-top: 11px;
 }
-.mat-card-avatar{
-    background-color:#1a73e8;
-     background-size:cover;
-    height:50px;
-    width:50px;
-    border-radius:50%;
+.mat-card-avatar {
+  background-color: #1a73e8;
+  background-size: cover;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
 }
 
 .XPtOyb-fmcmS {
-    border: 1px solid transparent;
-    text-align: center;
-    text-overflow: ellipsis;
-    font-size: 12px;
-   
+  border: 1px solid transparent;
+  text-align: center;
+  text-overflow: ellipsis;
+  font-size: 12px;
 }

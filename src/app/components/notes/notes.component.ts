@@ -29,20 +29,22 @@ export class NotesComponent implements OnInit {
   notes = []
   pinedArray = [];
   unpinedArray = [];
-  
+
   ngOnInit() {
     this.getAllNote()
 
     this.dataService.noteUpdated.subscribe(Message => {
+      console.log(" data service called ", Message);
+
       this.getAllNote();
       console.log(" notec upadte called");
-      
+
     })
 
     this.dataService.collaboratorEmmitedData.subscribe(response => {
       this.getAllNote();
       console.log(" collaboratir emmited");
-      
+
     })
     this.dataFromCollab();
   }
@@ -63,7 +65,7 @@ export class NotesComponent implements OnInit {
         console.log('response  ', response['data'].data);
         console.log(" responsee 3", response);
 
-        this.notes = response['data'].data
+        this.notes = response['data'].data;
 
 
         this.pinedArray = [];
@@ -81,7 +83,8 @@ export class NotesComponent implements OnInit {
 
             }
           }
-        } console.log("pinned array@@@@@@@", this.pinedArray);
+        } 
+        console.log("pinned array@@@@@@@", this.pinedArray);
         console.log("unpinned array@@@@@@@", this.unpinedArray);
       }, error => {
         console.log('error ', error);

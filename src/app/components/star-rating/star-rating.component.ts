@@ -25,8 +25,12 @@ export class StarRatingComponent implements OnInit {
     console.log('message in rate', v);
 
     this.object = v;
+    var sum = 0;
     if (v.rate != undefined)
-      this.rate = v.rate.length;
+    v.rate.forEach(element => {
+        sum += element.rate;
+      });
+      this.rate = sum / v.rate.length; 
   }
 
 

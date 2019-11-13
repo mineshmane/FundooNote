@@ -21,7 +21,7 @@ import { DisplayComponent } from './components/display/display.component';
 import { SelectServiceComponent } from './components/select-service/select-service.component';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 import { MasonryComponent } from './masonry/masonry.component';
-import {AuthGuradService} from './auth-gurad.service'
+import { AuthGuradService } from './auth-gurad.service'
 import { AskQuestionsComponent } from './components/ask-questions/ask-questions.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'forget', component: ForgetComponent },
   {
-    path: 'dashboard', component: DashboardComponent,canActivate:[AuthGuradService],
+    path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuradService],
 
     children: [
       {

@@ -24,7 +24,8 @@
             </div>
           </div>
 
-
+          <app-check-list-display [noteCheckLists]=card.noteCheckLists (checkListEvent)="EventFromCheckList($event)"
+          [tickBoxInput]="tickBoxValue" [cardId]="card"></app-check-list-display>
           <div fxLayout="row" fxLayout="row wrap">
 
             <div *ngFor="let rem of card.reminder">
@@ -60,16 +61,12 @@
             </div>
 
           </div>
-
           <div style="height:2vh;"></div>
           <div class="div">
-            <app-icon [isTrash]="isTrash" (noteTrash)="getTrashNotes()" (onArchiveChange)="onArchive()"
-              (reminderToNote)="reminderAddedToNote()" (labelToNote)="labelAddedToNote()" add [card]="card">
+            <app-icon [isTrash]="isTrash" (noteTrash)="getTrashNotes()" (onArchiveChange)="onArchive()" (childObject)="updateEventFromIcon($event)"
+              (reminderToNote)="reminderAddedToNote()" (labelToNote)="labelAddedToNote()" add [card]="card" >
             </app-icon>
           </div>
-
-
-
           <div *ngIf="card.questionAndAnswerNotes.length > 0">
             <div style="height:2vh;"></div>
             <mat-divider [inset]="true"></mat-divider>

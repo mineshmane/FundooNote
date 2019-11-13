@@ -101,7 +101,7 @@
         [(ngModel)]="description"></textarea>
     </div>
 
-
+<!-- 
     <div [ngClass]="checkListClass">
 
       <div>
@@ -161,7 +161,7 @@
         </div>
       </div>
 
-    </div>
+    </div> -->
 
 
 
@@ -255,8 +255,8 @@
       </div>
 
 
-      <div *ngFor="let colab of collaborators">
-        <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label"
+      <div *ngFor="let colab of collaboratorArray">
+        <button class="collo" mat-mini-fab matTooltip="{{colab.email}}" id="label" [style.background-color]=color
           (click)="openCollaboratorDialog(card)">{{colab.email[0].toUpperCase()}}</button>
       </div>
 

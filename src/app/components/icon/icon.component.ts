@@ -81,7 +81,7 @@ export class IconComponent implements OnInit {
 
   ]
 
-@Output() labelCreated= new EventEmitter();
+  @Output() labelCreated = new EventEmitter();
   @Output() update = new EventEmitter<any>();
   @Output() onChangeColor = new EventEmitter();
   @Output() onChangeReminder = new EventEmitter();
@@ -93,7 +93,7 @@ export class IconComponent implements OnInit {
   @Output() childObject = new EventEmitter();
 
 
-  
+
   ngOnInit() {
     this.shareLabelArrayData()
     if (this.card) {
@@ -133,12 +133,15 @@ export class IconComponent implements OnInit {
   }
 
   changeTickBoxValue(item) {
+
+
     this.tickBox = !this.tickBox;
     let obj = {
       type: 'tickBox',
       value: this.tickBox,
       item: item
     }
+    console.log(" calling change tick box value", obj);
     this.childObject.emit(obj);
   }
 
@@ -181,7 +184,7 @@ export class IconComponent implements OnInit {
     console.log(" log dia", card);
 
     try {
-      if (typeof card === 'undefined') {
+      if (typeof card === undefined) {
         console.log(" dilog undefinedwala");
 
         const dialogRef = this.dialog.open(CollaboratorComponent, {
@@ -200,6 +203,8 @@ export class IconComponent implements OnInit {
         const dialogRef = this.dialog.open(CollaboratorComponent, {
           // width: '600px',
           // height: '275px',
+
+          panelClass: 'updateDialog',
 
 
           data: { card }
@@ -374,55 +379,55 @@ export class IconComponent implements OnInit {
   }
 
 
-  createLabel(){
+  createLabel() {
 
   }
 
-   /**
-  * @description: this method is for create new label 
-  *                component
-  * @param      : label name
-  */
+  /**
+ * @description: this method is for create new label 
+ *                component
+ * @param      : label name
+ */
 
- addLabel(lab) {
-  // this.allLabels.push(lab)
-  try {
+  addLabel(lab) {
+    // this.allLabels.push(lab)
+    try {
 
-    if (lab == undefined) {
-      console.log(" empty");
-      // this.dialogRef.close();
-      return;
-    } else {
+      if (lab == undefined) {
+        console.log(" empty");
+        // this.dialogRef.close();
+        return;
+      } else {
 
-      console.log(" card ", lab);
-      let data = {
-        label: lab,
-        isDeleted: false,
-        userId: localStorage.getItem('userId')
+        console.log(" card ", lab);
+        let data = {
+          label: lab,
+          isDeleted: false,
+          userId: localStorage.getItem('userId')
 
-      }
-      this.notesService.addLabel(data).subscribe(response => {
-        console.log(response, " succsesfully updated note ");
-        // this.bar.open(" label added succesFully ", '', { duration: 2000 });
-        this.labelCreated.emit({});
-        this.labelText = '';
-        this.dataService.labelDatasend({
+        }
+        this.notesService.addLabel(data).subscribe(response => {
+          console.log(response, " succsesfully updated note ");
+          // this.bar.open(" label added succesFully ", '', { duration: 2000 });
+          this.labelCreated.emit({});
+          this.labelText = '';
+          this.dataService.labelDatasend({
 
+          })
+
+        }, error => {
+          console.log('error ', error);
         })
+      }
 
-      }, error => {
-        console.log('error ', error);
-      })
+    } catch (error) {
+      console.log(error);
+
     }
-
-  } catch (error) {
-    console.log(error);
-
   }
-}
-done() {
-  // this.dialogRef.close();
-}
+  done() {
+    // this.dialogRef.close();
+  }
 
 
   /**

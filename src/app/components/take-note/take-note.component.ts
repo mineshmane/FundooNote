@@ -105,8 +105,8 @@ export class TakeNoteComponent implements OnInit {
         color: this.setColor,
         imageUrl: this.imageUrl,
         reminder: this.setReminder,
-       // labelIdList: JSON.stringify(this.noteLabels),
-       // collaberators:JSON.stringify(this.collaboratorsArray),
+        // labelIdList: JSON.stringify(this.noteLabels),
+        // collaberators:JSON.stringify(this.collaboratorsArray),
 
       }
 

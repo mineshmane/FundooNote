@@ -3,13 +3,11 @@
 <div fxLayout='row'>
   <div fxFlex='100' fxFlex.xs='100' fxLayout='row' fxLayoutGap='2.5%' fxLayoutGap.xs='5%'>
     <div fxFlex='14'>
-      <!-- <button mat-icon-button [matMenuTriggerFor]="menumenu" *ngIf="!isTrash" matTooltip="Reminde me"
-      aria-label="Example icon-button with a menu" (click)="$event.stopPropagation()"> -->
-      <!-- <mat-icon *ngIf="!isTrash">add_alert</mat-icon> -->
+
       <img [matMenuTriggerFor]="menumenu" *ngIf="!isTrash" matTooltip="Reminde me"
         aria-label="Example icon-button with a menu" (click)="$event.stopPropagation()"
         src="../../../assets/image/alert.svg">
-      <!-- </button> -->
+
       <mat-menu #menumenu="matMenu">
         <div fxLayout="column" class="reminderMenu">
           <div fxLayoutAlign="space-between center">
@@ -19,8 +17,6 @@
             <div class="date" (click)="today(card)" class="noteReminder" fxLayout="row"
               fxLayoutAlign="space-around center">
 
-              <!-- <label class="noteReminder" id="reminderLabel">Later today</label>
-            <label class="lb" >8:pm </label> -->
               <a>Later Today</a>
               <a>8:pm</a>
             </div>
@@ -31,8 +27,7 @@
               fxLayoutAlign="space-around center">
               <div>Tommorrow</div>
               <div>8:am</div>
-              <!-- <label id="reminderLabel" class="noteReminder" >Tommorow</label>
-            <label class="lb"> 8:pm </label> -->
+            
             </div>
           </div>
 
@@ -41,8 +36,7 @@
               fxLayoutAlign="space-around center">
               <div>Next Week</div>
               <div>Mon 8:am</div>
-              <!-- <label  >Next week</label>
-            <label >Mon 8:pm </label> -->
+      
             </div>
           </div>
           <button mat-menu-item [matMenuTriggerFor]="datepicker">
@@ -64,7 +58,7 @@
               keyboard_backspace
             </i>
           </button>
-          <!-- <mat-icon>keyboard_backspace</mat-icon> -->
+          
           <h6>Pick date & time</h6>
         </div>
 
@@ -103,24 +97,19 @@
       </mat-menu>
     </div>
 
-
-
-
     <div fxFlex='14'>
-      <!-- <button mat-icon-button matSuffix *ngIf="!isTrash" matTooltip="Collaborator" (click)="$event.stopPropagation()"> -->
-      <!-- <mat-icon>person_add</mat-icon> -->
+
       <img class="img" *ngIf="!isTrash" matTooltip="Collaborator" (click)="$event.stopPropagation()"
         (click)="openCollaboratorDialog(card)" src="../../../assets/image/collaborator.svg">
-      <!-- </button> -->
+
     </div>
 
 
     <div fxFlex='14'>
-      <!-- <button mat-icon-button [matMenuTriggerFor]="menuu" *ngIf="!isTrash" matTooltip="Change Color"> -->
-      <!-- <mat-icon>color_lens</mat-icon> -->
+
       <img class="img" [matMenuTriggerFor]="menuu" *ngIf="!isTrash" matTooltip="Change Color"
         src="../../../assets/image/color_lens.svg">
-      <!-- </button> -->
+
       <mat-menu #menuu="matMenu">
         <div *ngFor="let colors of colorArray" fxLayout="row">
           <div *ngFor='let bgColor of colors'>
@@ -132,40 +121,31 @@
 
     </div>
     <div fxFlex='14'>
-      <!-- <button mat-icon-button matSuffix (click)="hide = !hide" *ngIf="!isTrash" matTooltip="add image"
-      (click)="$event.stopPropagation()"> -->
-      <!-- <mat-icon>crop_original</mat-icon> -->
+ 
       <img class="img" *ngIf="!isTrash" matTooltip="add image" (click)="$event.stopPropagation()"
         src="../../../assets/image/image.svg">
-      <!-- </button> -->
+
     </div>
 
     <div fxFlex='14'>
-      <!-- <button mat-icon-button matSuffix (click)="archiveNote()" (click)="Archive()" *ngIf="!isTrash"
-      (click)="$event.stopPropagation()" matTooltip="Archive"> -->
-      <!-- <mat-icon>archive</mat-icon> -->
+  
       <img class="img" (click)="archiveNote()" (click)="Archive()" *ngIf="!isTrash && !isArchive"
         (click)="$event.stopPropagation()" matTooltip="Archive" src="../../../assets/image/archive.svg">
-      <!-- </button> -->
+    
 
-      <!-- <button mat-icon-button matSuffix (click)="unArchiveNote()" (click)="Archive()" *ngIf="!isTrash && isarchive"
-      (click)="$event.stopPropagation()" matTooltip="Archive"> -->
-      <!-- <mat-icon>archive</mat-icon> -->
       <img class="img" (click)="unArchiveNote()" *ngIf="!isTrash && isArchive" (click)="$event.stopPropagation()"
         matTooltip="unArchive" src="../../../assets/image/unarchive.svg">
-      <!-- </button> -->
+ 
 
     </div>
 
 
     <div fxFlex='14'>
 
-      <!-- <button mat-icon-button matTooltip="more" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
-      (click)="$event.stopPropagation()"> -->
-      <!-- <mat-icon>more_vert</mat-icon> -->
+  
       <img matTooltip="more" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"
         (click)="$event.stopPropagation()" src="../../../assets/image/more.svg">
-      <!-- </button> -->
+
       <mat-menu #menu="matMenu">
         <button *ngIf="isTrash" mat-menu-item (click)="deleteForeverNote()">
           <span>Deleteforever</span>
@@ -177,16 +157,16 @@
           <span>Delete note</span>
         </button>
 
-        <button *ngIf="!isTrash" mat-menu-item [matMenuTriggerFor]="fish">add label</button>
+        <button *ngIf="!isTrash" mat-menu-item (click)="$event.stopPropagation()" [matMenuTriggerFor]="Menu1">add label</button>
 
-        <!-- <button *ngIf="!isTrash" mat-menu-item>
-        <span>Add drawaing</span>
-      </button> -->
+      
 
-        <div *ngIf="tickBox==false"> <button mat-menu-item (click)="changeTickBoxValue(card)">Show
-            checkList</button></div>
-        <div *ngIf="tickBox==true"><button mat-menu-item (click)="changeTickBoxValue(card)">Hide
-            checkList</button></div>
+        <div *ngIf="tickBox==false">
+          <button mat-menu-item (click)="changeTickBoxValue(card)">Show checkList</button>
+        </div>
+        <div *ngIf="tickBox==true">
+          <button mat-menu-item (click)="changeTickBoxValue(card)">Hide checkList</button>
+        </div>
         <button *ngIf="!isTrash" mat-menu-item (click)="askquestion(card)">
           <span>ask Question</span>
         </button>
@@ -194,7 +174,7 @@
           <span>Show checkBoxes</span>
         </button>
       </mat-menu>
-      <mat-menu #fish="matMenu">
+      <mat-menu #Menu1="matMenu">
 
         <div mat-dialog-content>
           <button mat-button (click)="$event.stopPropagation()" *ngIf="value" matSuffix mat-icon-button
@@ -204,8 +184,9 @@
           <!-- <mat-form-field class="example-form-field" > -->
 
           <div class="labelNote">LabelNote</div>
-          <div style="margin-left: 9px;"> <input matInput type="text" placeholder="Create label" (click)="$event.stopPropagation()"
-              [(ngModel)]="labelText"></div>
+          <div style="margin-left: 9px;">
+             <input matInput type="text" placeholder="Create label"
+              (click)="$event.stopPropagation()" [(ngModel)]="labelText"></div>
 
 
 
@@ -213,8 +194,8 @@
           <!-- <mat-icon >plus</mat-icon> -->
           <mat-divider *ngIf="labelText"></mat-divider>
           <div *ngIf="labelText" (click)="addLabel(labelText)" style="cursor: pointer">
-            <img src='../../../assets//image//plus.svg'  >
-         create</div>
+            <img src='../../../assets//image//plus.svg'>
+            create<p>{{labelText}}</p></div>
 
         </div>
         <div>

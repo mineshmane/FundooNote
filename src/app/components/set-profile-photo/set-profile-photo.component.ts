@@ -49,7 +49,7 @@ export class SetProfilePhotoComponent implements OnInit {
     //console.log("data in event", event)
     this.imageChangedEvent = event;
     this.profilepic = <File>event.target.files[0];
-    // console.log("profile pic", this.profilepic)
+    console.log("profile pic", this.profilepic)
   }
 
   imageCropped(event: ImageCroppedEvent) {
@@ -57,7 +57,7 @@ export class SetProfilePhotoComponent implements OnInit {
 
     this.croppedImage = event;
     this.profilepic = <File>event.file;
-    //  console.log("profile pic", this.profilepic)
+    console.log("profile pic", this.profilepic)
 
   }
   imageLoaded() {
@@ -77,6 +77,8 @@ export class SetProfilePhotoComponent implements OnInit {
     }
     this.userService.profilePic('user/uploadProfileImage', imagefile).subscribe(response => {
       localStorage.setItem('imageUrl', response['status']['imageUrl']);
+      console.log("response['status']['imageUrl'] ", response['status']['imageUrl']);
+
       this.progressBar = false;
       this.DataService.setProfileData({
         data: {},

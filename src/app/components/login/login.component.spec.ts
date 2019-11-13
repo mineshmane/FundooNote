@@ -43,11 +43,12 @@ describe('LoginComponent', () => {
 
 
   it('form should be invalid', () => {
-// component.loginFormvalue.email.setValue();
-    component.loginFormvalue.email.setValue('');
-    component.loginFormvalue.password.setValue('');
-    expect(component.email.valid).toBeFalsy();
-    expect(component.password.valid).toBeFalsy();
+    // component.loginFormvalue.email.setValue();
+    component.loginForm.controls['email'].setValue('')
+    component.loginForm.controls['password'].setValue('');
+    expect(component.loginForm.controls['email'].invalid).toBeFalsy();
+    expect(component.loginForm.controls['password'].invalid).toBeFalsy();
+   
     // component.email.setValue('');
     // component.password.setValue('');
     // expect(component.email.valid).toBeFalsy();
@@ -55,13 +56,14 @@ describe('LoginComponent', () => {
 
   })
 
-  it('form shouble be valid',()=>{
+  it('form shouble be valid', () => {
 
-    
-    component.loginFormvalue.email.setValue('mineshmane94@gmail.com');
-    component.loginFormvalue.password.setValue('Rahul@123454');
-    expect(component.email.valid).toBeTruthy();
-    expect(component.password.valid).toBeTruthy();
+    component.loginForm.controls['email'].setValue('mineshmane94@gmail.com')
+    component.loginForm.controls['password'].setValue('123123');
+    expect(component.loginForm.controls['email'].valid).toBeTruthy();
+    expect(component.loginForm.controls['password'].valid).toBeTruthy();
+    // expect(component.email.valid).toBeTruthy();
+    // expect(component.password.valid).toBeTruthy();
   })
 
 

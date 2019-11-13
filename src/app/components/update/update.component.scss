@@ -83,36 +83,36 @@
   // background-image: url(../../../assets/images/collaborator/smallcolab.jpg);
   border: 1px solid darkgrey;
 }
-//   .checkList{
-//       padding: 8px 0px 8px 0px;
-//   }
+  .checkList{
+      padding: 8px 0px 8px 0px;
+  }
 
 
-//   .list{
-//       align-self: center;
-//   }
-//   .done{
-//       cursor: pointer;
-//   }
-//   .closeInput{
-//       text-decoration: line-through;
-//   }
+  .list{
+      align-self: center;
+  }
+  .done{
+      cursor: pointer;
+  }
+  .closeInput{
+      text-decoration: line-through;
+  }
 
-// .deleteChecklist{
-//     display: none;
-//     cursor: pointer;
-// }
-// .showCheckList{
-//     height: 24px;
+.deleteChecklist{
+    display: none;
+    cursor: pointer;
+}
+.showCheckList{
+    height: 24px;
 
-// }
-// .showCheckList:hover .deleteChecklist{
-//     display: block;
-// }
-// .hide{
-//     height: 24px;
-//     width: 24px;
-// }
+}
+.showCheckList:hover .deleteChecklist{
+    display: block;
+}
+.hide{
+    height: 24px;
+    width: 24px;
+}
 
 .hideCheckList
 {

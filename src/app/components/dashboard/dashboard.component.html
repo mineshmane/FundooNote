@@ -4,10 +4,10 @@
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <!-- <mat-icon> <img src="../../../assets/image/keep.svg"></mat-icon> -->
+
     <div fxLayoutAlign="center" fxHide.xs='true' fxHide.sm='true'>
       <img class="keepimg" src="https://www.gstatic.com/images/branding/product/1x/keep_48dp.png">
-      <!-- <mat-icon><img class="keepimg" src="../../../assets/image/keep.svg"></mat-icon> -->
+    
     </div>
     <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutAlign.xs="space-between center" fxFlex="100">
       <div *ngIf="isOpen">
@@ -51,14 +51,14 @@
           </div>
         </div>
       </mat-card>
+
       <div fxShow fxShow.xs fxHide *ngIf="isOpen" (click)="isOpen = !isOpen">
         <button mat-icon-button matSuffix fxFlex.xs="50" matTooltip="Search">
           <mat-icon matPrefix>search</mat-icon>
         </button>
       </div>
 
-      <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="30"   >
-        
+      <div fxLayout="row" fxLayoutAlign="space-between center" fxFlex="30"   >        
         <span class="example-spacer"></span>
         <!-- <div  > -->
         <div fxFlex="25" fxShow fxShow fxHide.xs fxFlex.md="60" fxFlex.xs="80" fxFlex.sm="90">
@@ -146,9 +146,10 @@
         </div>
         <mat-divider></mat-divider>
         <div class="JNdkSc-tJHJj">Labels</div>
-        <div (labelDelete)="getLabelList()">
-          <div *ngFor="let lab of allLabel">
 
+        <div (labelDelete)="getLabelList()">
+          
+          <div *ngFor="let lab of allLabel">
             <div>
               <a mat-list-item class="nav-div" (click)="openLabel(lab)">
                 <mat-icon>label_outline</mat-icon>

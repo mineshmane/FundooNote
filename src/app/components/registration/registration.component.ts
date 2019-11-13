@@ -141,7 +141,7 @@ export class RegistrationComponent implements OnInit {
     try {
       console.log(registerFormValue);
       if (registerFormValue.password !== registerFormValue.cpassword) {
-        this.snackBar.open('password didnot macth', '', { duration: 2000 });
+        this.snackBar.open('password didnot macth', '', { duration: 1000 });
 
       } else {
         if (this.registerForm.invalid) {

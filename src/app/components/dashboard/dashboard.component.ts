@@ -47,13 +47,13 @@ export class DashboardComponent implements OnInit {
   fillerContent = Array.from({ length: 50 }, () =>
     ``);
 
-    isOpen = true;
-    //hide = true;
-    click() {
-      console.log(" is open ca;lled");
-      
-      this.isOpen = true;
-    }
+  isOpen = true;
+  //hide = true;
+  click() {
+    console.log(" is open ca;lled");
+
+    this.isOpen = true;
+  }
 
   private _mobileQueryListener: () => void;
   constructor(private userService: UserService,
@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
   message: string;
   imageurl: string
   localstorage_image: any
-  searchInput=false ;
+  searchInput = false;
   searchIn;
   isList: any;
   fName;
@@ -78,7 +78,7 @@ export class DashboardComponent implements OnInit {
   userName;
   object = {
     view: this.gridView,
-   
+
   }
   // list: boolean = true;
   // grid: boolean = false;
@@ -89,7 +89,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.mobileQuery.removeListener(this._mobileQueryListener);
     this.getLabelList();
-
+    this.changeProfilePic();
     // this.list = localStorage.getItem('isListView')
     this.grid = localStorage.getItem('gridView')
 
@@ -112,20 +112,20 @@ export class DashboardComponent implements OnInit {
   }
 
 
-/**
-   * @description this method is for view change  and send view value to data service 
-   * @returns nothing
-   */
+  /**
+     * @description this method is for view change  and send view value to data service 
+     * @returns nothing
+     */
   gridUnGrid() {
     try {
       console.log("grid called inj ndashboard ");
-      
+
       this.gridView = !this.gridView;
       // this.sidenavClass.sidenav1 = this.gridView;
       // this.sidenavClass.sidenav2 = !this.gridView;
       this.object.view = this.gridView;
-      console.log(" object passsed in data serbvice ",this.object);
-      
+      console.log(" object passsed in data serbvice ", this.object);
+
       this.dataToService(this.object);
     } catch (error) {
       console.log('error in gridUnGrid in toolbar');
@@ -138,8 +138,11 @@ export class DashboardComponent implements OnInit {
 */
   changeProfilePic() {
     this.localstorage_image = localStorage.getItem('imageUrl');
-    // this.imageurl = 'http://34.213.106.173/' + this.localstorage_image;
+    console.log(" imAGE IN DASH BORD ", this.localstorage_image);
+
     this.imageurl = environment.imagebaseUrl + this.localstorage_image
+    console.log(" calling change pictures", this.imageurl);
+
   }
 
   // refresh() {
@@ -187,14 +190,14 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-   /**
- * @description this method is for sending data to data service
- * @param object
- * @returns nothing
- */
-dataToService(object) {
-  console.log(" data in data service method in dash boiard",object);
-  
+  /**
+* @description this method is for sending data to data service
+* @param object
+* @returns nothing
+*/
+  dataToService(object) {
+    console.log(" data in data service method in dash boiard", object);
+
     try {
       this.dataService.listViewData(object)
     } catch (error) {

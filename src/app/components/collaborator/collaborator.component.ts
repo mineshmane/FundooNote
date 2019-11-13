@@ -40,31 +40,38 @@ export class CollaboratorComponent implements OnInit {
     console.log(" dilog d data ", data);
 
     if (data.card != undefined) {
+      console.log(" dilog d data ", data.card.user.firstName);
       console.log(" data undefined  called in  constructor");
+      this.firstName = data.card.user.firstName;
+      this.lastName = data.card.user.lastName;
+      this.email = data.card.user.email;
+      this.reminder = data.card.reminder
+      console.log(" reminder ", this.reminder);
 
-      this.collaboratorsArray = data.card.collaborators
+      this.imageUrl = data.card.user.imageUrl;
+      this.collaboratorsArray = data.card.collaborators;
     }
     console.log(" collaboraArray", this.collaboratorsArray);
 
 
 
   }
-  private img;
+  reminder;
+  imgUrl;
   imageurl: string
   localstorage_image: any
   searchValue;
   user;
-  firstName = localStorage.getItem("FirstName");
-  lastName = localStorage.getItem("LastName");
-  email = localStorage.getItem("email");
-  imageUrl = localStorage.getItem("imageUrl");
+  firstName;
+  lastName;
+  email;
+  imageUrl;
 
   ngOnInit() {
-    this.firstName = localStorage.getItem("firstName");
-    this.lastName = localStorage.getItem("lastName");
-    this.imageUrl = localStorage.getItem("imageUrl");
-    this.img = environment.baseUrl + this.imageUrl;
-    console.log(" image ", this.img);
+
+
+    this.imgUrl = environment.baseUrl + this.imageUrl;
+    console.log(" image ", this.imgUrl);
     this.changeProfilePic();
 
   }
